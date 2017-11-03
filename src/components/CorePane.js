@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 
-//drop-down toggles to hold nested info
-//when clicked should open drawer to allow futher subselection
+//this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
+
+//that chapter object holds and array of paragraph objects and/or subheader objects which also note footnotes, original pages, site tags, people tags, images, captions, etc.
+
+//should have a setting that then loads the images, geo information - default first in the top paragraph or on clicking on the case study.... so automate the side loading (dispatch to overall store)... so a scroll spy and direct click launch of that information.
 
 class CorePane extends Component {
   constructor(props) {
    super(props);
    this.state = {}// defer definitions
  }
+
+
 
   render() {
   	var chapter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
@@ -25,7 +30,7 @@ class CorePane extends Component {
               	{chapter &&
               		chapter.map(items=>{
               			return (
-			              	<div className='row'>
+			              	<div className='row' id={items + 'section'}>
 			                	<div className= 'col-3 small'>
 			                		<ul>
 			                			<li className="p10">footnotes & biblio updates</li>
