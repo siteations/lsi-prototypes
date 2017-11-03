@@ -75,17 +75,31 @@ body {
   font-size: 1rem;
 }
 
+h1, h2, h3, h4 {
+  font-family: 'Eveleth';
+}
+
 .eveleth {
   font-family: 'Eveleth';
 }
 
 .navBar {
   margin-top: 5px;
+  padding-bottom: 1px;
   border-bottom: .5px lightgrey solid;
+  line-height: 1;
+}
+
+.navSearch {
+  line-height: 1.1;
 }
 
 .p10 {
   padding: 10px;
+}
+
+.p10s {
+  padding: 0px 10px;
 }
 
 #corePanels {
@@ -95,9 +109,12 @@ body {
 
 .pane {
   padding: 1px;
+  margin: 1px;
   background-color: #fff;
   height: 79vh;
-  border-radius: 5px;
+  border-radius: 2px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .font-sm {

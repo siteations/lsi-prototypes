@@ -3,8 +3,12 @@ import './css/bootstrap.css';
 import './css/font-awesome.css';
 import './css/App.css';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import Search from './components/Search.js';
 import Chapternav from './components/ChapterNav.js';
+import CorePane  from './components/CorePane.js';
+import AccordPane from './components/AccordPane.js';
 
 //import axios from 'axios';
 
@@ -32,6 +36,7 @@ class App extends Component {
 
   render() {
     return (
+    <MuiThemeProvider>
       <div className="App">
         <div id="navMasters">
           {/* top bar for search via multiple methods - index to dropdown, themes to dropdowns */}
@@ -44,21 +49,18 @@ class App extends Component {
         <div id="corePanels" className="row p10 justify-content-center">
           <div className='col-11'>
             <div className="row">
-              <div className="col-8 pane">
-                main here
-              </div>
-              <div className="col-4 pane">
-                side here
-              </div>
+              <CorePane />
+              <AccordPane />
             </div>
           </div>
         </div>
         <div id="footer" className="font-sm">
           <div className="row align-items-center">
-            basic mock-up without styling for considering nav nesting, control flow of multi-pane structure
+            basic mock-up with minimal styling for considering nav nesting, control flow of multi-pane structure
           </div>
         </div>
       </div>
+    </MuiThemeProvider>
     );
   }
 }
