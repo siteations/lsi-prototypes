@@ -84,7 +84,7 @@ h1, h2, h3, h4 {
 }
 
 .navBar {
-  margin-top: 5px;
+  margin-top: 0px;
   padding-bottom: 1px;
   border-bottom: .5px lightgrey solid;
   line-height: 1;
@@ -92,10 +92,15 @@ h1, h2, h3, h4 {
 
 .navSearch {
   line-height: 1.1;
+  margin-top: 5px;
 }
 
 .p10 {
   padding: 10px;
+}
+
+.m {
+  margin-bottom: 0px;
 }
 
 .p10s {
@@ -103,18 +108,23 @@ h1, h2, h3, h4 {
 }
 
 #corePanels {
-  height: 82vh;
+  height: 85vh;
   background-color: #d3d3d3;
+  padding: 10px;
 }
 
 .pane {
   padding: 1px;
   margin: 1px;
   background-color: #fff;
-  height: 79vh;
+  height: 82vh;
   border-radius: 2px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+#sidePane {
+  overflow-y: hidden;
 }
 
 .font-sm {
@@ -124,4 +134,8 @@ h1, h2, h3, h4 {
 
 .font-m {
   font-size: .75rem;
+}
+
+.cursor {
+  cursor: pointer;
 }

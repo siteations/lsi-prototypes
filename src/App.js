@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+
 import './css/bootstrap.css';
 import './css/font-awesome.css';
 import './css/App.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {grey600, grey800, grey400, cyan800, cyan900, grey100, grey500, grey300, darkBlack, white, fullBlack} from 'material-ui/styles/colors';
+import {fade} from 'material-ui/utils/colorManipulator';
 
 import Search from './components/Search.js';
 import Chapternav from './components/ChapterNav.js';
@@ -11,6 +15,28 @@ import CorePane  from './components/CorePane.js';
 import AccordPane from './components/AccordPane.js';
 
 //import axios from 'axios';
+
+const muiTheme = getMuiTheme({
+  fontFamily: 'Texta, sans-serif',
+  palette: {
+    primary1Color: grey400,
+    primary2Color: grey600,
+    primary3Color: grey800,
+    accent1Color: cyan800,
+    accent2Color: grey100,
+    accent3Color: grey500,
+    textColor: darkBlack,
+    alternateTextColor: white,
+    canvasColor: white,
+    borderColor: grey300,
+    disabledColor: fade(darkBlack, 0.3),
+    pickerHeaderColor: cyan900,
+    clockCircleColor: fade(darkBlack, 0.07),
+    shadowColor: fullBlack,
+  },
+});
+
+
 
 class App extends Component {
   constructor(props) {
@@ -36,15 +62,13 @@ class App extends Component {
 
   render() {
     return (
-    <MuiThemeProvider>
+    <MuiThemeProvider muiTheme={muiTheme}>
       <div className="App">
         <div id="navMasters">
           {/* top bar for search via multiple methods - index to dropdown, themes to dropdowns */}
           <Search />
           {/* second bar for listing of chapters as condensed dropdowns */}
           <Chapternav type="chapter"/>
-          {/* third bar for listing of themes as condensed dropdowns */}
-          <Chapternav type="theme"/>
         </div>
         <div id="corePanels" className="row p10 justify-content-center">
           <div className='col-11'>
