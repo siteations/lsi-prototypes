@@ -31,163 +31,94 @@ export const SET_SP_BTAB = 'SET_SP_BTAB';
 
 /* internal elements, like specific paragraph or case or agent in different reducer */
 
-//NAVIGATION REDUCER ? FOR BOTTOM THUMBNAILS
-
 //-------------------ACTION CREATORS - vanilla loading of information
-export const setWindowSize = (windowSize) => {
+export const setMP = (paneType) => {
 	return {
-		type: SET_WINDOW,
-		windowSize
+		type: SET_MP,
+		paneType
 	};
 };
 
-export const setWindowOffsets = (windowOff) => {
+export const setMPTab = (paneTab) => {
 	return {
-		type: SET_WINOFFSET,
-		windowOff
+		type: SET_MP_TAB,
+		paneTab
 	};
 };
 
-export const setPanelOffset = (panelOff) => {
+export const setSPTop = (sTopType) => {
 	return {
-		type: SET_PANELOFFSET,
-		panelOff
+		type: SET_SP_TOP,
+		sTopType
 	};
 };
 
-export const setZoom = (zoom) => {
+export const setSTTab = (sTopTab) => {
 	return {
-		type: SET_ZOOM,
-		zoom
+		type: SET_SP_TTAB,
+		sTopTab
 	};
 };
 
-export const setTile = (tilesize) => {
+export const setSPBottom = (sBottomType) => {
 	return {
-		type: SET_TILESIZE,
-		tilesize
+		type: SET_SP_BOTTOM,
+		sBottomType
 	};
 };
 
-export const setOffsets = (offsets) => {
+export const setSBTab = (sBottomTab) => {
 	return {
-		type: SET_OFFSETS,
-		offsets
+		type: SET_SP_BTAB,
+		sBottomTab
 	};
 };
 
-export const setOffsetsR = (offsets) => {
-	return {
-		type: SET_OFFSETS_RESIDUAL,
-		offsets
-	};
-};
-
-export const setCenter = (center) => {
-	return {
-		type: SET_CENTER,
-		center
-	};
-};
-
-export const setCenterScreen = (centerScr) => {
-	return {
-		type: SET_CENTER_SCREEN,
-		centerScr
-	};
-};
-
-export const setMapTourAll = (type) => {
-	var sites;
-	(type==='maps')? sites = mapSites.slice() : sites = printSites.slice() ;
-
-	return {
-		type: SET_MAPTOUR_ALL,
-		sites
-	};
-};
-
-export const setMapSite = (site) => {
-	return {
-		type: SET_MAPSITE,
-		site
-	};
-};
-
+//note: the tabs for logging in to the system and editing materials will be their own additions to the user reducer
 
 //-------------------reducers && initial info
 
 const initMap = {
-	windowSize: [1024,512], //width, height
-	windowOffsets: [0,0], //x, y
-	panelOffset:0,
+	main: 'text',
+	mainTab: 'a',
 
-	// currZoom: 2, //map zoom value
-	// tileSize: 194, //px size
-	currZoom: 3, //map zoom value
-	tileSize: 174, //px size
-	xyOffsets: [0,0], //x, y
-	xyOffsetsR: [0,0], //x, y
-	xyCenter: [0,0], //x, y
-	focusCenter: [0,0], //x, y
+	top:'images',
+	topTab: 'a' ,
 
-	mapTourAll: mapSites.slice(),
-	mapSite: mapSites.slice()[0],
-
+	bottom: 'networks',
+	bottomTab: 'a',
 
 };
 
 
 
-export const mapReducer = (prevState = initMap, action) => {
+export const paneReducer = (prevState = initMap, action) => {
 	let newState = Object.assign({}, prevState);
 
 	switch(action.type){
 
-	case SET_WINDOW:
-		newState.windowSize = action.windowSize;
+	case SET_MP:
+		newState.main = action.paneType;
 		break;
 
-	case SET_WINOFFSET:
-		newState.windowOffsets = action.windowOff;
+	case SET_MP_TAB:
+		newState.mainTab = action.paneTab;
 		break;
 
-	case SET_PANELOFFSET:
-		newState.panelOffset = action.panelOff;
+	case SET_SP_TOP:
+		newState.top = action.sTopType;
 		break;
 
-	case SET_ZOOM:
-		newState.currZoom = action.zoom;
+	case SET_SP_TTAB:
+		newState.topTab = action.sTopTab;
 		break;
 
-	case SET_TILESIZE:
-		newState.tileSize = action.tilesize;
+	case SET_SP_BOTTOM:
+		newState.bottom = action.sBottomType;
 		break;
 
-	case SET_OFFSETS:
-		newState.xyOffsets = action.offsets ;
-		break;
-
-	case SET_OFFSETS_RESIDUAL:
-		newState.xyOffsetsR = action.offsets ;
-		break;
-
-	case SET_CENTER:
-		newState.focusCenter = action.center;
-		break;
-
-	case SET_CENTER_SCREEN:
-		newState.xyCenter = action.centerScr;
-		break;
-
-	case SET_MAPSITE:
-		console.log(action.site);
-		newState.mapSite = action.site;
-		break;
-
-	case SET_MAPTOUR_ALL:
-		console.log(action.sites);
-		newState.mapTourAll = action.sites;
+	case SET_SP_BTAB:
+		newState.bottomTab = action.sBottomTab;
 		break;
 
 	default:
@@ -201,47 +132,20 @@ export const mapReducer = (prevState = initMap, action) => {
 
 /* ------------       DISPATCHERS     ------------------ */
 
-// optimistic
-export const updateZoom = zoom => dispatch => {
-  dispatch(setZoom(zoom));
+export const setMainPane = (type, tab) => dispatch => {
+	console.log('main ', type, tab)
+  dispatch(setMP(type));
+  dispatch(setMPTab(tab));
 };
 
-export const updateOffsets = offsets => dispatch => {
-  dispatch(setOffsets(offsets));
+export const setSideTop = (type, tab) => dispatch => {
+	console.log('side ', type, tab)
+  dispatch(setSPTop(type));
+  dispatch(setSTTab(tab));
 };
 
-export const updateOffsetsResidual = offsets => dispatch => {
-  dispatch(setOffsetsR(offsets));
+export const setSideBottom = (type, tab) => dispatch => {
+  dispatch(setSPBottom(type));
+  dispatch(setSBTab(tab));
 };
 
-export const updatePanelOffset = offset => dispatch => {
-  dispatch(setPanelOffset(offset));
-};
-
-export const updateTile = tiles => dispatch => {
-  dispatch(setTile(tiles));
-};
-
-export const updateCenter = cent => dispatch => {
-  dispatch(setCenter(cent));
-};
-
-export const updateCenterScreen = centScr => dispatch => {
-  dispatch(setCenterScreen(centScr));
-};
-
-export const updateWindow = size => dispatch => {
-  dispatch(setWindowSize(size));
-};
-
-export const updateWindowOffsets = offsets => dispatch => {
-  dispatch(setWindowOffsets(offsets));
-};
-
-export const setMapTours = (type) => dispatch => {
-	dispatch(setMapTourAll(type));
-};
-
-export const setMapSiteOne = (site) => dispatch => {
-	dispatch(setMapSite(site));
-};

@@ -22,7 +22,7 @@ const muiTheme = getMuiTheme({
     primary1Color: grey400,
     primary2Color: grey600,
     primary3Color: grey800,
-    accent1Color: cyan800,
+    accent1Color: grey800,
     accent2Color: grey100,
     accent3Color: grey500,
     textColor: darkBlack,
@@ -68,7 +68,7 @@ class App extends Component {
           {/* top bar for search via multiple methods - index to dropdown, themes to dropdowns */}
           <Search />
           {/* second bar for listing of chapters as condensed dropdowns */}
-          <Chapternav type="chapter"/>
+          <Chapternav />
         </div>
         <div id="corePanels" className="row p10 justify-content-center">
           <div className='col-11'>

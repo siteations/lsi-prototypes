@@ -1,58 +1,100 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styles from './materialStyles.js';
 
 import STImages from './STImages.js';
 import SBNetworks from './SBNetworks.js';
 import SText from './SText.js';
+import LogAccess from './LogAccess.js';
+
+import {setMainPane, setSideTop, setSideBottom} from '../action-creators/paneActions.js';
 
 //drop-down toggles to hold nested info
 //when clicked should open drawer to allow futher subselection
 
-class CorePane extends Component {
+class SideP extends Component {
   constructor(props) {
    super(props);
    this.state = {
    width:0,
-   height: 0,
-   top: true, //false = text
-   bottom: true,
-
+   height:0,
    };
    this.togglePaneT= this.togglePaneT.bind(this);
    this.togglePaneB= this.togglePaneB.bind(this);
  }
 
  componentDidMount(){
-   console.dir(document.getElementById('sidePane').clientWidth)
+   //console.dir(document.getElementById('sidePane').clientWidth)
    var wide = document.getElementById('sidePane').clientWidth
-   var height = wide*.66 - styles.tabSize.height
+   var height = wide*.68 - styles.tabSize.height
 
-   this.setState({width:wide, height})
+   this.setState({width: wide, height})
  }
 
- togglePaneT = () => this.setState({top: !this.state.top});
- togglePaneB = () => {this.setState({bottom: !this.state.bottom}); console.log(this.state.bottom)};
+ togglePaneT = () => {
+
+  var topNext = this.props.pane.main, topTabN = this.props.pane.mainTab ;
+  var mainNext = this.props.pane.top, mainTabN = this.props.pane.topTab ;
+
+  this.props.setSideTop(topNext, topTabN);
+  this.props.setMainPane(mainNext, mainTabN);
+
+
+};
+
+ togglePaneB = () => {
+
+  var bottomNext = this.props.pane.main, bottomTabN = this.props.pane.mainTab ;
+  var mainNext = this.props.pane.bottom, mainTabN = this.props.pane.bottomTab ;
+
+  this.props.setSideBottom(bottomNext, bottomTabN);
+  this.props.setMainPane(mainNext, mainTabN);
+
+};
 
   render() {
 
     return (
               <div className="col pane" id="sidePane">
-                {this.state.top &&
+                {this.props.pane.top === 'images' &&
                   <STImages hi={this.state.height} actions={this.togglePaneT} />
                 }
-                {!this.state.top &&
-                  <SText hi={this.state.height} actions={this.togglePaneT} />
+                {this.props.pane.top === 'text' &&
+                  <SText hi={this.state.height} loc='top' actions={this.togglePaneT} />
                 }
-                {this.state.bottom &&
+                {this.props.pane.bottom === 'networks' &&
                   <SBNetworks hi={this.state.height} actions={this.togglePaneB} />
                 }
-                {!this.state.bottom &&
-                  <SText hi={this.state.height} actions={this.togglePaneB} />
+                {this.props.pane.bottom === 'text' &&
+                  <SText hi={this.state.height} loc='bottom' actions={this.togglePaneB} />
                 }
-                log in here
+                <LogAccess />
               </div>
     );
   }
 }
 
-export default CorePane;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    pane: state.pane,
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    setMainPane: (type, tab) => {
+        dispatch(setMainPane(type, tab));
+    },
+    setSideTop: (type, tab) => {
+        dispatch(setSideTop(type, tab));
+    },
+    setSideBottom: (type, tab) => {
+        dispatch(setSideBottom(type, tab));
+    },
+
+  }
+}
+
+const SidePane = connect(mapStateToProps, mapDispatchToProps)(SideP);
+
+export default SidePane;
