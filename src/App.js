@@ -14,6 +14,10 @@ import Chapternav from './components/ChapterNav.js';
 import CorePane  from './components/CorePane.js';
 import AccordPane from './components/AccordPane.js';
 
+import Gilpin from './data/GilpinEdits.js';
+
+console.dir(Gilpin);
+
 //import axios from 'axios';
 
 const muiTheme = getMuiTheme({

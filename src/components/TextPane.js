@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Waypoint from 'react-waypoint';
+
+import sampleText from '../data/Gilpin.js';
+import {drawer, setChapterDrawer, setChpPara, setSiteData} from '../action-creators/navActions.js';
 
 //this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
 
@@ -7,7 +12,7 @@ import Waypoint from 'react-waypoint';
 
 //should have a setting that then loads the images, geo information - default first in the top paragraph or on clicking on the case study.... so automate the side loading (dispatch to overall store)... so a scroll spy and direct click launch of that information.
 
-class TextPane extends Component {
+class TextP extends Component {
   constructor(props) {
    super(props);
    this.state = {
@@ -27,6 +32,47 @@ class TextPane extends Component {
     this.setState({
       footnote: value,
     });
+  }
+
+  formatString = (string)=>{
+  	var text='';
+
+  	var strg2 = string.replace('<note n="*" place="bottom">', '*').replace('</note>', '').replace('<g ref="char:punc">', '').replace('</g>', '').replace('</p>', '').replace('</div>', '')
+
+
+
+    const formatL = (str)=>{
+    	return str.replace(/<q>|<lg>|<\/q>|<\/lg>/g, '')
+			                				.split('<l>')
+			 												.map(lines=>{
+			 													if (lines.includes('</l>')){
+			 														return <span>{lines.replace('</l>', '')}<br/></span>
+			 													} else {
+			 														return <span>{lines}</span>
+			 													}
+			 												})
+    }
+  	// if (string.includes('<hi>')){
+  	text = strg2.split('<hi>')
+            				.map(sections=>{
+              				if (sections.includes('</hi>')){
+              					var parts = sections.split('</hi>');
+              					return <span><em> {parts[0]} </em> {formatL(parts[1])}</span>
+              				} else {
+              					return formatL(sections)
+              				}
+            				})
+  //   } else if (string.includes('<l>')){
+
+  //   text = string.replace(/<q>|<lg>|<\/q>|<\/lg>/g, '')
+		// 	                				.split('<l>')
+		// 	 												.map(lines=>{
+		// 	 													return <span>{lines.replace('</l>', '')}<br/></span>
+		// 	 												})
+		// } else {text=string}
+
+
+    return text
   }
 
   scrollEnter = (e) => {
@@ -49,8 +95,8 @@ class TextPane extends Component {
 
 
   render() {
-  	var chapter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-  	var scroll = chapter.map(items=>items+'-section');
+  	var chapter = sampleText[this.props.nav.chp];
+  	//var scroll = chapter.map(items=>items+'-section');
 
     return (
               <div>
@@ -58,17 +104,22 @@ class TextPane extends Component {
 	                	<div className= 'col-3 small'>
 	                	</div>
 	                	<div className= 'col-9 small'>
-	                		<h3 className='p10'>title here</h3>
-	                		<h5>subtitle here</h5>
+	                		<h3 className='p10'>{chapter.title}</h3>
+	                		<h5>...</h5>
 	                	</div>
 	                </div>
               	{chapter &&
-              		chapter.map(items=>{
+              		chapter.paragraphs.map(items=>{
               			return (
 			              	<div className='row' id={items + '-section'}>
 			                	<div className= 'col-3 small'>
 			                		<ul>
-			                			<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={items}>footnotes & biblio updates</li>
+			                			{items.notes &&
+			                				<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={items}>{(items.notes.length>101)?items.notes.slice(0,100)+'. . .': items.notes}</li>
+			                			}
+			                			{items.site &&
+			                				<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={items}>site: {items.site[0].name}</li>
+			                			}
 			                		</ul>
 			                	</div>
 			                	<div className="col-9">
@@ -76,17 +127,17 @@ class TextPane extends Component {
 			                		topOffset={this.state.topOffset+100}
 			                		bottomOffset={100}
 			                		onEnter={e=>{e.id = items+'-section';
-			                			e.sites = items+'-cases';
-			                			e.agents = items+'-agents';
-			                			e.media = items+'-media';
+			                			// e.sites = items+'-cases';
+			                			// e.agents = items+'-agents';
+			                			// e.media = items+'-media';
 			                			this.scrollEnter(e)}}
 			                		onLeave={e=>{e.id = items+'-section';
-			                			e.sites = items+'-cases';
-			                			e.agents = items+'-agents';
-			                			e.media = items+'-media';
+			                			// e.sites = items+'-cases';
+			                			// e.agents = items+'-agents';
+			                			// e.media = items+'-media';
 			                			this.scrollLeave(e)}}
 			                		>
-			                		<p className="p10s">{items+'-section'} Sed bibendum dapibus risus. Phasellus quis enim velit. Morbi sed nisl quam. Quisque quis arcu hendrerit, congue mauris sit amet, consequat felis. Donec fringilla tellus ipsum, et elementum massa facilisis et. Nullam quis mauris leo. Maecenas venenatis lacus massa, gravida consequat mauris ultrices quis. Morbi tincidunt risus diam, pharetra cursus nulla finibus suscipit. Donec finibus facilisis interdum. Ut tempus, lorem ut dapibus malesuada, sem velit ultricies turpis, nec ultricies ex sem commodo orci. Mauris finibus eros sit amet diam ornare, sed egestas libero dignissim. Nunc egestas facilisis velit, commodo vehicula justo ultricies vitae. Maecenas sit amet fringilla est. Donec et enim lectus. Integer est turpis, semper eu faucibus eget, auctor vitae elit. Aliquam erat volutpat.</p>
+			                		<p className="p10s">{this.formatString(items.text)}</p>
 			                		</Waypoint>
 			                	</div>
 			                </div>
@@ -98,5 +149,30 @@ class TextPane extends Component {
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    pane: state.pane,
+    nav: state.nav,
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    setChapterDrawer: (button) => {
+        dispatch(setChapterDrawer(button));
+    },
+    setChpPara: (chp, para) => {
+        dispatch(setChpPara(chp, para));
+    },
+    setSiteData: (id, name)=>{
+    	dispatch(setSiteData(id, name));
+    }
+
+  }
+}
+
+const TextPane = connect(mapStateToProps, mapDispatchToProps)(TextP);
+
 
 export default TextPane;

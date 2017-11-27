@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import SelectField from 'material-ui/SelectField';
 import FlatButton from 'material-ui/FlatButton';
@@ -7,14 +8,34 @@ import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 
+import sampleText from '../data/Gilpin.js';
+
+import {drawer, setChapterDrawer, setChpPara, setSiteData} from '../action-creators/navActions.js';
 //drop-down toggles to hold nested info
 //when clicked should open drawer to allow futher subselection
 
-class ChapterNav extends Component {
+class ChapterN extends Component {
   constructor(props) {
    super(props);
-   this.state = {open: false, value: 1, type: 'chapter', theme: 'site'};
+   this.state = {open: false, value: 1, type: 'chapter', theme: 'site', drawerTitle:''};
  }
+
+ 	toggleLoad = (item)=> {
+ 		this.setState({drawerTitle: 'Chapters: '+drawer[item].join(', ')});
+ 		this.props.setChapterDrawer(item);
+ 		this.handleToggle()
+ 	}
+
+ 	selectSite = (chp, para, id, name)=> {
+ 		this.props.setChpPara(chp, para)
+ 		this.props.setSiteData(id, name)
+ 		this.handleClose()
+ 	}
+
+ 	selectChapter = (chp)=> {
+ 		this.props.setChpPara(chp, 0)
+ 		this.handleClose()
+ 	}
 
   handleToggle = () => this.setState({open: !this.state.open});
   handleToggleTheme = (e) => {this.setState({open: !this.state.open}); console.dir(e.target.offsetParent.id); this.setState({theme:e.target.offsetParent.id})};
@@ -27,7 +48,7 @@ class ChapterNav extends Component {
 	};
 
   render() {
-  	var array = ['a', 'b', 'c', 'd', 'e', 'f'];
+  	var array = [0, 1, 2, 3, 4, 5];
   	var arraytheme = ['site', 'science', 'social', 'sensory'];
   	var tClass = (this.state.type === 'theme')?'font-sm': ''
 
@@ -54,8 +75,8 @@ class ChapterNav extends Component {
 	      	return (
 			      <div className='col'>
 			      	<FlatButton
-			      	onClick={this.handleToggle}
-			      	label={`${this.state.type} ${item}`}
+			      	onClick={e=>this.toggleLoad(item)}
+			      	label={`${this.state.type} ${drawer[item].join(', ')}`}
 			      	fullWidth={true}
 			      	/>
 
@@ -66,22 +87,34 @@ class ChapterNav extends Component {
 			          onRequestChange={(open) => this.setState({open})}
 			          overlayStyle={{opacity:'.15'}}
 			        >
-			          <MenuItem onClick={this.handleClose}>Chapter Title</MenuItem>
+			          <MenuItem onClick={this.handleClose}>{this.state.drawerTitle}</MenuItem>
 			          <Divider inset={true} />
-			          <MenuItem onClick={this.handleClose} insetChildren={true} >Chapter Subsection</MenuItem>
-			          <MenuItem
-				          primaryText="Chapter Subsection"
-				          rightIcon={<ArrowDropRight />}
-				          insetChildren={true}
-				          menuItems={[
-				          			<MenuItem primaryText="Section Start"  onClick={this.handleClose}/>,
-				          			<Divider />,
-				          			<MenuItem primaryText="Site 1"  onClick={this.handleClose}/>,
-				                <MenuItem primaryText="Site 2"  onClick={this.handleClose}/>,
-				                <MenuItem primaryText="Site 3"  onClick={this.handleClose}/>,
-				                <MenuItem primaryText="Site 4"  onClick={this.handleClose}/>,
-				              ]} />
-			          <MenuItem onClick={this.handleClose} insetChildren={true} >Chapter Subsection</MenuItem>
+			          {this.props.nav.chpDrawer.map(drawer=>{
+			          	if (drawer.sites.length<1){
+				          	return (
+				          	     <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={true} >{drawer.title.slice(0,25)}</MenuItem>
+				          	   )
+			          	} else {
+			          		var elems=[<MenuItem primaryText="Chapter Sites"  onClick={e=>this.selectChapter(drawer.id)}/>,
+							          			<Divider />];
+							      var items = drawer.sites.map(site=>{
+							      	return (<MenuItem primaryText={site.name}  onClick={e=>this.selectSite(drawer.id, site.p, site.id, site.name)}/>)
+							      })
+
+							      var arr = elems.concat(items);
+
+			          		return (
+						          <MenuItem
+							          primaryText={drawer.title.slice(0,25)}
+							          rightIcon={<ArrowDropRight />}
+							          insetChildren={true}
+							          menuItems={arr} />
+							      )
+			          	}
+
+			          	})
+
+			          }
 			        </Drawer>
 
 			      </div>
@@ -130,5 +163,29 @@ class ChapterNav extends Component {
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    pane: state.pane,
+    nav: state.nav,
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    setChapterDrawer: (button) => {
+        dispatch(setChapterDrawer(button));
+    },
+    setChpPara: (chp, para) => {
+        dispatch(setChpPara(chp, para));
+    },
+    setSiteData: (id, name)=>{
+    	dispatch(setSiteData(id, name));
+    }
+
+  }
+}
+
+const ChapterNav = connect(mapStateToProps, mapDispatchToProps)(ChapterN);
 
 export default ChapterNav;
