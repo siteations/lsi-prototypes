@@ -2,7 +2,7 @@
   "name": "headless",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://people.virginia.edu/~ms5kh/",
+  "homepage": "http://people.virginia.edu/~ms5kh/",
   "dependencies": {
     "axios": "^0.16.2",
     "history": "^4.7.2",
@@ -11,6 +11,7 @@
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-scroll": "^1.6.7",
     "react-scrollspy": "^3.3.4",
     "react-waypoint": "^7.3.1",
     "redux": "^3.7.2",

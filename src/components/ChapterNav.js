@@ -7,6 +7,10 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
+import Scroll from 'react-scroll'; // Imports all Mixins
+import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
+
+// import scrollToElement from 'scroll-to-element';
 
 import sampleText from '../data/Gilpin.js';
 
@@ -20,15 +24,25 @@ class ChapterN extends Component {
    this.state = {open: false, value: 1, type: 'chapter', theme: 'site', drawerTitle:''};
  }
 
- 	toggleLoad = (item)=> {
+
+  componentDidMount() {
+     //this.scrollToWithContainer(this.props.nav.para+'-section');
+  }
+
+
+//handleChangeHome = (event, index, value) => this.setState({home:value}, this.props.info.history.push(value));
+
+ toggleLoad = (item)=> {
  		this.setState({drawerTitle: 'Chapters: '+drawer[item].join(', ')});
  		this.props.setChapterDrawer(item);
  		this.handleToggle()
  	}
 
+
  	selectSite = (chp, para, id, name)=> {
  		this.props.setChpPara(chp, para)
  		this.props.setSiteData(id, name)
+ 		//this.scrollToWithContainer(para+'-section')
  		this.handleClose()
  	}
 
@@ -36,6 +50,38 @@ class ChapterN extends Component {
  		this.props.setChpPara(chp, 0)
  		this.handleClose()
  	}
+
+  //   scrollToWithContainer = (value) => {
+
+  //  console.log(this, value)
+  //  // const tesNode = document.getElementById(value).offsetTop
+  //  // console.dir(tesNode)
+  //   // let goToContainer = new Promise((resolve, reject) => {
+
+  //   //   Scroll.Events.scrollEvent.register('end', () => {
+  //   //     resolve();
+  //   //     Scroll.Events.scrollEvent.remove('end');
+  //   //   });
+
+  //   //   scroller.scrollTo('textContainer', {
+  //   //     duration: 800,
+  //   //     delay: 0,
+  //   //     smooth: 'easeInOutQuart'
+  //   //   });
+
+  //   // });
+
+  //   // goToContainer.then(() =>  {
+  //   	console.log('got to sroll then')
+  //       scroller.scrollTo(value, {
+  //           duration: 800,
+  //           delay: 0,
+  //           smooth: 'easeInOutQuart',
+  //           containerId: 'textContainer'
+  //       })
+  //   	// }
+  //    //    );
+  // }
 
   handleToggle = () => this.setState({open: !this.state.open});
   handleToggleTheme = (e) => {this.setState({open: !this.state.open}); console.dir(e.target.offsetParent.id); this.setState({theme:e.target.offsetParent.id})};

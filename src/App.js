@@ -13,6 +13,7 @@ import Search from './components/Search.js';
 import Chapternav from './components/ChapterNav.js';
 import CorePane  from './components/CorePane.js';
 import AccordPane from './components/AccordPane.js';
+import Section from './components/scroll.js';
 
 import Gilpin from './data/GilpinEdits.js';
 
@@ -72,13 +73,13 @@ class App extends Component {
           {/* top bar for search via multiple methods - index to dropdown, themes to dropdowns */}
           <Search />
           {/* second bar for listing of chapters as condensed dropdowns */}
-          <Chapternav />
+          <Chapternav history={this.props.history} />
         </div>
         <div id="corePanels" className="row p10 justify-content-center">
           <div className='col-11'>
             <div className="row">
-              <CorePane />
-              <AccordPane />
+              <CorePane history={this.props.history} />
+              <AccordPane history={this.props.history} />
             </div>
           </div>
         </div>

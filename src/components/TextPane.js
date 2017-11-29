@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Scroll from 'react-scroll'; // Imports all Mixins
+import {scroller, Element} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
+
 import Waypoint from 'react-waypoint';
 
 import sampleText from '../data/Gilpin.js';
@@ -25,7 +28,14 @@ class TextP extends Component {
 
  	componentDidMount(){
  		this.setState({topOffset:document.getElementById('largePane').offsetParent.offsetTop})
+    console.dir(this);
+    //this.scrollToWithContainer(this.props.nav.para+'-section')
  	}
+
+  componentDidUpdate(){
+        this.scrollTo(this.props.nav.para+'-section')
+  }
+
 
   handleNote = (value) => {
   	console.log('note clicked ', value)
@@ -89,13 +99,17 @@ class TextP extends Component {
 
   }
 
+  scrollTo = (value) => {
+   this.refs[value].scrollIntoView({block: 'start', behavior: 'instant'});
+  }
+
 
   render() {
   	var chapter = sampleText[this.props.nav.chp];
   	//var scroll = chapter.map(items=>items+'-section');
 
     return (
-              <div>
+              <div id='containerElement'>
           			<div className='row'>
 	                	<div className= 'col-3 small'>
 	                	</div>
@@ -107,7 +121,7 @@ class TextP extends Component {
               	{chapter &&
               		chapter.paragraphs.map((items, i)=>{
               			return (
-			              	<div className='row' id={i + '-section'}>
+			              	<div className='row' id={i + '-section'} ref={i + '-section'} >
 			                	<div className= 'col-3 small'>
 			                		<ul>
 			                			{items.notes &&
