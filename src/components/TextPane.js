@@ -37,12 +37,10 @@ class TextP extends Component {
   formatString = (string)=>{
   	var text='';
 
-  	var strg2 = string.replace('<note n="*" place="bottom">', '*').replace('</note>', '').replace('<g ref="char:punc">', '').replace('</g>', '').replace('</p>', '').replace('</div>', '')
-
-
+  	var strg2 = string.replace('<note n="*" place="bottom">', '*').replace('</note>', '').replace('</div>', '').replace('</p>', '').replace('<g ref="char:punc">', '').replace('</g>', '').replace(/<pb n="\d*" facs="\S*" rendition="simple:additions" \/>/g, '').replace('</argument>', '').replace(/<gap.*<\/gap>/g, '')
 
     const formatL = (str)=>{
-    	return str.replace(/<q>|<lg>|<\/q>|<\/lg>/g, '')
+    	return str.replace(/<q>|<lg>|<\/q>|<\/lg>/g, '').replace(/<site n="\d*" name="(\w|'|\s)*">/g, '').replace(/<\/site>/g, '^ ')
 			                				.split('<l>')
 			 												.map(lines=>{
 			 													if (lines.includes('</l>')){
@@ -52,24 +50,22 @@ class TextP extends Component {
 			 													}
 			 												})
     }
+
+
   	// if (string.includes('<hi>')){
-  	text = strg2.split('<hi>')
+  	text = strg2.split(/<hi>|<bibl>/g)
             				.map(sections=>{
               				if (sections.includes('</hi>')){
               					var parts = sections.split('</hi>');
               					return <span><em> {parts[0]} </em> {formatL(parts[1])}</span>
-              				} else {
-              					return formatL(sections)
+              				} else if (sections.includes('</bibl>')){
+              					var parts = sections.split('</bibl>');
+              					return <span style={{paddingLeft: 90, lineHeight:3}}><em> {parts[0]} </em> {formatL(parts[1])}</span>
+              				}else {
+              					return formatL(sections);
               				}
             				})
-  //   } else if (string.includes('<l>')){
 
-  //   text = string.replace(/<q>|<lg>|<\/q>|<\/lg>/g, '')
-		// 	                				.split('<l>')
-		// 	 												.map(lines=>{
-		// 	 													return <span>{lines.replace('</l>', '')}<br/></span>
-		// 	 												})
-		// } else {text=string}
 
 
     return text
@@ -109,16 +105,16 @@ class TextP extends Component {
 	                	</div>
 	                </div>
               	{chapter &&
-              		chapter.paragraphs.map(items=>{
+              		chapter.paragraphs.map((items, i)=>{
               			return (
-			              	<div className='row' id={items + '-section'}>
+			              	<div className='row' id={i + '-section'}>
 			                	<div className= 'col-3 small'>
 			                		<ul>
 			                			{items.notes &&
-			                				<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={items}>{(items.notes.length>101)?items.notes.slice(0,100)+'. . .': items.notes}</li>
+			                				<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={i}>{(items.notes.length>101)?items.notes.slice(0,100)+'. . .': items.notes}</li>
 			                			}
 			                			{items.site &&
-			                				<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={items}>site: {items.site[0].name}</li>
+			                				<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={i}>^ site: {items.site[0].name}</li>
 			                			}
 			                		</ul>
 			                	</div>
@@ -126,18 +122,12 @@ class TextP extends Component {
 			                	<Waypoint
 			                		topOffset={this.state.topOffset+100}
 			                		bottomOffset={100}
-			                		onEnter={e=>{e.id = items+'-section';
-			                			// e.sites = items+'-cases';
-			                			// e.agents = items+'-agents';
-			                			// e.media = items+'-media';
+			                		onEnter={e=>{e.id = i+'-section';
 			                			this.scrollEnter(e)}}
-			                		onLeave={e=>{e.id = items+'-section';
-			                			// e.sites = items+'-cases';
-			                			// e.agents = items+'-agents';
-			                			// e.media = items+'-media';
+			                		onLeave={e=>{e.id = i+'-section';
 			                			this.scrollLeave(e)}}
 			                		>
-			                		<p className="p10s">{this.formatString(items.text)}</p>
+			                		<p className="p10s">{this.formatString(items.text)} <br/><em className="small grey">(pg: {items.page})</em></p>
 			                		</Waypoint>
 			                	</div>
 			                </div>

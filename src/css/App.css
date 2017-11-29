@@ -139,3 +139,7 @@ h1, h2, h3, h4 {
 .cursor {
   cursor: pointer;
 }
+
+.grey {
+  color: lightgrey;
+}

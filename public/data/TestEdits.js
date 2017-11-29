@@ -18,6 +18,7 @@ var contents = fs.readFileSync('./GilpinForest_IIIeditchp2.xml', 'utf8');
 					return {
 						text: para.replace(/<g ref="char:EOLhyphen"\/>/g, '')
 											.replace(/<pb n="\d*" facs="\S*"\/>/g, '')
+											.replace(/<pb n="\d*" facs="\S*" rendition="simple:additions" \/>/g, '')
 											.replace(/<note .*<\/note>/g, '*')
 											.replace(/\n/g, ' ').replace('</p>', ''),
 						page: para.match(/<pb n="\d*"/) ? para.match(/<pb n="\d*"/)[0].match(/\d+/g)[0] : null,
