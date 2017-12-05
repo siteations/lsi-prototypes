@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import './css/bootstrap.css';
 import './css/font-awesome.css';
@@ -11,6 +12,7 @@ import {fade} from 'material-ui/utils/colorManipulator';
 
 import Search from './components/Search.js';
 import Chapternav from './components/ChapterNav.js';
+import FullPane from './components/FullPane.js';
 import CorePane  from './components/CorePane.js';
 import AccordPane from './components/AccordPane.js';
 import Section from './components/scroll.js';
@@ -77,13 +79,20 @@ class App extends Component {
         </div>
         <div id="corePanels" className="row p10 justify-content-center">
           <div className='col-11'>
+            {!this.props.pane.fullscreen &&
             <div className="row">
               <CorePane history={this.props.history} />
               <AccordPane history={this.props.history} />
             </div>
+            }
+            {this.props.pane.fullscreen &&
+              <div>
+              <FullPane history={this.props.history} />
+              </div>
+            }
           </div>
         </div>
-        <div id="footer" className="font-sm">
+        <div id="footer" className="font-sm" style={{height:42}}>
           <div className="row align-items-center">
             basic mock-up with minimal styling for considering nav nesting, control flow of multi-pane structure
           </div>
@@ -94,4 +103,31 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    pane: state.pane,
+    nav: state.nav,
+    }
+}
+
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//   return {
+//     setChapterDrawer: (button) => {
+//         dispatch(setChapterDrawer(button));
+//     },
+//     setChpPara: (chp, para) => {
+//         dispatch(setChpPara(chp, para));
+//     },
+//     setSiteData: (id, name)=>{
+//       dispatch(setSiteData(id, name));
+//     },
+//     setUpdate: (bool) =>{
+//       dispatch(setUpdate(bool));
+//     }
+
+//   }
+// }
+
+const Apps = connect(mapStateToProps, null)(App);
+
+export default Apps;

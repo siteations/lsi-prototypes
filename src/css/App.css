@@ -108,19 +108,40 @@ h1, h2, h3, h4 {
 }
 
 #corePanels {
-  height: 85vh;
+  height: 86vh;
   background-color: #d3d3d3;
-  padding: 10px;
+  padding: 8px;
 }
 
 .pane {
   padding: 1px;
   margin: 1px;
   background-color: #fff;
-  height: 82vh;
+  height: 84vh;
   border-radius: 2px;
-  overflow-y: scroll;
+  overflow: hidden;
+}
+
+.paneFixed {
+  padding: 1px;
+  margin: 1px;
+  background-color: #fff;
+  height: 84vh;
+  border-radius: 2px;
+  overflow-y: hidden;
   overflow-x: hidden;
+}
+
+.paneFull {
+    top: -80px;
+    padding: 1px;
+    margin: 1px;
+    background-color: #fff;
+    height: 96vh;
+    border-radius: 2px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    box-shadow: 0 0 60px 20px rgba(25, 25, 25, 0.54);
 }
 
 #sidePane {
@@ -142,4 +163,36 @@ h1, h2, h3, h4 {
 
 .grey {
   color: lightgrey;
+}
+
+.scrollPaneL {
+  overflow-y: auto;
+  height: 80vh;
+  overflow-x: hidden;
+}
+
+.tabSets {
+  background-color: #bdbdbd;
+  color: white;
+  font-family: 'Eveleth';
+  font-style: italic;
+  font-size: 11px;
+  line-height: 36px;
+
+}
+
+.tabButtons:hover {
+  background-color: #a2a2a2;
+  color: white;
+  font-family: 'Eveleth';
+  font-style: italic;
+  font-size: 12px;
+  line-height: 36px;
+  border-bottom: solid black 2px;
+  cursor: pointer;
+}
+
+
+.underline {
+  border-bottom: solid black 4px ;
 }

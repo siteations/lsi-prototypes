@@ -7,14 +7,14 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
-import Scroll from 'react-scroll'; // Imports all Mixins
-import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
+// import Scroll from 'react-scroll'; // Imports all Mixins
+// import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 
 // import scrollToElement from 'scroll-to-element';
 
 import sampleText from '../data/Gilpin.js';
 
-import {drawer, setChapterDrawer, setChpPara, setSiteData} from '../action-creators/navActions.js';
+import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate} from '../action-creators/navActions.js';
 //drop-down toggles to hold nested info
 //when clicked should open drawer to allow futher subselection
 
@@ -35,6 +35,7 @@ class ChapterN extends Component {
  toggleLoad = (item)=> {
  		this.setState({drawerTitle: 'Chapters: '+drawer[item].join(', ')});
  		this.props.setChapterDrawer(item);
+ 		this.props.setUpdate(true)
  		this.handleToggle()
  	}
 
@@ -42,12 +43,14 @@ class ChapterN extends Component {
  	selectSite = (chp, para, id, name)=> {
  		this.props.setChpPara(chp, para)
  		this.props.setSiteData(id, name)
+ 		this.props.setUpdate(true)
  		//this.scrollToWithContainer(para+'-section')
  		this.handleClose()
  	}
 
  	selectChapter = (chp)=> {
- 		this.props.setChpPara(chp, 0)
+ 		this.props.setChpPara(chp, 999)
+ 		this.props.setUpdate(true)
  		this.handleClose()
  	}
 
@@ -227,7 +230,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     setSiteData: (id, name)=>{
     	dispatch(setSiteData(id, name));
-    }
+    },
+    setUpdate: (bool) =>{
+    	dispatch(setUpdate(bool));
+    },
 
   }
 }

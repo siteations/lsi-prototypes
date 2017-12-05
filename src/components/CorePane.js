@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import {Tabs, Tab} from 'material-ui/Tabs';
-
-import MPText from './MPText.js';
-import MPImages from './MPImages.js';
+import MText from './MText.js';
+import MImages from './MImages.js';
+import MNetwork from './MNetwork.js';
+import MEdit from './MEdit.js';
 
 
 import {setMainPane} from '../action-creators/paneActions.js';
@@ -27,22 +27,18 @@ class CoreP extends Component {
     console.log('check on pane, functions', this.props, this.state)
 
   	return (
-  	<div className="col-8 pane" id="largePane">
+  	<div className="col-8 paneFixed" id="largePane">
 	  	{this.props.pane.main === 'text' &&
-	  		<MPText value={this.props.pane.mainTab} action={this.handleChange} />
+	  		<MText value={this.props.pane.mainTab} action={this.handleChange} />
 	  	}
 	  	{this.props.pane.main === 'images' &&
-	  		<MPImages value={this.props.pane.mainTab} action={this.handleChange} />
+	  		<MImages value={this.props.pane.mainTab} action={this.handleChange} />
 	  	}
 	  	{this.props.pane.main === 'networks' &&
-	  		<div>
-        networks here
-        </div>
+	  		<MNetwork value={this.props.pane.mainTab} action={this.handleChange} />
 	  	}
 	  	{this.props.pane.main === 'edits' &&
-	  		<div>
-        editting interface here
-        </div>
+	  		<MEdit value={this.props.pane.mainTab} action={this.handleChange} />
 	  	}
     </div>
   	)

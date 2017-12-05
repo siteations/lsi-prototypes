@@ -29,6 +29,8 @@ export const SET_SP_BOTTOM = 'SET_SP_BOTTOM'
 export const SET_SP_BTAB = 'SET_SP_BTAB';
 //images & themes, networks & geographies
 
+export const SET_FULL = 'SET_FULL';
+
 /* internal elements, like specific paragraph or case or agent in different reducer */
 
 //-------------------ACTION CREATORS - vanilla loading of information
@@ -74,6 +76,14 @@ export const setSBTab = (sBottomTab) => {
 	};
 };
 
+export const setFull = (bool) => {
+	return {
+		type: SET_FULL,
+		fullscreen: bool
+	};
+};
+
+
 //note: the tabs for logging in to the system and editing materials will be their own additions to the user reducer
 
 //-------------------reducers && initial info
@@ -87,6 +97,8 @@ const initMap = {
 
 	bottom: 'networks',
 	bottomTab: 'a',
+
+	fullscreen: false,
 
 };
 
@@ -121,6 +133,10 @@ export const paneReducer = (prevState = initMap, action) => {
 		newState.bottomTab = action.sBottomTab;
 		break;
 
+	case SET_FULL:
+		newState.fullscreen = action.fullscreen;
+		break;
+
 	default:
 		return prevState;
 	}
@@ -149,3 +165,21 @@ export const setSideBottom = (type, tab) => dispatch => {
   dispatch(setSBTab(tab));
 };
 
+export const setPanesTabs = (type, content, tab) => dispatch => {
+	console.log('reducer', type, content, tab)
+
+	if (type==='main'){
+		dispatch(setMP(content));
+  	dispatch(setMPTab(tab));
+	} else if (type==='top'){
+		  dispatch(setSPTop(content));
+  		dispatch(setSTTab(tab));
+	} else if (type==='bottom'){
+	  dispatch(setSPBottom(content));
+	  dispatch(setSBTab(tab));
+	}
+};
+
+export const setFullScreen = (bool) => dispatch => {
+  dispatch(setFull(bool));
+};

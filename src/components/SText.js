@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import {Tabs, Tab} from 'material-ui/Tabs';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import FontIcon from 'material-ui/FontIcon';
-import IconButton from 'material-ui/IconButton';
+import Tabs from './Tabs.js';
 
+import TextPaneS from './TextPaneS.js';
+import NotePaneS from './TextPaneS.js';
+import ResourcePaneS from './TextPaneS.js';
 
 import styles from './materialStyles.js';
 
+var buttons = [
+  {label: 'text', value: 'a'},
+  {label: 'notes', value: 'b'},
+  {label: 'resources', value: 'c'},
+]
 
-import {setSideTop, setSideBottom} from '../action-creators/paneActions.js';
 
 class SText extends Component {
 //const STImages = function (props) {
@@ -26,44 +29,32 @@ class SText extends Component {
     if (this.props.loc==='top'){
         this.props.setSideTop(this.props.pane.top, value);
     } else if (this.props.loc==='bottom'){
-      this.props.setSideBottom(this.props.pane.bottom, value);
+        this.props.setSideBottom(this.props.pane.bottom, value);
     }
   };
 
- render(){
+  render(){
 
-  	return (
-  	<Tabs
-        value={(this.props.loc==='top')? this.props.pane.topTab: this.props.pane.bottomTab}
-        onChange={this.handleChange}
-      >
-         <Tab label="Text" value="a" style={styles.tabText} buttonStyle={styles.tabSize}>
-         <div style={{height:this.props.hi}}>
-            just core text (no footnotes)
-                <IconButton tooltip="View Large" onClick={this.props.actions} style={styles.iconPlus} >
-                  <FontIcon className="fa fa-plus" />
-                </IconButton>
-        </div>
-        </Tab>
-        <Tab label="Notes" value="b" style={styles.tabText} buttonStyle={styles.tabSize}>
-        <div style={{height:this.props.hi}}>
-						simple number notes
-                <IconButton tooltip="View Large" onClick={this.props.actions} style={styles.iconPlus} >
-                  <FontIcon className="fa fa-plus" />
-                </IconButton>
-        </div>
-        </Tab>
-        <Tab label="Resources" value="c" style={styles.tabText} buttonStyle={styles.tabSize}>
-        <div style={{height:this.props.hi}}>
-          	resources table
-                <IconButton tooltip="View Large" onClick={this.props.actions} style={styles.iconPlus} >
-                  <FontIcon className="fa fa-plus" />
-                </IconButton>
-        </div>
-        </Tab>
+    var loc = this.props.loc+'Tab';
 
-    </Tabs>
-  	)
+    return (
+    <div>
+
+      <Tabs buttons={buttons} placement={this.props.loc} />
+
+      <div>
+      {this.props.pane[loc]==='a' &&
+        <TextPaneS placement={this.props.loc} hi={this.props.hi} />
+      }
+      {this.props.pane[loc]==='b' &&
+        <NotePaneS placement={this.props.loc} hi={this.props.hi} />
+      }
+      {this.props.pane[loc]==='c' &&
+        <ResourcePaneS placement={this.props.loc} hi={this.props.hi} />
+      }
+      </div>
+    </div>
+    )
   }
 };
 
@@ -73,17 +64,6 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    setSideTop: (type, tab) => {
-        dispatch(setSideTop(type, tab));
-    },
-        setSideBottom: (type, tab) => {
-        dispatch(setSideBottom(type, tab));
-    },
-  }
-}
-
-const STText = connect(mapStateToProps, mapDispatchToProps)(SText);
+const STText = connect(mapStateToProps, null)(SText);
 
 export default STText;

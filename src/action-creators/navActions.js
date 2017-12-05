@@ -26,6 +26,7 @@ export const SET_CHP_DRW = 'SET_CHP_DRW';
 
 export const SET_CHP = 'LOAD_CHP'
 export const SET_PARA = 'LOAD_PARA';
+export const SET_UP = "SET_UP";
 export const SET_TEXT = 'LOAD_TEXT'
 export const SET_TITLE = 'LOAD_TITLE';
 export const SET_SITE_ID = 'SET_SITE_ID'
@@ -70,6 +71,13 @@ export const setSiteName = (siteName) => {
 	};
 };
 
+export const setUp = (bool) => {
+	return {
+		type: SET_UP,
+		setUp: bool
+	};
+};
+
 
 //note: the tabs for logging in to the system and editing materials will be their own additions to the user reducer
 
@@ -83,6 +91,8 @@ const initMap = {
 
 	siteId: 7005,
 	siteName: 'Stowe',
+
+	setUp:false
 };
 
 
@@ -112,6 +122,10 @@ export const navReducer = (prevState = initMap, action) => {
 		newState.siteName = action.siteName;
 		break;
 
+	case SET_UP:
+		newState.setUp = action.setUp;
+		break;
+
 	default:
 		return prevState;
 	}
@@ -123,7 +137,8 @@ export const navReducer = (prevState = initMap, action) => {
 
 /* ------------       DISPATCHERS     ------------------ */
 
-export const setChapterDrawer = (buttonid) => dispatch => {
+export const setChapterDrawer = (buttonid, drw) => dispatch => {
+	if (buttonid !==null){
 	var drawerObj = drawer[buttonid].map(chpId=>{
 		return {
 			id: chpId,
@@ -132,6 +147,26 @@ export const setChapterDrawer = (buttonid) => dispatch => {
 		}
 	})
   dispatch(setChpDrawer(drawerObj));
+	}
+
+	if (buttonid === null && drw !== undefined){
+		console.log('from updates', drw);
+		var elm;
+		for (var key in drawer){
+			if (drawer[key].indexOf(drw)>-1){
+				elm = key
+			}
+		}
+		console.log(elm);
+		var drawerObj = drawer[elm].map(chpId=>{
+		return {
+			id: chpId,
+			title: sampleText[chpId].title,
+			sites: sampleText[chpId].sites,
+		}
+	})
+  dispatch(setChpDrawer(drawerObj));
+	}
 };
 
 export const setChpPara = (chpId, paraId) => dispatch => {
@@ -144,3 +179,6 @@ export const setSiteData = (id, name) => dispatch => {
   dispatch(setSiteName(name));
 };
 
+export const setUpdate = (bool) => dispatch =>{
+	dispatch(setUp(!bool));
+}

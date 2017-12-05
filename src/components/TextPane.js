@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Scroll from 'react-scroll'; // Imports all Mixins
-import {scroller, Element} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
+// import Scroll from 'react-scroll'; // Imports all Mixins
+// import {scroller, Element} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 
 import Waypoint from 'react-waypoint';
 
+import EnlargeFull from './EnlargeFull.js';
+
 import sampleText from '../data/Gilpin.js';
-import {drawer, setChapterDrawer, setChpPara, setSiteData} from '../action-creators/navActions.js';
+import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate} from '../action-creators/navActions.js';
 
 //this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
 
@@ -21,6 +23,7 @@ class TextP extends Component {
    this.state = {
    	footnote: '',
    	site: '',
+   	scroll: 0,
    	topOffset: 0,
    	inView:[]
    }// defer definitions
@@ -29,19 +32,28 @@ class TextP extends Component {
  	componentDidMount(){
  		this.setState({topOffset:document.getElementById('largePane').offsetParent.offsetTop})
     console.dir(this);
-    //this.scrollToWithContainer(this.props.nav.para+'-section')
+    //this.scrollTo(this.props.nav.para+'-section')
+ 	}
+
+ 	shouldComponentUpdate(nextProps, nextState){
+ 		return ((this.props.nav.siteName !== nextProps.nav.siteName || this.props.nav.chp !== nextProps.nav.chp) && !this.props.nav.setUp )
  	}
 
   componentDidUpdate(){
-        this.scrollTo(this.props.nav.para+'-section')
+   	this.scrollTo(this.props.nav.para+'-section')
   }
 
 
-  handleNote = (value) => {
-  	console.log('note clicked ', value)
+  handleNote(value){
     this.setState({
       footnote: value,
     });
+  }
+
+  handleSite= (value, id, name)=> {
+  	this.props.setChpPara(this.props.nav.chp, value);
+  	this.props.setSiteData(id, name);
+  	this.props.setUpdate(true);
   }
 
   formatString = (string)=>{
@@ -82,24 +94,33 @@ class TextP extends Component {
   }
 
   scrollEnter = (e) => {
+  	// var para=e.id.replace('-section', '');
 
   	let view=this.state.inView;
-  	view.push(e.id)
+  	view.push(parseInt(e.id.replace('-section', '')));
+
+  	var topSitePara = view.filter(para=>sampleText[this.props.nav.chp].paragraphs[para].site !== null);
+  	var para = (view[0]<view[1] || view.length===1)? sampleText[this.props.nav.chp].paragraphs[topSitePara[0]] : sampleText[this.props.nav.chp].paragraphs[topSitePara[topSitePara.length-1]];
+
+  	var site = (para !== undefined)? para.site[0] : null;
+
+  	if (site){
+  		this.props.setUpdate(false);
+  		this.props.setSiteData(site.id, site.name);
+  	}
+
     this.setState({inView:view});
-    console.log(this.state.inView)
 
   }
 
   scrollLeave = (e) => {
-  	console.log(e)
   	let view=this.state.inView;
-  	view.splice(view.indexOf(e.id), 1);
+  	view.splice(view.indexOf(parseInt(e.id.replace('-section', ''))), 1);
   	this.setState({inView:view});
-  	console.log(this.state.inView)
-
   }
 
   scrollTo = (value) => {
+
    this.refs[value].scrollIntoView({block: 'start', behavior: 'instant'});
   }
 
@@ -110,7 +131,7 @@ class TextP extends Component {
 
     return (
               <div id='containerElement'>
-          			<div className='row'>
+          			<div className='row' ref={'999-section'} >
 	                	<div className= 'col-3 small'>
 	                	</div>
 	                	<div className= 'col-9 small'>
@@ -128,13 +149,13 @@ class TextP extends Component {
 			                				<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={i}>{(items.notes.length>101)?items.notes.slice(0,100)+'. . .': items.notes}</li>
 			                			}
 			                			{items.site &&
-			                				<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={i}>^ site: {items.site[0].name}</li>
+			                				<li className="p10 cursor" onClick={e=>this.handleSite(e.target.attributes.id.value, items.site[0].id, items.site[0].name)} id={i}>^ site: {items.site[0].name}</li>
 			                			}
 			                		</ul>
 			                	</div>
 			                	<div className="col-9">
 			                	<Waypoint
-			                		topOffset={this.state.topOffset+100}
+			                		topOffset={this.state.topOffset+40}
 			                		bottomOffset={100}
 			                		onEnter={e=>{e.id = i+'-section';
 			                			this.scrollEnter(e)}}
@@ -171,6 +192,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     setSiteData: (id, name)=>{
     	dispatch(setSiteData(id, name));
+    },
+    setUpdate: (bool) =>{
+    	dispatch(setUpdate(bool));
     }
 
   }

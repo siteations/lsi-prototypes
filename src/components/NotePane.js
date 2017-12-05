@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import EnlargeFull from './EnlargeFull.js';
+
 class NotePane extends Component {
   constructor(props) {
    super(props);

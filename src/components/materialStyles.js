@@ -6,7 +6,8 @@ const styles = {
     fontWeight: 400,
     height: 32,
     fontFamily: 'Eveleth',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+        overflow: 'hidden'
   },
   tabTextActive: {
     fontSize: 12,
@@ -15,7 +16,8 @@ const styles = {
     fontWeight: 400,
     height: 32,
     fontFamily: 'Eveleth',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    overflow: 'hidden'
   },
   tabSize: {
     height: 32,
@@ -30,12 +32,20 @@ const styles = {
   iconPlus: {
     position:'absolute',
     right:0,
-    top:0,
     margin: 2,
     opacity:.25
   },
+  iconFull: {
+    position:'absolute',
+    left:24,
+    top:-10,
+    margin: 2,
+    color: 'white',
+    height: 32,
+    width:32,
+  },
   inkBar: {
-    height:2
+    height:2,
   },
   inkBarSm: {
     height:2

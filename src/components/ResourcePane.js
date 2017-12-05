@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import EnlargeFull from './EnlargeFull.js';
+
 //this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
 
 //that chapter object holds and array of paragraph objects and/or subheader objects which also note footnotes, original pages, site tags, people tags, images, captions, etc.

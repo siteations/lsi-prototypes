@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './materialStyles.js';
 
-import STImages from './STImages.js';
-import SBNetworks from './SBNetworks.js';
+import SImage from './SImage.js';
+import SNetwork from './SNetwork.js';
 import SText from './SText.js';
 import LogAccess from './LogAccess.js';
 
@@ -26,7 +26,7 @@ class SideP extends Component {
  componentDidMount(){
    //console.dir(document.getElementById('sidePane').clientWidth)
    var wide = document.getElementById('sidePane').clientWidth
-   var height = wide*.68 - styles.tabSize.height
+   var height = wide*.69 - 32
 
    this.setState({width: wide, height})
  }
@@ -57,13 +57,13 @@ class SideP extends Component {
     return (
               <div className="col pane" id="sidePane">
                 {this.props.pane.top === 'images' &&
-                  <STImages hi={this.state.height} actions={this.togglePaneT} />
+                  <SImage hi={this.state.height} actions={this.togglePaneT} />
                 }
                 {this.props.pane.top === 'text' &&
                   <SText hi={this.state.height} loc='top' actions={this.togglePaneT} />
                 }
                 {this.props.pane.bottom === 'networks' &&
-                  <SBNetworks hi={this.state.height} actions={this.togglePaneB} />
+                  <SNetwork hi={this.state.height} actions={this.togglePaneB} />
                 }
                 {this.props.pane.bottom === 'text' &&
                   <SText hi={this.state.height} loc='bottom' actions={this.togglePaneB} />
