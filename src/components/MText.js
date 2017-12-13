@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import Tabs from './Tabs.js';
 
-//import TextPane  from './TextPane.js';
-import TextPane  from './TextP.js';
+import TextPane  from './TextPane.js';
+//import TextPane  from './TextP.js';
 import NotePane  from './NotePane.js';
 import ResourcePane from './ResourcePane.js';
 

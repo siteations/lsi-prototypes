@@ -1,0 +1,65 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "http://universalviewer.io/manifests.json",
+  "@type": "sc:Collection",
+  "collections": [
+    {
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "http://universalviewer.io/manifests.json",
+      "@type": "sc:Collection",
+      "label": "JUEL",
+      "manifests": [
+		  {
+			  "@id": "http://community.village.virginia.edu/cultural_landscapes/uv/FLS_Slide_Collection.json",
+	          "@type": "sc:Manifest",
+	          "label": "FLS Slide Collection"
+		  }
+      ]
+    },
+    {
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "http://universalviewer.io/manifests.json",
+      "@type": "sc:Collection",
+      "label": "Tests (require jsonp)",
+      "visible": false,
+      "manifests": [
+        {
+          "@id": "/examples/manifest/missingimages.js",
+          "@type": "sc:Manifest",
+          "label": "Missing Images",
+          "visible": false
+        },
+        {
+          "@id": "/examples/manifest/collection.js",
+          "@type": "sc:Manifest",
+          "label": "Collection",
+          "visible": false
+        },
+        {
+          "@id": "/examples/manifest/deephierarchylongtitle.js",
+          "@type": "sc:Manifest",
+          "label": "Deep hierarchy long title",
+          "visible": false
+        },
+        {
+          "@id": "/examples/manifest/attribution.js",
+          "@type": "sc:Manifest",
+          "label": "Attribution",
+          "visible": false
+        },
+        {
+          "@id": "/examples/manifest/toptobottom.js",
+          "@type": "sc:Manifest",
+          "label": "Top to Bottom",
+          "visible": false
+        },
+        {
+          "@id": "/examples/manifest/logo.js",
+          "@type": "sc:Manifest",
+          "label": "Logo as IIIF",
+          "visible": false
+        }
+      ]
+    }
+  ]
+}

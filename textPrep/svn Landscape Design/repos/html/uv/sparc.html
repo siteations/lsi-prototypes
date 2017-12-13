@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SPARC</title>
+
+    
+    
+    <link href="/~rwb3y/sparc/index_files/css" rel="stylesheet">
+    
+<link href="/~rwb3y/sparc/index_files/style.css" rel="stylesheet">
+<link href="/~rwb3y/sparc/index_files/ekko-lightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/foundation/css/foundation.css" />
+    <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="examples.css" />
+    <!--<script type="text/javascript" id="embedUV" src="/src/lib/embed.js"></script>-->
+    <!--<script type="text/javascript" id="embedUV" src="uv/lib/embed.js"></script>-->
+</head>
+  <body class="documents">
+  <header class="body_head">
+
+  <!-- <div class="container site_title">
+
+
+   <h1>Title: <small>Subtitle</small></h1>
+   </div> -->
+
+
+
+
+
+  <div class="navbar navbar-default sparc_navbar">
+    <div class="container">
+
+<h1 class="header_words">
+      <a href="https://cdrhdev1.unl.edu/karin/2017-05-sparc-wire/index.html">
+        <span class="head_sp">Salmon Pueblo</span>
+        <span class="head_arc">Archaeological Research Collection</span>
+        </a>
+      </h1>
+
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            
+
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li class=""><a href="#">Explore Pueblo</a></li>
+                <li class=""><a href="#">Query Data</a></li>
+                <li class="active"><a href="http://hero.village.virginia.edu/~rwb3y/sparc/">Documents</a></li>
+                <li class=""><a href="#">Image Gallery</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class=""><a href="#">About</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
+
+ </header>
+
+<div class="container main_content">
+    <main>
+        <div class="uv" data-no-load="true" style="width:924px; height:668px; background-color: #000"></div>
+    </main>
+
+    <div class="ctl-footer" style="display: none">
+
+        <!-- Note: in order for config changes to appear in the editor, you need to run a build -->
+
+        <!--<hr/>-->
+
+        <!--<h3>Options</h3>-->
+
+        <!--<div>-->
+            <!--<input id="cors-or-jsonp-auto" checked="checked" name="cors-or-jsonp" type="radio"><label for="cors-or-jsonp-auto">Autodetect CORS/JSONP</label>-->
+            <!--<input id="cors" name="cors-or-jsonp" type="radio"><label for="cors">Force CORS</label>-->
+            <!--<input id="jsonp" name="cors-or-jsonp" type="radio"><label for="jsonp">Force JSONP</label>-->
+            <!--<p>Controls whether the viewer uses CORS or JSONP to load manifests and info.json. Default automatic behaviour is to use JSONP for IE<10, CORS otherwise.</p>-->
+        <!--</div>-->
+
+        <!--<div>-->
+            <!--<input id="testids" type="checkbox"><label for="testids">Test Ids</label>-->
+            <!--<p>Adds unique ids to viewer buttons for testing convenience.</p>-->
+        <!--</div>-->
+
+        <!--<div>-->
+            <!--<input id="defaultToFullScreen" type="checkbox"><label for="defaultToFullScreen">Default to Full Screen</label>-->
+            <!--<p>Makes the viewer open in full screen when the page loads.</p>-->
+        <!--</div>-->
+
+        <!--<a id="setOptionsBtn" class="button">Set</a>-->
+
+        <!--<hr/>-->
+
+ 	   <div class="selection">
+        <select id="manifestSelect"></select>
+		</div>
+		
+        <input id="manifest" type="hidden" value="" />
+
+        <!-- <a id="setManifestBtn" class="button">Set</a> -->
+
+        <!--<a id="dragndrop" href="e-codices-help.html?manifest=http://www.e-codices.unifr.ch/metadata/iiif/kba-0003/manifest.json&amp;canvas=http://www.e-codices.unifr.ch/metadata/iiif/kba-0003/canvas/kba-0003_002r.json">-->
+        <a id="dragndrop">
+            <!-- <img src="iiif.png" title="Drag and drop this icon into an IIIF viewer"> -->
+        </a>
+
+        <div style="display:none">
+            <hr/>
+
+            <h3>Locale</h3>
+
+            <p>Test setting the data-locale attribute on the embedding div.</p>
+
+            <select id="locale">
+
+            </select>
+
+            <p>Set locale precedence and label e.g. "cy-GB:Welsh,en-GB:English"</p>
+
+            <input id="locales" type="text" value="" />
+
+            <a id="setLocalesBtn" class="button">Set</a>
+        </div>
+
+        <div id="configEditor" style="display: none">
+            <hr/>
+
+            <h3>Config&nbsp;<span class="config-name"></span></h3>
+
+            <p>Changes to config made with this tool are at the session level and not persisted.</p>
+
+            <ul id="edit-config" class="button-group">
+                <li><a id="editBtn" href="#" class="button">Edit</a></li>
+                <li><a id="closeBtn" href="#" class="button hide">Close</a></li>
+                <li><a id="saveBtn" href="#" class="button hide">Save</a></li>
+                <li><a id="resetBtn" href="#" class="button hide">Reset</a></li>
+            </ul>
+
+            <div id="editPnl" class="hide">
+                <div id="editor"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <script type="text/javascript" src="browserdetect.js"></script>
+    <script type="text/javascript" src="lib/utils/dist/utils.js"></script>
+    <script type="text/javascript" src="lib/extensions/dist/extensions.js"></script>
+    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="lib/jmespath.js/artifacts/jmespath.js"></script>
+    <script type="text/javascript" src="lib/json-editor/dist/jsoneditor.js"></script>
+    <script type="text/javascript" src="lib/jquery-plugins/dist/jquery-plugins.js"></script>
+    <!--<script type="text/javascript" src="testids.js"></script>-->
+    <!--<script type="text/javascript" src="events.js"></script>-->
+
+<script src="/~rwb3y/sparc/index_files/bootstrap.min.js"></script>
+<script src="/~rwb3y/sparc/index_files/ekko-lightbox.min.js"></script>
+    <script src="/~rwb3y/sparc/index_files/application.js"></script>
+
+
+    <script type="text/javascript" src="examples.js"></script>
+
+</body>
+</html>

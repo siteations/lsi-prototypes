@@ -1,0 +1,176 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "http://example.org/Tazewell",
+  "@type": "sc:Manifest",
+  "label": "Tazewell",
+  "thumbnail": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0001.jpg/full/!200,200/0/default.jpg",
+  "viewingHint": "paged",
+  "metadata": [
+    {
+      "Foo": "Bar"
+    },
+    {
+      "Bazzers": [
+        "Quux",
+        "Corge"
+      ]
+    }
+  ],
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@id": "http://example.org/Tazewell/pages//Tazewell/000031743_0001.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 1",
+          "width": 1300,
+          "height": 1149,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0001.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 1149,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0001.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Tazewell/pages//Tazewell/000031743_0002.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 2",
+          "width": 1300,
+          "height": 1483,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0002.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 1483,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0002.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Tazewell/pages//Tazewell/000031743_0003.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 3",
+          "width": 1300,
+          "height": 2116,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0003.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 2116,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0003.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Tazewell/pages//Tazewell/000031743_0004.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 4",
+          "width": 1300,
+          "height": 2110,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0004.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 2110,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0004.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Tazewell/pages//Tazewell/000031743_0005.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 5",
+          "width": 1300,
+          "height": 2102,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0005.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 2102,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0005.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Tazewell/pages//Tazewell/000031743_0006.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 6",
+          "width": 1300,
+          "height": 2099,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0006.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 2099,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Tazewell___000031743_0006.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

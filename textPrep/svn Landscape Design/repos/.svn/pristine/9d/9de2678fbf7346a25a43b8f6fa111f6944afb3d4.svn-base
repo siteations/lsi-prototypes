@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cultural Landsapes Images</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="lib/foundation/css/foundation.css" />
+    <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="examples.css" />
+    <!--<script type="text/javascript" id="embedUV" src="/src/lib/embed.js"></script>-->
+    <!--<script type="text/javascript" id="embedUV" src="uv/lib/embed.js"></script>-->
+	<style>
+		.container {
+			width: 90vw;
+			margin: 20px;
+		}
+		</style>
+</head>
+<body>
+
+    <!--<header>-->
+
+    <!--</header>-->
+
+    <!--
+     psd dimensions
+     width:1138px; height:760px
+     -->
+	<div class="container">
+ 	   <div class="selection" style="">
+		   <h3> Image Gallery</h3>
+        <select id="manifestSelect" style="width:90vw;font-size:12pt;"></select>
+		</div>
+
+	    <main>
+	        <div class="uv" data-no-load="true" style="width:90vw; height:668px; background-color: #000"></div>
+	    </main>
+
+	    <footer style="display: none">
+
+
+	        <input id="manifest" type="hidden" value="" />
+
+
+	    </footer>
+	</div>
+
+    <script type="text/javascript" src="browserdetect.js"></script>
+    <script type="text/javascript" src="lib/utils/dist/utils.js"></script>
+    <script type="text/javascript" src="lib/extensions/dist/extensions.js"></script>
+    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="lib/jmespath.js/artifacts/jmespath.js"></script>
+    <script type="text/javascript" src="lib/json-editor/dist/jsoneditor.js"></script>
+    <script type="text/javascript" src="lib/jquery-plugins/dist/jquery-plugins.js"></script>
+    <!--<script type="text/javascript" src="testids.js"></script>-->
+    <!--<script type="text/javascript" src="events.js"></script>-->
+    <script type="text/javascript" src="examples.js"></script>
+
+</body>
+</html>
