@@ -36,8 +36,12 @@ const {agents} = require('../Landscape Design/chapters/07agentsRev.js');
 // 		chapters.forEach((chapter, i)=> fs.writeFileSync('../Landscape Design/chapters/'+(i-1).toLocaleString(undefined, { minimumIntegerDigits: 3 })+ '.xml', chapter));
 
 //----------------------------agents basics-----------------------------------
-var content = fs.readFileSync('../Landscape Design/chapters/07.xml', 'utf8');
-var contents = content.replace(/(-<lb\/> )|(-<lb\/>)/g, '' );
+var content = fs.readFileSync('../svn Landscape Design/repos/xml/BetsyRogers/chapters/07.xml', 'utf8');
+var reps = content.match(/(-<lb\/> )|(-<lb\/>)|\r|\n/g, '' );
+var contents = content.replace(/(-<lb\/> )|(-<lb\/>)|\r|\n/g, '' );
+
+fs.writeFileSync('../svn Landscape Design/repos/xml/BetsyRogers/chapters/07a.xml', contents);
+
 
 // var agentsInd = [];
 // var agentsArr=[];
@@ -56,9 +60,9 @@ var contents = content.replace(/(-<lb\/> )|(-<lb\/>)/g, '' );
 
 //-------------revise agents----------------------------------------
 
-var people = agents.filter(entry=>!entry.alt).map((entry, i)=>{
-	entry.id = 7000+i
-	return entry
-})
+// var people = agents.filter(entry=>!entry.alt).map((entry, i)=>{
+// 	entry.id = 7000+i
+// 	return entry
+// })
 
-console.log(people, people.length)
+console.log(contents.length, reps.length)
