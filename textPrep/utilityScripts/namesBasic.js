@@ -60,11 +60,15 @@ chapters.forEach(item=>{
 */
 })
 
-//-------------revise agents and check matching, secondary text read through-------------------
+//-------------revise agents and check matching (2 rounds), secondary text read through-------------------
 
 // TIMING NOTE:
 // First round, basic checks for names: 2pm-4:52pm, 4:52-5:37pm for secondary checks
 // in advance of computational count
+
+// grab addition agents during read through...
+// second round additions of name/placement correction: 12:23pm-1:33pm
+
 
 const {agents} = require(`../Lists/07agents.js`);
 const agJS = agents.map((ag,i)=>{ag.count=0; ag.id=7000+i; return ag});
@@ -88,7 +92,14 @@ var chpAgents = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
 
 //console.log('agents found', ag);
 
-//fs.writeFileSync(`../Lists/07agentsA.js`, 'var agents='+JSON.stringify(agJS)+'; module.exports.agents = agents');
+fs.writeFileSync(`../Lists/07agentsA.js`, 'var agents='+JSON.stringify(agJS)+'; module.exports.agents = agents');
+
+//-------------revise agents and check matching-------------------
+
+// TIMING NOTE:
+// Second round, basic checks for names: with updated list of tags
+// in advance of computational count
+
 
 
 // var people = agents.filter(entry=>!entry.alt).map((entry, i)=>{
