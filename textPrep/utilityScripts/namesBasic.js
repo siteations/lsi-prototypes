@@ -63,11 +63,12 @@ chapters.forEach(item=>{
 //-------------revise agents and check matching (2 rounds), secondary text read through-------------------
 
 // TIMING NOTE:
-// First round, basic checks for names: 2pm-4:52pm, 4:52-5:37pm for secondary checks
+// First round, basic checks for names: 2pm-4:52pm, 4:52-5:37pm for secondary checks (~4 hrs)
 // in advance of computational count
 
-// grab addition agents during read through...
-// second round additions of name/placement correction: 12:23pm-1:33pm
+// grab addition agents and place additions during read through...
+// second round additions of name/placement correction in oxygen: 12:23pm-1:33pm, 3:36-3:54PM, 6:30-7:12pm, plus an hour min. 8:40pm-9pm, 1-2:50pm (1+1.5+.75+.25+2 = 5.5-6 hr with footnotes)
+// addition of notes:
 
 
 const {agents} = require(`../Lists/07agents.js`);
