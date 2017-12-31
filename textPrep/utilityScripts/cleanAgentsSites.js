@@ -4,6 +4,43 @@ const fs = require('fs');
 
 const chapters = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16'];
 
+const uni = [ '&#x2014;',
+  '&#x00E9;',
+  '&#x00E0;',
+  '&#x2013;',
+  '&#x00E1;',
+  '&#x00B0;',
+  '&#x00E8;',
+  '&#x00F4;',
+  '&#x2026;',
+  '&#x00C9;',
+  '&#x00E7;',
+  '&#x00F6;',
+  '&#x00BD;',
+  '&#x00ED;',
+  '&#x2032;',
+  '&#x2033;',
+  '&#x00D7;',
+  '&#x00F3;',
+  '&#x00EB;',
+  '&#x00FC;',
+  '&#x00E2;',
+  '&#x00CE;',
+  '&#x00D4;',
+  '&#x00EA;',
+  '&#x00EE;',
+  '&#x00EF;',
+  '&#x00E4;',
+  '&#x00E3;',
+  '&#x00C1;',
+  '&#x00FA;',
+  '&#x014D;',
+  '&#x016B;',
+  '&#x00EC;',
+  '&#x00F2;' ];
+
+const unicode = [];
+
 chapters.forEach(item=>{
 
 	var contents = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/${item}a.xml`, 'utf8');
@@ -29,17 +66,25 @@ chapters.forEach(item=>{
 		notes: contents.match(/<note xml:id="\S*" place="end">((.|\n|\r)+?)<\/note>/g),
 		biblio: contents.match(/<bibl>((.|\n|\r)+?)<\/bibl>/g),
 		figures: contents.match(/<figure xml:id="\S*">((.|\n|\r)+?)<\/figure>/g),
-		unicode: contents.match(/\&#\S*;/g),
+		unicode: contents.match(/\&#x\S+?;/g),
 		divisions: contents.match(/<div type="\S*">/g)
 		};
 
+	matchAll.unicode.forEach(code=>{
+		var cleaned = code //.replace('&#x', '').replace(';','');
 
-	console.log(matchAll, countAll);
+		if (unicode.indexOf(cleaned) === -1){
+			unicode.push(cleaned);
+		}
+	})
+
+
+	console.log(item, countAll, unicode);
 
 	// var chapters = contents.split('<div type="chapter">').map(each=>'<div type="chapter">' + each)
 	// 		chapters.forEach((chapter, i)=> fs.writeFileSync('../Landscape Design/chapters/'+(i-1).toLocaleString(undefined, { minimumIntegerDigits: 3 })+ '.xml', chapter));
 
-	//---------------------------- agents basics (run me first) -----------------------------------
+//---------------------------- agents basics (run me first) -----------------------------------
 
 /*
 	var agentsInd = [];
@@ -58,6 +103,28 @@ chapters.forEach(item=>{
 	fs.writeFileSync(`../Lists/${item}agents.js`, 'var agents='+JSON.stringify(agentsArr)+'; module.exports.agents = agents');
 
 */
+
+//---------------------------- site basics (run me after all agent processing is done) -----------------------------------
+
+/*
+	var sitesInd = [];
+	var sitesArr=[];
+	var site = contents.match(/<name type="place" subtype=((.|\n|\r)+?)<\/name>/g)
+		.forEach(elem=>{
+			var site = elem.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+			if (sitesInd.indexOf(site)===-1){
+				sitesInd.push(site)
+				agentsArr.push({name:[agent], id:0, chp:item })
+			}
+	});
+
+	console.log(agentsArr, agentsInd.length)
+
+	fs.writeFileSync(`../Lists/${item}agents.js`, 'var agents='+JSON.stringify(agentsArr)+'; module.exports.agents = agents');
+
+*/
+
+
 })
 
 //-------------revise agents and check matching (2 rounds), secondary text read through-------------------
@@ -80,10 +147,13 @@ var omitted =[]
 var chpAgents = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
 											.forEach(match=>{
 														var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+														var agentType = (match.match(/subtype="\w+?"/g))? match.match(/subtype="\w+?"/g)[0].replace(/subtype="/g, '').replace(/"/g, '') : null ;
 														var currCount = chpCount;
 														agJS.forEach(ag=>{
 														if (ag.name.indexOf(agent)!==-1){
 															ag.count ++ ;
+															ag.type = agentType ;
+															delete ag.subtype;
 															chpCount -- ;
 														}
 														})
@@ -95,17 +165,12 @@ var chpAgents = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
 
 fs.writeFileSync(`../Lists/07agentsA.js`, 'var agents='+JSON.stringify(agJS)+'; module.exports.agents = agents');
 
-//-------------revise agents and check matching-------------------
+//-------------revise agents and add to html-------------------
 
 // TIMING NOTE:
 // Second round, basic checks for names: with updated list of tags
 // in advance of computational count
 
 
-
-// var people = agents.filter(entry=>!entry.alt).map((entry, i)=>{
-// 	entry.id = 7000+i
-// 	return entry
-// })
 
 
