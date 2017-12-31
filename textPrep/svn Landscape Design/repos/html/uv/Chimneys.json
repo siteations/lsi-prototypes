@@ -1,0 +1,176 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "http://example.org/Chimneys",
+  "@type": "sc:Manifest",
+  "label": "Chimneys",
+  "thumbnail": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0001.jpg/full/!200,200/0/default.jpg",
+  "viewingHint": "paged",
+  "metadata": [
+    {
+      "Foo": "Bar"
+    },
+    {
+      "Bazzers": [
+        "Quux",
+        "Corge"
+      ]
+    }
+  ],
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@id": "http://example.org/Chimneys/pages//Chimneys/000032693_0001.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 1",
+          "width": 1300,
+          "height": 1579,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0001.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 1579,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0001.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Chimneys/pages//Chimneys/000032693_0002.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 2",
+          "width": 1300,
+          "height": 1581,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0002.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 1581,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0002.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Chimneys/pages//Chimneys/000032693_0003.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 3",
+          "width": 1300,
+          "height": 2021,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0003.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 2021,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0003.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Chimneys/pages//Chimneys/000032693_0004.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 4",
+          "width": 1300,
+          "height": 2031,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0004.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 2031,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0004.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Chimneys/pages//Chimneys/000032693_0005.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 5",
+          "width": 1300,
+          "height": 1991,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0005.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 1991,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0005.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/Chimneys/pages//Chimneys/000032693_0006.jpg",
+          "@type": "sc:Canvas",
+          "label": "Page 6",
+          "width": 1300,
+          "height": 2008,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0006.jpg/full/!200,200/0/default.jpg",
+                "@type": "dcterms:Image",
+                "format": "image/jpeg",
+                "width": 1300,
+                "height": 2008,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "http://juel.iath.virginia.edu/mediaserver/iiif/2/juel___Chimneys___000032693_0006.jpg",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

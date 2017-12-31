@@ -31,6 +31,9 @@ class TextP extends Component {
    	inView:[],
     text:'',
     notes: [],
+    pretitle: '',
+    title:'',
+    subtitle: '',
    }// defer definitions
  }
 
@@ -39,7 +42,7 @@ class TextP extends Component {
     console.dir(this);
     //this.scrollTo(this.props.nav.para+'-section')
     axios.get('../chapters/07.xml')
-    .then(response => {
+    .then(response => { // run the general scrub/ordering function on this material/add behaviors/modifications based on specific tags
       this.setState({text:response.data})
     })
     .catch(error => {
@@ -48,10 +51,20 @@ class TextP extends Component {
  	}
 
   shouldComponentUpdate(nextProps, nextState){
-    return (this.state.notes !== nextState.notes || this.state.text !== nextState.text)
+    return (this.state.notes !== nextState.notes || this.state.title === '')
   }
 
-  componentDidUpdate(){
+
+  //this seems really in-efficient in terms of viewing/formatting/structuring
+  //use dangerously set inner html for only the paragraph level
+
+  setTitle(){
+    var titleNode = document.getElementsByTagName('hi');
+    var titleArr = (titleNode[0])? titleNode[0].innerText.toLowerCase().split(':') : [] ;
+    console.log('title', titleArr[0], titleArr[1])
+  }
+
+  setNotes(){
     var notes = document.getElementsByTagName('note')
     var notesArr =[].slice.call(notes)
     var noteArr = notesArr.map(note=>{
@@ -62,11 +75,11 @@ class TextP extends Component {
       }
     })
 
-    // this.setState({notes:noteArr});
-    // while (notes.length<0){
-    //   notes.remove(notes.length-1);
-    // }
     console.log(notes, noteArr)
+  }
+
+  componentDidUpdate(){
+    this.setTitle()
   }
 
   insertHtml() {
