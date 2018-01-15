@@ -79,7 +79,7 @@ chapters.forEach(item=>{
 	})
 
 
-	console.log(item, countAll, unicode);
+	//console.log(item, countAll, unicode);
 
 	// var chapters = contents.split('<div type="chapter">').map(each=>'<div type="chapter">' + each)
 	// 		chapters.forEach((chapter, i)=> fs.writeFileSync('../Landscape Design/chapters/'+(i-1).toLocaleString(undefined, { minimumIntegerDigits: 3 })+ '.xml', chapter));
@@ -138,39 +138,57 @@ chapters.forEach(item=>{
 // addition of notes:
 
 
-const {agents} = require(`../Lists/07agents.js`);
-const agJS = agents.map((ag,i)=>{ag.count=0; ag.id=7000+i; return ag});
+// const {agents} = require(`../Lists/07agents.js`);
+// const agJS = agents.map((ag,i)=>{ag.count=0; ag.id=7000+i; return ag});
 
-var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07a.xml`, 'utf8');
-var chpCount = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g).length
-var omitted =[]
-var chpAgents = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
-											.forEach(match=>{
-														var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
-														var agentType = (match.match(/subtype="\w+?"/g))? match.match(/subtype="\w+?"/g)[0].replace(/subtype="/g, '').replace(/"/g, '') : null ;
-														var currCount = chpCount;
-														agJS.forEach(ag=>{
-														if (ag.name.indexOf(agent)!==-1){
-															ag.count ++ ;
-															ag.type = agentType ;
-															delete ag.subtype;
-															chpCount -- ;
-														}
-														})
-														if (currCount === chpCount){omitted.push(agent)};
-												});
-	const ag = agJS.filter(each=>each.count===0);
+// var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07a.xml`, 'utf8');
+// var chpCount = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g).length
+// var omitted =[]
+// var chpAgents = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
+// 											.forEach(match=>{
+// 														var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+// 														var agentType = (match.match(/subtype="\w+?"/g))? match.match(/subtype="\w+?"/g)[0].replace(/subtype="/g, '').replace(/"/g, '') : null ;
+// 														var currCount = chpCount;
+// 														agJS.forEach(ag=>{
+// 														if (ag.name.indexOf(agent)!==-1){
+// 															ag.count ++ ;
+// 															ag.type = agentType ;
+// 															delete ag.subtype;
+// 															chpCount -- ;
+// 														}
+// 														})
+// 														if (currCount === chpCount){omitted.push(agent)};
+// 												});
+// 	const ag = agJS.filter(each=>each.count===0);
 
-//console.log('agents found', ag);
+// //console.log('agents found', ag);
 
-fs.writeFileSync(`../Lists/07agentsA.js`, 'var agents='+JSON.stringify(agJS)+'; module.exports.agents = agents');
+// fs.writeFileSync(`../Lists/07agentsA.js`, 'var agents='+JSON.stringify(agJS)+'; module.exports.agents = agents');
 
 //-------------revise agents and add to html-------------------
 
-// TIMING NOTE:
-// Second round, basic checks for names: with updated list of tags
-// in advance of computational count
+// Match to existing list and add keys
+
+const agents = require(`../Lists/07agentsA_ulan.js`);
+var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07a.xml`, 'utf8');
+
+const replaceAdd = ((match)=>{
+	var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+	var rev = match;
+	agents.forEach(names=>{
+		if (names.name.includes(agent)){
+			rev = match.replace('type="pname"', 'type="pname" key="'+names.id+'"')
+		}
+	})
+	//console.log(agent, match);
+	return rev;
+})
+
+var chpCount = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g).length;
+var chpAgents = chpRev.replace(/<name type="pname"((.|\n|\r)+?)<\/name>/g, replaceAdd);
 
 
+console.log('agents found', chpAgents);
 
+fs.writeFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents.xml`, chpAgents);
 
