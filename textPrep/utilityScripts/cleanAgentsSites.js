@@ -2,7 +2,8 @@
 
 const fs = require('fs');
 
-const chapters = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16'];
+//const chapters = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16'];
+const chapters = ['07'];
 
 const uni = [ '&#x2014;',
   '&#x00E9;',
@@ -43,7 +44,7 @@ const unicode = [];
 
 chapters.forEach(item=>{
 
-	var contents = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/${item}a.xml`, 'utf8');
+	var contents = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/${item}_agents.xml`, 'utf8');
 
 
 	//---------------------general synch----------------------//
@@ -107,25 +108,41 @@ chapters.forEach(item=>{
 //---------------------------- site basics (run me after all agent processing is done) -----------------------------------
 
 /*
+
 	var sitesInd = [];
 	var sitesArr=[];
 	var site = contents.match(/<name type="place" subtype=((.|\n|\r)+?)<\/name>/g)
 		.forEach(elem=>{
 			var site = elem.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+			var siteType = (elem.match(/subtype="\w+?"/g))? elem.match(/subtype="\w+?"/g)[0].replace(/subtype="/g, '').replace(/"/g, '') : null ;
 			if (sitesInd.indexOf(site)===-1){
 				sitesInd.push(site)
-				agentsArr.push({name:[agent], id:0, chp:item })
+				sitesArr.push({name:[site], id:0, chp:item, type: siteType })
 			}
 	});
 
-	console.log(agentsArr, agentsInd.length)
+	console.log(sitesArr, sitesInd.length)
 
-	fs.writeFileSync(`../Lists/${item}agents.js`, 'var agents='+JSON.stringify(agentsArr)+'; module.exports.agents = agents');
+	var placeInd = [];
+	var placeArr=[];
+	var place = contents.match(/<name type="place"((.|\n|\r)+?)<\/name>/g)
+		.forEach(elem=>{
+			var site = elem.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+			var siteType = (elem.match(/subtype="\w+?"/g))? elem.match(/subtype="\w+?"/g)[0].replace(/subtype="/g, '').replace(/"/g, '') : null ;
+			if (placeInd.indexOf(site)===-1 && siteType=== null){
+				placeInd.push(site)
+				placeArr.push({name:[site], id:0, chp:item, type: siteType })
+			}
+	});
 
+	console.log(placeArr, placeInd.length)
+	fs.writeFileSync(`../Lists/${item}sites.js`, 'var sites='+JSON.stringify(siteArr)+'; module.exports = sites');
+	fs.writeFileSync(`../Lists/${item}place.js`, 'var place='+JSON.stringify(placeArr)+'; module.exports = place');
 */
 
-
 })
+
+
 
 //-------------revise agents and check matching (2 rounds), secondary text read through-------------------
 
@@ -165,9 +182,40 @@ chapters.forEach(item=>{
 
 // fs.writeFileSync(`../Lists/07agentsA.js`, 'var agents='+JSON.stringify(agJS)+'; module.exports.agents = agents');
 
+//-------------revise sites and check matching (2 rounds), secondary text read through-------------------
+
+
+const sites = require(`../Lists/07sites.js`);
+const agJS = sites.map((ag,i)=>{ag.count=0; ag.id=7000+i; return ag});
+
+var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents.xml`, 'utf8');
+var chpCount = chpRev.match(/<name type="place" subtype=((.|\n|\r)+?)<\/name>/g).length
+var omitted =[]
+var chpAgents = chpRev.match(/<name type="place" subtype=((.|\n|\r)+?)<\/name>/g)
+											.forEach(match=>{
+														var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+														var agentType = (match.match(/subtype="\w+?"/g))? match.match(/subtype="\w+?"/g)[0].replace(/subtype="/g, '').replace(/"/g, '') : null ;
+														var currCount = chpCount;
+														agJS.forEach(ag=>{
+														if (ag.name.indexOf(agent)!==-1){
+															ag.count ++ ;
+															ag.type = agentType ;
+															delete ag.subtype;
+															chpCount -- ;
+														}
+														})
+														if (currCount === chpCount){omitted.push(agent)};
+												});
+	const ag = agJS.filter(each=>each.count===0);
+
+console.log('agents found', ag);
+
+fs.writeFileSync(`../Lists/07sitesA.js`, 'var sites='+JSON.stringify(agJS)+'; module.exports = sites');
+
 //-------------revise agents and add to html-------------------
 
 // Match to existing list and add keys
+/*
 
 const agents = require(`../Lists/07agentsA_ulan.js`);
 var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07a.xml`, 'utf8');
@@ -191,4 +239,4 @@ var chpAgents = chpRev.replace(/<name type="pname"((.|\n|\r)+?)<\/name>/g, repla
 console.log('agents found', chpAgents);
 
 fs.writeFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents.xml`, chpAgents);
-
+*/
