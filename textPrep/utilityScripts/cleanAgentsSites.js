@@ -184,6 +184,7 @@ chapters.forEach(item=>{
 
 //-------------revise sites and check matching (2 rounds), secondary text read through-------------------
 
+/*
 
 const sites = require(`../Lists/07sites.js`);
 const agJS = sites.map((ag,i)=>{ag.count=0; ag.id=7000+i; return ag});
@@ -211,6 +212,8 @@ var chpAgents = chpRev.match(/<name type="place" subtype=((.|\n|\r)+?)<\/name>/g
 console.log('agents found', ag);
 
 fs.writeFileSync(`../Lists/07sitesA.js`, 'var sites='+JSON.stringify(agJS)+'; module.exports = sites');
+
+*/
 
 //-------------revise agents and add to html-------------------
 
@@ -240,3 +243,34 @@ console.log('agents found', chpAgents);
 
 fs.writeFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents.xml`, chpAgents);
 */
+
+
+//-------------revise sites and add to html-------------------
+
+// Match to existing list and add keys
+
+
+const sites = require(`../Lists/07sitesA_tng.js`);
+var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents.xml`, 'utf8');
+
+const replaceAdd = ((match)=>{
+	var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+	var type = match.match(/subtype="(.|\n|\r)+?"/g)[0].replace(/subtype="/g, '').replace(/"/g, '');
+	var rev = match;
+	sites.forEach(names=>{
+		if (names.name.includes(agent) && names.type === type){
+			rev = match.replace('type="place"', 'type="place" key="'+names.id+'"')
+		}
+	})
+	console.log(agent, rev, type);
+	return rev;
+})
+
+var chpCount = chpRev.match(/<name type="place"((.|\n|\r)+?)<\/name>/g).length;
+var chpAgents = chpRev.replace(/<name type="place" subtype="((.|\n|\r)+?)<\/name>/g, replaceAdd);
+
+
+//console.log('agents found', chpAgents);
+
+fs.writeFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents_sites.xml`, chpAgents);
+
