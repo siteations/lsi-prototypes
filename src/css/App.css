@@ -79,6 +79,17 @@ h1, h2, h3, h4 {
   font-family: 'Eveleth';
 }
 
+hi {
+  font-style: italic;
+}
+
+.sect {
+  font-family: 'Texta';
+  font-size: 18pt;
+  text-transform: capitalize;
+  margin-bottom: 14pt;
+}
+
 .eveleth {
   font-family: 'Eveleth';
 }

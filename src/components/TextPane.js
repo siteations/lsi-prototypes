@@ -8,8 +8,8 @@ import Waypoint from 'react-waypoint';
 
 import EnlargeFull from './EnlargeFull.js';
 
-import sampleText from '../data/Gilpin.js';
-import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate} from '../action-creators/navActions.js';
+import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setChpParaL} from '../action-creators/navActions.js';
+import {setPanesTabs} from '../action-creators/paneActions.js';
 
 //this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
 
@@ -36,24 +36,39 @@ class TextP extends Component {
  	}
 
  	shouldComponentUpdate(nextProps, nextState){
- 		return ((this.props.nav.siteName !== nextProps.nav.siteName || this.props.nav.chp !== nextProps.nav.chp) && !this.props.nav.setUp )
+ 		return ((this.props.nav.text !== nextProps.nav.text ||this.props.nav.siteName !== nextProps.nav.siteName || this.props.nav.chp !== nextProps.nav.chp) && !this.props.nav.setUp )
  	}
 
   componentDidUpdate(){
-   	this.scrollTo(this.props.nav.para+'-section')
+    if (this.props.nav.para!==0){
+   	  this.scrollTo(this.props.nav.para+'-section')
+    } else {
+      this.scrollTo('999-section')
+    }
   }
 
-
+  //update to handle the actual paragraph alignment
   handleNote(value){
-    this.setState({
-      footnote: value,
-    });
+    var noteP = value-1;
+    //console.log(this.state.inView[0], noteP)
+    this.props.setChpParaL(this.state.inView[0]);
+    this.props.setChpPara(this.props.nav.chp, noteP);
+    //switch to resources
+    this.props.setPanesTabs('main','text','b');
+    this.scrollTo('999-section');
   }
 
-  handleSite= (value, id, name)=> {
+  returnToText(){
+    // this.props.setChpPara(this.props.nav.chp, this.props.nav.paraL);
+    // //switch to resources
+    this.props.setPanesTabs('main','text','a');
+    this.scrollTo('999-section');
+  }
+
+  handleSite = (value, id, name) => {
   	this.props.setChpPara(this.props.nav.chp, value);
   	this.props.setSiteData(id, name);
-  	this.props.setUpdate(true);
+  	this.props.setUpdate(false);
   }
 
   formatString = (string)=>{
@@ -99,14 +114,15 @@ class TextP extends Component {
   	let view=this.state.inView;
   	view.push(parseInt(e.id.replace('-section', '')));
 
-  	var topSitePara = view.filter(para=>sampleText[this.props.nav.chp].paragraphs[para].site !== null);
-  	var para = (view[0]<view[1] || view.length===1)? sampleText[this.props.nav.chp].paragraphs[topSitePara[0]] : sampleText[this.props.nav.chp].paragraphs[topSitePara[topSitePara.length-1]];
+  	var topSitePara = view.filter(para=>this.props.nav.text[this.props.nav.chp].paragraphs[para].site !== null);
+  	var para = (view[0]<view[1] || view.length===1)? this.props.nav.text[this.props.nav.chp].paragraphs[topSitePara[0]] : this.props.nav.text[this.props.nav.chp].paragraphs[topSitePara[topSitePara.length-1]];
 
-  	var site = (para !== undefined)? para.site[0] : null;
+    //console.log(para);
+  	var site = (para !== undefined && para.sites !== null)? para.sites[0] : null;
 
   	if (site){
   		this.props.setUpdate(false);
-  		this.props.setSiteData(site.id, site.name);
+  		this.props.setSiteData(site.id, site.value);
   	}
 
     this.setState({inView:view});
@@ -124,9 +140,20 @@ class TextP extends Component {
    this.refs[value].scrollIntoView({block: 'start', behavior: 'instant'});
   }
 
+  insertHtml(a) {
+    return {__html: this.props.nav.text[this.props.nav.chp].paragraphs[a].text};
+  }
+
+  insertHtmlNote(a) {
+    return {__html: this.props.nav.text[this.props.nav.chp].notes[a]};
+  }
+
 
   render() {
-  	var chapter = sampleText[this.props.nav.chp];
+  	//var chapter = sampleText[this.props.nav.chp];
+    var chapter = this.props.nav.text[this.props.nav.chp];
+    console.log('chapter', chapter, this.props.nav.chp);
+    //console.log(chapter, this.props.nav.chp);
   	//var scroll = chapter.map(items=>items+'-section');
 
     return (
@@ -135,24 +162,43 @@ class TextP extends Component {
 	                	<div className= 'col-3 small'>
 	                	</div>
 	                	<div className= 'col-9 small'>
-	                		<h3 className='p10'>{chapter.title}</h3>
-	                		<h5>...</h5>
+                    {chapter && this.props.output === 'text' &&
+                      <div ref="title">
+  	                		<h3 className='p10'>{chapter.titles.title}</h3>
+  	                		<h5 className='p10'>{chapter.titles.subtitle}</h5>
+                      </div>
+                    }
+                    {chapter && this.props.output === 'note' &&
+                      <div ref="title">
+                        <h3 className='p10'>Notes: {chapter.titles.title}</h3>
+                        <h5 className='p10'>{chapter.titles.subtitle}</h5>
+                      </div>
+                    }
 	                	</div>
 	                </div>
-              	{chapter &&
+              	{chapter && this.props.output === 'text' &&
               		chapter.paragraphs.map((items, i)=>{
               			return (
 			              	<div className='row' id={i + '-section'} ref={i + '-section'} >
 			                	<div className= 'col-3 small'>
 			                		<ul>
 			                			{items.notes &&
-			                				<li className="p10 cursor" onClick={e=>this.handleNote(e.target.attributes.id.value)} id={i}>{(items.notes.length>101)?items.notes.slice(0,100)+'. . .': items.notes}</li>
+                              items.notes.map(note=>{
+                                return (
+			                				<li className="cursor" onClick={e=>this.handleNote(note.value)}><em>note:</em> {note.value}</li>
+                              )
+                              })
 			                			}
-			                			{items.site &&
-			                				<li className="p10 cursor" onClick={e=>this.handleSite(e.target.attributes.id.value, items.site[0].id, items.site[0].name)} id={i}>^ site: {items.site[0].name}</li>
+			                			{items.sites &&
+                              items.sites.map(site=>{
+                                return (
+                                  <li className="cursor" onClick={e=>this.handleSite(e.target.attributes.id.value, site.id, site.value)} id={i}><em>site:</em> {site.value}</li>
+                                        )
+                              })
 			                			}
 			                		</ul>
 			                	</div>
+                        {i!== 0 &&
 			                	<div className="col-9">
 			                	<Waypoint
 			                		topOffset={this.state.topOffset+40}
@@ -162,14 +208,44 @@ class TextP extends Component {
 			                		onLeave={e=>{e.id = i+'-section';
 			                			this.scrollLeave(e)}}
 			                		>
-			                		<p className="p10s">{this.formatString(items.text)} <br/><em className="small grey">(pg: {items.page})</em></p>
+                          <div dangerouslySetInnerHTML={this.insertHtml(i)} />
+			                		{/*<p className="p10s"><em className="small grey">(pg: {items.page})</em></p>*/}
 			                		</Waypoint>
 			                	</div>
+                        }
+                        {i=== 0 &&
+                          <div className="col-9" />
+
+                        }
 			                </div>
               			        )
               		})
 
               	}
+                {chapter && this.props.output === 'note' &&
+                  chapter.notes.map((items, i)=>{
+                    return (
+                      <div className='row' id={i + '-section'} ref={i + '-section'} >
+                        <div className= 'col-3 small' />
+                        <div className="col-9">
+                        <Waypoint
+                          topOffset={this.state.topOffset+40}
+                          bottomOffset={100}
+                          onEnter={e=>{e.id = i+'-section';
+                            this.scrollEnter(e)}}
+                          onLeave={e=>{e.id = i+'-section';
+                            this.scrollLeave(e)}}
+                          >
+                          <div dangerouslySetInnerHTML={this.insertHtmlNote(i)} onClick={e=>this.returnToText()} className="cursor" />
+
+                          </Waypoint>
+                        </div>
+                      </div>
+                            )
+                  })
+
+                }
+
               	</div>
     );
   }
@@ -190,11 +266,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     setChpPara: (chp, para) => {
         dispatch(setChpPara(chp, para));
     },
+    setChpParaL: (para) => {
+        dispatch(setChpParaL(para));
+    },
     setSiteData: (id, name)=>{
     	dispatch(setSiteData(id, name));
     },
     setUpdate: (bool) =>{
     	dispatch(setUpdate(bool));
+    },
+    setPanesTabs: (a,b,c)=>{
+      dispatch(setPanesTabs(a,b,c));
     }
 
   }

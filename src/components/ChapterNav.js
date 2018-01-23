@@ -14,7 +14,7 @@ import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 
 import sampleText from '../data/Gilpin.js';
 
-import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate} from '../action-creators/navActions.js';
+import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setCoreText} from '../action-creators/navActions.js';
 //drop-down toggles to hold nested info
 //when clicked should open drawer to allow futher subselection
 
@@ -26,7 +26,7 @@ class ChapterN extends Component {
 
 
   componentDidMount() {
-     //this.scrollToWithContainer(this.props.nav.para+'-section');
+     this.props.setCoreText();
   }
 
 
@@ -139,24 +139,24 @@ class ChapterN extends Component {
 			          <MenuItem onClick={this.handleClose}>{this.state.drawerTitle}</MenuItem>
 			          <Divider inset={true} />
 			          {this.props.nav.chpDrawer.map(drawer=>{
-			          	if (drawer.sites.length<1){
+			          	if (drawer.sites===null){
 				          	return (
-				          	     <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={true} >{drawer.title.slice(0,25)}</MenuItem>
+				          	     <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false}>{drawer.titles.title}</MenuItem>
 				          	   )
 			          	} else {
 			          		var elems=[<MenuItem primaryText="Chapter Sites"  onClick={e=>this.selectChapter(drawer.id)}/>,
 							          			<Divider />];
 							      var items = drawer.sites.map(site=>{
-							      	return (<MenuItem primaryText={site.name}  onClick={e=>this.selectSite(drawer.id, site.p, site.id, site.name)}/>)
+							      	return (<MenuItem primaryText={site.value}  onClick={e=>this.selectSite(drawer.id, site.p[0], site.id, site.value)}/>)
 							      })
 
 							      var arr = elems.concat(items);
 
 			          		return (
 						          <MenuItem
-							          primaryText={drawer.title.slice(0,25)}
+							          primaryText={drawer.titles.title}
 							          rightIcon={<ArrowDropRight />}
-							          insetChildren={true}
+							          insetChildren={false}
 							          menuItems={arr} />
 							      )
 			          	}
@@ -233,6 +233,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     setUpdate: (bool) =>{
     	dispatch(setUpdate(bool));
+    },
+    setCoreText: () =>{
+    	dispatch(setCoreText());
     },
 
   }

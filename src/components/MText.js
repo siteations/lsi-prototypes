@@ -34,10 +34,10 @@ class MPT extends Component {
 
       <div className='scrollPaneL' >
       {this.props.pane.mainTab==='a' &&
-        <TextPane />
+        <TextPane output="text"/>
       }
       {this.props.pane.mainTab==='b' &&
-        <NotePane />
+        <TextPane output="note"/>
       }
       {this.props.pane.mainTab==='c' &&
         <ResourcePane />
