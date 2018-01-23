@@ -10,6 +10,10 @@ const startPage = (para)=>{
 	return page;
 }
 
+const scrub = (text)=>{
+	return text.replace(/<h5.+?>|<\/h5>|<head>|<hi rend=".+?">|<\/hi>|<\/head>|<name type="place">|<name type="pname">|<name type="place" key=".+?>|<name type="pname" key=".+?>|<\/name>/g, '')
+}
+
 const paraNotes = (para)=>{
 	var notes = para.match(/<ref target=.+?<\/ref>/g) ? para.match(/<ref target=.+?<\/ref>/g).map(ref=> {return {id:ref.match(/"#CH.+?"/g)[0].replace(/"/g, ''), value:ref.match(/-n.+?"/g)[0].replace(/"|-n/g, '')} }) : null;
 	return notes;
@@ -116,8 +120,10 @@ export const sampleText = ()=>{
 
 					sitesAll=(p.sites!== null)? sitesAll.concat(p.sites) : sitesAll ;
 
-					if (p.text.substring(0,4)==='<hea'){
-						headers.push({p:i, value:p.text})
+
+					if (p.text.substring(0,3)==='<h5'){
+						var words = scrub(p.text);
+						headers.push({p:i, value:words});
 					}
 
 
@@ -139,6 +145,7 @@ export const sampleText = ()=>{
 				}
 				;
 
+				headers.pop();
 				chapter.headers = headers.splice(1);
 
 			})

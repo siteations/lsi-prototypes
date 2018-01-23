@@ -170,6 +170,7 @@ export const setChapterDrawer = (buttonid, drw) => dispatch => {
 			return {
 				id: chpId,
 				titles: res[chpId].titles,
+				headers: res[chpId].headers,
 				sites: res[chpId].sites,
 			}
 		})
@@ -193,6 +194,7 @@ export const setChapterDrawer = (buttonid, drw) => dispatch => {
 		return {
 			id: chpId,
 			titles: sampleText[chpId].titles,
+			headers: sampleText[chpId].headers,
 			sites: sampleText[chpId].sites,
 		}
 	})

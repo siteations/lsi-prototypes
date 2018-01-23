@@ -54,6 +54,12 @@ class ChapterN extends Component {
  		this.handleClose()
  	}
 
+ 	selectSubChapter = (chp, para)=> {
+ 		this.props.setChpPara(chp, para)
+ 		this.props.setUpdate(true)
+ 		this.handleClose()
+ 	}
+
   //   scrollToWithContainer = (value) => {
 
   //  console.log(this, value)
@@ -131,7 +137,7 @@ class ChapterN extends Component {
 
 						  <Drawer
 			          docked={false}
-			          width={300}
+			          width={450}
 			          open={this.state.open}
 			          onRequestChange={(open) => this.setState({open})}
 			          overlayStyle={{opacity:'.15'}}
@@ -140,25 +146,30 @@ class ChapterN extends Component {
 			          <Divider inset={true} />
 			          {this.props.nav.chpDrawer.map(drawer=>{
 			          	if (drawer.sites===null){
-				          	return (
-				          	     <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false}>{drawer.titles.title}</MenuItem>
-				          	   )
+			          		var chpt = [<Divider />,<MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
+			          		var items = drawer.headers.map(header=>{
+							      	return <MenuItem primaryText={header.value}  onClick={e=>this.selectSubChapter(drawer.id, header.p)} insetChildren={header.value.search(/I\.|II\.|III\.|IV\.|V\./g)}/>
+							      })
+							      var arr = chpt.concat(items);
+							      return arr;
+
+
 			          	} else {
-			          		var elems=[<MenuItem primaryText="Chapter Sites"  onClick={e=>this.selectChapter(drawer.id)}/>,
+			          		var elems=[<MenuItem primaryText={`Chapter ${drawer.id} Sites`}  onClick={e=>this.selectChapter(drawer.id)}/>,
 							          			<Divider />];
-							      var items = drawer.sites.map(site=>{
+							      var sites = drawer.sites.map(site=>{
 							      	return (<MenuItem primaryText={site.value}  onClick={e=>this.selectSite(drawer.id, site.p[0], site.id, site.value)}/>)
 							      })
+							      var arrSites = elems.concat(sites);
 
-							      var arr = elems.concat(items);
+							      var chpt = [<Divider />, <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
+							      var subsites = [ <MenuItem primaryText={'sites'} rightIcon={<ArrowDropRight />} insetChildren={true} menuItems={arrSites} /> , <Divider />]
+							      var items = drawer.headers.map(header=>{
+							      	return <MenuItem primaryText={header.value}  onClick={e=>this.selectSubChapter(drawer.id, header.p)} insetChildren={header.value.search(/I\.|II\.|III\.|IV\.|V\.|VI\.|VII\./g)}/>
+							      })
+							      var arr = chpt.concat(subsites, items);
 
-			          		return (
-						          <MenuItem
-							          primaryText={drawer.titles.title}
-							          rightIcon={<ArrowDropRight />}
-							          insetChildren={false}
-							          menuItems={arr} />
-							      )
+			          		return arr;
 			          	}
 
 			          	})
