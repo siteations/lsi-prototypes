@@ -33,7 +33,7 @@ const styles = {
     position:'absolute',
     right:0,
     margin: 2,
-    opacity:.25
+    opacity:.75
   },
   iconFull: {
     position:'absolute',

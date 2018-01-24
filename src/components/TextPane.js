@@ -31,18 +31,22 @@ class TextP extends Component {
 
  	componentDidMount(){
  		this.setState({topOffset:document.getElementById('largePane').offsetParent.offsetTop})
-    console.dir(this);
+    console.dir(this.props.nav);
     //this.scrollTo(this.props.nav.para+'-section')
  	}
 
  	shouldComponentUpdate(nextProps, nextState){
- 		return ((this.props.nav.text !== nextProps.nav.text ||this.props.nav.siteName !== nextProps.nav.siteName || this.props.nav.chp !== nextProps.nav.chp) && !this.props.nav.setUp )
+    var test = ((this.props.nav.text !== nextProps.nav.text || this.props.nav.siteName !== nextProps.nav.siteName || this.props.nav.chp !== nextProps.nav.chp) && this.props.nav.setUp )
+    console.log('update?', test, this.props.nav.setUp )
+ 		return test
  	}
 
   componentDidUpdate(){
     if (this.props.nav.para!==0 && this.props.pane.mainTab ==='a'){
+      this.props.setUpdate(false);
    	  this.scrollTo(this.props.nav.para+'-section')
     } else {
+      this.props.setUpdate(false);
       this.scrollTo('999-section')
     }
   }
@@ -121,10 +125,11 @@ class TextP extends Component {
   	var site = (para !== undefined && para.sites !== null)? para.sites[0] : null;
 
   	if (site){
-  		this.props.setUpdate(false);
-  		this.props.setSiteData(site.id, site.value);
+  		// this.props.setUpdate(false);
+  		// this.props.setSiteData(site.id, site.value);
   	}
 
+    this.setState({inViewSite:view});
     this.setState({inView:view});
 
   }

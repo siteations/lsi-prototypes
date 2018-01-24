@@ -27,6 +27,7 @@ class ChapterN extends Component {
 
   componentDidMount() {
      this.props.setCoreText();
+     this.props.setUpdate(true);
   }
 
 
@@ -155,7 +156,7 @@ class ChapterN extends Component {
 
 
 			          	} else {
-			          		var elems=[<MenuItem primaryText={`Chapter ${drawer.id} Sites`}  onClick={e=>this.selectChapter(drawer.id)}/>,
+			          		var elems=[<MenuItem primaryText={`Chapter ${drawer.id} Sites`} />,
 							          			<Divider />];
 							      var sites = drawer.sites.map(site=>{
 							      	return (<MenuItem primaryText={site.value}  onClick={e=>this.selectSite(drawer.id, site.p[0], site.id, site.value)}/>)

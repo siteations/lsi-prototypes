@@ -54,6 +54,8 @@ class SideP extends Component {
 
   render() {
 
+  console.log(this.state.height);
+
     return (
               <div className="col pane" id="sidePane">
                 {this.props.pane.top === 'images' &&

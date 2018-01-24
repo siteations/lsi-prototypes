@@ -66,7 +66,7 @@ class SPNetwork extends Component {
 
     return (
       <div style={{height:this.props.hi}} >
-        <div ref={el => this.mapContainer = el} style={{position:'absolute', top:'66px'+this.props.hi, height:this.props.hi, width:'100%'}} />
+        <div ref={el => this.mapContainer = el} style={{position:'absolute', top:'70px'+this.props.hi, height:this.props.hi, width:'100%'}} />
         <EnlargeSide loc='bottom' />
       </div>
     )

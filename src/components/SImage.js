@@ -21,10 +21,15 @@ class SImage extends Component {
 //const STImages = function (props) {
   constructor(props) {
    super(props);
-   this.state = {};
+   this.state = {
+
+   };
  }
 
     render(){
+
+      console.log(this.props.hi)
+
     return (
     <div>
 

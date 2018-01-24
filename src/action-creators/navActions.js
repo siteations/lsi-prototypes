@@ -225,5 +225,6 @@ export const setSiteData = (id, name) => dispatch => {
 };
 
 export const setUpdate = (bool) => dispatch =>{
-	dispatch(setUp(!bool));
+	console.log('in process', !bool)
+	dispatch(setUp(bool));
 }

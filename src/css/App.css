@@ -103,7 +103,7 @@ hi {
 
 .navSearch {
   line-height: 1.1;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .p10 {
@@ -122,6 +122,16 @@ hi {
   height: 86vh;
   background-color: #d3d3d3;
   padding: 8px;
+}
+
+.testing {
+  height:306px;
+}
+
+.plusOverlay {
+  position: absolute;
+  top: 33px;
+  right: 0px;
 }
 
 .pane {
