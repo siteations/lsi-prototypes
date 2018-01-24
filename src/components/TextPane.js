@@ -40,7 +40,7 @@ class TextP extends Component {
  	}
 
   componentDidUpdate(){
-    if (this.props.nav.para!==0){
+    if (this.props.nav.para!==0 && this.props.pane.mainTab ==='a'){
    	  this.scrollTo(this.props.nav.para+'-section')
     } else {
       this.scrollTo('999-section')
@@ -150,11 +150,8 @@ class TextP extends Component {
 
 
   render() {
-  	//var chapter = sampleText[this.props.nav.chp];
+
     var chapter = this.props.nav.text[this.props.nav.chp];
-    console.log('chapter', chapter, this.props.nav.chp);
-    //console.log(chapter, this.props.nav.chp);
-  	//var scroll = chapter.map(items=>items+'-section');
 
     return (
               <div id='containerElement'>
@@ -222,7 +219,15 @@ class TextP extends Component {
               		})
 
               	}
-                {chapter && this.props.output === 'note' &&
+                {chapter && this.props.output === 'note' && !chapter.notes &&
+                <div className='row' >
+                        <div className= 'col-3 small' />
+                        <div className="col-9" onClick={e=>this.returnToText()} className="cursor" >
+                        <p>Sorry, no notes in this chapter's text. Click to return to main text.</p>
+                        </div>
+                </div>
+                }
+                {chapter && this.props.output === 'note' && chapter.notes &&
                   chapter.notes.map((items, i)=>{
                     return (
                       <div className='row' id={i + '-section'} ref={i + '-section'} >

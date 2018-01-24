@@ -44,10 +44,10 @@ class SText extends Component {
 
       <div>
       {this.props.pane[loc]==='a' &&
-        <TextPaneS placement={this.props.loc} hi={this.props.hi} />
+        <TextPaneS output="text" placement={this.props.loc} hi={this.props.hi} />
       }
       {this.props.pane[loc]==='b' &&
-        <NotePaneS placement={this.props.loc} hi={this.props.hi} />
+        <TextPaneS output="note" placement={this.props.loc} hi={this.props.hi} />
       }
       {this.props.pane[loc]==='c' &&
         <ResourcePaneS placement={this.props.loc} hi={this.props.hi} />

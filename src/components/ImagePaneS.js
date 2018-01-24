@@ -26,7 +26,7 @@ class MPImages extends Component {
 
     render(){
     return (
-    <div style={{height:this.props.hi}}>
+    <div style={{height:this.props.hi}} className='p15'>
       images here: {this.props.nav.siteName}
       <EnlargeSide loc='top' />
     </div>

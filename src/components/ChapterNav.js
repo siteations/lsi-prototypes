@@ -146,7 +146,7 @@ class ChapterN extends Component {
 			          <Divider inset={true} />
 			          {this.props.nav.chpDrawer.map(drawer=>{
 			          	if (drawer.sites===null){
-			          		var chpt = [<Divider />,<MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
+			          		var chpt = [<Divider />,<MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false} style={{fontFamily:'Eveleth'}}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
 			          		var items = drawer.headers.map(header=>{
 							      	return <MenuItem primaryText={header.value}  onClick={e=>this.selectSubChapter(drawer.id, header.p)} insetChildren={header.value.search(/I\.|II\.|III\.|IV\.|V\./g)}/>
 							      })
@@ -162,8 +162,8 @@ class ChapterN extends Component {
 							      })
 							      var arrSites = elems.concat(sites);
 
-							      var chpt = [<Divider />, <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
-							      var subsites = [ <MenuItem primaryText={'sites'} rightIcon={<ArrowDropRight />} insetChildren={true} menuItems={arrSites} /> , <Divider />]
+							      var chpt = [<Divider />, <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false} style={{fontFamily:'Eveleth'}}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
+							      var subsites = [ <MenuItem primaryText={'Chp '+drawer.id+' sites'} style={{fontStyle: 'italic'}} rightIcon={<ArrowDropRight />} insetChildren={true} menuItems={arrSites} /> , <Divider />]
 							      var items = drawer.headers.map(header=>{
 							      	return <MenuItem primaryText={header.value}  onClick={e=>this.selectSubChapter(drawer.id, header.p)} insetChildren={header.value.search(/I\.|II\.|III\.|IV\.|V\.|VI\.|VII\./g)}/>
 							      })

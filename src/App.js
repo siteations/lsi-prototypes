@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import './css/bootstrap.css';
 import './css/font-awesome.css';
+import 'react-image-gallery/styles/css/image-gallery.css';
 import './css/App.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

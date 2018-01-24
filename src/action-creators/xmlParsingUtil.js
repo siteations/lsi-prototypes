@@ -1,6 +1,7 @@
-
 import axios from 'axios';
 import Promise from 'bluebird';
+
+import hexConversion from './hexConversion.js';
 
 
 //-----------basic regex functions---------------
@@ -11,7 +12,7 @@ const startPage = (para)=>{
 }
 
 const scrub = (text)=>{
-	return text.replace(/<h5.+?>|<\/h5>|<head>|<hi rend=".+?">|<\/hi>|<\/head>|<name type="place">|<name type="pname">|<name type="place" key=".+?>|<name type="pname" key=".+?>|<\/name>/g, '')
+	return text.replace(/<h5.+?>|<\/h5>|<head>|<date.+?>|<\/date>|<hi rend=".+?">|<\/hi>|<\/head>|<name type="place">|<name type="pname">|<name type="place" key=".+?>|<name type="pname" key=".+?>|<\/name>/g, '')
 }
 
 const paraNotes = (para)=>{

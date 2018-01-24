@@ -182,6 +182,16 @@ hi {
   overflow-x: hidden;
 }
 
+.scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.p15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .tabSets {
   background-color: #bdbdbd;
   color: white;
