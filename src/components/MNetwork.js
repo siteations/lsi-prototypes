@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Tabs from './Tabs.js';
 
-import GeoPane  from './TextPane.js';
+import GeoPane  from './GeoPane.js';
 import NetworkPane  from './TextPane.js';
 
 import {setSideTop} from '../action-creators/paneActions.js';
@@ -23,6 +23,14 @@ class MPNetwork extends Component {
    this.state = {};
  }
 
+ componentDidMount(){
+   //console.dir(document.getElementById('sidePane').clientWidth)
+   var wide = document.getElementById('largePane').clientWidth
+   var height = wide*.69 - 37
+
+   this.setState({width: wide, height})
+ }
+
 
 
     render(){
@@ -33,7 +41,7 @@ class MPNetwork extends Component {
 
       <div className='scrollPaneL' >
       {this.props.pane.mainTab==='a' &&
-        <GeoPane scale='generic'/>
+        <GeoPane hi={this.state.height} scale='generic'/>
       }
       {this.props.pane.mainTab==='b' &&
         <NetworkPane focus='discourse' />

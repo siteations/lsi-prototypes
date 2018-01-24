@@ -192,6 +192,10 @@ hi {
   padding-right: 15px;
 }
 
+.mapboxgl-ctrl-logo {
+  visibility: hidden;
+}
+
 .tabSets {
   background-color: #bdbdbd;
   color: white;
