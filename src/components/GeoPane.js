@@ -86,6 +86,10 @@ class SPGeo extends Component {
           <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
         </div>
         <div ref={el => this.mapContainer = el} style={{position:'absolute', top:'33px', height:'100%', width:'100%'}} />
+        <div style={{position: 'absolute', top: this.props.hi, paddingLeft: '10px'}}>
+          {this.props.nav.siteName}<br/>
+          caption here
+          </div>
       </div>
     )
   }

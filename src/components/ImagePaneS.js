@@ -34,29 +34,29 @@ class MPImages extends Component {
       {
         original: './img/Seine_1862_Hydro_carte_1L.jpg',
         thumbnail: './img/Seine_1862_Hydro_carte_1S.jpg',
-        originalClass:'testing',
+        caption:'the caption goes here 1',
       },
       {
         original: './img/Seine_1862_Hydro_carte_2L.jpg',
         thumbnail: './img/Seine_1862_Hydro_carte_2S.jpg',
-        originalClass:'testing',
+        caption:'the caption goes here 2',
       },
       {
         original: './img/Seine_1862_Hydro_carte_3L.jpg',
         thumbnail: './img/Seine_1862_Hydro_carte_3S.jpg',
-        originalClass:'testing',
+        caption:'the caption goes here 3',
       },
       {
         original: './img/Seine_1862_Hydro_carte_4L.jpg',
         thumbnail: './img/Seine_1862_Hydro_carte_4S.jpg',
-        originalClass:'testing',
+        caption:'the caption goes here 4',
       }
     ]
 
 
     return (
     <div style={{height:this.props.hi}} id='images'>
-      <ImageGallery items={images} hi={this.props.hi} />
+      <ImageGallery items={images} hi={this.props.hi} loc="side" />
       <div className='plusOverlay'>
         <EnlargeSide loc='top' />
       </div>

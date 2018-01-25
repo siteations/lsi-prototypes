@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ImageGallery from './ImageGallery.js';
 
 import EnlargeSide from './EnlargeSide.js';
 
@@ -11,6 +12,7 @@ var buttons = [
   {label: 'science', value: 'c'},
   {label: 'social', value: 'd'},
   {label: 'senses', value: 'e'},
+
 ]
 
 
@@ -24,9 +26,38 @@ class MPImages extends Component {
 
 
     render(){
+
+      console.log(this.props.hi)
+
+      const images = [
+      {
+        original: './img/Seine_1862_Hydro_carte_1L.jpg',
+        thumbnail: './img/Seine_1862_Hydro_carte_1S.jpg',
+        caption:'the caption goes here 1',
+      },
+      {
+        original: './img/Seine_1862_Hydro_carte_2L.jpg',
+        thumbnail: './img/Seine_1862_Hydro_carte_2S.jpg',
+        caption:'the caption goes here 2',
+      },
+      {
+        original: './img/Seine_1862_Hydro_carte_3L.jpg',
+        thumbnail: './img/Seine_1862_Hydro_carte_3S.jpg',
+        caption:'the caption goes here 3',
+      },
+      {
+        original: './img/Seine_1862_Hydro_carte_4L.jpg',
+        thumbnail: './img/Seine_1862_Hydro_carte_4S.jpg',
+        caption:'the caption goes here 4',
+      }
+    ]
+
+
     return (
-    <div style={{height:this.props.hi}}>
-      images here: {this.props.nav.siteName} to be reformatted
+    <div style={{height:this.props.hi}} id='images'>
+      <ImageGallery items={images} hi={this.props.hi} loc="main" />
+      <div className='plusOverlay'>
+      </div>
     </div>
     )
   }

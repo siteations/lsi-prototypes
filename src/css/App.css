@@ -186,6 +186,10 @@ hi {
   color: lightgrey;
 }
 
+.grey2 {
+  color: darkgrey;
+}
+
 .scrollPaneL {
   overflow-y: auto;
   height: 80vh;

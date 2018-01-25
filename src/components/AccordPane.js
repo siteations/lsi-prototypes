@@ -26,7 +26,7 @@ class SideP extends Component {
  componentDidMount(){
    //console.dir(document.getElementById('sidePane').clientWidth)
    var wide = document.getElementById('sidePane').clientWidth
-   var height = wide*.69 - 32
+   var height = wide*.75 - 32
 
    this.setState({width: wide, height})
  }

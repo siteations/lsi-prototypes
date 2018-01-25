@@ -14,7 +14,11 @@ class Image extends Component {
 
   componentDidMount() {
     var wW = document.getElementById('images').clientWidth;
-    this.setState({width:wW, height: wW*.69 - 32});
+    if (this.props.loc==="side"){
+      this.setState({width:wW, height: wW*.75 - 32});
+    } else {
+      this.setState({width:wW, height: wW*.725 - 32});
+    }
     this.getSize();
   }
 
@@ -53,20 +57,24 @@ class Image extends Component {
       <div className="text-center">
         <img id='load' src={images[this.state.active].original} style={{width:this.state.widthImg}} onLoad={e=>this.getSize(e)} onChange={e=>this.getSize(e)}/>
       </div>
-      <div className="row">
-          {/*this.props.image.length > 1 &&
-            this.props.image.map((image, i)=>{
+      <div className="row" style={{position: 'absolute', top: this.state.height-40}} className="centerblock">
+          {images.length > 1 &&
+            images.map((image, i)=>{
               if(i===this.state.active){
-                return <span id={`slider ${i}`} className="fa fa-circle pad10" value="i" onTouchTap={e=>this.switchImg(e)} onClick={e=>this.switchImg(e)}></span>
+                return <span id={`sliders ${i}`} className="fa fa-circle p10" value="i" onTouchTap={e=>this.switchImg(e)} onClick={e=>this.switchImg(e)}></span>
               } else {
-                return <span id={`slider ${i}`} className="fa fa-circle-o pad10" value="i" onTouchTap={e=>this.switchImg(e)} onClick={e=>this.switchImg(e)}></span>
+                return <span id={`sliders ${i}`} className="fa fa-circle-o p10" value="i" onTouchTap={e=>this.switchImg(e)} onClick={e=>this.switchImg(e)}></span>
               }
             })
-          */}
+          }
       </div>
-      <div style={{position: 'absolute', top: this.state.height-10, paddingLeft: '10px'}}>
-      {this.props.nav.siteName}<br/>
-      caption here
+      <div style={{position: 'absolute', top: this.state.height-10, paddingLeft: '10px', width:'100%', backgroundColor: '#ffffff', opacity: .5}}>
+            {this.props.nav.siteName} <br/>
+      {images[this.state.active].caption}
+      </div>
+      <div style={{position: 'absolute', top: this.state.height-10, paddingLeft: '10px', width:'100%'}} >
+      {this.props.nav.siteName} <br/>
+      {images[this.state.active].caption}
       </div>
     </div>
     );
