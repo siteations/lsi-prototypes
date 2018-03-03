@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as d3 from "d3";
 
-import PaneContents from './MText.js';
+// import MText from './MText.js';
 // import MImages from './MImages.js';
-// //import MNetwork from './MNetwork.js';
+// import MNetwork from './MNetwork.js';
 // import MEdit from './MEdit.js';
 
-//import TestPane from './TestNetwork.js';
+import TestPane from './TestNetwork.js';
 
 import {setMainPane, setFullScreen} from '../action-creators/paneActions.js';
 
@@ -51,10 +51,11 @@ class CoreP extends Component {
     console.log('check on pane, functions', this.props, this.state)
 
   	return (
-  	<div className="col paneFull" id="largePane" onClick="" >
-	  		<PaneContents action={this.handleChange} />
-
-	  	{/*this.props.pane.main === 'images' &&
+  	<div className="col paneFull" id="largePane" onClick={e=>this.closeFull()}>
+	  	{/*this.props.pane.main === 'text' &&
+	  		<MText value={this.props.pane.mainTab} action={this.handleChange} />
+	  	}
+	  	{this.props.pane.main === 'images' &&
 	  		<MImages value={this.props.pane.mainTab} action={this.handleChange} />
 	  	}
 	  	{this.props.pane.main === 'networks' &&
@@ -63,28 +64,27 @@ class CoreP extends Component {
 	  	{this.props.pane.main === 'edits' &&
 	  		<MEdit value={this.props.pane.mainTab} action={this.handleChange} />
 	  	*/}
-      {/*
-        <TestPane data={data} />
-      */}
+      <TestPane data={data} />
+
     </div>
   	)
   }
 };
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    pane: state.pane,
-    }
+  // return {
+  //   pane: state.pane,
+  //   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    setMainPane: (type, tab) => {
-        dispatch(setMainPane(type, tab));
-    },
-    setFullScreen: (bool)=>{
-      dispatch(setFullScreen(bool));
-    }
+    // setMainPane: (type, tab) => {
+    //     dispatch(setMainPane(type, tab));
+    // },
+    // setFullScreen: (bool)=>{
+    //   dispatch(setFullScreen(bool));
+    // }
 
   }
 }

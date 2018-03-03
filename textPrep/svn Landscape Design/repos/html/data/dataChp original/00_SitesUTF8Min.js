@@ -611,8 +611,6 @@ var sitesUTF8Min =[ {
 }, {
     "name": "Tew Lodge Farm", "tgn": "", "type": "", "chp": "9", "chpid": "9006"
 }, {
-    "chpid": ""
-}, {
     "name": "Derby Arboretum", "tgn": "", "type": "", "chp": "9", "chpid": "9007"
 }, {
     "name": "Hatfield House, Hertfordshire", "tgn": "", "type": "", "chp": "9", "chpid": "9008"

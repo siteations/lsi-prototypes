@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import EnlargeFull from './EnlargeFull.js';
 
 import {setPanesTabs} from '../action-creators/paneActions.js';
+import {setUpdate} from '../action-creators/navActions.js';
 
 class Tab extends Component {
 //const STImages = function (props) {
@@ -15,6 +16,7 @@ class Tab extends Component {
  updateTab = (type,content,value) => {
     console.log(type,content,value);
     this.props.setPanesTabs(type,content,value);
+    this.props.setUpdate(true);
  }
 
   render(){
@@ -52,6 +54,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     setPanesTabs: (type, content, tab) => {
         dispatch(setPanesTabs(type, content, tab));
+    },
+    setUpdate: (bool) =>{
+      dispatch(setUpdate(bool));
     },
   }
 }

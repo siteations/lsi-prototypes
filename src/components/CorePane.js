@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import MText from './MText.js';
-import MImages from './MImages.js';
-import MNetwork from './MNetwork.js';
-import MEdit from './MEdit.js';
+import PaneContents from './MText.js';
+// import MImages from './MImages.js';
+// import MNetwork from './MNetwork.js';
+// import MEdit from './MEdit.js';
 
 
 import {setMainPane} from '../action-creators/paneActions.js';
@@ -20,7 +20,18 @@ class CoreP extends Component {
     this.props.setMainPane(this.props.pane.main, value); //master state
   };
 
-
+      // {this.props.pane.main === 'text' &&
+      //   <MText value={this.props.pane.mainTab} action={this.handleChange} />
+      // }
+      // {this.props.pane.main === 'images' &&
+      //   <MImages value={this.props.pane.mainTab} action={this.handleChange} />
+      // }
+      // {this.props.pane.main === 'networks' &&
+      //   <MNetwork value={this.props.pane.mainTab} action={this.handleChange} />
+      // }
+      // {this.props.pane.main === 'edits' &&
+      //   <MEdit value={this.props.pane.mainTab} action={this.handleChange} />
+      // }
 
   render() {
 
@@ -28,18 +39,7 @@ class CoreP extends Component {
 
   	return (
   	<div className="col-8 paneFixed" id="largePane">
-	  	{this.props.pane.main === 'text' &&
-	  		<MText value={this.props.pane.mainTab} action={this.handleChange} />
-	  	}
-	  	{this.props.pane.main === 'images' &&
-	  		<MImages value={this.props.pane.mainTab} action={this.handleChange} />
-	  	}
-	  	{this.props.pane.main === 'networks' &&
-	  		<MNetwork value={this.props.pane.mainTab} action={this.handleChange} />
-	  	}
-	  	{this.props.pane.main === 'edits' &&
-	  		<MEdit value={this.props.pane.mainTab} action={this.handleChange} />
-	  	}
+	  		<PaneContents value={this.props.pane.mainTab} action={this.handleChange} />
     </div>
   	)
   }

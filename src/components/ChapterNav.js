@@ -244,6 +244,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     	dispatch(setSiteData(id, name));
     },
     setUpdate: (bool) =>{
+    	console.log('setup in nav');
     	dispatch(setUpdate(bool));
     },
     setCoreText: () =>{

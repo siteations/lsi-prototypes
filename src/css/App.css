@@ -83,6 +83,11 @@ hi {
   font-style: italic;
 }
 
+ref {
+  vertical-align: super;
+  font-size: .6rem;
+}
+
 .sect {
   font-family: 'Texta';
   font-size: 18pt;
