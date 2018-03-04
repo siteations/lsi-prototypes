@@ -7,12 +7,8 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
-// import Scroll from 'react-scroll'; // Imports all Mixins
-// import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 
-// import scrollToElement from 'scroll-to-element';
 
-import sampleText from '../data/Gilpin.js';
 
 import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setCoreText} from '../action-creators/navActions.js';
 //drop-down toggles to hold nested info

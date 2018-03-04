@@ -16,6 +16,8 @@ import Menu from 'material-ui/Menu';
 
 import agents from '../data/07agentsA_ulan.js';
 import sites from '../data/07sitesA_tng.js';
+
+import hexConv from '../action-creators/hexConversion.js'
 //import indexTerms from '../data/xxxx';
 //import themeTerms from '../data/xxxx';
 
@@ -27,8 +29,8 @@ var sections2 = [
     {text:'agents' , icon:'fa fa-bookmark-o'},
     {text:'resources' , icon:'fa fa-bookmark-o'}];
 
-var ag = agents.map(a=>{return {text:a.name[0]}});
-var si = sites.filter(a=>a.type==='site').map(a=>{return {text:a.name[0]}});
+var ag = agents.map(a=>{return {text:hexConv(a.name[0])}});
+var si = sites.filter(a=>a.type==='site').map(a=>{return {text:hexConv(a.name[0])}});
 
 var fakeItems = {
   agents: ag,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Promise from 'bluebird';
 
-import hexConversion from './hexConversion.js';
+import hexConv from './hexConversion.js';
 
 
 //-----------basic regex functions---------------
@@ -38,7 +38,7 @@ const paraTitle = (header, i)=>{
 
 
 const singleId = (ref)=>{var res = ref.match(/\d+/g)? ref.match(/\d+/g)[0]: null; return res};
-const singleName = (ref)=>{var res = ref.match(/>.+?</g)? ref.match(/>.+?</g)[0].replace(/>|</g, '') : null; return res};
+const singleName = (ref)=>{var res = ref.match(/>.+?</g)? ref.match(/>.+?</g)[0].replace(/>|</g, '') : null; return res };
 
 const paraSites = (para, i)=>{
 	var agObj={};
@@ -59,10 +59,12 @@ const paraAgents = (para)=>{
 }
 
 const textAdj = (para, i)=>{
-	if (para.substring(0,4)==='<hea'){
-		return '<h5 class="sect">'+para+'</h5>';
+	var parag = hexConv(para);
+
+	if (parag.substring(0,4)==='<hea'){
+		return '<h5 class="sect">'+parag+'</h5>';
 	} else {
-		return para;
+		return parag;
 	}
 }
 
@@ -103,7 +105,7 @@ export const sampleText = ()=>{
 				sites: paraSites(chp),
 			};
 
-			})
+		})
 
 			var pgStart=1;
 
@@ -124,7 +126,8 @@ export const sampleText = ()=>{
 
 					if (p.text.substring(0,3)==='<h5'){
 						var words = scrub(p.text);
-						headers.push({p:i, value:words});
+						var wordHex = hexConv(words);
+						headers.push({p:i, value:wordHex});
 					}
 
 

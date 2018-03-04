@@ -78,7 +78,7 @@ class TextP extends Component {
   }
 
   minusFigures = (string)=>{
-    var str2 = string.replace(/\(fig\..+?\)| \(figs\..+?\)| \(see fig\..+?\)/g, '');
+    var str2 = string.replace(/\(fig\..+?\)| \(see figs\..+?\)|\(figs\..+?\)| \(see fig\..+?\)/g, '');
 
     return str2
   }

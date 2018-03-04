@@ -20,9 +20,6 @@ import CorePane  from './components/CorePane.js';
 import AccordPane from './components/AccordPane.js';
 import Section from './components/scroll.js';
 
-import Gilpin from './data/GilpinEdits.js';
-
-console.dir(Gilpin);
 
 //import axios from 'axios';
 
