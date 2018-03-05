@@ -25,8 +25,6 @@ class SBNet extends Component {
 
   render(){
 
-    console.log(this.props.hi)
-
     return (
     <div>
       <Tabs buttons={buttons} placement='bottom' />

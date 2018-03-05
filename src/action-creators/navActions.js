@@ -2,6 +2,7 @@
 import axios from 'axios';
 import Promise from 'bluebird';
 import {sampleText} from './xmlParsingUtil.js';
+import sites from '../data/07sitesA_tng.js';
 
 //import imageList from '../non-db/imageList.js';
 //import siteList from '../non-db/siteList.js';
@@ -31,6 +32,8 @@ export const SET_TEXT = 'LOAD_TEXT'
 export const SET_TITLE = 'LOAD_TITLE';
 export const SET_SITE_ID = 'SET_SITE_ID'
 export const SET_SITE_NAME = 'SET_SITE_NAME';
+export const SET_SITE_OBJ = 'SET_SITE_OBJ';
+
 //images & themes, networks & geographies
 
 /* internal elements, like specific paragraph or case or agent in different reducer */
@@ -78,6 +81,13 @@ export const setSiteName = (siteName) => {
 	};
 };
 
+export const setSiteObj= (siteObj) => {
+	return {
+		type: SET_SITE_OBJ,
+		siteObj
+	};
+};
+
 export const setUp = (bool) => {
 	return {
 		type: SET_UP,
@@ -106,6 +116,7 @@ const initMap = {
 
 	siteId: 7000,
 	siteName: 'Ermenonville',
+	siteObj: {},
 
 	setUp:false,
 
@@ -145,6 +156,10 @@ export const navReducer = (prevState = initMap, action) => {
 
 	case SET_SITE_NAME:
 		newState.siteName = action.siteName;
+		break;
+
+	case SET_SITE_OBJ:
+		newState.siteObj = action.siteObj;
 		break;
 
 	case SET_UP:
@@ -222,6 +237,14 @@ export const setChpParaN = (paraId) => dispatch => {
 export const setSiteData = (id, name) => dispatch => {
   dispatch(setSiteId(id));
   dispatch(setSiteName(name));
+
+  sites.map(site=>{
+  	if (+site.id === +id){
+  		dispatch(setSiteObj(site));
+  	}
+  })
+
+
 };
 
 export const setUpdate = (bool) => dispatch =>{

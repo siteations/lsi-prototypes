@@ -29,7 +29,7 @@ var sections2 = [
     {text:'agents' , icon:'fa fa-bookmark-o'},
     {text:'resources' , icon:'fa fa-bookmark-o'}];
 
-var ag = agents.map(a=>{return {text:hexConv(a.name[0])}});
+var ag = agents.map(a=>{return {text:hexConv(a.name[0]), id: a.id, ulan: a.ulan}});
 var si = sites.filter(a=>a.type==='site').map(a=>{return {text:hexConv(a.name[0])}});
 
 var fakeItems = {

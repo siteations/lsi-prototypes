@@ -85,7 +85,7 @@ hi {
 
 ref {
   vertical-align: super;
-  font-size: .6rem;
+  font-size: .7rem;
 }
 
 .sect {
@@ -239,4 +239,8 @@ ref {
 
 .underline {
   border-bottom: solid black 4px ;
+}
+
+.mapboxgl-marker {
+  opacity:.25 ;
 }
