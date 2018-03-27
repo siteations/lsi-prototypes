@@ -1,9 +1,29 @@
 var agents =[ {
-    "name":[ "George Perkins Marsh"], "id": 0, "chp": "09"
+    "name":[ "Charles Darwin"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Mill"], "id": 0, "chp": "09"
+    "name":[ "George Perkins Marsh","Marsh"], "id": 0, "chp": "09"
+}, {
+   "name":[ "Goethe"], "id": 0, "chp": "09"
+}, {
+   "name":[ "John Ruskin","Ruskin"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Ralph Waldo Emerson"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Henry David Thoreau"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Friedrich Nietzsche"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Sigmund Freud"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Jeremy Bentham","Bentham"], "id": 0, "chp": "09"
+}, {
+    "name":[ "James Mill","Mill"], "id": 0, "chp": "09"
+}, {
+    "name":[ "John Claudius Loudon"], "id": 0, "chp": "09"
 }, {
     "name":[ "Pierre-Joseph Redout&#x00E9;"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Repton"], "id": 0, "chp": "09"
 }, {
     "name":[ "Francis Bauer"], "id": 0, "chp": "09"
 }, {
