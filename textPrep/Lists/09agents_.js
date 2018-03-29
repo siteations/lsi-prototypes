@@ -3,7 +3,7 @@ var agents =[ {
 }, {
     "name":[ "George Perkins Marsh","Marsh"], "id": 0, "chp": "09"
 }, {
-   "name":[ "Goethe"], "id": 0, "chp": "09"
+    "name":[ "Goethe"], "id": 0, "chp": "09"
 }, {
    "name":[ "John Ruskin","Ruskin"], "id": 0, "chp": "09"
 }, {
@@ -15,15 +15,21 @@ var agents =[ {
 }, {
     "name":[ "Sigmund Freud"], "id": 0, "chp": "09"
 }, {
+    "name":[ "Rousseau"], "id": 0, "chp": "09"
+}, {
+    "name":[ "William Wordsworth","Wordsworth"], "id": 0, "chp": "09"
+}, {
     "name":[ "Jeremy Bentham","Bentham"], "id": 0, "chp": "09"
 }, {
     "name":[ "James Mill","Mill"], "id": 0, "chp": "09"
 }, {
-    "name":[ "John Claudius Loudon"], "id": 0, "chp": "09"
+    "name":[ "John Claudius Loudon","Loudon"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Edwin Budding"], "id": 0, "chp": "09"
 }, {
     "name":[ "Pierre-Joseph Redout&#x00E9;"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Repton"], "id": 0, "chp": "09"
+    "name":[ "Humphry Repton","Repton"], "id": 0, "chp": "09"
 }, {
     "name":[ "Francis Bauer"], "id": 0, "chp": "09"
 }, {
@@ -31,11 +37,31 @@ var agents =[ {
 }, {
     "name":[ "James Sowerby"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Andrew Jackson Downing","A. J. Downing"], "id": 0, "chp": "09"
+    "name":[ "William Robinson","Robinson"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Gertrude Jekyll"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Sir Reginald Blomfield"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Andrew Jackson Downing","A. J. Downing","Downing"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Frederick Law Olmsted","Olmsted","Mr. Olmsted"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Calvert Vaux","Vaux"], "id": 0, "chp": "09"
 }, {
     "name":[ "Nathaniel Ward"], "id": 0, "chp": "09"
 }, {
-    "name":[ "William Townsend Aiton"], "id": 0, "chp": "09"
+    "name":[ "Sir Joseph Banks","Sir Joseph"], "id": 0, "chp": "09"
+}, {
+    "name":[ "George III"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Allan Cunningham"], "id": 0, "chp": "09"
+}, {
+    "name":[ "James Bowie"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Allan Cunningham"], "id": 0, "chp": "09"
+}, {
+    "name":[ "William Townsend Aiton","Aiton"], "id": 0, "chp": "09"
 }, {
     "name":[ "Daniel Solander"], "id": 0, "chp": "09"
 }, {
@@ -43,7 +69,7 @@ var agents =[ {
 }, {
     "name":[ "Jonas Dryander"], "id": 0, "chp": "09"
 }, {
-    "name":[ "John Claudius Loudon"], "id": 0, "chp": "09"
+    "name":[ "James Sowerby"], "id": 0, "chp": "09"
 }, {
     "name":[ "William Jackson"], "id": 0, "chp": "09"
 }, {
@@ -53,7 +79,13 @@ var agents =[ {
 }, {
     "name":[ "George Frederick Stratton", "George"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Sir Joseph","Joseph Paxton"], "id": 0, "chp": "09"
+    "name":[ "Jussieu"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Joseph Paxton","Paxton"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Decimus Burton"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Richard Turner"], "id": 0, "chp": "09"
 }, {
     "name":[ "Thomas Andrew Knight"], "id": 0, "chp": "09"
 }, {
@@ -61,7 +93,11 @@ var agents =[ {
 }, {
     "name":[ "Oxford"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Joseph Strutt"], "id": 0, "chp": "09"
+    "name":[ "Joseph Strutt","Strutt"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Jane Webb"], "id": 0, "chp": "09"    
+}, {
+    "name":[ "Agnes","Agnes Loudon"], "id": 0, "chp": "09"
 }, {
     "name":[ "William Barron"], "id": 0, "chp": "09"
 }, {
@@ -71,9 +107,7 @@ var agents =[ {
 }, {
     "name":[ "William Jackson Hooker","Hooker"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Harvard"], "id": 0, "chp": "09"
-}, {
-    "name":[ "William Bartram"], "id": 0, "chp": "09"
+    "name":[ "William Bartram","William"], "id": 0, "chp": "09"
 }, {
     "name":[ "John Bartram"], "id": 0, "chp": "09"
 }, {
@@ -149,8 +183,6 @@ var agents =[ {
 }, {
     "name":[ "Daniel H. Burnham"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Mr. Olmsted","Frederick Law Olmsted"], "id": 0, "chp": "09"
-}, {
     "name":[ "Stanford White"], "id": 0, "chp": "09"
 }, {
     "name":[ "Frank J. Helmie","Frank J. Helmle"], "id": 0, "chp": "09"
@@ -178,8 +210,6 @@ var agents =[ {
     "name":[ "Allen"], "id": 0, "chp": "09"
 }, {
     "name":[ "Charles C. McLaughlin"], "id": 0, "chp": "09"
-}, {
-    "name":[ "William Wordsworth"], "id": 0, "chp": "09"
 }, {
     "name":[ "C. S. Francis"], "id": 0, "chp": "09"
 }, {
