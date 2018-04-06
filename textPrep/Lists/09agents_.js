@@ -105,6 +105,38 @@ var agents =[ {
 }, {
     "name":[ "David Douglas"], "id": 0, "chp": "09"
 }, {
+    "name":[ "Le Corbusier"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Capability Brown","Brown"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Price"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Gilpin"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Whately"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Alexander Forbes"], "id": 0, "chp": "09"
+}, {
+    "name":[ "David Douglas"], "id": 0, "chp": "09"
+}, {
+    "name":[ "William Andrews Nesfield","Nesfield"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Batty Langley"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Nash"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Yates"], "id": 0, "chp": "09"
+}, {
+    "name":[ "John Gibson"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Lewis Hornblower"], "id": 0, "chp": "09"
+}, {
+    "name":[ "John Robertson"], "id": 0, "chp": "09"
+}, {
+    "name":[ "James Duffield Harding"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Thomas Nuttall","Nuttall"], "id": 0, "chp": "09"
+}, {
     "name":[ "William Jackson Hooker","Hooker"], "id": 0, "chp": "09"
 }, {
     "name":[ "William Bartram","William"], "id": 0, "chp": "09"
@@ -124,6 +156,14 @@ var agents =[ {
     "name":[ "Henry Clay"], "id": 0, "chp": "09"
 }, {
     "name":[ "William Railton"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Andr&#x00E9; Parmentier","Parmentier"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Alexis de Tocqueville","Tocqueville"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Luther Tucker"], "id": 0, "chp": "09"
+}, {
+    "name":[ "***David Douglas"], "id": 0, "chp": "09"
 }, {
     "name":[ "Admiral Horatio Nelson"], "id": 0, "chp": "09"
 }, {
