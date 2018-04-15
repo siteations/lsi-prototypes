@@ -169,7 +169,7 @@ var agents =[ {
 }, {
     "name":[ "Rousseau"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Robert Mills"], "id": 0, "chp": "09"
+    "name":[ "Robert Mills","Mills"], "id": 0, "chp": "09"
 }, {
     "name":[ "William Yeaton"], "id": 0, "chp": "09"
 }, {
@@ -189,21 +189,17 @@ var agents =[ {
 }, {
     "name":[ "Fr&#x00E9;d&#x00E9;ric Chopin"], "id": 0, "chp": "09"
 }, {
-    "name":[ "James Hillhouse"], "id": 0, "chp": "09"
+    "name":[ "James Hillhouse","Hillhouse"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Jacob Bigelow"], "id": 0, "chp": "09"
+    "name":[ "Jacob Bigelow","Bigelow"], "id": 0, "chp": "09"
 }, {
     "name":[ "George Watson Brimmer"], "id": 0, "chp": "09"
 }, {
-    "name":[ "James Smillie"], "id": 0, "chp": "09"
-}, {
-    "name":[ "J."], "id": 0, "chp": "09"
-}, {
-    "name":[ "C. Smillie"], "id": 0, "chp": "09"
+    "name":[ "James Smillie","J. and C. Smillie"], "id": 0, "chp": "09"
 }, {
     "name":[ "Martin Milmore"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Fernando Wood"], "id": 0, "chp": "09"
+    "name":[ "Fernando Wood","Wood"], "id": 0, "chp": "09"
 }, {
     "name":[ "Robert Moses","Moses"], "id": 0, "chp": "09"
 }, {
@@ -214,6 +210,52 @@ var agents =[ {
     "name":[ "Andrew Ellicott"], "id": 0, "chp": "09"
 }, {
     "name":[ "Pierre L'Enfant"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Napoleon"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Louis XIV"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Pierre L'Enfant"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Hubert Robert"], "id": 0, "chp": "09"
+}, {
+    "name":[ "George Washington","Washington"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Denon"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Gonduin"], "id": 0, "chp": "09"
+}, {
+    "name":[ "W. Woodruff"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Henry Dearborn","Dearborn"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Charles Bulfinch"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Maximilien Godefroy"], "id": 0, "chp": "09"
+}, {
+    "name":[ "John Evelyn"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Christopher Wren"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Antoine-Chrysostome Quatrem&#x00E8;re de Quincy"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Amaury Duval"], "id": 0, "chp": "09"
+}, {
+    "name":[ "P&#x00E8;re François de La Chaise"], "id": 0, "chp": "09"
+}, {
+    "name":[ "AlexandreTh&#x00E9;odore Brongniart"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Josiah Quincy"], "id": 0, "chp": "09"
+}, {
+    "name":[ "William Cullen Bryant","Bryant"], "id": 0, "chp": "09"
+}, {
+    "name":[ "P&#x00E8;re Lachaise"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Joseph Story"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Egbert Viele","Viele"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Lep&#x00E8;re"], "id": 0, "chp": "09"
 }, {
     "name":[ "William LeBaron Jenny"], "id": 0, "chp": "09"
 }, {
