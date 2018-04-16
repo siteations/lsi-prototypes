@@ -88,20 +88,20 @@ chapters.forEach(item=>{
 //---------------------------- agents basics (run me first) -----------------------------------
 
 
-	var agentsInd = [];
-	var agentsArr=[];
-	var agents = contents.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
-		.forEach(match=>{
-			var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
-			if (agentsInd.indexOf(agent)===-1){
-				agentsInd.push(agent)
-				agentsArr.push({name:[agent], id:0, chp:item })
-			}
-	});
+	// var agentsInd = [];
+	// var agentsArr=[];
+	// var agents = contents.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
+	// 	.forEach(match=>{
+	// 		var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+	// 		if (agentsInd.indexOf(agent)===-1){
+	// 			agentsInd.push(agent)
+	// 			agentsArr.push({name:[agent], id:0, chp:item })
+	// 		}
+	// });
 
-	console.log(agentsArr, agentsInd.length)
+	// console.log(agentsArr, agentsInd.length)
 
-	fs.writeFileSync(`../Lists/${item}agents.js`, 'var agents='+JSON.stringify(agentsArr)+'; module.exports.agents = agents');
+	// fs.writeFileSync(`../Lists/${item}agents.js`, 'var agents='+JSON.stringify(agentsArr)+'; module.exports.agents = agents');
 
 
 
@@ -138,49 +138,58 @@ chapters.forEach(item=>{
 	console.log(placeArr, placeInd.length)
 	fs.writeFileSync(`../Lists/${item}sites.js`, 'var sites='+JSON.stringify(siteArr)+'; module.exports = sites');
 	fs.writeFileSync(`../Lists/${item}place.js`, 'var place='+JSON.stringify(placeArr)+'; module.exports = place');
-*/
+
 
 })
 
+*/
 
 
 //-------------revise agents and check matching (2 rounds), secondary text read through-------------------
 
-// TIMING NOTE:
-// First round, basic checks for names: 2pm-4:52pm, 4:52-5:37pm for secondary checks (~4 hrs)
-// in advance of computational count
+/*
+TIMING NOTE:
+First round, basic checks for names: 2pm-4:52pm, 4:52-5:37pm for secondary checks (~4 hrs)
+in advance of computational count
 
-// grab addition agents and place additions during read through...
-// second round additions of name/placement correction in oxygen: 12:23pm-1:33pm, 3:36-3:54PM, 6:30-7:12pm, plus an hour min. 8:40pm-9pm, 1-2:50pm (1+1.5+.75+.25+2 = 5.5-6 hr with footnotes)
-// addition of notes:
+grab addition agents and place additions during read through...
+second round additions of name/placement correction in oxygen: 12:23pm-1:33pm, 3:36-3:54PM, 6:30-7:12pm, plus an hour min. 8:40pm-9pm, 1-2:50pm (1+1.5+.75+.25+2 = 5.5-6 hr with footnotes)
+addition of notes:
 
+*/
 
-// const {agents} = require(`../Lists/07agents.js`);
-// const agJS = agents.map((ag,i)=>{ag.count=0; ag.id=7000+i; return ag});
+const {agents} = require(`../Lists/09agents_.js`);
+const agJS = agents.map((ag,i)=>{ag.count=0; ag.id=9000+i; return ag});
 
-// var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07a.xml`, 'utf8');
-// var chpCount = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g).length
-// var omitted =[]
-// var chpAgents = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
-// 											.forEach(match=>{
-// 														var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
-// 														var agentType = (match.match(/subtype="\w+?"/g))? match.match(/subtype="\w+?"/g)[0].replace(/subtype="/g, '').replace(/"/g, '') : null ;
-// 														var currCount = chpCount;
-// 														agJS.forEach(ag=>{
-// 														if (ag.name.indexOf(agent)!==-1){
-// 															ag.count ++ ;
-// 															ag.type = agentType ;
-// 															delete ag.subtype;
-// 															chpCount -- ;
-// 														}
-// 														})
-// 														if (currCount === chpCount){omitted.push(agent)};
-// 												});
-// 	const ag = agJS.filter(each=>each.count===0);
+var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/09a.xml`, 'utf8');
+var chpCount = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g).length
+var omitted =[]
+var chpAgents = chpRev.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
+											.forEach(match=>{
+														var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
+														var agentType = (match.match(/subtype="\w+?"/g))? match.match(/subtype="\w+?"/g)[0].replace(/subtype="/g, '').replace(/"/g, '') : null ;
+														var currCount = chpCount;
+														agJS.forEach(ag=>{
+														if (ag.name.indexOf(agent)!==-1){
+															ag.count ++ ;
+															ag.type = agentType ;
+															delete ag.subtype;
+															chpCount -- ;
+														}
+														})
+														if (currCount === chpCount){omitted.push(agent)};
+												});
+	const ag = agJS.filter(each=>each.count===0);
 
-// //console.log('agents found', ag);
+console.log('agents found', ag);
+console.log('agents omitted', omitted);
+//console.log('agents list', agJS);
 
-// fs.writeFileSync(`../Lists/07agentsA.js`, 'var agents='+JSON.stringify(agJS)+'; module.exports.agents = agents');
+// HOW TO USE LOGS: use omitted and ag found, to update and correct the agents list, focus tagging of individuals
+
+//fs.writeFileSync(`../Lists/09agentsA.js`, 'var agents='+JSON.stringify(agJS)+'; module.exports.agents = agents');
+
+})
 
 //-------------revise sites and check matching (2 rounds), secondary text read through-------------------
 
