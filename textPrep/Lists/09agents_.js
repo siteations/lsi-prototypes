@@ -271,7 +271,31 @@ var agents =[ {
 }, {
     "name":[ "John H. Duncan"], "id": 0, "chp": "09"
 }, {
-    "name":[ "McKim, Mead & White"], "id": 0, "chp": "09"
+    "name":[ "George Hayward "], "id": 0, "chp": "09"
+}, {
+    "name":[ "Jacob Wrey Mould"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Emma Stebbins"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Ignaz Anton Pilat"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Andrew Haswell Green"], "id": 0, "chp": "09"
+}, {
+    "name":[ "James Stranahan"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Charles Sprague Sargent","Sargent"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Henry Hobson Richardson","Richardson"], "id": 0, "chp": "09"
+}, {
+    "name":[ "John C. Phillips"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Peabody and Stearns"], "id": 0, "chp": "09"
+}, {
+    "name":[ "George Washington Vanderbilt"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Olmsted &amp; Eliot, Landscape Architects"], "id": 0, "chp": "09"
+}, {
+    "name":[ "McKim, Mead, and White"], "id": 0, "chp": "09"
 }, {
     "name":[ "Frederick MacMonnies"], "id": 0, "chp": "09"
 }, {
