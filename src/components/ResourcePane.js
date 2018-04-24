@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import EnlargeFull from './EnlargeFull.js';
 
@@ -17,7 +18,9 @@ class ResourcePane extends Component {
 
 
   render() {
-  	var chapter = ['a'];
+  	var chapter = this.props.nav.chp;
+  	var name = this.props.nav.text[this.props.nav.chp].titles;
+  	console.log('resources', this.props);
 
     return (
               <div >
@@ -25,11 +28,11 @@ class ResourcePane extends Component {
 	                	<div className= 'col-3 small'>
 	                	</div>
 	                	<div className= 'col-9 small'>
-	                		<h3 className='p10'>resources</h3>
-	                		<h5>pulled in by chapter or site</h5>
+	                		<h3 className='p10'>resources: {name.title}</h3>
+	                		<h5>{name.subtitle}</h5>
 	                	</div>
 	                </div>
-              	{chapter &&
+              	{/*chapter &&
               		chapter.map(items=>{
               			return (
 			              	<div className='row' id={items + 'section'}>
@@ -45,10 +48,45 @@ class ResourcePane extends Component {
               			        )
               		})
 
-              	}
+              	*/}
               </div>
     );
   }
 }
 
-export default ResourcePane;
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    pane: state.pane,
+    nav: state.nav,
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    // setChapterDrawer: (button) => {
+    //     dispatch(setChapterDrawer(button));
+    // },
+    // setChpPara: (chp, para) => {
+    //     dispatch(setChpPara(chp, para));
+    // },
+    // setChpParaL: (para) => {
+    //     dispatch(setChpParaL(para));
+    // },
+    // setSiteData: (id, name)=>{
+    // 	dispatch(setSiteData(id, name));
+    // },
+    // setUpdate: (bool) =>{
+    // 	dispatch(setUpdate(bool));
+    // },
+    // setPanesTabs: (a,b,c)=>{
+    //   dispatch(setPanesTabs(a,b,c));
+    // }
+
+  }
+}
+
+const TextPane = connect(mapStateToProps, mapDispatchToProps)(ResourcePane);
+
+
+export default TextPane;

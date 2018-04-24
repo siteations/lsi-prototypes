@@ -7,10 +7,15 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
+// import Scroll from 'react-scroll'; // Imports all Mixins
+// import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 
+// import scrollToElement from 'scroll-to-element';
 
+import sampleText from '../data/Gilpin.js';
 
 import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setCoreText} from '../action-creators/navActions.js';
+import {loadResources} from '../action-creators/searchActions.js';
 //drop-down toggles to hold nested info
 //when clicked should open drawer to allow futher subselection
 
@@ -24,6 +29,7 @@ class ChapterN extends Component {
   componentDidMount() {
      this.props.setCoreText();
      this.props.setUpdate(true);
+     this.props.loadResources(null, null);
   }
 
 
@@ -225,6 +231,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
+    refer: state.refer
     }
 }
 
@@ -240,13 +247,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     	dispatch(setSiteData(id, name));
     },
     setUpdate: (bool) =>{
-    	console.log('setup in nav');
     	dispatch(setUpdate(bool));
     },
     setCoreText: () =>{
     	dispatch(setCoreText());
     },
-
+    loadResources: (type, id)=>{
+    	console.log('got here');
+    	dispatch(loadResources(type, id));
+    }
   }
 }
 
