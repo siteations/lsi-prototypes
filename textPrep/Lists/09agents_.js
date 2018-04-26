@@ -9,9 +9,9 @@ var agents =[ {
 }, {
    "name":[ "John Ruskin","Ruskin"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Ralph Waldo Emerson"], "id": 0, "chp": "09"
+    "name":[ "Ralph Waldo Emerson","Emerson"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Henry David Thoreau"], "id": 0, "chp": "09"
+    "name":[ "Henry David Thoreau","Thoreau"], "id": 0, "chp": "09"
 }, {
     "name":[ "Friedrich Nietzsche"], "id": 0, "chp": "09"
 }, {
@@ -107,6 +107,12 @@ var agents =[ {
 }, {
     "name":[ "David Douglas"], "id": 0, "chp": "09"
 }, {
+    "name":[ "Newton"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Gifford Pinchot"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Oliver Goldsmith"], "id": 0, "chp": "09"
+}, {
     "name":[ "Le Corbusier"], "id": 0, "chp": "09"
 }, {
     "name":[ "Capability Brown","Brown"], "id": 0, "chp": "09"
@@ -118,8 +124,6 @@ var agents =[ {
     "name":[ "Whately"], "id": 0, "chp": "09"
 }, {
     "name":[ "Alexander Forbes"], "id": 0, "chp": "09"
-}, {
-    "name":[ "David Douglas"], "id": 0, "chp": "09"
 }, {
     "name":[ "William Andrews Nesfield","Nesfield"], "id": 0, "chp": "09"
 }, {
@@ -170,8 +174,6 @@ var agents =[ {
     "name":[ "Alexis de Tocqueville","Tocqueville"], "id": 0, "chp": "09"
 }, {
     "name":[ "Luther Tucker"], "id": 0, "chp": "09"
-}, {
-    "name":[ "***David Douglas"], "id": 0, "chp": "09"
 }, {
     "name":[ "Admiral Horatio Nelson"], "id": 0, "chp": "09"
 }, {
@@ -257,8 +259,6 @@ var agents =[ {
 }, {
     "name":[ "William Cullen Bryant","Bryant"], "id": 0, "chp": "09"
 }, {
-    "name":[ "P&#x00E8;re Lachaise"], "id": 0, "chp": "09"
-}, {
     "name":[ "Joseph Story"], "id": 0, "chp": "09"
 }, {
     "name":[ "Egbert Viele","Viele"], "id": 0, "chp": "09"
@@ -318,8 +318,6 @@ var agents =[ {
     "name":[ "Sylvester Baxter","Baxter"], "id": 0, "chp": "09"
 }, {
     "name":[ "Richard Morris Hunt","Hunt"], "id": 0, "chp": "09"
-}, {
-    "name":[ "Giffor Pinchot"], "id": 0, "chp": "09"
 }, {
     "name":[ "John Charles Olmsted"], "id": 0, "chp": "09"    
 }, {
