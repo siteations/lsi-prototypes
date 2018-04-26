@@ -5,6 +5,8 @@ var agents =[ {
 }, {
     "name":[ "Goethe"], "id": 0, "chp": "09"
 }, {
+    "name":[ "Galileo"], "id": 0, "chp": "09"
+}, {
    "name":[ "John Ruskin","Ruskin"], "id": 0, "chp": "09"
 }, {
     "name":[ "Ralph Waldo Emerson"], "id": 0, "chp": "09"
@@ -23,7 +25,7 @@ var agents =[ {
 }, {
     "name":[ "James Mill","Mill"], "id": 0, "chp": "09"
 }, {
-    "name":[ "John Claudius Loudon","Loudon"], "id": 0, "chp": "09"
+    "name":[ "John Claudius Loudon","Loudon","Loudons"], "id": 0, "chp": "09"
 }, {
     "name":[ "Edwin Budding"], "id": 0, "chp": "09"
 }, {
@@ -51,7 +53,7 @@ var agents =[ {
 }, {
     "name":[ "Nathaniel Ward"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Sir Joseph Banks","Sir Joseph"], "id": 0, "chp": "09"
+    "name":[ "Sir Joseph Banks","Sir Joseph","Banks"], "id": 0, "chp": "09"
 }, {
     "name":[ "George III"], "id": 0, "chp": "09"
 }, {
@@ -77,7 +79,7 @@ var agents =[ {
 }, {
     "name":[ "Jeremy Bentham","Bentham"], "id": 0, "chp": "09"
 }, {
-    "name":[ "George Frederick Stratton", "George"], "id": 0, "chp": "09"
+    "name":[ "George Frederick Stratton", "George","General Stratton"], "id": 0, "chp": "09"
 }, {
     "name":[ "Jussieu"], "id": 0, "chp": "09"
 }, {
@@ -97,7 +99,7 @@ var agents =[ {
 }, {
     "name":[ "Jane Webb"], "id": 0, "chp": "09"    
 }, {
-    "name":[ "Agnes","Agnes Loudon"], "id": 0, "chp": "09"
+    "name":[ "Agnes","Agnes Loudon","Loudons"], "id": 0, "chp": "09"
 }, {
     "name":[ "William Barron"], "id": 0, "chp": "09"
 }, {
@@ -143,9 +145,15 @@ var agents =[ {
 }, {
     "name":[ "John Bartram"], "id": 0, "chp": "09"
 }, {
-    "name":[ "David Hosack"], "id": 0, "chp": "09"
+    "name":[ "David Hosack","Hosack"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Thomas Jefferson"], "id": 0, "chp": "09"
+    "name":[ "Thomas Jefferson","Jefferson"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Caroline DeWint"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Matthew Vassar"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Millard Fillmore"], "id": 0, "chp": "09"
 }, {
     "name":[ "François Andr&#x00E9; Michaux"], "id": 0, "chp": "09"
 }, {
@@ -235,7 +243,7 @@ var agents =[ {
 }, {
     "name":[ "John Evelyn"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Christopher Wren"], "id": 0, "chp": "09"
+    "name":[ "Christopher Wren","Wren"], "id": 0, "chp": "09"
 }, {
     "name":[ "Antoine-Chrysostome Quatrem&#x00E8;re de Quincy"], "id": 0, "chp": "09"
 }, {
@@ -263,17 +271,25 @@ var agents =[ {
 }, {
     "name":[ "John C. Phillips"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Daniel H. Burnham"], "id": 0, "chp": "09"
+    "name":[ "Daniel H. Burnham","Burnham","Daniel Burnham"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Stanford White"], "id": 0, "chp": "09"
+    "name":[ "Henry Sargent Codman"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Mariana Griswold Van Rensselaer"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Boldre"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Stanford White", "White"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Jacopo d\'Antonio Tatti"], "id": 0, "chp": "09"
 }, {
     "name":[ "Frank J. Helmie","Frank J. Helmle"], "id": 0, "chp": "09"
 }, {
     "name":[ "John H. Duncan"], "id": 0, "chp": "09"
 }, {
-    "name":[ "George Hayward "], "id": 0, "chp": "09"
+    "name":[ "George Hayward"], "id": 0, "chp": "09"
 }, {
-    "name":[ "Jacob Wrey Mould"], "id": 0, "chp": "09"
+    "name":[ "Jacob Wrey Mould","Mould"], "id": 0, "chp": "09"
 }, {
     "name":[ "Emma Stebbins"], "id": 0, "chp": "09"
 }, {
@@ -295,7 +311,19 @@ var agents =[ {
 }, {
     "name":[ "Olmsted &amp; Eliot, Landscape Architects"], "id": 0, "chp": "09"
 }, {
-    "name":[ "McKim, Mead, and White"], "id": 0, "chp": "09"
+    "name":[ "McKim, Mead and White"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Charles Eliot","Eliot"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Sylvester Baxter","Baxter"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Richard Morris Hunt","Hunt"], "id": 0, "chp": "09"
+}, {
+    "name":[ "Giffor Pinchot"], "id": 0, "chp": "09"
+}, {
+    "name":[ "John Charles Olmsted"], "id": 0, "chp": "09"    
+}, {
+    "name":[ "Frederick Law Olmsted, Jr."], "id": 0, "chp": "09"
 }, {
     "name":[ "Frederick MacMonnies"], "id": 0, "chp": "09"
 }, {
@@ -325,6 +353,10 @@ var agents =[ {
 }, {
     "name":[ "Charles E. Beveridge"], "id": 0, "chp": "09"
 }, {
+    "name":[ "Ernst Haeckel"], "id": 0, "chp": "09"
+}, {
+    "name":[ "David Lowenthal"], "id": 0, "chp": "09"
+}, {
     "name":[ "Theodora Kimball"], "id": 0, "chp": "09"
 }, {
     "name":[ "Benjamin Blom"], "id": 0, "chp": "09"
@@ -337,7 +369,7 @@ var agents =[ {
 }, {
     "name":[ "Alfred A. Knopf"], "id": 0, "chp": "09"
 }, {
-    "name":[ "George W. Vanderbilt"], "id": 0, "chp": "09"
+    "name":[ "George W. Vanderbilt","Vanderbilt"], "id": 0, "chp": "09"
 }, {
     "name":[ "Paul Rocheleau"], "id": 0, "chp": "09"
 }, {
