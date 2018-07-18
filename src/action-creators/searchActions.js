@@ -19,6 +19,8 @@ export const GET_ACTIVE = 'GET_ACTIVE';
 export const GET_ACTIVE_ID = 'GET_ACTIVE_ID';
 export const GET_ACTIVE_TYPE = 'GET_ACTIVE_TYPE';
 
+export const GET_TAGS = 'GET_TAGS';
+
 
 //-------------------ACTION CREATORS - vanilla loading of information
 export const getResources = (resources) => {
@@ -84,6 +86,13 @@ export const getActive = (resourceActive) => {
 	};
 };
 
+export const getTags = (tags) => {
+	return {
+		type: GET_TAGS,
+		tags
+	};
+};
+
 
 
 
@@ -99,6 +108,9 @@ const initMap = {
 	resourceId: null,
 	resourceType: null,
 	resourceActive: {},
+
+	tagsAll:[],
+	tagsActive:[],
 };
 
 
@@ -132,6 +144,10 @@ export const searchReducer = (prevState = initMap, action) => {
 		newState.resourceActive = action.resourceActive;
 		break;
 
+	case GET_TAGS:
+		newState.tagsAll = action.tags;
+		break;
+
 	default:
 		return prevState;
 	}
@@ -143,10 +159,45 @@ export const searchReducer = (prevState = initMap, action) => {
 
 /* ------------       DISPATCHERS     ------------------ */
 
+export const loadTags = () => dispatch => {
+	axios.get('https://api.zotero.org/groups/2144277/tags') // add limit structure
+	.then(res=>{
+		//console.log(res.data);
+		dispatch(getTags(res.data));
+	})
+	.catch(console.log);
+}
+
 export const loadResources = (type,id) => dispatch => {
-	if (type===null){ // load all
-		console.log('from export, top-level', zoteroLib); //working local
-		dispatch(getResources(zoteroLib));
+	var limit = 100;
+
+	if (type===null){
+		var calls=[];
+		var res = [];
+
+		axios.get('https://api.zotero.org/groups/2144277/items/top?itemType=book&limit='+limit)
+			.then(result=>{
+				res = result.data;
+				console.log('zotero, top-level first call', res);
+				var resFinal = (result.headers.link)? result.headers.link.split(',').filter(item=>item.includes('rel="last"'))[0].split(';')[0] : null ;
+				var last = (resFinal)? +resFinal.match(/start=\d*/g)[0].replace('start=',''): null ;
+				var start=limit;
+
+				while (start<=last){
+					resFinal=resFinal.replace(/start=\d*/g, 'start='+start).replace(/<|>/g, '');
+					start+=limit;
+					calls.push(axios.get(resFinal));
+				}
+
+				Promise.all(calls)
+				.then(resAll=>{
+					resAll.forEach(item=>res=res.concat(item.data));
+					res = res.map(item=>{item.data.contrib = item.meta.createdByUser; return item.data });
+					console.log('zotero, top-level items', res);
+					dispatch(getResources(res));
+				})
+			})
+			.catch(console.log);
 	}
 
 	if (type !== null && id > -1){ //set for chapter currently; chp and #
