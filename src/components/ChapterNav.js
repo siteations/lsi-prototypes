@@ -15,6 +15,7 @@ import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import sampleText from '../data/Gilpin.js';
 
 import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setCoreText} from '../action-creators/navActions.js';
+import {loadResources} from '../action-creators/searchActions.js';
 //drop-down toggles to hold nested info
 //when clicked should open drawer to allow futher subselection
 
@@ -28,6 +29,7 @@ class ChapterN extends Component {
   componentDidMount() {
      this.props.setCoreText();
      this.props.setUpdate(true);
+     this.props.loadResources(null, null);
   }
 
 
@@ -229,6 +231,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
+    refer: state.refer
     }
 }
 
@@ -249,7 +252,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     setCoreText: () =>{
     	dispatch(setCoreText());
     },
-
+    loadResources: (type, id)=>{
+    	console.log('got here');
+    	dispatch(loadResources(type, id));
+    }
   }
 }
 

@@ -1,37 +1,60 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as d3 from "d3";
 
-import MText from './MText.js';
-import MImages from './MImages.js';
-import MNetwork from './MNetwork.js';
-import MEdit from './MEdit.js';
+import PaneContents from './MText.js';
+// import MImages from './MImages.js';
+// //import MNetwork from './MNetwork.js';
+// import MEdit from './MEdit.js';
+
+//import TestPane from './TestNetwork.js';
+
+import {setMainPane, setFullScreen} from '../action-creators/paneActions.js';
+
+const getData = ()=>{
+  var range = Math.floor(100*Math.random());
+  var data = {
+              nodes:d3.range(0, range).map(function(d){ return {label: "node "+d ,r:~~d3.randomUniform(8, 28)()}}),
+              links:d3.range(0, range).map(function(){
+                var s = ~~d3.randomUniform(range)(), t = ~~d3.randomUniform(range)();
+                return {label: "connects "+s+':'+t, source:s, target:t} })
+          };
+
+  return data;
+}
 
 
-import {setMainPane} from '../action-creators/paneActions.js';
 
 class CoreP extends Component {
 	constructor(props) {
     super(props);
-    this.state = {};
-    this.handleChange=this.handleChange.bind(this)
+    this.state = {
+      update: false
+    };
+    // this.handleChange=this.handleChange.bind(this)
+    this.closeFull=this.closeFull.bind(this)
   }
 
-  handleChange = (value) => {
-    this.props.setMainPane(this.props.pane.main, value); //master state
-  };
+  // handleChange = (value) => {
+  //   this.props.setMainPane(this.props.pane.main, value); //master state
+  // };
+
+  closeFull(){
+    this.setState({update:!this.state.update});
+  }
 
 
 
   render() {
+    var data = getData();
 
     console.log('check on pane, functions', this.props, this.state)
 
   	return (
-  	<div className="col paneFull" id="largePane">
-	  	{this.props.pane.main === 'text' &&
-	  		<MText value={this.props.pane.mainTab} action={this.handleChange} />
-	  	}
-	  	{this.props.pane.main === 'images' &&
+  	<div className="col paneFull" id="largePane" onClick="" >
+	  		<PaneContents action={this.handleChange} />
+
+	  	{/*this.props.pane.main === 'images' &&
 	  		<MImages value={this.props.pane.mainTab} action={this.handleChange} />
 	  	}
 	  	{this.props.pane.main === 'networks' &&
@@ -39,7 +62,10 @@ class CoreP extends Component {
 	  	}
 	  	{this.props.pane.main === 'edits' &&
 	  		<MEdit value={this.props.pane.mainTab} action={this.handleChange} />
-	  	}
+	  	*/}
+      {/*
+        <TestPane data={data} />
+      */}
     </div>
   	)
   }
@@ -56,6 +82,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     setMainPane: (type, tab) => {
         dispatch(setMainPane(type, tab));
     },
+    setFullScreen: (bool)=>{
+      dispatch(setFullScreen(bool));
+    }
 
   }
 }

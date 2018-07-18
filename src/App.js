@@ -20,9 +20,6 @@ import CorePane  from './components/CorePane.js';
 import AccordPane from './components/AccordPane.js';
 import Section from './components/scroll.js';
 
-import Gilpin from './data/GilpinEdits.js';
-
-console.dir(Gilpin);
 
 //import axios from 'axios';
 
@@ -95,7 +92,7 @@ class App extends Component {
             }
           </div>
         </div>
-        <div id="footer" className="font-sm" style={{height:42}}>
+        <div id="footer" className="font-sm" style={{height:24}}>
           <div className="row align-items-center">
             basic mock-up with minimal styling for considering nav nesting, control flow of multi-pane structure
           </div>

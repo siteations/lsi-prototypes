@@ -2,6 +2,7 @@
 import axios from 'axios';
 import Promise from 'bluebird';
 import {sampleText} from './xmlParsingUtil.js';
+import sites from '../data/07sitesA_tng.js';
 
 //import imageList from '../non-db/imageList.js';
 //import siteList from '../non-db/siteList.js';
@@ -25,12 +26,14 @@ export const SET_CHP_DRW = 'SET_CHP_DRW';
 
 export const SET_CHP = 'LOAD_CHP'
 export const SET_PARA = 'LOAD_PARA';
-export const SET_PARAL = 'SAVE_PARAL';
+export const SET_PARAN = 'SAVE_PARAN';
 export const SET_UP = "SET_UP";
 export const SET_TEXT = 'LOAD_TEXT'
 export const SET_TITLE = 'LOAD_TITLE';
 export const SET_SITE_ID = 'SET_SITE_ID'
 export const SET_SITE_NAME = 'SET_SITE_NAME';
+export const SET_SITE_OBJ = 'SET_SITE_OBJ';
+
 //images & themes, networks & geographies
 
 /* internal elements, like specific paragraph or case or agent in different reducer */
@@ -57,10 +60,10 @@ export const setPara = (paraId) => {
 	};
 };
 
-export const setParaL = (paraId) => {
+export const setParaN = (paraId) => {
 	return {
-		type: SET_PARAL,
-		paraL: paraId
+		type: SET_PARAN,
+		paraN: paraId
 	};
 };
 
@@ -75,6 +78,13 @@ export const setSiteName = (siteName) => {
 	return {
 		type: SET_SITE_NAME,
 		siteName
+	};
+};
+
+export const setSiteObj= (siteObj) => {
+	return {
+		type: SET_SITE_OBJ,
+		siteObj
 	};
 };
 
@@ -102,10 +112,11 @@ const initMap = {
 
 	chp: 0,
 	para: 0,
-	paraL:0,
+	paraN:0,
 
 	siteId: 7000,
 	siteName: 'Ermenonville',
+	siteObj: {},
 
 	setUp:false,
 
@@ -135,8 +146,8 @@ export const navReducer = (prevState = initMap, action) => {
 		newState.para = action.para;
 		break;
 
-	case SET_PARAL:
-		newState.paraL = action.paraL;
+	case SET_PARAN:
+		newState.paraN = action.paraN;
 		break;
 
 	case SET_SITE_ID:
@@ -145,6 +156,10 @@ export const navReducer = (prevState = initMap, action) => {
 
 	case SET_SITE_NAME:
 		newState.siteName = action.siteName;
+		break;
+
+	case SET_SITE_OBJ:
+		newState.siteObj = action.siteObj;
 		break;
 
 	case SET_UP:
@@ -215,16 +230,24 @@ export const setChpPara = (chpId, paraId) => dispatch => {
   dispatch(setPara(paraId));
 };
 
-export const setChpParaL = (paraId) => dispatch => {
-  dispatch(setParaL(paraId));
+export const setChpParaN = (paraId) => dispatch => {
+  dispatch(setParaN(paraId));
 };
 
 export const setSiteData = (id, name) => dispatch => {
   dispatch(setSiteId(id));
   dispatch(setSiteName(name));
+
+  sites.map(site=>{
+  	if (+site.id === +id){
+  		dispatch(setSiteObj(site));
+  	}
+  })
+
+
 };
 
 export const setUpdate = (bool) => dispatch =>{
-	console.log('in process', !bool)
+	console.log('in process', bool)
 	dispatch(setUp(bool));
 }

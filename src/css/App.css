@@ -83,6 +83,11 @@ hi {
   font-style: italic;
 }
 
+ref {
+  vertical-align: super;
+  font-size: .7rem;
+}
+
 .sect {
   font-family: 'Texta';
   font-size: 18pt;
@@ -234,4 +239,8 @@ hi {
 
 .underline {
   border-bottom: solid black 4px ;
+}
+
+.mapboxgl-marker {
+  opacity:.25 ;
 }

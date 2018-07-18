@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Promise from 'bluebird';
 
-import hexConversion from './hexConversion.js';
+import hexConv from './hexConversion.js';
 
 
 //-----------basic regex functions---------------
@@ -12,7 +12,7 @@ const startPage = (para)=>{
 }
 
 const scrub = (text)=>{
-	return text.replace(/<h5.+?>|<\/h5>|<head>|<date.+?>|<\/date>|<hi rend=".+?">|<\/hi>|<\/head>|<name type="place">|<name type="pname">|<name type="place" key=".+?>|<name type="pname" key=".+?>|<\/name>/g, '')
+	return text.replace(/<h5.+?>|<\/h5>|<head>|<date.+?>|<\/date>|<hi rend=".+?">|<\/hi>|<\/head>|<name type="place">|<name type="pname">|<name type="place" key=".+?>|<name type="pname" key=".+?>|<\/name>/g, '').replace(/<hi rend=".+?">/g, '<em>').replace(/<\/hi>/g, '</em>')
 }
 
 const paraNotes = (para)=>{
@@ -38,11 +38,13 @@ const paraTitle = (header, i)=>{
 
 
 const singleId = (ref)=>{var res = ref.match(/\d+/g)? ref.match(/\d+/g)[0]: null; return res};
-const singleName = (ref)=>{var res = ref.match(/>.+?</g)? ref.match(/>.+?</g)[0].replace(/>|</g, '') : null; return res};
+const singleName = (ref)=>{var res = ref.match(/>.+?</g)? ref.match(/>.+?</g)[0].replace(/>|</g, '') : null; return res };
 
 const paraSites = (para, i)=>{
+	var parag = hexConv(para);
+
 	var agObj={};
-	var ag = para.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g) ? para.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
+	var ag = parag.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g) ? parag.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
 	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key], p: i? i: [] } })
 
 	return (arr.length>0)? arr : null;
@@ -50,8 +52,10 @@ const paraSites = (para, i)=>{
 
 
 const paraAgents = (para)=>{
+	var parag = hexConv(para);
+
 	var agObj={};
-	var ag = para.match(/<name type="pname".+?<\/name>/g) ? para.match(/<name type="pname".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
+	var ag = parag.match(/<name type="pname".+?<\/name>/g) ? parag.match(/<name type="pname".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
 	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key]} })
 
 	return (arr.length>0)? arr : null;
@@ -59,10 +63,12 @@ const paraAgents = (para)=>{
 }
 
 const textAdj = (para, i)=>{
-	if (para.substring(0,4)==='<hea'){
-		return '<h5 class="sect">'+para+'</h5>';
+	var parag = hexConv(para);
+
+	if (parag.substring(0,4)==='<hea'){
+		return '<h5 class="sect">'+parag+'</h5>';
 	} else {
-		return para;
+		return parag;
 	}
 }
 
@@ -91,6 +97,7 @@ export const sampleText = ()=>{
 				pageStart: startPage(chp),
 				paragraphs: chp.match(/<head>.+?<\/head>|<p>.+?<\/p>(?!<\/note>)/g).map((para,i)=>{
 						return {
+
 							text: textAdj(para),
 							page: startPage(para),
 							notes: paraNotes(para),
@@ -103,7 +110,7 @@ export const sampleText = ()=>{
 				sites: paraSites(chp),
 			};
 
-			})
+		})
 
 			var pgStart=1;
 
@@ -124,7 +131,8 @@ export const sampleText = ()=>{
 
 					if (p.text.substring(0,3)==='<h5'){
 						var words = scrub(p.text);
-						headers.push({p:i, value:words});
+						var wordHex = hexConv(words);
+						headers.push({p:i, value:wordHex});
 					}
 
 

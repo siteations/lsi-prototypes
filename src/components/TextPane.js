@@ -8,7 +8,7 @@ import Waypoint from 'react-waypoint';
 
 import EnlargeFull from './EnlargeFull.js';
 
-import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setChpParaL} from '../action-creators/navActions.js';
+import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setChpParaN} from '../action-creators/navActions.js';
 import {setPanesTabs} from '../action-creators/paneActions.js';
 
 //this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
@@ -31,20 +31,22 @@ class TextP extends Component {
 
  	componentDidMount(){
  		this.setState({topOffset:document.getElementById('largePane').offsetParent.offsetTop})
-    console.dir(this.props.nav);
-    //this.scrollTo(this.props.nav.para+'-section')
  	}
 
  	shouldComponentUpdate(nextProps, nextState){
-    var test = ((this.props.nav.text !== nextProps.nav.text || (this.props.nav.siteName !== nextProps.nav.siteName && this.props.nav.para !== nextProps.nav.para) || this.props.nav.chp !== nextProps.nav.chp) && this.props.nav.setUp )
+    var test = (this.props.nav.text !== nextProps.nav.text || this.props.pane.mainTab !== nextProps.pane.mainTab || (this.props.nav.siteName !== nextProps.nav.siteName && this.props.nav.para !== nextProps.nav.para && this.props.nav.paraN !== nextProps.nav.paraN) || this.props.nav.chp !== nextProps.nav.chp)
     console.log('update?', test, this.props.nav.setUp )
- 		return test
+ 		return test || this.props.nav.setUp
  	}
 
   componentDidUpdate(){
     if (this.props.nav.para!==0 && this.props.pane.mainTab ==='a'){
       this.props.setUpdate(false);
    	  this.scrollTo(this.props.nav.para+'-section')
+      console.log('scroll to ', this.props.nav.para)
+    } else if (this.props.nav.paraN!==0 && this.props.pane.mainTab ==='b'){
+      this.props.setUpdate(false);
+      this.scrollTo(this.props.nav.paraN+'-section')
     } else {
       this.props.setUpdate(false);
       this.scrollTo('999-section')
@@ -52,21 +54,21 @@ class TextP extends Component {
   }
 
   //update to handle the actual paragraph alignment
-  handleNote(value){
+  handleNote(value, e){
     var noteP = value-1;
-    //console.log(this.state.inView[0], noteP)
-    this.props.setChpParaL(this.state.inView[0]);
-    this.props.setChpPara(this.props.nav.chp, noteP);
-    //switch to resources
+    var regP = +e.target.attributes.value.value;
+
+    this.props.setChpParaN(noteP);
     this.props.setPanesTabs('main','text','b');
-    this.scrollTo('999-section');
+    this.props.setChpPara(this.props.nav.chp, regP);
+    this.props.setUpdate(true);
+
   }
 
   returnToText(){
-    // this.props.setChpPara(this.props.nav.chp, this.props.nav.paraL);
-    // //switch to resources
     this.props.setPanesTabs('main','text','a');
-    this.scrollTo('999-section');
+    this.props.setUpdate(true);
+    console.log('return to text')
   }
 
   handleSite = (value, id, name) => {
@@ -75,42 +77,54 @@ class TextP extends Component {
   	this.props.setUpdate(false);
   }
 
-  formatString = (string)=>{
-  	var text='';
+  minusFigures = (string)=>{
+    var str2 = string.replace(/\(fig\..+?\)| \(see figs\..+?\)|\(figs\..+?\)| \(see fig\..+?\)/g, '');
 
-  	var strg2 = string.replace('<note n="*" place="bottom">', '*').replace('</note>', '').replace('</div>', '').replace('</p>', '').replace('<g ref="char:punc">', '').replace('</g>', '').replace(/<pb n="\d*" facs="\S*" rendition="simple:additions" \/>/g, '').replace('</argument>', '').replace(/<gap.*<\/gap>/g, '')
-
-    const formatL = (str)=>{
-    	return str.replace(/<q>|<lg>|<\/q>|<\/lg>/g, '').replace(/<site n="\d*" name="(\w|'|\s)*">/g, '').replace(/<\/site>/g, '^ ')
-			                				.split('<l>')
-			 												.map(lines=>{
-			 													if (lines.includes('</l>')){
-			 														return <span>{lines.replace('</l>', '')}<br/></span>
-			 													} else {
-			 														return <span>{lines}</span>
-			 													}
-			 												})
-    }
-
-
-  	// if (string.includes('<hi>')){
-  	text = strg2.split(/<hi>|<bibl>/g)
-            				.map(sections=>{
-              				if (sections.includes('</hi>')){
-              					var parts = sections.split('</hi>');
-              					return <span><em> {parts[0]} </em> {formatL(parts[1])}</span>
-              				} else if (sections.includes('</bibl>')){
-              					var parts = sections.split('</bibl>');
-              					return <span style={{paddingLeft: 90, lineHeight:3}}><em> {parts[0]} </em> {formatL(parts[1])}</span>
-              				}else {
-              					return formatL(sections);
-              				}
-            				})
-
-
-
-    return text
+    return str2
   }
+
+  // formatString = (string)=>{
+  // 	var text='';
+
+  // 	var strg2 = string.replace('<note n="*" place="bottom">', '*').replace('</note>', '').replace('</div>', '').replace('</p>', '').replace('<g ref="char:punc">', '').replace('</g>', '').replace(/\(fig\..+?\)/g, '').replace(/<pb n="\d*" facs="\S*" rendition="simple:additions" \/>/g, '').replace('</argument>', '').replace(/<gap.*<\/gap>/g, '')
+
+  //   const formatL = (str)=>{
+  //   	return str.replace(/<q>|<lg>|<\/q>|<\/lg>/g, '').replace(/<site n="\d*" name="(\w|'|\s)*">/g, '').replace(/<\/site>/g, '^ ')
+		// 	                				.split('<l>')
+		// 	 												.map(lines=>{
+		// 	 													if (lines.includes('</l>')){
+		// 	 														return <span>{lines.replace('</l>', '')}<br/></span>
+		// 	 													} else {
+		// 	 														return <span>{lines}</span>
+		// 	 													}
+		// 	 												})
+  //   }
+
+
+  // 	// if (string.includes('<hi>')){
+  // 	text = strg2.split(/<hi>|<bibl>/g)
+  //           				.map(sections=>{
+  //             				if (sections.includes('</hi>')){
+  //             					var parts = sections.split('</hi>');
+  //             					return <span><em> {parts[0]} </em> {formatL(parts[1])}</span>
+  //             				} else if (sections.includes('</bibl>')){
+  //             					var parts = sections.split('</bibl>');
+  //             					return <span style={{paddingLeft: 90, lineHeight:3}}><em> {parts[0]} </em> {formatL(parts[1])}</span>
+  //             				}else {
+  //             					return formatL(sections);
+  //             				}
+  //           				})
+
+
+
+  //   return text
+  // }
+
+
+  /*onEnter={e=>{e.id = i+'-section';
+                            this.scrollEnter(e)}}
+                          onLeave={e=>{e.id = i+'-section';
+                            this.scrollLeave(e)}*/
 
   scrollEnter = (e) => {
   	// var para=e.id.replace('-section', '');
@@ -146,7 +160,7 @@ class TextP extends Component {
   }
 
   insertHtml(a) {
-    return {__html: this.props.nav.text[this.props.nav.chp].paragraphs[a].text};
+    return {__html: this.minusFigures(this.props.nav.text[this.props.nav.chp].paragraphs[a].text)};
   }
 
   insertHtmlNote(a) {
@@ -187,7 +201,7 @@ class TextP extends Component {
 			                			{items.notes &&
                               items.notes.map(note=>{
                                 return (
-			                				<li className="cursor" onClick={e=>this.handleNote(note.value)}><em>note:</em> {note.value}</li>
+			                				<li className="cursor" onClick={e=>this.handleNote(note.value, e)} value={i} ><em>note:</em> {note.value}</li>
                               )
                               })
 			                			}
@@ -205,10 +219,6 @@ class TextP extends Component {
 			                	<Waypoint
 			                		topOffset={this.state.topOffset+40}
 			                		bottomOffset={100}
-			                		onEnter={e=>{e.id = i+'-section';
-			                			this.scrollEnter(e)}}
-			                		onLeave={e=>{e.id = i+'-section';
-			                			this.scrollLeave(e)}}
 			                		>
                           <div dangerouslySetInnerHTML={this.insertHtml(i)} />
 			                		{/*<p className="p10s"><em className="small grey">(pg: {items.page})</em></p>*/}
@@ -241,12 +251,8 @@ class TextP extends Component {
                         <Waypoint
                           topOffset={this.state.topOffset+40}
                           bottomOffset={100}
-                          onEnter={e=>{e.id = i+'-section';
-                            this.scrollEnter(e)}}
-                          onLeave={e=>{e.id = i+'-section';
-                            this.scrollLeave(e)}}
                           >
-                          <div dangerouslySetInnerHTML={this.insertHtmlNote(i)} onClick={e=>this.returnToText()} className="cursor" />
+                          <div dangerouslySetInnerHTML={this.insertHtmlNote(i)}  />
 
                           </Waypoint>
                         </div>
@@ -276,8 +282,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     setChpPara: (chp, para) => {
         dispatch(setChpPara(chp, para));
     },
-    setChpParaL: (para) => {
-        dispatch(setChpParaL(para));
+    setChpParaN: (para) => {
+        dispatch(setChpParaN(para));
     },
     setSiteData: (id, name)=>{
     	dispatch(setSiteData(id, name));
