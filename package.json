@@ -24,7 +24,7 @@
     "xml-loader": "^1.2.1"
   },
   "devDependencies": {
-    "react-scripts": "1.0.14"
+    "react-scripts": "^1.0.14"
   },
   "scripts": {
     "start": "react-scripts start",
