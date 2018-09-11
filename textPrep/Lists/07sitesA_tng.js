@@ -1372,7 +1372,11 @@ var sites = [{
     "chp": "07",
     "type": "site",
     "count": 2,
-    "tng": "7017620"
+    "tng": "7017620",
+    "g_address": "3200 Mount Vernon Hwy, Mt Vernon, VA 22121", 
+    "g_latitude" : 38.7079862, 
+    "g_longitude":-77.0883693, 
+    "g_id": ""
 }, {
     "name": ["south lawn"],
     "id": 7156,

@@ -141,9 +141,9 @@ var agents =[ {
 }, {
     "name":[ "William Jackson Hooker", "Hooker"], "id": 9071, "chp": "09", "count": 3, "type": null
 }, {
-    "name":[ "William Bartram", "William"], "id": 9072, "chp": "09", "count": 2, "type": null
+    "name":[ "William Bartram", "Bartram"], "id": 9072, "chp": "09", "count": 2, "type": null
 }, {
-    "name":[ "John Bartram", "Bartram"], "id": 9073, "chp": "09", "count": 1, "type": null
+    "name":[ "John Bartram"], "id": 9073, "chp": "09", "count": 1, "type": null
 }, {
     "name":[ "David Hosack", "Hosack"], "id": 9074, "chp": "09", "count": 3, "type": null
 }, {
@@ -465,7 +465,7 @@ var agents =[ {
 }, {
     "name":[ "Lowell Institute"], "id": 9241, "chp": "09", "count": 1, "type": "corp"
 }, {
-    "name":[ "Trustees of Public Reservations", "Trustees of Reservations"], "id": 9242, "chp": "09", "count": 1, "type": "corp"
+    "name":[ "Trustees of Public Reservations," "Trustees of Reservations"], "id": 9242, "chp": "09", "count": 1, "type": "corp"
 }, {
     "name":[ "Senate Committee on Buildings and Grounds"], "id": 9243, "chp": "09", "count": 1, "type": "corp"
 }, {

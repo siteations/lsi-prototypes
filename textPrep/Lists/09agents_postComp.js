@@ -3,35 +3,35 @@ var agents =[ {
 }, {
     "name":[ "George Perkins Marsh", "Marsh"], "id": 9001, "chp": "09", "count": 4, "type": null
 }, {
-    "name":[ "Goethe"], "id": 9002, "chp": "09", "count": 1, "type": null
+    "name":[ "Goethe", "Johann Wolfgang von Goethe"], "id": 7010, "chp": "09", "count": 1, "type": null, "ulan": "500014761"
 }, {
     "name":[ "Galileo"], "id": 9003, "chp": "09", "count": 1, "type": null
 }, {
-    "name":[ "John Ruskin", "Ruskin"], "id": 9004, "chp": "09", "count": 6, "type": null
+    "name":[ "John Ruskin", "Ruskin", "Ruskin, John"], "id": 7238, "chp": "09", "count": 6, "type": null, "ulan": "500006262"
 }, {
     "name":[ "Ralph Waldo Emerson", "Emerson"], "id": 9005, "chp": "09", "count": 2, "type": null
 }, {
-    "name":[ "Henry David Thoreau", "Thoreau"], "id": 9006, "chp": "09", "count": 2, "type": null
+    "name":[ "Henry David Thoreau", "Thoreau", "Henry Thoreau"], "id": 7088, "chp": "09", "count": 2, "type": null, "ulan": "500229765"
 }, {
-    "name":[ "Friedrich Nietzsche", "Nietzsche"], "id": 9007, "chp": "09", "count": 1, "type": null
+    "name":[ "Friedrich Nietzsche", "Nietzsche"], "id": 7227, "chp": "09", "count": 1, "type": null, "ulan": "500222156"
 }, {
     "name":[ "Sigmund Freud", "Freud"], "id": 9008, "chp": "09", "count": 1, "type": null
 }, {
-    "name":[ "Rousseau"], "id": 9009, "chp": "09", "count": 6, "type": null
+    "name":[ "Rousseau", "Jean-Jacques Rousseau"], "id": 7006, "chp": "09", "count": 6, "type": null, "ulan": "500250225"
 }, {
-    "name":[ "William Wordsworth", "Wordsworth"], "id": 9010, "chp": "09", "count": 4, "type": null
+    "name":[ "William Wordsworth", "Wordsworth"], "id": 7011, "chp": "09", "count": 4, "type": null, "ulan": "500071872"
 }, {
     "name":[ "Jeremy Bentham", "Bentham"], "id": 9011, "chp": "09", "count": 3, "type": null
 }, {
     "name":[ "James Mill", "Mill"], "id": 9012, "chp": "09", "count": 2, "type": null
 }, {
-    "name":[ "John Claudius Loudon", "Loudon", "Loudons"], "id": 9013, "chp": "09", "count": 59, "type": null
+    "name":[ "John Claudius Loudon", "Loudon", "Loudons"], "id": 7186, "chp": "09", "count": 59, "type": null, "ulan": "500019060"
 }, {
     "name":[ "Edwin Budding", "Budding"], "id": 9014, "chp": "09", "count": 1, "type": null
 }, {
     "name":[ "Pierre-Joseph Redout&#x00E9;", "Redout&#x00E9;"], "id": 9015, "chp": "09", "count": 1, "type": null
 }, {
-    "name":[ "Humphry Repton", "Repton"], "id": 9016, "chp": "09", "count": 16, "type": null
+    "name":[ "Humphry Repton", "Repton", "Humphrey Repton"], "id": 7093, "chp": "09", "count": 16, "type": null, "ulan": "500005189"
 }, {
     "name":[ "Francis Bauer", "Bauer"], "id": 9017, "chp": "09", "count": 1, "type": null
 }, {
@@ -41,15 +41,15 @@ var agents =[ {
 }, {
     "name":[ "William Robinson", "Robinson"], "id": 9020, "chp": "09", "count": 4, "type": null
 }, {
-    "name":[ "Gertrude Jekyll", "Jekyll"], "id": 9021, "chp": "09", "count": 1, "type": null
+    "name":[ "Gertrude Jekyll", "Jekyll"], "id": 7094, "chp": "09", "count": 1, "type": null, "ulan": "500012954"
 }, {
     "name":[ "Sir Reginald Blomfield", "Blomfield"], "id": 9022, "chp": "09", "count": 2, "type": null
 }, {
-    "name":[ "Andrew Jackson Downing", "A. J. Downing", "Downing"], "id": 9023, "chp": "09", "count": 65, "type": null
+    "name":[ "Andrew Jackson Downing", "A. J. Downing", "Downing"], "id": 7169, "chp": "09", "count": 65, "type": null, "ulan": "500015417"
 }, {
-    "name":[ "Frederick Law Olmsted", "Olmsted", "Mr. Olmsted"], "id": 9024, "chp": "09", "count": 121, "type": null
+    "name":[ "Frederick Law Olmsted", "Olmsted", "Mr. Olmsted"], "id": 7087, "chp": "09", "count": 121, "type": null, "ulan": "500015125"
 }, {
-    "name":[ "Calvert Vaux", "Vaux"], "id": 9025, "chp": "09", "count": 79, "type": null
+    "name":[ "Calvert Vaux", "Vaux"], "id": 7187, "chp": "09", "count": 79, "type": null, "ulan": "500001573"
 }, {
     "name":[ "Nathaniel Ward", "Ward"], "id": 9026, "chp": "09", "count": 1, "type": null
 }, {
@@ -67,7 +67,7 @@ var agents =[ {
 }, {
     "name":[ "Daniel Solander", "Solander"], "id": 9033, "chp": "09", "count": 1, "type": null
 }, {
-    "name":[ "Linnaeus"], "id": 9034, "chp": "09", "count": 3, "type": null
+    "name":[ "Linnaeus", "Linné, Carl von"], "id": 7241, "chp": "09", "count": 3, "type": null, "ulan": "500372798"
 }, {
     "name":[ "Jonas Dryander", "Dryander"], "id": 9035, "chp": "09", "count": 1, "type": null
 }, {
@@ -89,7 +89,7 @@ var agents =[ {
 }, {
     "name":[ "Thomas Andrew Knight", "Knight"], "id": 9044, "chp": "09", "count": 1, "type": null
 }, {
-    "name":[ "Richard Payne Knight", "Knight"], "id": 9045, "chp": "09", "count": 1, "type": null
+    "name":[ "Richard Payne Knight", "Knight"], "id": 7090, "chp": "09", "count": 1, "type": null, "ulan": ""
 }, {
     "name":[ "Joseph Strutt", "Strutt"], "id": 9047, "chp": "09", "count": 2, "type": null
 }, {
@@ -103,7 +103,7 @@ var agents =[ {
 }, {
     "name":[ "David Douglas", "Douglas"], "id": 9052, "chp": "09", "count": 1, "type": null
 }, {
-    "name":[ "Newton"], "id": 9053, "chp": "09", "count": 1, "type": null
+    "name":[ "Newton", "Sir Isaac Newton", "Isaac Newton"], "id": 7000, "chp": "09", "count": 1, "type": null, "ulan": "500330573"
 }, {
     "name":[ "Gifford Pinchot", "Pinchot"], "id": 9054, "chp": "09", "count": 1, "type": null
 }, {
@@ -111,21 +111,21 @@ var agents =[ {
 }, {
     "name":[ "Le Corbusier", "Corbusier"], "id": 9056, "chp": "09", "count": 1, "type": null
 }, {
-    "name":[ "Capability Brown", "Brown"], "id": 9057, "chp": "09", "count": 3, "type": null
+    "name":[  "Capability Brown", "Brown", "\"Capability\" Brown", "Lancelot \"Capability\" Brown", "Lancelot Brown", "Mr. Brown"], "id": 7008, "chp": "09", "count": 3, "type": null, "ulan": "500013810"
 }, {
-    "name":[ "Price"], "id": 9058, "chp": "09", "count": 6, "type": null
+    "name":[ "Price", "Sir Uvedale Price", "Uvedale Price"], "id": 7091, "chp": "09", "count": 6, "type": null, "ulan": "500104016"
 }, {
-    "name":[ "Gilpin"], "id": 9059, "chp": "09", "count": 6, "type": null
+    "name":[ "Gilpin", "William Gilpin", "William Sawrey Gilpin", "Mr. Gilpin"], "id": 7082, "chp": "09", "count": 6, "type": null, "ulan": "500014051"
 }, {
-    "name":[ "Whately"], "id": 9060, "chp": "09", "count": 1, "type": null
+    "name":[ "Whately", "Thomas Whately"], "id": 7032, "chp": "09", "count": 1, "type": null, "ulan": "500245493"
 }, {
     "name":[ "Alexander Forbes", "Forbes"], "id": 9061, "chp": "09", "count": 2, "type": null
 }, {
     "name":[ "William Andrews Nesfield", "Nesfield"], "id": 9062, "chp": "09", "count": 4, "type": null
 }, {
-    "name":[ "Batty Langley", "Langley"], "id": 9063, "chp": "09", "count": 1, "type": null
+    "name":[ "Batty Langley", "Langley"], "id": 7031, "chp": "09", "count": 1, "type": null, "ulan": "500007052"
 }, {
-    "name":[ "Nash"], "id": 9064, "chp": "09", "count": 1, "type": null
+    "name":[ "Nash", "John Nash"], "id": 7095, "chp": "09", "count": 1, "type": null, "ulan": "500014342"
 }, {
     "name":[ "Yates"], "id": 9065, "chp": "09", "count": 2, "type": null
 }, {
@@ -147,7 +147,7 @@ var agents =[ {
 }, {
     "name":[ "David Hosack", "Hosack"], "id": 9074, "chp": "09", "count": 3, "type": null
 }, {
-    "name":[ "Thomas Jefferson", "Jefferson"], "id": 9075, "chp": "09", "count": 5, "type": null
+    "name":[ "Thomas Jefferson", "Jefferson"], "id": 7009, "chp": "09", "count": 5, "type": null, "ulan": "500026389"
 }, {
     "name":[ "Caroline DeWint", "DeWint"], "id": 9076, "chp": "09", "count": 1, "type": null
 }, {
@@ -171,7 +171,7 @@ var agents =[ {
 }, {
     "name":[ "Admiral Horatio Nelson", "Nelson"], "id": 9087, "chp": "09", "count": 1, "type": null
 }, {
-    "name":[ "Rousseau"], "id": 9088, "chp": "09", "count": 6, "type": null
+    "name":[ "Rousseau", "Jean-Jacques Rousseau"], "id": 7006, "chp": "09", "count": 6, "type": null, "ulan": "500250225"
 }, {
     "name":[ "Robert Mills", "Mills"], "id": 9089, "chp": "09", "count": 3, "type": null
 }, {
@@ -213,13 +213,13 @@ var agents =[ {
 }, {
     "name":[ "Pierre L'Enfant", "L'Enfant"], "id": 9108, "chp": "09", "count": 2, "type": null
 }, {
-    "name":[ "Napoleon"], "id": 9109, "chp": "09", "count": 1, "type": null
+    "name":[ "Napoleon"], "id": 7132, "chp": "09", "count": 1, "type": null, "ulan": "500122388"
 }, {
-    "name":[ "Louis XIV", "XIV"], "id": 9110, "chp": "09", "count": 2, "type": null
+    "name":[ "Louis XIV", "XIV"], "id": 7160, "chp": "09", "count": 2, "type": null, "ulan": "500122256"
 }, {
     "name":[ "Pierre L'Enfant", "L'Enfant"], "id": 9111, "chp": "09", "count": 2, "type": null
 }, {
-    "name":[ "Hubert Robert", "Robert"], "id": 9112, "chp": "09", "count": 1, "type": null
+    "name":[ "Hubert Robert", "Robert"], "id": 7126, "chp": "09", "count": 1, "type": null, "ulan": "500015587"
 }, {
     "name":[ "George Washington", "Washington"], "id": 9113, "chp": "09", "count": 5, "type": null
 }, {
@@ -235,7 +235,7 @@ var agents =[ {
 }, {
     "name":[ "Maximilien Godefroy", "Godefroy"], "id": 9119, "chp": "09", "count": 2, "type": null
 }, {
-    "name":[ "John Evelyn", "Evelyn"], "id": 9120, "chp": "09", "count": 1, "type": null
+    "name":[ "John Evelyn", "Evelyn"], "id": 7030, "chp": "09", "count": 1, "type": null, "ulan": "500031758"
 }, {
     "name":[ "Christopher Wren", "Wren"], "id": 9121, "chp": "09", "count": 2, "type": null
 }, {
@@ -269,7 +269,7 @@ var agents =[ {
 }, {
     "name":[ "Mariana Griswold Van Rensselaer", "Rensselaer"], "id": 9136, "chp": "09", "count": 2, "type": null
 }, {
-    "name":[ "Stanford White", "White"], "id": 9137, "chp": "09", "count": 3, "type": null
+    "name":[ "Stanford White", "White"], "id": 7168, "chp": "09", "count": 3, "type": null, "ulan": "500002702"
 }, {
     "name":[ "Jacopo d'Antonio Tatti", "Tatti"], "id": 9138, "chp": "09", "count": 1, "type": null
 }, {
@@ -359,11 +359,11 @@ var agents =[ {
 }, {
     "name":[ "William A. Stiles", "Stiles"], "id": 9183, "chp": "09", "count": 1, "type": null
 }, {
-    "name":[ "Dezallier d'Argenville", "d'Argenville"], "id": 9184, "chp": "09", "count": 1, "type": null
+    "name":[ "Dezallier d'Argenville", "d'Argenville", "Antoine-Joseph Dezallier d'Argenville", "Dezallier", "D&#x00E9;zallier"], "id": 7015, "chp": "09", "count": 1, "type": null, "ulan": "500202478"
 }, {
-    "name":[ "William and Mary"], "id": 9185, "chp": "09", "count": 1, "type": null
+    "name":[ "William and Mary"], "id": 7005, "chp": "09", "count": 1, "type": null, "ulan": ""
 }, {
-    "name":[ "William Chambers", "Chambers"], "id": 9186, "chp": "09", "count": 2, "type": null
+    "name":[ "William Chambers", "Chambers", "Sir William Chambers"], "id": 7077, "chp": "09", "count": 2, "type": null, "ulan": "500004575"
 }, {
     "name":[ "Horticultural Society of London", "Horticultural Society", "London Horticultural Society"], "id": 9187, "chp": "09", "count": 5, "type": "corp"
 }, {
@@ -381,7 +381,7 @@ var agents =[ {
 }, {
     "name":[ "Melanie Louise Simo", "Melanie Simo"], "id": 9195, "chp": "09", "count": 2, "type": null
 }, {
-    "name":[ "Yale University Press"], "id": 9196, "chp": "09", "count": 1, "type": "corp"
+    "name":[ "Yale University Press"], "id": 7258, "chp": "09", "count": 1, "type": "corp"
 }, {
     "name":[ "Antoine-Laurent de Jussieu"], "id": 9197, "chp": "09", "count": 1, "type": null
 }, {
@@ -391,13 +391,13 @@ var agents =[ {
 }, {
     "name":[ "Cambridge University Press"], "id": 9200, "chp": "09", "count": 1, "type": "corp"
 }, {
-    "name":[ "The Johns Hopkins Press"], "id": 9201, "chp": "09", "count": 1, "type": "corp"
+    "name":[ "The Johns Hopkins Press", "Johns Hopkins Press"], "id": 7244, "chp": "09", "count": 1, "type": "corp"
 }, {
-    "name":[ "The MIT Press"], "id": 9202, "chp": "09", "count": 1, "type": "corp"
+    "name":[ "The MIT Press", "MIT Press"], "id": 7245, "chp": "09", "count": 1, "type": "corp"
 }, {
     "name":[ "A. 0. Moore &amp; Co."], "id": 9203, "chp": "09", "count": 1, "type": "corp"
 }, {
-    "name":[ "John Dixon Hunt"], "id": 9204, "chp": "09", "count": 1, "type": null
+    "name":[ "John Dixon Hunt", "Hunt"], "id": 7020, "chp": "09", "count": 1, "type": null, "ulan": "500029112"
 }, {
     "name":[ "University of Pennsylvania Press"], "id": 9205, "chp": "09", "count": 1, "type": "corp"
 }, {
@@ -408,8 +408,6 @@ var agents =[ {
     "name":[ "Blanche Linden-Ward", "Linden-Ward"], "id": 9208, "chp": "09", "count": 3, "type": null
 }, {
     "name":[ "Gridley Bryant"], "id": 9209, "chp": "09", "count": 1, "type": null
-}, {
-    "name":[ "The Johns Hopkins University Press"], "id": 9210, "chp": "09", "count": 1, "type": "corp"
 }, {
     "name":[ "Albert Fein", "Fein"], "id": 9211, "chp": "09", "count": 1, "type": null
 }, {
@@ -425,7 +423,7 @@ var agents =[ {
 }, {
     "name":[ "University of California Press"], "id": 9218, "chp": "09", "count": 1, "type": "corp"
 }, {
-    "name":[ "Royal Society", "Royal Horticultural Society"], "id": 9219, "chp": "09", "count": 1, "type": "corp"
+    "name":[ "Royal Society", "Royal Horticultural Society"], "id": 7225, "chp": "09", "count": 1, "type": "corp", "ulan": "500301966"
 }, {
     "name":[ "British Treasury"], "id": 9221, "chp": "09", "count": 1, "type": "corp"
 }, {
