@@ -810,9 +810,9 @@ var sites = [{
     "type": "site",
     "count": 7,
     "tng": "1103036",
-    "g_address": "",
-    "g_latitude": 0,
-    "g_longitude": 0,
+    "g_address": "Chester Rd, London NW1 4NR, UK",
+    "g_latitude": 51.5327045,
+    "g_longitude": -0.1507712,
     "g_id": ""
 }, {
     "name": ["Hyde Park"],
@@ -1373,9 +1373,9 @@ var sites = [{
     "type": "site",
     "count": 2,
     "tng": "7017620",
-    "g_address": "3200 Mount Vernon Hwy, Mt Vernon, VA 22121", 
-    "g_latitude" : 38.7079862, 
-    "g_longitude":-77.0883693, 
+    "g_address": "3200 Mount Vernon Hwy, Mt Vernon, VA 22121",
+    "g_latitude" : 38.7079862,
+    "g_longitude":-77.0883693,
     "g_id": ""
 }, {
     "name": ["south lawn"],

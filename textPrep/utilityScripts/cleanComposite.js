@@ -1,9 +1,14 @@
+// see variants in cleanResource, cleanAgents ....
+
+//----------------------------------------------- overall count, misc residual codes ----------------------------------
+
+
 //basic node script to log/sort place, pname, other tags
 
 const fs = require('fs');
 
 //const chapters = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16'];
-const chapters = ['07'];
+const chapters = ['07'], chap = '07';
 
 const uni = [ '&#x2014;',
   '&#x00E9;',
@@ -41,10 +46,11 @@ const uni = [ '&#x2014;',
   '&#x00F2;' ];
 
 const unicode = [];
+var contents;
 
 chapters.forEach(item=>{
 
-	var contents = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents_sites.xml`, 'utf8');
+	contents = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents.xml`, 'utf8');
 
 
 	//---------------------general synch----------------------//
@@ -82,30 +88,10 @@ chapters.forEach(item=>{
 
 	console.log(item, countAll, unicode);
 
-//})
+})
 
 	// var chapters = contents.split('<div type="chapter">').map(each=>'<div type="chapter">' + each)
 	// 		chapters.forEach((chapter, i)=> fs.writeFileSync('../Landscape Design/chapters/'+(i-1).toLocaleString(undefined, { minimumIntegerDigits: 3 })+ '.xml', chapter));
-
-//---------------------------- agents basics (run me first) -----------------------------------
-
-
-	// var agentsInd = [];
-	// var agentsArr=[];
-	// var agents = contents.match(/<name type="pname"((.|\n|\r)+?)<\/name>/g)
-	// 	.forEach(match=>{
-	// 		var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
-	// 		if (agentsInd.indexOf(agent)===-1){
-	// 			agentsInd.push(agent)
-	// 			agentsArr.push({name:[agent], id:0, chp:item })
-	// 		}
-	// });
-
-	// console.log(agentsArr, agentsInd.length)
-
-	// fs.writeFileSync(`../Lists/${item}agents.js`, 'var agents='+JSON.stringify(agentsArr)+'; module.exports.agents = agents');
-
-
 
 //---------------------------- site basics (run me after all agent processing is done) -----------------------------------
 
@@ -138,11 +124,9 @@ chapters.forEach(item=>{
 	});
 
 	//console.log(placeArr, placeInd.length)
-	fs.writeFileSync(`../Lists/${item}sites.js`, 'var sites='+JSON.stringify(sitesArr)+'; module.exports = sites');
-	//fs.writeFileSync(`../Lists/${item}place.js`, 'var place='+JSON.stringify(placeArr)+'; module.exports = place');
+	fs.writeFileSync(`../Lists/${chap}sites.js`, 'var sites='+JSON.stringify(sitesArr)+'; module.exports = sites');
+	//fs.writeFileSync(`../Lists/${chap}place.js`, 'var place='+JSON.stringify(placeArr)+'; module.exports = place');
 
-
-})
 
 */
 
@@ -167,7 +151,7 @@ chapters.forEach(item=>{
 	fs.writeFileSync(`../Lists/${item}resources.js`, 'var resources='+JSON.stringify(resArr)+'; module.exports = resources');
 
 */
-})
+
 
 // const resources = require(`../Lists/07resources.js`);
 // const agJS = resources.sort((a,b)=>{
@@ -585,5 +569,5 @@ var chpAgents = chpRev.replace(/<name type="place" subtype="((.|\n|\r)+?)<\/name
 
 console.log('agents found', chpAgents);
 
-fs.writeFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/09_agents_sites_resources.xml`, chpAgents);
+//fs.writeFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/09_agents_sites_resources.xml`, chpAgents);
 
