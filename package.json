@@ -2,7 +2,7 @@
   "name": "headless",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://people.virginia.edu/~ms5kh/",
+  "homepage": "https://siteations.github.io/uva-lsi/",
   "dependencies": {
     "axios": "^0.16.2",
     "bluebird": "^3.5.1",
