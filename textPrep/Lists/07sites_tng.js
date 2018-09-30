@@ -1541,5 +1541,16 @@ var sites = [{
     "g_latitude": 38.5645758,
     "g_longitude": -83.4580506,
     "g_id": ""
+}, {
+    "name": ["Laurentinum"],
+    "id": 7176,
+    "chp": "07",
+    "type": "site",
+    "count": 1,
+    "tng": "",
+    "g_address": "",
+    "g_latitude": null,
+    "g_longitude": null,
+    "g_id": ""
 }];
 module.exports = sites

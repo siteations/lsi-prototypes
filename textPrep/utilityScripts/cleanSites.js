@@ -50,7 +50,7 @@ var contents;
 
 chapters.forEach(item=>{
 
-	contents = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents.xml`, 'utf8');
+	contents = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents_sites_resources.xml`, 'utf8');
 
 
 	//---------------------general synch----------------------//
@@ -217,8 +217,8 @@ agents09.map(items=>{
 // Match to existing list and add keys
 
 
-const sites = require(`../Lists/09sites_preGoogleTng.js`);
-var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/09_agents_resources.xml`, 'utf8');
+const sites = require(`../Lists/07sites_tng.js`);
+var chpRev = fs.readFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents_sites_resources.xml`, 'utf8');
 
 const replaceAdd = ((match)=>{
 	var agent = match.match(/>((.|\n|\r)+?)</g)[0].replace(/>|<|\n|\r/g, '').replace(/(\s{1,})/g,' ');
@@ -239,5 +239,5 @@ var chpAgents = chpRev.replace(/<name type="place" subtype="((.|\n|\r)+?)<\/name
 
 console.log('agents found', chpAgents);
 
-//fs.writeFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/09_agents_sites_resources.xml`, chpAgents);
+fs.writeFileSync(`../svn Landscape Design/repos/xml/BetsyRogers/chapters/07_agents_sites_resources-.xml`, chpAgents);
 

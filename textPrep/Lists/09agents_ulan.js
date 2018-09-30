@@ -314,7 +314,7 @@ var sites = [{
     "type": null,
     "ulan": "500448180"
 }, {
-    "name": ["Agnes", "Agnes Loudon", "Jane Loudon", "Jane Webb", "Webb"],
+    "name": ["Jane Loudon", "Jane Webb", "Webb"],
     "id": 9049,
     "chp": "09",
     "count": 2,
@@ -1563,7 +1563,7 @@ var sites = [{
     "type": "corp",
     "ulan": ""
 }, {
-    "name": ["Sanitary Commission"],
+    "name": ["U.S. Sanitary Commission","Sanitary Commission"],
     "id": 9237,
     "chp": "09",
     "count": 1,
@@ -1621,6 +1621,20 @@ var sites = [{
 }, {
     "name": ["Ohio State University Press"],
     "id": 9245,
+    "chp": "09",
+    "count": 1,
+    "type": "corp",
+    "ulan": ""
+}, {
+    "name": ["Department of the Seine"],
+    "id": 9246,
+    "chp": "09",
+    "count": 1,
+    "type": "corp",
+    "ulan": ""
+}, {
+    "name": ["Mariposa Mines"],
+    "id": 9247,
     "chp": "09",
     "count": 1,
     "type": "corp",
