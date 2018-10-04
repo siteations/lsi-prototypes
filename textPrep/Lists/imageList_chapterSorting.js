@@ -14703,7 +14703,7 @@ var images = [{
     "text": "Fragments on the Theory and Practice of Landscape Gardening",
     "zoteroID": "JIUWE39R",
     "zoteroURL": "https://ia800509.us.archive.org/BookReader/BookReaderImages.php?id=fragmentsontheor00rept&itemPath=%2F31%2Fitems%2Ffragmentsontheor00rept&server=ia800509.us.archive.org&page=n343_w392"
-}, { //start here
+}, {
     "chp": "07_agents_sites_resources",
     "id": "308",
     "graphic": "CH7_033.jpg",
@@ -17130,7 +17130,7 @@ var images = [{
     "text": "The World's fair album",
     "zoteroID": "DLS47YLH",
     "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=uva.x000587276;seq=36;width=1190"
-}, { //start here
+}, {
     "chp": "09_agents_sites_resources",
     "id": "430",
     "graphic": "CH9_058.jpg",
@@ -17152,7 +17152,7 @@ var images = [{
     "text": "Soldiers Memorial Arch from Prospect Park",
     "zoteroID": "BSM8V53I",
     "zoteroURL": "https://cdn.loc.gov/service/pnp/cph/3b30000/3b30000/3b30400/3b30425r.jpg#h=515&w=640"
-}, {
+}, { //start here
     "chp": "10",
     "id": "432",
     "graphic": "CH10_001.jpg",
