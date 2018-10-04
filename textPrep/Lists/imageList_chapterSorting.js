@@ -16041,9 +16041,9 @@ var images = [{
     "short": "Phaius tankervilleae, Sowerby, Hortus Kewensis",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Hortus Kewensis",
+    "zoteroID": "YGABZTXF",
+    "zoteroURL": "https://www.archive.org/download/b28037352_0003/page/n196_w1348"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "375",
@@ -16051,10 +16051,25 @@ var images = [{
     "desc": "9.2. \"East Front of Tew Lodge,\" from Loudon's Designs for Laying Out Farms, 1812",
     "short": "East Front of Tew Lodge, Loudon, Laying Out Farms",
     "match": null,
-    "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [{
+        "altId": "7000042",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000042.jpg",
+        "subject": ["The suburban gardener, and villa companion: comprising the choice of a suburban or villa residence, or of a situation on which to form one: the arrangement and furnishing of the house: and the laying out, planting, and general management of the garden and grounds, and the management of the villa farm, including the dairy and poultry-yard"],
+        "sub": ["Plate 203"] //subsitutions
+    }, {
+        "altId": "7000041",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000041.jpg",
+        "subject": ["The suburban gardener, and villa companion: comprising the choice of a suburban or villa residence, or of a situation on which to form one: the arrangement and furnishing of the house: and the laying out, planting, and general management of the garden and grounds, and the management of the villa farm, including the dairy and poultry-yard"],
+        "sub": ["Plate 202"] //subsitutions
+    }, {
+        "altId": "7000040",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000040.jpg",
+        "subject": ["The suburban gardener, and villa companion: comprising the choice of a suburban or villa residence, or of a situation on which to form one: the arrangement and furnishing of the house: and the laying out, planting, and general management of the garden and grounds, and the management of the villa farm, including the dairy and poultry-yard"],
+        "sub": ["Plate 201"] //subsitutions
+    }],
+    "text": "Observations on laying out Farms and farm-buildings in the Scotch style",
+    "zoteroID": "T9XKMYWZ",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=gri.ark:/13960/t0sr5jm03;seq=83;width=1190",
 }, {
     "chp": "09_agents_sites_resources",
     "id": "376",
@@ -16063,20 +16078,20 @@ var images = [{
     "short": "The Polyprosopic Hothouse, Loudon",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "A treatise on forming, improving, and managing country residences", //alternate lime house detail
+    "zoteroID": "9RBEH4JK",
+    "zoteroURL": "https://www.archive.org/download/treatiseonformin01loud/page/n373_w701"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "377",
     "graphic": "CH9_005.jpg",
     "desc": "Below: 9.4. Palm House, Kew, Richmond, designed by Decimus Burton and Richard Turner. 1844&#x2013;48",
     "short": "Palm House, Kew",
-    "match": null,
+    "match": null, //not in photos
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "palm house", //public wikipedia
+    "zoteroID": "PMXUXEWP",
+    "zoteroURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Kew.gardens.palm.house.london.arp.jpg/1920px-Kew.gardens.palm.house.london.arp.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "378",
@@ -16085,9 +16100,9 @@ var images = [{
     "short": "Plan, Derby Arboretum",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "The Derby Arboretum",
+    "zoteroID": "N5EAVUPR",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=uc1.a0006540645;seq=89;width=1190"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "379",
@@ -16095,22 +16110,21 @@ var images = [{
     "desc": "9.6. Lawn-mowing machine as illustrated in Loudon's Gardener's Magazine, 8 (1832)",
     "short": "Lawn-mowing machine, Gardener's Magazine (8)",
     "match": null,
-    "options": [{
-        "altId": "2300932",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300932.jpg",
-        "subject": ["Garden"],
-        "sub": ["Il libro della agricultura (Book of Agriculture), Garden Middle Ages"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "The Gardner's Magazine, 8",
+    "zoteroID": "WRGF8695",
+    "zoteroURL": "https://www.archive.org/download/gardenersmagazin832loud/page/n48_w458"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "380",
     "graphic": "CH9_008.jpg",
     "desc": "9.7. Terrace knot garden, Hatfield House, Hertfordshire, original restoration design by the second Marquess of Salisbury. 1840s. Restored again by the Marchioness of Salisbury in the early 1980s",
     "short": "Terrace knot garden, Hatfield House, Hertfordshire",
-    "match": null,
+    "match": {
+        "altId": "1800433",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800433.jpg",
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },
     "options": [{
         "altId": "1800253",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800253.jpg",
@@ -16154,12 +16168,6 @@ var images = [{
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
     }, {
-        "altId": "1800433",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800433.jpg",
-        "subject": ["Hatfield House"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
         "altId": "1800528",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800528.jpg",
         "subject": ["Hatfield House"],
@@ -16177,11 +16185,12 @@ var images = [{
     "short": "Levens Hall, Westmorland, Topiary Garden",
     "match": null,
     "options": [{
-        "altId": "2300932",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300932.jpg",
-        "subject": ["Garden"],
-        "sub": ["Il libro della agricultura (Book of Agriculture), Garden Middle Ages"]
-    }],
+        "altId": "1800254",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800254.jpg",
+        "subject": ["Hatfield House"],
+        "sub": null,
+        "credit": ["© Elizabeth Barlow Rogers"]
+    }], //Hatfield substitution
     "text": null,
     "zoteroID": null,
     "zoteroURL": null
@@ -16192,14 +16201,9 @@ var images = [{
     "desc": "9.9. Plan of Kew Gardens from the 1850s, showing Nesfield's alterations",
     "short": "Plan of Kew Gardens",
     "match": null,
-    "options": [{
-        "altId": "2300932",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300932.jpg",
-        "subject": ["Garden"],
-        "sub": ["Il libro della agricultura (Book of Agriculture), Garden Middle Ages"]
-    }],
-    "text": null,
-    "zoteroID": null,
+    "options": [],
+    "text": "Greater London",
+    "zoteroID": "AJP2V5NV",
     "zoteroURL": null
 }, {
     "chp": "09_agents_sites_resources",
@@ -16208,12 +16212,7 @@ var images = [{
     "desc": "Below: 9.10. Carpet bed, Kew Gardens. 1870",
     "short": "Carpet bed, Kew Gardens",
     "match": null,
-    "options": [{
-        "altId": "2300932",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300932.jpg",
-        "subject": ["Garden"],
-        "sub": ["Il libro della agricultura (Book of Agriculture), Garden Middle Ages"]
-    }],
+    "options": [], //no luck
     "text": null,
     "zoteroID": null,
     "zoteroURL": null
@@ -16225,9 +16224,9 @@ var images = [{
     "short": "Emperor Fountain, Chatsworth, Derbyshire",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Emperor Fountain", //wikipedia sub
+    "zoteroID": "48YJ49WI",
+    "zoteroURL": "https://en.wikipedia.org/wiki/Emperor_Fountain#/media/File:Chatsworth_South_Front.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "385",
@@ -16235,7 +16234,7 @@ var images = [{
     "desc": "9.12. Plan for Prince's Park, Liverpool, designed by Joseph Paxton. c. 1842",
     "short": "Prince's Park, Liverpool, plan",
     "match": null,
-    "options": [],
+    "options": [], //seton might we decent substitution
     "text": null,
     "zoteroID": null,
     "zoteroURL": null
@@ -16245,7 +16244,7 @@ var images = [{
     "graphic": "CH9_014.jpg",
     "desc": "9.13. Main entrance, Birkenhead Park, Liverpool, designed by Lewis Hornblower and John Robertson. 1847. This gate is a Victorian version of a Roman triumphal arch with massively scaled Ionic columns commemorating not military victory but civic pride in the park's construction.",
     "short": "Main entrance, Birkenhead Park, Liverpool",
-    "match": null,
+    "match": null, //creative commons options on flickr
     "options": [],
     "text": null,
     "zoteroID": null,
@@ -16258,9 +16257,9 @@ var images = [{
     "short": "Victoria Drinking Fountain, Victoria Park",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "New Drinking Fountain, Victoria Park", //getty stereoscope replacement
+    "zoteroID": "84TKDM5G",
+    "zoteroURL": "http://www.getty.edu/museum/media/images/web/enlarge/07540601.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "388",
@@ -16269,9 +16268,9 @@ var images = [{
     "short": "Crystal Palace Park, Sydenham",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "crystal palace park", //substitution by Harding
+    "zoteroID": "YLRH337D",
+    "zoteroURL": "https://www.rct.uk/sites/default/files/styles/rctr-scale-1300-500/public/collection-online/2/4/710992-1504883486.jpg?itok=04WR8bYE"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "389",
@@ -16280,9 +16279,9 @@ var images = [{
     "short": "Residence of Andrew Jackson Downing",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Rural Essays",
+    "zoteroID": "DY68ZPVU",
+    "zoteroURL": "https://ia800206.us.archive.org/BookReader/BookReaderImages.php?id=cu31924000009005&itemPath=%2F18%2Fitems%2Fcu31924000009005&server=ia800206.us.archive.org&page=n29_w603"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "390",
@@ -16290,22 +16289,17 @@ var images = [{
     "desc": "9.17 and 9.18. \"Example of the Beautiful in Landscape Gardening\" and \"Example of the Picturesque in Landscape Gardening,\" as portrayed in Andrew Jackson Downing's Treatise on the Theory and Practice of Landscape Gardening, Adapted to North America, 1841",
     "short": "Example of the Beautiful in Landscape Gardening, Downing, Treatise on the Theory and Practice of Landscape Gardening",
     "match": null,
-    "options": [{
-        "altId": "2300932",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300932.jpg",
-        "subject": ["Garden"],
-        "sub": ["Il libro della agricultura (Book of Agriculture), Garden Middle Ages"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Treatise on the Theory and Practice of Landscape Gardening, Adapted to North America",
+    "zoteroID": "EI2VS2WB",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=hvd.32044026942490;seq=79;width=1190"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "391",
     "graphic": "CH9_019.jpg",
     "desc": "9.19. Napoleonic Victory Column, Place V&#x00EA;ndome, Paris, constructed by Denon, Gonduin, and Lep&#x00E8;re. 1806&#x2013;10",
     "short": "Napoleonic Victory Column, Place Vêndome, Paris",
-    "match": null,
+    "match": //not in database?????
     "options": [{
         "altId": "1900856",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900856.jpg",
@@ -16321,7 +16315,7 @@ var images = [{
     "id": "392",
     "graphic": "CH9_020.jpg",
     "desc": "Below left: 9.20. George Washington's grave as redesigned in the Gothic revival style by William Yeaton in 1835. Engraving by W. Woodruff, c. 1839",
-    "short": "eorge Washington's grave, Yeaton",
+    "short": "George Washington's grave, Yeaton",
     "match": null,
     "options": [],
     "text": null,
@@ -16335,9 +16329,9 @@ var images = [{
     "short": "Washington Monument in Baltimore, Mills",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Washington Monument (Baltimore)",
+    "zoteroID": "DL2IWYP2",
+    "zoteroURL": "https://upload.wikimedia.org/wikipedia/en/4/4d/Washington_Monument%2C_1890_1a.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "394",
@@ -16346,9 +16340,9 @@ var images = [{
     "short": "Bird's-eye view of Boston, Bachman",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Bird's eye view of Boston",
+    "zoteroID": "HDAQMS29",
+    "zoteroURL": "http://cdn.loc.gov/service/pnp/pga/00100/00100r.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "395",
@@ -16357,9 +16351,9 @@ var images = [{
     "short": "Baltimore Battle monument, Godefroy",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Battle of Baltimore", //photo substitute
+    "zoteroID": "GK7X8JYR",
+    "zoteroURL": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Balt_Battle_Monument_1a.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "396",
@@ -16368,16 +16362,20 @@ var images = [{
     "short": "Mourning picture for Captain John Williams",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Woman mourning by tomb with inscription",
+    "zoteroID": "26KRPR9P",
+    "zoteroURL": "https://cdn.loc.gov/service/pnp/pga/07100/07196v.jpg#h=791&w=1024"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "397",
     "graphic": "CH9_025.jpg",
     "desc": "9.25 and 9.26. P&#x00E8;re-Lachaise Cemetery",
     "short": "Père-Lachaise Cemetery",
-    "match": null,
+    "match": {
+        "altId": "1900313",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900313.jpg",
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },
     "options": [{
         "altId": "1900306",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900306.jpg",
@@ -16397,12 +16395,6 @@ var images = [{
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
     }, {
-        "altId": "1900309",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900309.jpg",
-        "subject": ["Père-Lachaise Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
         "altId": "1900310",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900310.jpg",
         "subject": ["Père-Lachaise Cemetery"],
@@ -16417,12 +16409,6 @@ var images = [{
     }, {
         "altId": "1900312",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900312.jpg",
-        "subject": ["Père-Lachaise Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "1900313",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900313.jpg",
         "subject": ["Père-Lachaise Cemetery"],
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
@@ -16462,48 +16448,6 @@ var images = [{
         "subject": ["Père-Lachaise Cemetery"],
         "sub": ["Père Lachaise Cemetery"],
         "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800001",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800001.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800002",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800002.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800003",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800003.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800004",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800004.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800005",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800005.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800006",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800006.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800007",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800007.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
     }],
     "text": null,
     "zoteroID": null,
@@ -16514,8 +16458,14 @@ var images = [{
     "graphic": "CH9_026.jpg",
     "desc": null,
     "short": "",
-    "match": null,
-    "options": [],
+    "match": {
+        "altId": "1900309",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900309.jpg",
+        "subject": ["Père-Lachaise Cemetery"],
+        "sub": null,
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },
+    "options": [], //see alts above
     "text": null,
     "zoteroID": null,
     "zoteroURL": null
@@ -16525,53 +16475,45 @@ var images = [{
     "graphic": "CH9_027.jpg",
     "desc": "9.27. Plan of Mount Auburn Cemetery, Cambridge, Massachusetts, designed by Jacob Bigelow. 1831. Engraving by James Smillie, from J. and C. Smillie, Mount Auburn Illustrated,1851",
     "short": "plan, Mount Auburn Cemetery, Smillie",
-    "match": null,
+    "match": {
+        "altId": "7000083",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000083.jpg",
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },
     "options": [{
-        "altId": "4800001",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800001.jpg",
-        "subject": ["Cemetery"],
+        "altId": "7000084",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000084.jpg",
+        "subject": ["Mount Auburn Cemetery"],
+        "sub": null,
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },{
+        "altId": "7000085",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000085.jpg",
+        "subject": ["Mount Auburn Cemetery"],
+        "sub": null,
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },{
+        "altId": "7000086",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000086.jpg",
+        "subject": ["Mount Auburn Cemetery"],
+        "sub": null,
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },{
+        "altId": "7000087",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000087.jpg",
+        "subject": ["Mount Auburn Cemetery"],
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
     }, {
-        "altId": "4800002",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800002.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800003",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800003.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800004",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800004.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800005",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800005.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800006",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800006.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800007",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800007.jpg",
-        "subject": ["Cemetery"],
+        "altId": "7000088",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000088.jpg",
+        "subject": ["Mount Auburn Cemetery"],
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
     }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Mount Auburn Illustrated",
+    "zoteroID": "RSHIVWLM",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=loc.ark:/13960/t4dn4b64f;seq=10;width=1190"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "400",
@@ -16579,52 +16521,10 @@ var images = [{
     "desc": "Below: 9.28. Entrance to Mount Auburn Cemetery. Engraving by James Smillie. from J. and C. Smillie, Mount Auburn Illustrated, 1851",
     "short": "Entrance, Mount Auburn Cemetery, Smillie",
     "match": null,
-    "options": [{
-        "altId": "4800001",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800001.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800002",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800002.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800003",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800003.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800004",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800004.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800005",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800005.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800006",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800006.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800007",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800007.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [], // others see alts above
+    "text": "Mount Auburn Illustrated",
+    "zoteroID": "RSHIVWLM",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=loc.ark:/13960/t4dn4b64f;seq=11;width=1190"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "401",
@@ -16632,52 +16532,10 @@ var images = [{
     "desc": "9.29. View of Harvard Hill, Mount Auburn Cemetery. Engraving by James Smillie, from J. and C. Smillie, Mount Auburn Illustrated, 1851",
     "short": "Harvard Hill, Mount Auburn Cemetery, Smillie",
     "match": null,
-    "options": [{
-        "altId": "4800001",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800001.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800002",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800002.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800003",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800003.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800004",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800004.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800005",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800005.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800006",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800006.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800007",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800007.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [], // others see alts above
+    "text": "Mount Auburn Illustrated",
+    "zoteroID": "RSHIVWLM",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=loc.ark:/13960/t4dn4b64f;seq=88;width=1190"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "402",
@@ -16685,52 +16543,10 @@ var images = [{
     "desc": "Right: 9.30. Loring Monument, Mount Auburn Cemetery. Engraving by James Smillie, from J. and C. Smillie, Mount Auburn Illustrated, 1851",
     "short": "Loring Monument, Mount Auburn Cemetery, Smillie",
     "match": null,
-    "options": [{
-        "altId": "4800001",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800001.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800002",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800002.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800003",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800003.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800004",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800004.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800005",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800005.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800006",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800006.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800007",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800007.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Mount Auburn Illustrated",
+    "zoteroID": "RSHIVWLM",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=loc.ark:/13960/t4dn4b64f;seq=156;width=1190"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "403",
@@ -16738,52 +16554,10 @@ var images = [{
     "desc": "Below: 9.31. Hillside chamber tombs with granite façades, Mount Auburn Cemetery",
     "short": "Hillside chamber, Mount Auburn Cemetery",
     "match": null,
-    "options": [{
-        "altId": "4800001",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800001.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800002",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800002.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800003",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800003.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800004",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800004.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800005",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800005.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800006",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800006.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800007",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800007.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Mount Auburn Illustrated", //forest pond with hillside graves - substitution
+    "zoteroID": "RSHIVWLM",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=loc.ark:/13960/t4dn4b64f;seq=121;width=1190"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "404",
@@ -16792,56 +16566,20 @@ var images = [{
     "short": "Sphinx, Mount Auburn Cemetery",
     "match": null,
     "options": [{
-        "altId": "4800001",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800001.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800002",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800002.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800003",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800003.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800004",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800004.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800005",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800005.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800006",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800006.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4800007",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4800007.jpg",
-        "subject": ["Cemetery"],
-        "sub": null,
+        "altId": "4300210",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300210.jpg",
+        "subject": ["Mount Auburn Cemetery"],
+        "sub": ["Sphinx, Mount Auburn Cemetery, designed by Jacob Bigelow and sculpted by Martin Milmore, 1871"],
         "credit": ["© Elizabeth Barlow Rogers"]
     }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Mt. Auburn Cemetery, Cambridge, Milmore's sphinx", //substitutions
+    "zoteroID": "3SA84EW5",
+    "zoteroURL": "https://cdn.loc.gov/service/pnp/det/4a00000/4a07000/4a07500/4a07541v.jpg#h=805&w=1024"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "405",
     "graphic": "CH9_033.jpg",
-    "desc": null,
+    "desc": null, //simply part of greensward which overflows
     "short": "",
     "match": null,
     "options": [],
@@ -16855,7 +16593,7 @@ var images = [{
     "desc": "9.33. Greensward Plan, Central Park design competition entry of Frederick Law Olmsted and Calvert Vaux. 1857",
     "short": "Greensward Plan, Central Park",
     "match": null,
-    "options": [{
+    "options": [{ //none loading
         "altId": "5000070",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000070.jpg",
         "subject": ["Central Park"],
@@ -16874,9 +16612,9 @@ var images = [{
         "sub": ["Pool"],
         "credit": ["© Elizabeth Barlow Rogers"]
     }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Olmsted–Designed Parks : NYC Parks",
+    "zoteroID": "BVZINMQY",
+    "zoteroURL": "https://www.nycgovparks.org/pagefiles/20/olmsted1.jpg" //too low res
 }, {
     "chp": "09_agents_sites_resources",
     "id": "407",
@@ -16884,57 +16622,21 @@ var images = [{
     "desc": "9.34. Sheep Meadow, Central Park, New York City",
     "short": "Sheep Meadow, Central Park",
     "match": null,
-    "options": [{
-        "altId": "5000070",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000070.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool and Rustic Bridge"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000071",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000071.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Ravine"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000072",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000072.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [], //historic substitution loc
+    "text": "Sheep in Central Park, New York",
+    "zoteroID": "IHRHIB9T",
+    "zoteroURL": "https://cdn.loc.gov/service/pnp/det/4a00000/4a08000/4a08800/4a08822v.jpg#h=808&w=1024"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "408",
     "graphic": "CH9_036.jpg",
     "desc": "9.35. Sheep Meadow, Central Park, contemporary view. In keeping with the pastoral ideal embodied in this landscape, the sight of the surrounding city was screened from view by the park's topographic modeling and umbrageous border plantings. Olmsted and Vaux wanted to imply the nonexistence of the park's rectangular boundaries and the indefinite continuation of pastoral scenery, a successful strategy before the age of skyscrapers, which now loom dramatically along its borders, providing perhaps a new scenic category: the urban sublime.",
     "short": "Sheep Meadow, Central Park",
-    "match": null,
-    "options": [{
-        "altId": "5000070",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000070.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool and Rustic Bridge"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000071",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000071.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Ravine"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000072",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000072.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "match": null, //conservancy has rights, Q? Rogers
+    "options": [],
+    "text": "Sheep-Meadow-Aerial-Central-Park",
+    "zoteroID": "UNCSNAKM",
+    "zoteroURL": "http://assets.centralparknyc.org/images/about/press/Sheep-Meadow-Aerial-Central-Park-credit-the-Central-Park-Conservancy.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "409",
@@ -16942,28 +16644,10 @@ var images = [{
     "desc": "Left top: 9.36. Archway carrying the carriage over a transverse road, Central Park, c. 1860",
     "short": "Archway Traverse Road, Central Park",
     "match": null,
-    "options": [{
-        "altId": "5000070",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000070.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool and Rustic Bridge"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000071",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000071.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Ravine"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000072",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000072.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Annual report of the Board of Commissioners of the Central Park",
+    "zoteroID": "HW2524BC",
+    "zoteroURL": "https://ia801008.us.archive.org/BookReader/BookReaderImages.php?id=annualreportofbo00newy_9&itemPath=%2F11%2Fitems%2Fannualreportofbo00newy_9&server=ia801008.us.archive.org&page=n50_w625"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "410",
@@ -16971,28 +16655,10 @@ var images = [{
     "desc": "Left middle: 9.37. Pedestrians crossing beneath Carriage Drive, Central Park. Lithograph by Sarony, Major &amp; Knapp, c.1860",
     "short": "Carriage Drive, Central Park, Sarony",
     "match": null,
-    "options": [{
-        "altId": "5000070",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000070.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool and Rustic Bridge"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000071",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000071.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Ravine"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000072",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000072.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Annual report of the Board of Commissioners of the Central Park",
+    "zoteroID": "HW2524BC",
+    "zoteroURL": "https://ia801008.us.archive.org/BookReader/BookReaderImages.php?id=annualreportofbo00newy_9&itemPath=%2F11%2Fitems%2Fannualreportofbo00newy_9&server=ia801008.us.archive.org&page=n62_w622"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "411",
@@ -17000,57 +16666,21 @@ var images = [{
     "desc": "Left bottom: 9.38. Pedestrians separated from horseback riders by means of a stone bridge, Central Park. Lithograph by George Hayward, ca. 1860",
     "short": "Central Park, Hayward",
     "match": null,
-    "options": [{
-        "altId": "5000070",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000070.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool and Rustic Bridge"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000071",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000071.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Ravine"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000072",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000072.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Annual report of the Board of Commissioners of the Central Park",
+    "zoteroID": "HW2524BC",
+    "zoteroURL": "https://ia801008.us.archive.org/BookReader/BookReaderImages.php?id=annualreportofbo00newy_9&itemPath=%2F11%2Fitems%2Fannualreportofbo00newy_9&server=ia801008.us.archive.org&page=n42_w593"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "412",
     "graphic": "CH9_040.jpg",
     "desc": "Below: 9.39. Bow Bridge, Central Park",
     "short": "Bow Bridge, Central Park",
-    "match": null,
-    "options": [{
-        "altId": "5000070",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000070.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool and Rustic Bridge"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000071",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000071.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Ravine"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000072",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000072.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "match": null, //conservancy credit
+    "options": [],
+    "text": "Bow-Bridge-Central-Park",
+    "zoteroID": "V4ULBCEJ",
+    "zoteroURL": "http://assets.centralparknyc.org/images/about/press/Bow-Bridge-Central-Park-credit-the-Central-Park-Conservancy.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "413",
@@ -17058,110 +16688,38 @@ var images = [{
     "desc": "9.40. Bethesda Terrace, Central Park. The carved panels encasing the grand double stairs descending to the Bethesda Fountain and the lakeshore depict a rich profusion of animal and vegetal forms symbolizing the seasons of the year. Ornamentation like this, using images depicting natures abundance in a manner similar to that of medieval stonecarvers, owes a debt to the writings of John Ruskin, an important influence on the intellectual and artistic culture of Victorian England and its counterpart in nineteenth-century America.",
     "short": "Bethesda Terrace, Central Park",
     "match": null,
-    "options": [{
-        "altId": "5000070",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000070.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool and Rustic Bridge"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000071",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000071.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Ravine"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000072",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000072.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Terrace, fountain and lake, Central Park", //loc substitution
+    "zoteroID": "JUCWKN28",
+    "zoteroURL": "https://cdn.loc.gov/service/pnp/stereo/1s00000/1s07000/1s07000/1s07045v.jpg#h=529&w=1024"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "414",
     "graphic": "CH9_042.jpg",
     "desc": "9.41. Harlem Meer and the Charles A. Dana Center, Central Park",
     "short": "Harlem Meer and the Charles A. Dana Center, Central Park",
-    "match": null,
-    "options": [{
-        "altId": "5000070",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000070.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool and Rustic Bridge"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000071",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000071.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Ravine"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000072",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000072.jpg",
-        "subject": ["Central Park"],
-        "sub": ["Pool"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "match": null, //conservancy credit
+    "options": [],
+    "text": "Harlem Meer",
+    "zoteroID": "I4YULVD8",
+    "zoteroURL": "http://assets.centralparknyc.org/images/things-to-see-and-do/harlem-meer-l.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "415",
     "graphic": "CH9_043.jpg",
     "desc": "9.42. Long Meadow, Prospect Park, Brooklyn. The Long Meadow illustrates the kind of scenic unfolding of pastoral landscape that constitutes the essence of Olmsted and Vaux's park ideal. The eye threads a passage through clumps of trees, passing over a series of gentle undulations to a hazy horizon line that appears to extend beyond the park's confines.",
     "short": "Long Meadow, Prospect Park, Brooklyn",
-    "match": null,
+    "match": null, //again why isn't this hosted
     "options": [{
-        "altId": "5000066",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000066.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["aerial view"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000067",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000067.jpg",
-        "subject": ["Prospect Park"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000073",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000073.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000074",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000074.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000075",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000075.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000076",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000076.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
         "altId": "5000082",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000082.jpg",
         "subject": ["Prospect Park"],
         "sub": ["Long Meadow, Prospect Park, Brooklyn. The Long Meadow illustrates the kind of scenic unfolding of pastoral landscape that constitutes the essence of Olmstead and Vaux's park ideal. The eye threads a passage through clumps of trees, passing over a series of gentle undulations to a hazy horizon line that appears to extend beyond the park's confines"],
         "credit": ["© Elizabeth Barlow Rogers"]
     }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "View of the Long Meadow, Prospect Park",
+    "zoteroID": "LWDKQTQM",
+    "zoteroURL": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Prospect_Park_Long_Meadow_Panorama_from_Endale_Arch.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "416",
@@ -17169,105 +16727,21 @@ var images = [{
     "desc": "9.43. Plan of Prospect Park, Brooklyn, by Frederick Law Olmsted and Calvert Vaux. 1871",
     "short": "Prospect Park, Brooklyn, plan",
     "match": null,
-    "options": [{
-        "altId": "5000066",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000066.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["aerial view"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000067",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000067.jpg",
-        "subject": ["Prospect Park"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000073",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000073.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000074",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000074.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000075",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000075.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000076",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000076.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000082",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000082.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["Long Meadow, Prospect Park, Brooklyn. The Long Meadow illustrates the kind of scenic unfolding of pastoral landscape that constitutes the essence of Olmstead and Vaux's park ideal. The eye threads a passage through clumps of trees, passing over a series of gentle undulations to a hazy horizon line that appears to extend beyond the park's confines"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Design for Prospect Park as Proposed to be Laid Out for The City of Brooklyn",
+    "zoteroID": "Y8FIU59B",
+    "zoteroURL": "https://upload.wikimedia.org/wikipedia/commons/7/7d/1870_Vaux_and_Olmstead_Map_of_Prospect_Park%2C_Brooklyn%2C_New_York_-_Geographicus_-_ProspectPark-bishop-1870.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "417",
     "graphic": "CH9_045.jpg",
     "desc": "Below: 9.44. The Ravine, Prospect Park, Brooklyn. c. 1870",
     "short": "The Ravine, Prospect Park",
-    "match": null,
-    "options": [{
-        "altId": "5000066",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000066.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["aerial view"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000067",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000067.jpg",
-        "subject": ["Prospect Park"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000073",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000073.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000074",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000074.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000075",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000075.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000076",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000076.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000082",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000082.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["Long Meadow, Prospect Park, Brooklyn. The Long Meadow illustrates the kind of scenic unfolding of pastoral landscape that constitutes the essence of Olmstead and Vaux's park ideal. The eye threads a passage through clumps of trees, passing over a series of gentle undulations to a hazy horizon line that appears to extend beyond the park's confines"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "match": null, //substitutions
+    "options": [],
+    "text": "Prospect Park, Brooklyn",
+    "zoteroID": "2YPELCVE",
+    "zoteroURL": "https://cdn.loc.gov/service/pnp/stereo/1s00000/1s06000/1s06800/1s06842v.jpg#h=546&w=1024"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "418",
@@ -17275,7 +16749,7 @@ var images = [{
     "desc": "9.45. Plan of a portion of Eastern Parkway, Brooklyn, New York. 1868. Six rows of trees were to be planted along the length of the parkway, dividing the 260-foot (79-meter) right-ofway into a center drive for carriages, with two lanes on each side, one of which was designated a pedestrian walk, while the other served as a side road for the approach of vehicles to the adjoining house lots. These were to be 100 feet (30.4 meters) in width, allowing for the construction of freestanding \"villa\" residences with private gardens. Service lanes where horses could be stabled, goods delivered, and garbage removed were to be located in back of the house lots.",
     "short": "Eastern Parkway, Brooklyn, plan",
     "match": null,
-    "options": [],
+    "options": [], //nope, but review flick for olmsted nps
     "text": null,
     "zoteroID": null,
     "zoteroURL": null
@@ -17287,16 +16761,16 @@ var images = [{
     "short": "Buffalo Park System",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Plan of Buffalo Park System",
+    "zoteroID": "NGCP5PNJ",
+    "zoteroURL": "https://farm9.staticflickr.com/8002/29815469775_233d2e0ac0_k_d.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "420",
     "graphic": "CH9_048.jpg",
     "desc": "9.47. Plan for Riverside, Illinois, 1869",
     "short": "Riverside, Illinois",
-    "match": null,
+    "match": null, //contemporary images, vs. old
     "options": [{
         "altId": "3900074",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/3900074.jpg",
@@ -17382,9 +16856,9 @@ var images = [{
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
     }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Maps of Riverside",
+    "zoteroID": "PR7WLESE",
+    "zoteroURL": "http://www.olmstedsociety.org/wp-content/uploads/2008/11/general-plan-of-riverside.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "421",
@@ -17392,16 +16866,10 @@ var images = [{
     "desc": "9.48. Plan for the Chicago South Park Commission, by Frederick Law Olmsted and Calvert Vaux, 1871",
     "short": "Plan for the Chicago South Park Commission, 1871",
     "match": null,
-    "options": [{
-        "altId": "3900046",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/3900046.jpg",
-        "subject": ["South Park"],
-        "sub": ["Girls at Water Fountain "],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Chicago South Park Commission plan",
+    "zoteroID": "9Q83QLPU",
+    "zoteroURL": "https://fedora.digitalcommonwealth.org/fedora/objects/commonwealth:4m90f7485/datastreams/access800/content"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "422",
@@ -17427,46 +16895,10 @@ var images = [{
         "subject": ["Emerald Necklace"],
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300042",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300042.jpg",
-        "subject": ["Emerald Necklace"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300049",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300049.jpg",
-        "subject": ["Emerald Necklace"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300050",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300050.jpg",
-        "subject": ["Emerald Necklace"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300051",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300051.jpg",
-        "subject": ["Emerald Necklace"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300052",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300052.jpg",
-        "subject": ["Emerald Necklace"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300209",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300209.jpg",
-        "subject": ["Emerald Necklace"],
-        "sub": ["Emerald Necklace, Boston"],
-        "credit": ["© Sarah Cedar Miller"]
     }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Emerald Necklace",
+    "zoteroID": "9XRTV8A3",
+    "zoteroURL": "https://farm4.staticflickr.com/3858/14855950470_0cd686ab4a_o.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "423",
@@ -17499,9 +16931,9 @@ var images = [{
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
     }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Sheep in Franklin Park",
+    "zoteroID": "NYNAQGTZ",
+    "zoteroURL": "https://cdn.loc.gov/service/pnp/det/4a10000/4a17000/4a17800/4a17863v.jpg#h=814&w=1024"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "424",
@@ -17534,16 +16966,20 @@ var images = [{
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
     }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Volume 8 - National Association for Olmsted Parks", //olmsted and nps
+    "zoteroID": "IK2Q5P39",
+    "zoteroURL": "http://www.olmsted.org/storage/images/FLO_Papers_Images/03_The_12_Volumes/SS2/72_Image_8DUOtone.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "425",
     "graphic": "CH9_053.jpg",
     "desc": "Below: 9.52. Moraine Farm, Beverly, Massachusetts, open field, designed by Frederick Law Olmsted",
     "short": "Moraine Farm, Beverly, Massachusetts",
-    "match": null,
+    "match": {
+        "altId": "4300141",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300141.jpg",
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },
     "options": [{
         "altId": "4300130",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300130.jpg",
@@ -17607,12 +17043,6 @@ var images = [{
     }, {
         "altId": "4300140",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300140.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300141",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300141.jpg",
         "subject": ["Moraine Farm"],
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
@@ -17656,110 +17086,14 @@ var images = [{
     "graphic": "CH9_054.jpg",
     "desc": "9.53. East Terrace, Moraine Farm, Beverly, Massachusetts, estate of John C. Phillips, designed by Frederick Law Olmsted. c. 1880",
     "short": "East Terrace, Moraine Farm, Beverly, Massachusetts",
-    "match": null,
-    "options": [{
-        "altId": "4300130",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300130.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
+    "match": {
         "altId": "4300131",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300131.jpg",
         "subject": ["Moraine Farm"],
         "sub": null,
         "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300132",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300132.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300133",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300133.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300134",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300134.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300135",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300135.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300136",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300136.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300137",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300137.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300138",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300138.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300139",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300139.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300140",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300140.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300141",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300141.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300142",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300142.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300143",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300143.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300144",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300144.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300211",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300211.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": ["Moraine Farm, Beverly, open field, designed by Frederick Law Olmstead"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "4300213",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/4300213.jpg",
-        "subject": ["Moraine Farm"],
-        "sub": ["East Terrace, Moraine Farm, estate of John C. Philips, designed by Frederick Law Olmstead, c. 1880"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
+    },
+    "options": [], //alts see above
     "text": null,
     "zoteroID": null,
     "zoteroURL": null
@@ -17771,9 +17105,9 @@ var images = [{
     "short": "U.S. Capitol, Terrace on the west front",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "The Capitol West Front terrace of the US Capitol", //later...
+    "zoteroID": "HKZJC9YQ",
+    "zoteroURL": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Flickr_-_USCapitol_-_US_Capitol_West_Front_1888.jpg"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "428",
@@ -17782,9 +17116,9 @@ var images = [{
     "short": "Central Basin (Court of Honor), World's Columbian Exposition, Chicago",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "The World's fair album",
+    "zoteroID": "DLS47YLH",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=uva.x000587276;seq=26;width=1190"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "429",
@@ -17793,62 +17127,20 @@ var images = [{
     "short": "Lagoon and Island, World's Columbian Exposition, Chicago",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
-}, {
+    "text": "The World's fair album",
+    "zoteroID": "DLS47YLH",
+    "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=uva.x000587276;seq=36;width=1190"
+}, { //start here
     "chp": "09_agents_sites_resources",
     "id": "430",
     "graphic": "CH9_058.jpg",
     "desc": "9.57. Boathouse, Prospect Park, Brooklyn, New York, designed by Stanford White and Frank J. Helmie. 1905",
     "short": "Boathouse, Prospect Park",
     "match": null,
-    "options": [{
-        "altId": "5000066",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000066.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["aerial view"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000067",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000067.jpg",
-        "subject": ["Prospect Park"],
-        "sub": null,
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000073",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000073.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000074",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000074.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000075",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000075.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000076",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000076.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["The Long Meadow"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
-        "altId": "5000082",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5000082.jpg",
-        "subject": ["Prospect Park"],
-        "sub": ["Long Meadow, Prospect Park, Brooklyn. The Long Meadow illustrates the kind of scenic unfolding of pastoral landscape that constitutes the essence of Olmstead and Vaux's park ideal. The eye threads a passage through clumps of trees, passing over a series of gentle undulations to a hazy horizon line that appears to extend beyond the park's confines"],
-        "credit": ["© Elizabeth Barlow Rogers"]
-    }],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "options": [],
+    "text": "Final drawing for the Boathouse in Prospect Park",
+    "zoteroID": "ER99QYGV",
+    "zoteroURL": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Prospect_Park_Boathouse_1905_Architectural_Rendering.png"
 }, {
     "chp": "09_agents_sites_resources",
     "id": "431",
@@ -17857,9 +17149,9 @@ var images = [{
     "short": "Soldiers' and Sailors' Memorial Arch, Grand Army Plaza",
     "match": null,
     "options": [],
-    "text": null,
-    "zoteroID": null,
-    "zoteroURL": null
+    "text": "Soldiers Memorial Arch from Prospect Park",
+    "zoteroID": "BSM8V53I",
+    "zoteroURL": "https://cdn.loc.gov/service/pnp/cph/3b30000/3b30000/3b30400/3b30425r.jpg#h=515&w=640"
 }, {
     "chp": "10",
     "id": "432",
