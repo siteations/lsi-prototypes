@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styles from './materialStyles.js';
 
 import SImage from './SImage.js';
 import SNetwork from './SNetwork.js';
 import SText from './SText.js';
-import LogAccess from './LogAccess.js';
+//import LogAccess from './LogAccess.js'; //remainder from curation ideas
 
 import {setMainPane, setSideTop, setSideBottom} from '../action-creators/paneActions.js';
 
@@ -59,18 +58,17 @@ class SideP extends Component {
     return (
               <div className="col pane" id="sidePane">
                 {this.props.pane.top === 'images' &&
-                  <SImage hi={this.state.height} actions={this.togglePaneT} />
+                  <SImage hi={this.state.height} loc='top' actions={this.togglePaneT} size="side"/>
                 }
                 {this.props.pane.top === 'text' &&
-                  <SText hi={this.state.height} loc='top' actions={this.togglePaneT} />
+                  <SText hi={this.state.height} loc='top' actions={this.togglePaneT} size="side"/>
                 }
                 {this.props.pane.bottom === 'networks' &&
-                  <SNetwork hi={this.state.height} actions={this.togglePaneB} />
+                  <SNetwork hi={this.state.height} loc='bottom' actions={this.togglePaneB} size="side"/>
                 }
                 {this.props.pane.bottom === 'text' &&
-                  <SText hi={this.state.height} loc='bottom' actions={this.togglePaneB} />
+                  <SText hi={this.state.height} loc='bottom' actions={this.togglePaneB} size="side"/>
                 }
-                <LogAccess />
               </div>
     );
   }

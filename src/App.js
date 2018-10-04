@@ -10,7 +10,7 @@ import './css/App.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {grey600, grey800, grey400, cyan800, cyan900, grey100, grey500, grey300, darkBlack, white, fullBlack} from 'material-ui/styles/colors';
+import {grey600, grey800, grey400, cyan900, grey100, grey500, grey300, darkBlack, white, fullBlack} from 'material-ui/styles/colors';
 import {fade} from 'material-ui/utils/colorManipulator';
 
 import Search from './components/Search.js';
@@ -18,10 +18,7 @@ import Chapternav from './components/ChapterNav.js';
 import FullPane from './components/FullPane.js';
 import CorePane  from './components/CorePane.js';
 import AccordPane from './components/AccordPane.js';
-import Section from './components/scroll.js';
 
-
-//import axios from 'axios';
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Texta, sans-serif',
@@ -52,7 +49,7 @@ class App extends Component {
  }
 
 // this is just for testing connections to fake drupal backend
-// if we're setting up postgreSQL (please!) disreguard this, also if we're going the react route (ha), I'd prefer to go explicit with redux routing
+// if we're setting up postgreSQL disreguard this
 
 // make sure mamp is running the local drupal version (and seed with some materials) for testing
 /* componentDidMount() {
@@ -68,6 +65,7 @@ class App extends Component {
 
 
   render() {
+    console.log('address', this.props);
     return (
     <MuiThemeProvider muiTheme={muiTheme}>
       <div className="App">
@@ -109,24 +107,6 @@ const mapStateToProps = (state, ownProps) => {
     nav: state.nav,
     }
 }
-
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//   return {
-//     setChapterDrawer: (button) => {
-//         dispatch(setChapterDrawer(button));
-//     },
-//     setChpPara: (chp, para) => {
-//         dispatch(setChpPara(chp, para));
-//     },
-//     setSiteData: (id, name)=>{
-//       dispatch(setSiteData(id, name));
-//     },
-//     setUpdate: (bool) =>{
-//       dispatch(setUpdate(bool));
-//     }
-
-//   }
-// }
 
 const Apps = connect(mapStateToProps, null)(App);
 

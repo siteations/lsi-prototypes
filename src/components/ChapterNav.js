@@ -7,12 +7,8 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
-// import Scroll from 'react-scroll'; // Imports all Mixins
-// import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 
-// import scrollToElement from 'scroll-to-element';
 
-import sampleText from '../data/Gilpin.js';
 
 import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setCoreText} from '../action-creators/navActions.js';
 import {loadResources, loadTags} from '../action-creators/searchActions.js';
@@ -166,14 +162,14 @@ class ChapterN extends Component {
 							      })
 							      var arrSites = elems.concat(sites);
 
-							      var chpt = [<Divider />, <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false} style={{fontFamily:'Eveleth'}}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
+							      var chpt2 = [<Divider />, <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false} style={{fontFamily:'Eveleth'}}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
 							      var subsites = [ <MenuItem primaryText={'Chp '+drawer.id+' sites'} style={{fontStyle: 'italic'}} rightIcon={<ArrowDropRight />} insetChildren={true} menuItems={arrSites} /> , <Divider />]
-							      var items = drawer.headers.map(header=>{
+							      var items2 = drawer.headers.map(header=>{
 							      	return <MenuItem primaryText={header.value}  onClick={e=>this.selectSubChapter(drawer.id, header.p)} insetChildren={header.value.search(/I\.|II\.|III\.|IV\.|V\.|VI\.|VII\./g)}/>
 							      })
-							      var arr = chpt.concat(subsites, items);
+							      var arr2 = chpt2.concat(subsites, items2);
 
-			          		return arr;
+			          		return arr2;
 			          	}
 
 			          	})

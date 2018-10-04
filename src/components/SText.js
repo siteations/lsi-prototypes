@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import Tabs from './Tabs.js';
 
 import TextPaneS from './TextPaneS.js';
-import NotePaneS from './TextPaneS.js';
 import ResourcePaneS from './TextPaneS.js';
 
-import styles from './materialStyles.js';
 
 var buttons = [
   {label: 'text', value: 'a'},

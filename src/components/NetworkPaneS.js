@@ -5,25 +5,13 @@ import EnlargeSide from './EnlargeSide.js';
 
 import {setSideTop} from '../action-creators/paneActions.js';
 
-var buttons = [
-  {label: 'images', value: 'a'},
-  {label: 'sites', value: 'b'},
-  {label: 'science', value: 'c'},
-  {label: 'social', value: 'd'},
-  {label: 'senses', value: 'e'},
-]
-
-
 class SPNetwork extends Component {
 //const STImages = function (props) {
   constructor(props) {
    super(props);
    this.state = {};
  }
-
-
-
-    render(){
+  render(){
     return (
     <div style={{height:this.props.hi}}>
       {this.props.focus} network here: {this.props.nav.siteName}

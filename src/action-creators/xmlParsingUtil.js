@@ -4,6 +4,8 @@ import Promise from 'bluebird';
 import hexConv from './hexConversion.js';
 
 
+
+
 //-----------basic regex functions---------------
 
 const startPage = (para)=>{
@@ -11,8 +13,8 @@ const startPage = (para)=>{
 	return page;
 }
 
-const scrub = (text)=>{
-	return text.replace(/<h5.+?>|<\/h5>|<head>|<date.+?>|<\/date>|<hi rend=".+?">|<\/hi>|<\/head>|<name type="place">|<name type="pname">|<name type="place" key=".+?>|<name type="pname" key=".+?>|<\/name>/g, '').replace(/<hi rend=".+?">/g, '<em>').replace(/<\/hi>/g, '</em>')
+const scrub = (text)=>{ //simply cleans out tags after cataloging for left links
+	return text.replace(/<.*?>|<\/.*?>/gmi, '')
 }
 
 const paraNotes = (para)=>{
@@ -22,7 +24,9 @@ const paraNotes = (para)=>{
 
 const paraTitle = (header, i)=>{
 	var pre, title, subtitle;
-	var words = header.replace(/<head>|<hi rend="bold">|<\/hi>|<\/head>|<name type="place">|<name type="pname">|<\/name>/g, '').split(' '); // inner contents as array
+// inner contents as array
+	header  = hexConv(header);
+	var words = header.replace(/<.*?>|<\/.*?>/gm, '').split(' ');
 
 	if (i !== 0){
 		pre = words[0]+' '+words[1];
@@ -36,29 +40,51 @@ const paraTitle = (header, i)=>{
 	return {pre, title, subtitle};
 }
 
-
 const singleId = (ref)=>{var res = ref.match(/\d+/g)? ref.match(/\d+/g)[0]: null; return res};
 const singleName = (ref)=>{var res = ref.match(/>.+?</g)? ref.match(/>.+?</g)[0].replace(/>|</g, '') : null; return res };
 
 const paraSites = (para, i)=>{
 	var parag = hexConv(para);
+	var fig = parag.match(/<figure/gmi);
 
 	var agObj={};
 	var ag = parag.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g) ? parag.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
 	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key], p: i? i: [] } })
 
+	return (arr.length>0 && !fig)? arr : null;
+}
+
+const paraResources = (para, i)=>{
+	var parag = hexConv(para);
+
+	var agObj={};
+	var ag = parag.match(/(<hi rend="italic" key=".+?".+?<\/hi>)/g) ? parag.match(/(<hi rend="italic" key=".+?".+?<\/hi>)/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
+	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key], p: i? i: [] } })
+
 	return (arr.length>0)? arr : null;
+}
+
+const paraFig = (para, i)=>{
+	var parag = hexConv(para);
+
+	var figId = parag.match(/id="fig-.*?"/gm)? parag.match(/id="fig-.*?"/gm)[0].replace(/id="fig-|"/gm,''): null;
+	var figDesc = parag.match(/<figDesc>.*?<\/figDesc>/gm)? parag.match(/<figDesc>.*?<\/figDesc>/gm)[0].replace(/<.*?>|<\/.*?>/gm, ''): null;
+	var figNum = !figDesc ? null : figDesc.match(/\d*?\.\d*?(?=\.)/gmi)? figDesc.match(/\d*?\.\d*?(?=\.)/gmi)[0] : null;
+	//add options later - akin to db call
+
+	return (figId)? {figId, figDesc, figNum} : null;
 }
 
 
 const paraAgents = (para)=>{
 	var parag = hexConv(para);
+	var fig = parag.match(/<figure/gmi);
 
 	var agObj={};
 	var ag = parag.match(/<name type="pname".+?<\/name>/g) ? parag.match(/<name type="pname".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
 	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key]} })
 
-	return (arr.length>0)? arr : null;
+	return (arr.length>0 && !fig)? arr : null;
 
 }
 
@@ -67,6 +93,8 @@ const textAdj = (para, i)=>{
 
 	if (parag.substring(0,4)==='<hea'){
 		return '<h5 class="sect">'+parag+'</h5>';
+	} else if (parag.substring(0,4)==='<fig'){
+		return ' ' ;
 	} else {
 		return parag;
 	}
@@ -78,7 +106,7 @@ const textAdj = (para, i)=>{
 //---------main function to return promised text-----------
 export const sampleText = ()=>{
 
-	var chps = ['00a.xml', '01a.xml', '02a.xml', '03a.xml', '04a.xml', '05a.xml', '06a.xml', '07_agents_sites.xml', '08a.xml', '09a.xml', '10a.xml', '11a.xml', '12a.xml', '13a.xml', '14a.xml', '15a.xml', '16a.xml', 'glossarybib.xml'];
+	var chps = ['00.xml', '01.xml', '02.xml', '03.xml', '04.xml', '05.xml', '06.xml', '07_agents_sites_resources.xml', '08.xml', '09_agents_sites_resources.xml', '10.xml', '11.xml', '12.xml', '13.xml', '14.xml', '15.xml', '16.xml', 'glossarybib.xml'];
 
 	var testEdits = chps.map(each=>{
 		return axios.get('./chapters/'+each);
@@ -89,13 +117,15 @@ export const sampleText = ()=>{
 		var body = event.map(each=>each.data);
 
 		var chapters = body.map((chp, i) => {
+			chp = chp.replace(/\n/gm, ' '); //end of line issues; \s*
+
 			var header = chp.match(/<head>.+?<\/head>|<p>.+?<\/p>(?!<\/note>)/g)[0]
 
 			return {
 				chapter: i,
 				titles: paraTitle(header, i),
 				pageStart: startPage(chp),
-				paragraphs: chp.match(/<head>.+?<\/head>|<p>.+?<\/p>(?!<\/note>)/g).map((para,i)=>{
+				paragraphs: chp.match(/<head>.+?<\/head>|<figure.*?<\/figure>|<p>.+?<\/p>(?!<\/note>)/g).map((para,i)=>{
 						return {
 
 							text: textAdj(para),
@@ -103,7 +133,8 @@ export const sampleText = ()=>{
 							notes: paraNotes(para),
 							sites: paraSites(para, i),
 							agents: paraAgents(para),
-							//titles: paraTitles(para),
+							resources: paraResources(para, i),
+							figures: paraFig(para),
 						};
 				}),
 				notes: chp.match(/<note.+?<\/note>/g),

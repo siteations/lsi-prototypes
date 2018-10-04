@@ -55,9 +55,9 @@ class Image extends Component {
   return (
     <div id="slider" >
       <div className="text-center">
-        <img id='load' src={images[this.state.active].original} style={{width:this.state.widthImg}} onLoad={e=>this.getSize(e)} onChange={e=>this.getSize(e)}/>
+        <img id='load' src={images[this.state.active].original} alt="" style={{width:this.state.widthImg}} onLoad={e=>this.getSize(e)} onChange={e=>this.getSize(e)}/>
       </div>
-      <div className="row" style={{position: 'absolute', top: this.state.height-40}} className="centerblock">
+      <div className="row centerblock" style={{position: 'absolute', top: this.state.height-40}} >
           {images.length > 1 &&
             images.map((image, i)=>{
               if(i===this.state.active){

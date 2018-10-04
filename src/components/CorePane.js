@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import PaneContents from './MText.js';
+import PaneContents from './ContentsM.js';
 // import MImages from './MImages.js';
 // import MNetwork from './MNetwork.js';
 // import MEdit from './MEdit.js';
@@ -39,7 +39,7 @@ class CoreP extends Component {
 
   	return (
   	<div className="col-8 paneFixed" id="largePane">
-	  		<PaneContents value={this.props.pane.mainTab} action={this.handleChange} />
+	  		<PaneContents value={this.props.pane.mainTab} action={this.handleChange} size="core" />
     </div>
   	)
   }

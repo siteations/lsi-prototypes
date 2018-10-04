@@ -1,17 +1,5 @@
 //-------------IMPORT BASIC OBJECTS AS PLACEHOLDERS FOR DB STRUCTURE----------------------
 
-//import sampleText from '../non-db/sampleText.js';
-
-//import chapterList from '../non-db/chapterList.js';
-//import imageList from '../non-db/imageList.js';
-//import themeList from '../non-db/themeList.js';
-
-//import siteList from '../non-db/siteList.js';
-//import agentList from '../non-db/agentList.js';
-//import mediaList from '../non-db/mediaList.js';
-
-
-import axios from 'axios';
 
 //-------------------CONSTANTS
 

@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import EnlargeSide from './EnlargeSide.js';
-
 import {setSideTop} from '../action-creators/paneActions.js';
-
-var buttons = [
-  {label: 'images', value: 'a'},
-  {label: 'sites', value: 'b'},
-  {label: 'science', value: 'c'},
-  {label: 'social', value: 'd'},
-  {label: 'senses', value: 'e'},
-
-]
 
 
 class Themes extends Component {
@@ -28,7 +17,6 @@ class Themes extends Component {
     return (
     <div style={{height:this.props.hi}}>
       themes here: {this.props.nav.siteName}, {this.props.theme}
-      <EnlargeSide actions={this.props.actions}/>
     </div>
     )
   }

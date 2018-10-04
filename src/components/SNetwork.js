@@ -6,8 +6,6 @@ import Tabs from './Tabs.js';
 import GeoPane  from './GeoPaneS.js';
 import NetworkPane  from './NetworkPaneS.js';
 
-import styles from './materialStyles.js';
-
 
 var buttons = [
   {label: 'geo', value: 'a'},

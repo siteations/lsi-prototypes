@@ -84,7 +84,7 @@ class SPNetwork extends Component {
 
 
     render(){
-      const { lng, lat, zoom } = this.state;
+      //const { lng, lat, zoom } = this.state;
       console.log(this.props.hi*2);
 
     return (

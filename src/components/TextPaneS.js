@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Waypoint from 'react-waypoint';
 import EnlargeSide from './EnlargeSide.js';
 
 import {setSideTop} from '../action-creators/paneActions.js';
 
 
-class Themes extends Component {
+class Text extends Component {
 //const STImages = function (props) {
   constructor(props) {
    super(props);
@@ -28,7 +27,7 @@ class Themes extends Component {
     return (
     <div style={{height:this.props.hi}}>
     <EnlargeSide loc={this.props.placement} />
-    <div style={{height:this.props.hi}} class='scroll p15'>
+    <div style={{height:this.props.hi}} className='scroll p15'>
               <div id='containerElement'>
                 <div className='row' ref={'999-section'} >
                     {chapter && this.props.output === 'text' &&
@@ -50,17 +49,9 @@ class Themes extends Component {
                       <div className='row' id={i + '-section'} ref={i + '-section'} >
                         {i!== 0 &&
                         <div className="col-12">
-                        <Waypoint
-                          topOffset={this.state.topOffset+40}
-                          bottomOffset={100}
-                          onEnter={e=>{e.id = i+'-section';
-                            this.scrollEnter(e)}}
-                          onLeave={e=>{e.id = i+'-section';
-                            this.scrollLeave(e)}}
-                          >
+
                           <div dangerouslySetInnerHTML={this.insertHtml(i)} />
-                          {/*<p className="p10s"><em className="small grey">(pg: {items.page})</em></p>*/}
-                          </Waypoint>
+
                         </div>
                         }
                         {i=== 0 &&
@@ -75,7 +66,7 @@ class Themes extends Component {
                 {chapter && this.props.output === 'note' && !chapter.notes &&
                 <div className='row' >
 
-                        <div className="col-12" onClick={e=>this.returnToText()} className="cursor" >
+                        <div className="col-12 cursor" onClick={e=>this.returnToText()} >
                         <p>Sorry, no notes in this chapter's text. Click to return to main text.</p>
                         </div>
                 </div>
@@ -85,17 +76,9 @@ class Themes extends Component {
                     return (
                       <div className='row' id={i + '-section'} ref={i + '-section'} >
                         <div className="col-12">
-                        <Waypoint
-                          topOffset={this.state.topOffset+40}
-                          bottomOffset={100}
-                          onEnter={e=>{e.id = i+'-section';
-                            this.scrollEnter(e)}}
-                          onLeave={e=>{e.id = i+'-section';
-                            this.scrollLeave(e)}}
-                          >
+
                           <div dangerouslySetInnerHTML={this.insertHtmlNote(i)} onClick={e=>this.returnToText()} className="cursor" />
 
-                          </Waypoint>
                         </div>
                       </div>
                             )
@@ -125,6 +108,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const ThemePaneS = connect(mapStateToProps, mapDispatchToProps)(Themes);
+const TextPaneS = connect(mapStateToProps, mapDispatchToProps)(Text);
 
-export default ThemePaneS;
+export default TextPaneS;

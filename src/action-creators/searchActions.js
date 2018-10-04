@@ -1,7 +1,7 @@
 //-------------IMPORT BASIC OBJECTS AS PLACEHOLDERS FOR DB STRUCTURE----------------------
 import axios from 'axios';
 import Promise from 'bluebird';
-import zoteroLib from '../data/landscape-studies.json'; //need to do a call for tags or other
+//import zoteroLib from '../data/zotero-old.json'; //need to do a call for tags or other
 
 
 //-------------------CONSTANTS
@@ -217,7 +217,7 @@ export const loadActiveResources = (res,id,type) => dispatch => { // by tags, da
 
 };
 
-
+/*
 const getHathi = ()=>{
 
 };
@@ -242,7 +242,7 @@ const resApi = {
 	}
 };
 
-
+*/
 
 
 //OLDER ZOTERO QUERY, doesn't work with file limits

@@ -1,15 +1,9 @@
 //-------------IMPORT BASIC OBJECTS AS PLACEHOLDERS FOR DB STRUCTURE----------------------
-import axios from 'axios';
+
 import Promise from 'bluebird';
 import {sampleText} from './xmlParsingUtil.js';
-import sites from '../data/07sitesA_tng.js';
+import sites from '../data/07sites_tng.js';
 
-//import imageList from '../non-db/imageList.js';
-//import siteList from '../non-db/siteList.js';
-
-//import themeList from '../non-db/themeList.js';
-//import agentList from '../non-db/agentList.js';
-//import mediaList from '../non-db/mediaList.js';
 
 
 export const drawer = {0:[0,1,2], 1: [3,4,5], 2: [6,7,8], 3: [9,10,11], 4:[12,13,14], 5: [15,16,17]}
@@ -238,16 +232,17 @@ export const setSiteData = (id, name) => dispatch => {
   dispatch(setSiteId(id));
   dispatch(setSiteName(name));
 
-  sites.map(site=>{
-  	if (+site.id === +id){
-  		dispatch(setSiteObj(site));
-  	}
-  })
+  var siteHere =sites.filter(site=>{
+  	return(+site.id === +id)
+  });
+
+  dispatch(setSiteObj(siteHere[0]));
+
 
 
 };
 
 export const setUpdate = (bool) => dispatch =>{
-	console.log('in process', bool)
+	console.log('setup in process', bool)
 	dispatch(setUp(bool));
 }

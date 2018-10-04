@@ -7,15 +7,6 @@ import EnlargeSide from './EnlargeSide.js';
 
 import {setSideTop} from '../action-creators/paneActions.js';
 
-var buttons = [
-  {label: 'images', value: 'a'},
-  {label: 'sites', value: 'b'},
-  {label: 'science', value: 'c'},
-  {label: 'social', value: 'd'},
-  {label: 'senses', value: 'e'},
-
-]
-
 
 class MPImages extends Component {
 //const STImages = function (props) {

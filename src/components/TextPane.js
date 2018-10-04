@@ -6,9 +6,7 @@ import { connect } from 'react-redux';
 
 import Waypoint from 'react-waypoint';
 
-import EnlargeFull from './EnlargeFull.js';
-
-import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setChpParaN} from '../action-creators/navActions.js';
+import {setChapterDrawer, setChpPara, setSiteData, setUpdate, setChpParaN} from '../action-creators/navActions.js';
 import {setPanesTabs} from '../action-creators/paneActions.js';
 
 //this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
@@ -17,7 +15,7 @@ import {setPanesTabs} from '../action-creators/paneActions.js';
 
 //should have a setting that then loads the images, geo information - default first in the top paragraph or on clicking on the case study.... so automate the side loading (dispatch to overall store)... so a scroll spy and direct click launch of that information.
 
-class TextP extends Component {
+class Text extends Component {
   constructor(props) {
    super(props);
    this.state = {
@@ -78,7 +76,9 @@ class TextP extends Component {
   }
 
   minusFigures = (string)=>{
-    var str2 = string.replace(/\(fig\..+?\)| \(see figs\..+?\)|\(figs\..+?\)| \(see fig\..+?\)/g, '');
+    var figures = string.match(/(<figure.+?<\/figure>)/gmi);
+    console.log(figures);
+    var str2 = string.replace(/(<figure.+?<\/figure>)/gmi, '');
 
     return str2
   }
@@ -127,10 +127,10 @@ class TextP extends Component {
                             this.scrollLeave(e)}*/
 
   scrollEnter = (e) => {
-  	// var para=e.id.replace('-section', '');
+  	var here=e.id.replace('-section', '');
 
   	let view=this.state.inView;
-  	view.push(parseInt(e.id.replace('-section', '')));
+  	view.push(parseInt(here, 10));
 
   	var topSitePara = view.filter(para=>this.props.nav.text[this.props.nav.chp].paragraphs[para].site !== null);
   	var para = (view[0]<view[1] || view.length===1)? this.props.nav.text[this.props.nav.chp].paragraphs[topSitePara[0]] : this.props.nav.text[this.props.nav.chp].paragraphs[topSitePara[topSitePara.length-1]];
@@ -150,7 +150,7 @@ class TextP extends Component {
 
   scrollLeave = (e) => {
   	let view=this.state.inView;
-  	view.splice(view.indexOf(parseInt(e.id.replace('-section', ''))), 1);
+  	view.splice(view.indexOf(parseInt(e.id.replace('-section', ''), 10)), 1);
   	this.setState({inView:view});
   }
 
@@ -237,7 +237,7 @@ class TextP extends Component {
                 {chapter && this.props.output === 'note' && !chapter.notes &&
                 <div className='row' >
                         <div className= 'col-3 small' />
-                        <div className="col-9" onClick={e=>this.returnToText()} className="cursor" >
+                        <div className="col-9 cursor" onClick={e=>this.returnToText()} >
                         <p>Sorry, no notes in this chapter's text. Click to return to main text.</p>
                         </div>
                 </div>
@@ -298,7 +298,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const TextPane = connect(mapStateToProps, mapDispatchToProps)(TextP);
+const TextPane = connect(mapStateToProps, mapDispatchToProps)(Text);
 
 
 export default TextPane;

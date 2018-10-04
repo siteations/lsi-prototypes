@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import EnlargeSide from './EnlargeSide.js';
-
 import {setSideTop} from '../action-creators/paneActions.js';
 
 var buttons = [
@@ -21,9 +19,7 @@ class MPNetwork extends Component {
    this.state = {};
  }
 
-
-
-    render(){
+ render(){
     return (
     <div style={{height:this.props.hi}}>
       networks here: {this.props.nav.siteName} to be reformatted

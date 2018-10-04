@@ -2,19 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ImageGallery from './ImageGallery.js';
 
-import EnlargeSide from './EnlargeSide.js';
-
 import {setSideTop} from '../action-creators/paneActions.js';
-
-var buttons = [
-  {label: 'images', value: 'a'},
-  {label: 'sites', value: 'b'},
-  {label: 'science', value: 'c'},
-  {label: 'social', value: 'd'},
-  {label: 'senses', value: 'e'},
-
-]
-
 
 class MPImages extends Component {
 //const STImages = function (props) {
@@ -22,8 +10,6 @@ class MPImages extends Component {
    super(props);
    this.state = {};
  }
-
-
 
     render(){
 

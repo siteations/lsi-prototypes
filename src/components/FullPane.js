@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as d3 from "d3";
+//import * as d3 from "d3";
 
-import PaneContents from './MText.js';
-// import MImages from './MImages.js';
-// //import MNetwork from './MNetwork.js';
-// import MEdit from './MEdit.js';
-
-//import TestPane from './TestNetwork.js';
+import PaneContents from './ContentsM.js';
 
 import {setMainPane, setFullScreen} from '../action-creators/paneActions.js';
 
-const getData = ()=>{
-  var range = Math.floor(100*Math.random());
-  var data = {
-              nodes:d3.range(0, range).map(function(d){ return {label: "node "+d ,r:~~d3.randomUniform(8, 28)()}}),
-              links:d3.range(0, range).map(function(){
-                var s = ~~d3.randomUniform(range)(), t = ~~d3.randomUniform(range)();
-                return {label: "connects "+s+':'+t, source:s, target:t} })
-          };
+//network test only
+// const getData = ()=>{
+//   var range = Math.floor(100*Math.random());
+//   var data = {
+//               nodes:d3.range(0, range).map(function(d){ return {label: "node "+d ,r:~~d3.randomUniform(8, 28)()}}),
+//               links:d3.range(0, range).map(function(){
+//                 var s = ~~d3.randomUniform(range)(), t = ~~d3.randomUniform(range)();
+//                 return {label: "connects "+s+':'+t, source:s, target:t} })
+//           };
 
-  return data;
-}
+//   return data;
+// }
 
 
 
@@ -46,23 +42,13 @@ class CoreP extends Component {
 
 
   render() {
-    var data = getData();
+    //var data = getData();
 
     console.log('check on pane, functions', this.props, this.state)
 
   	return (
   	<div className="col paneFull" id="largePane" onClick="" >
-	  		<PaneContents action={this.handleChange} />
-
-	  	{/*this.props.pane.main === 'images' &&
-	  		<MImages value={this.props.pane.mainTab} action={this.handleChange} />
-	  	}
-	  	{this.props.pane.main === 'networks' &&
-	  		<MNetwork value={this.props.pane.mainTab} action={this.handleChange} />
-	  	}
-	  	{this.props.pane.main === 'edits' &&
-	  		<MEdit value={this.props.pane.mainTab} action={this.handleChange} />
-	  	*/}
+	  		<PaneContents action={this.handleChange} size="full" />
       {/*
         <TestPane data={data} />
       */}

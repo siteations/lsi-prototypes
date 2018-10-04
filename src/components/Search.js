@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
+
 import FontIcon from 'material-ui/FontIcon';
-import IconButton from 'material-ui/IconButton';
 import AutoComplete from 'material-ui/AutoComplete';
-
-import SelectField from 'material-ui/SelectField';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import Divider from 'material-ui/Divider';
-import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
-
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 
-import agents from '../data/07agentsA_ulan.js';
-import sites from '../data/07sitesA_tng.js';
+import agents from '../data/07agents_ulan.js';
+import sites from '../data/07sites_tng.js';
 
 import hexConv from '../action-creators/hexConversion.js'
 //import indexTerms from '../data/xxxx';
