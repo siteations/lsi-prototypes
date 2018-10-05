@@ -1,8 +1,18 @@
 //-------------IMPORT BASIC OBJECTS AS PLACEHOLDERS FOR DB STRUCTURE----------------------
 import axios from 'axios';
 import Promise from 'bluebird';
-//import zoteroLib from '../data/zotero-old.json'; //need to do a call for tags or other
 
+import res1 from '../data/07resources_postZotero.js';
+import res2 from '../data/09resources_postZotero.js';
+
+const resources = res1.concat(res2);
+
+
+
+
+export const SET_RES_ID = 'SET_RES_ID'
+export const SET_RES_NAME = 'SET_RES_NAME';
+export const SET_RES_OBJ = 'SET_RES_OBJ';
 
 //-------------------CONSTANTS
 
@@ -168,7 +178,7 @@ export const loadTags = () => dispatch => {
 	.catch(console.log);
 }
 
-export const loadResources = (type,id) => dispatch => {
+export const loadResources = (type, id) => dispatch => {
 	var limit = 100;
 
 	if (type===null){

@@ -2,7 +2,12 @@
 
 import Promise from 'bluebird';
 import {sampleText} from './xmlParsingUtil.js';
-import sites from '../data/07sites_tng.js';
+
+import sites1 from '../data/07sites_tng.js';
+import sites2 from '../data/09sites_tng.js';
+
+const sites = sites1.concat(sites2);
+
 
 
 
@@ -22,11 +27,14 @@ export const SET_CHP = 'LOAD_CHP'
 export const SET_PARA = 'LOAD_PARA';
 export const SET_PARAN = 'SAVE_PARAN';
 export const SET_UP = "SET_UP";
+
 export const SET_TEXT = 'LOAD_TEXT'
 export const SET_TITLE = 'LOAD_TITLE';
+
 export const SET_SITE_ID = 'SET_SITE_ID'
 export const SET_SITE_NAME = 'SET_SITE_NAME';
 export const SET_SITE_OBJ = 'SET_SITE_OBJ';
+
 
 //images & themes, networks & geographies
 
@@ -237,9 +245,6 @@ export const setSiteData = (id, name) => dispatch => {
   });
 
   dispatch(setSiteObj(siteHere[0]));
-
-
-
 };
 
 export const setUpdate = (bool) => dispatch =>{

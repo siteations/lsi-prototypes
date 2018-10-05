@@ -4,16 +4,14 @@ import Promise from 'bluebird';
 import hexConv from './hexConversion.js';
 
 
-
-
-//-----------basic regex functions---------------
+//------------------basic regex functions---------------
 
 const startPage = (para)=>{
 	var page = para.match(/<pb n="\d*"/) ? para.match(/<pb n="\d*"/)[0].match(/\d+/g)[0] : null;
 	return page;
 }
 
-const scrub = (text)=>{ //simply cleans out tags after cataloging for left links
+const scrub = (text)=>{ //simply cleans out tags after cataloging for left menu
 	return text.replace(/<.*?>|<\/.*?>/gmi, '')
 }
 
@@ -51,28 +49,29 @@ const paraSites = (para, i)=>{
 	var ag = parag.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g) ? parag.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
 	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key], p: i? i: [] } })
 
-	return (arr.length>0 && !fig)? arr : null;
+	return (arr.length>0 && (!fig || !i))? arr : null;
 }
 
 const paraResources = (para, i)=>{
 	var parag = hexConv(para);
 
 	var agObj={};
-	var ag = parag.match(/(<hi rend="italic" key=".+?".+?<\/hi>)/g) ? parag.match(/(<hi rend="italic" key=".+?".+?<\/hi>)/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
-	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key], p: i? i: [] } })
+	var ag = parag.match(/<hi rend="italic" key=".*?<\/hi>/gmi) ? parag.match(/<hi rend="italic" key=".*?<\/hi>/gmi).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
+	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key], p: i? i: [] } });
 
-	return (arr.length>0)? arr : null;
+	return (arr.length>0 )? arr : null;
 }
 
 const paraFig = (para, i)=>{
 	var parag = hexConv(para);
 
 	var figId = parag.match(/id="fig-.*?"/gm)? parag.match(/id="fig-.*?"/gm)[0].replace(/id="fig-|"/gm,''): null;
-	var figDesc = parag.match(/<figDesc>.*?<\/figDesc>/gm)? parag.match(/<figDesc>.*?<\/figDesc>/gm)[0].replace(/<.*?>|<\/.*?>/gm, ''): null;
+	var figDesc = parag.match(/<figDesc>.*?<\/figDesc>/gm)? parag.match(/<figDesc>.*?<\/figDesc>/gm)[0].replace(/<.*?>|<\/.*?>|Left:|Top:|Right:|Below:|Below;/gm, ''): null;
 	var figNum = !figDesc ? null : figDesc.match(/\d*?\.\d*?(?=\.)/gmi)? figDesc.match(/\d*?\.\d*?(?=\.)/gmi)[0] : null;
+	var figD = figDesc? figDesc.toString().slice(0,20) : null;
 	//add options later - akin to db call
 
-	return (figId)? {figId, figDesc, figNum} : null;
+	return (figId)? {figId, figDesc, figD, figNum} : null;
 }
 
 
@@ -92,12 +91,19 @@ const textAdj = (para, i)=>{
 	var parag = hexConv(para);
 
 	if (parag.substring(0,4)==='<hea'){
-		return '<h5 class="sect">'+parag+'</h5>';
+		parag = '<h5 class="sect">'+parag+'</h5>';
 	} else if (parag.substring(0,4)==='<fig'){
-		return ' ' ;
+		parag = ' ' ;
 	} else {
-		return parag;
+		parag=parag.replace(/lg(?=>)/gmi, 'ul').replace(/l(?=>)/gmi, 'li').replace(/<li>/gmi, '<li class="nb">');
 	}
+
+	return parag;
+
+	///lg l to ul and li
+
+
+
 }
 
 
@@ -139,6 +145,7 @@ export const sampleText = ()=>{
 				}),
 				notes: chp.match(/<note.+?<\/note>/g),
 				sites: paraSites(chp),
+				resources: paraResources(chp),
 			};
 
 		})
@@ -149,6 +156,7 @@ export const sampleText = ()=>{
 				if (chapter.pageStart===null){ chapter.pageStart=pgStart};
 
 				var sitesAll = [];
+				var resAll=[];
 				var sitesNew ={};
 				var headers = []
 
@@ -157,7 +165,10 @@ export const sampleText = ()=>{
 					} else if	(p.page===null) {p.page=pgStart
 					} else {pgStart=+(p.page);p.page=+(p.page)}
 
-					sitesAll=(p.sites!== null)? sitesAll.concat(p.sites) : sitesAll ;
+					sitesAll=(p.sites!== null)? sitesAll.concat(p.sites) : sitesAll;
+					resAll=(p.resources!== null)? resAll.concat(p.resources) : resAll;
+
+
 
 
 					if (p.text.substring(0,3)==='<h5'){
@@ -198,7 +209,3 @@ export const sampleText = ()=>{
 
 }
 
-
-     /*}).catch(console.log);*/
-
-//export default testEdits;

@@ -244,3 +244,8 @@ ref {
 .mapboxgl-marker {
   opacity:.25 ;
 }
+
+.nb {
+  list-style-type: none;
+  padding-left: 20px;
+}

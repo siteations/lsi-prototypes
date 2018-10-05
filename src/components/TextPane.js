@@ -45,7 +45,7 @@ class Text extends Component {
     } else if (this.props.nav.paraN!==0 && this.props.pane.mainTab ==='b'){
       this.props.setUpdate(false);
       this.scrollTo(this.props.nav.paraN+'-section')
-    } else {
+    } else { //so what are these conditions
       this.props.setUpdate(false);
       this.scrollTo('999-section')
     }
@@ -60,6 +60,18 @@ class Text extends Component {
     this.props.setPanesTabs('main','text','b');
     this.props.setChpPara(this.props.nav.chp, regP);
     this.props.setUpdate(true);
+  }
+
+  //update to handle the actual paragraph alignment
+  handleRes(value, e){
+    console.log(value, e);
+    var noteP = value;
+    var regP = +e.target.attributes.value.value;
+
+    this.props.setChpParaN(noteP);
+    this.props.setPanesTabs('main','text','c');
+    this.props.setChpPara(this.props.nav.chp, regP);
+    this.props.setUpdate(true);
 
   }
 
@@ -69,64 +81,21 @@ class Text extends Component {
     console.log('return to text')
   }
 
-  handleSite = (value, id, name) => {
+  handleSite(value, id, name){
   	this.props.setChpPara(this.props.nav.chp, value);
   	this.props.setSiteData(id, name);
   	this.props.setUpdate(false);
   }
 
-  minusFigures = (string)=>{
+  minusFigures(string){
     var figures = string.match(/(<figure.+?<\/figure>)/gmi);
-    console.log(figures);
+    //console.log(figures);
     var str2 = string.replace(/(<figure.+?<\/figure>)/gmi, '');
 
     return str2
   }
 
-  // formatString = (string)=>{
-  // 	var text='';
-
-  // 	var strg2 = string.replace('<note n="*" place="bottom">', '*').replace('</note>', '').replace('</div>', '').replace('</p>', '').replace('<g ref="char:punc">', '').replace('</g>', '').replace(/\(fig\..+?\)/g, '').replace(/<pb n="\d*" facs="\S*" rendition="simple:additions" \/>/g, '').replace('</argument>', '').replace(/<gap.*<\/gap>/g, '')
-
-  //   const formatL = (str)=>{
-  //   	return str.replace(/<q>|<lg>|<\/q>|<\/lg>/g, '').replace(/<site n="\d*" name="(\w|'|\s)*">/g, '').replace(/<\/site>/g, '^ ')
-		// 	                				.split('<l>')
-		// 	 												.map(lines=>{
-		// 	 													if (lines.includes('</l>')){
-		// 	 														return <span>{lines.replace('</l>', '')}<br/></span>
-		// 	 													} else {
-		// 	 														return <span>{lines}</span>
-		// 	 													}
-		// 	 												})
-  //   }
-
-
-  // 	// if (string.includes('<hi>')){
-  // 	text = strg2.split(/<hi>|<bibl>/g)
-  //           				.map(sections=>{
-  //             				if (sections.includes('</hi>')){
-  //             					var parts = sections.split('</hi>');
-  //             					return <span><em> {parts[0]} </em> {formatL(parts[1])}</span>
-  //             				} else if (sections.includes('</bibl>')){
-  //             					var parts = sections.split('</bibl>');
-  //             					return <span style={{paddingLeft: 90, lineHeight:3}}><em> {parts[0]} </em> {formatL(parts[1])}</span>
-  //             				}else {
-  //             					return formatL(sections);
-  //             				}
-  //           				})
-
-
-
-  //   return text
-  // }
-
-
-  /*onEnter={e=>{e.id = i+'-section';
-                            this.scrollEnter(e)}}
-                          onLeave={e=>{e.id = i+'-section';
-                            this.scrollLeave(e)}*/
-
-  scrollEnter = (e) => {
+  scrollEnter(e){
   	var here=e.id.replace('-section', '');
 
   	let view=this.state.inView;
@@ -148,18 +117,17 @@ class Text extends Component {
 
   }
 
-  scrollLeave = (e) => {
+  scrollLeave(e){
   	let view=this.state.inView;
   	view.splice(view.indexOf(parseInt(e.id.replace('-section', ''), 10)), 1);
   	this.setState({inView:view});
   }
 
-  scrollTo = (value) => {
-
+  scrollTo(value){
    this.refs[value].scrollIntoView({block: 'start', behavior: 'instant'});
   }
 
-  insertHtml(a) {
+  insertHtml(a){
     return {__html: this.minusFigures(this.props.nav.text[this.props.nav.chp].paragraphs[a].text)};
   }
 
@@ -194,17 +162,16 @@ class Text extends Component {
 	                </div>
               	{chapter && this.props.output === 'text' &&
               		chapter.paragraphs.map((items, i)=>{
+
               			return (
 			              	<div className='row' id={i + '-section'} ref={i + '-section'} >
 			                	<div className= 'col-3 small'>
+                         <em className="small grey nb">(pg: {items.page})</em>
 			                		<ul>
-			                			{items.notes &&
-                              items.notes.map(note=>{
-                                return (
-			                				<li className="cursor" onClick={e=>this.handleNote(note.value, e)} value={i} ><em>note:</em> {note.value}</li>
-                              )
-                              })
-			                			}
+			                			{items.figures &&
+                                  <li className="cursor" onClick="" id={items.figures.id} value={i}><em>{items.figures.figNum? 'fig:' : ''}</em> {items.figures.figD ? items.figures.figD + '...' : ''}</li>
+
+                            }
 			                			{items.sites &&
                               items.sites.map(site=>{
                                 return (
@@ -212,16 +179,30 @@ class Text extends Component {
                                         )
                               })
 			                			}
+                            {items.resources && !items.figures &&
+                              items.resources.map(res=>{
+                                return (
+                                  <li className="cursor" onClick={e=>this.handleRes(res.id, e)} value={i}><em>resource:</em> {res.value}</li>
+                                        )
+                              })
+                            }
+                            {items.notes &&
+                              items.notes.map(note=>{
+                                return (
+                              <li className="cursor" onClick={e=>this.handleNote(note.value, e)} value={i} ><em>note:</em> {note.value}</li>
+                              )
+                              })
+                            }
 			                		</ul>
 			                	</div>
-                        {i!== 0 &&
+                        {i!== 0 && !items.text.includes('Notes for Chapter') &&
 			                	<div className="col-9">
 			                	<Waypoint
 			                		topOffset={this.state.topOffset+40}
 			                		bottomOffset={100}
 			                		>
                           <div dangerouslySetInnerHTML={this.insertHtml(i)} />
-			                		{/*<p className="p10s"><em className="small grey">(pg: {items.page})</em></p>*/}
+
 			                		</Waypoint>
 			                	</div>
                         }
@@ -262,7 +243,7 @@ class Text extends Component {
 
                 }
 
-              	</div>
+              </div>
     );
   }
 }
