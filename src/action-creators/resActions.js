@@ -2,10 +2,10 @@
 import axios from 'axios';
 import Promise from 'bluebird';
 
-import res1 from '../data/07resources_postZotero.js';
-import res2 from '../data/09resources_postZotero.js';
+// import res1 from '../data/07resources_postZotero.js';
+// import res2 from '../data/09resources_postZotero.js';
 
-const resources = res1.concat(res2);
+// const resources = res1.concat(res2);
 
 
 
@@ -18,8 +18,8 @@ export const SET_RES_OBJ = 'SET_RES_OBJ';
 
 export const GET_RESOURCES = 'GET_RESOURCES';
 
-export const GET_SUB_RESOURCES = 'GET_SUB_RESOURCES';
-// export const GET_CHP_RESOURCES = 'GET_CHP_RESOURCES';
+//export const GET_SUB_RESOURCES = 'GET_SUB_RESOURCES';
+export const GET_CHP_RESOURCES = 'GET_CHP_RESOURCES';
 // export const GET_SITE_RESOURCES = 'GET_SITE_RESOURCES';
 // export const GET_AGENT_RESOURCES = 'GET_AGENT_RESOURCES';
 
@@ -40,21 +40,21 @@ export const getResources = (resources) => {
 	};
 };
 
-export const getSubResources = (resources) => {
-	return {
-		type: GET_SUB_RESOURCES,
-		resourcesSelect: resources
-	};
-};
+// export const getSubResources = (resources) => {
+// 	return {
+// 		type: GET_SUB_RESOURCES,
+// 		resourcesSelect: resources
+// 	};
+// };
 
-/*export const getChpResources = (resources) => {
+export const getChpResources = (resources) => {
 	return {
 		type: GET_CHP_RESOURCES,
 		resourcesSelect: resources
 	};
 };
 
-export const getSiteResources = (resources) => {
+/* export const getSiteResources = (resources) => {
 	return {
 		type: GET_SITE_RESOURCES,
 		resourcesSelect: resources
@@ -112,8 +112,7 @@ export const getTags = (tags) => {
 
 const initMap = {
 	resources: [],
-
-	resourcesSelect: [],
+	resourcesSelect: {},
 
 	resourceId: null,
 	resourceType: null,
@@ -125,40 +124,40 @@ const initMap = {
 
 
 
-export const searchReducer = (prevState = initMap, action) => {
+export const resReducer = (prevState = initMap, action) => {
 	let newState = Object.assign({}, prevState);
 
 	switch(action.type){
 
-	case GET_RESOURCES:
+		case GET_RESOURCES:
 		newState.resources = action.resources;
 		break;
 
-	case GET_SUB_RESOURCES:
+		case GET_CHP_RESOURCES:
 		newState.resourcesSelect = action.resourcesSelect;
 		break;
 
-	case SORT_RESOURCES:
+		case SORT_RESOURCES:
 		newState.resourcesSelect = action.resourcesSelect;
 		break;
 
-	case GET_ACTIVE_ID:
+		case GET_ACTIVE_ID:
 		newState.resourceId = action.resourceId;
 		break;
 
-	case GET_ACTIVE_TYPE:
+		case GET_ACTIVE_TYPE:
 		newState.resourceType = action.resourceType;
 		break;
 
-	case GET_ACTIVE:
+		case GET_ACTIVE:
 		newState.resourceActive = action.resourceActive;
 		break;
 
-	case GET_TAGS:
+		case GET_TAGS:
 		newState.tagsAll = action.tags;
 		break;
 
-	default:
+		default:
 		return prevState;
 	}
 
@@ -178,7 +177,7 @@ export const loadTags = () => dispatch => {
 	.catch(console.log);
 }
 
-export const loadResources = (type, id) => dispatch => {
+export const loadResources = (type, id) => dispatch => { //all top level books
 	var limit = 100;
 
 	if (type===null){
@@ -186,28 +185,28 @@ export const loadResources = (type, id) => dispatch => {
 		var res = [];
 
 		axios.get('https://api.zotero.org/groups/2144277/items/top?itemType=book&limit='+limit)
-			.then(result=>{
-				res = result.data;
-				console.log('zotero, top-level first call', res);
-				var resFinal = (result.headers.link)? result.headers.link.split(',').filter(item=>item.includes('rel="last"'))[0].split(';')[0] : null ;
-				var last = (resFinal)? +resFinal.match(/start=\d*/g)[0].replace('start=',''): null ;
-				var start=limit;
+		.then(result=>{
+			res = result.data;
+			console.log('zotero, top-level first call', res);
+			var resFinal = (result.headers.link)? result.headers.link.split(',').filter(item=>item.includes('rel="last"'))[0].split(';')[0] : null ;
+			var last = (resFinal)? +resFinal.match(/start=\d*/g)[0].replace('start=',''): null ;
+			var start=limit;
 
-				while (start<=last){
-					resFinal=resFinal.replace(/start=\d*/g, 'start='+start).replace(/<|>/g, '');
-					start+=limit;
-					calls.push(axios.get(resFinal));
-				}
+			while (start<=last){
+				resFinal=resFinal.replace(/start=\d*/g, 'start='+start).replace(/<|>/g, '');
+				start+=limit;
+				calls.push(axios.get(resFinal));
+			}
 
-				Promise.all(calls)
-				.then(resAll=>{
-					resAll.forEach(item=>res=res.concat(item.data));
-					res = res.map(item=>{item.data.contrib = item.meta.createdByUser; return item.data });
-					console.log('zotero, top-level items', res);
-					dispatch(getResources(res));
-				})
+			Promise.all(calls)
+			.then(resAll=>{
+				resAll.forEach(item=>res=res.concat(item.data));
+				res = res.map(item=>{item.data.contrib = item.meta.createdByUser; return item.data });
+				console.log('zotero, top-level items', res);
+				dispatch(getResources(res));
 			})
-			.catch(console.log);
+		})
+		.catch(console.log);
 	}
 
 	if (type !== null && id > -1){ //set for chapter currently; chp and #
@@ -216,13 +215,47 @@ export const loadResources = (type, id) => dispatch => {
 	}
 };
 
+
+export const setSelResources = (resObj) => dispatch => {
+	//id to internal list - filter - then zotero call - full resource materials from zotero (w/ local ids) - to resources select
+	var zList = [];
+	for (var key in resObj){
+		resObj[key].zId? zList.push(resObj[key].zId): null;
+	}
+	var zContents = zList.map(items=>{
+		//https://api.zotero.org/groups/2144277/items/K5NALFL3
+		return axios.get(`https://api.zotero.org/groups/2144277/items/${items}`);
+	})
+
+	Promise.all(zContents)
+	.then(res=>{
+		var zFound=[];
+		res.forEach(item=>zFound.push(item.data));
+
+		var newObj={};
+		zFound=zFound.map(item=>item.data).forEach(item=>{
+			for (var key in resObj){
+				if (resObj[key].zId===item.key){
+					item.p=resObj[key].p;
+					newObj[key]=item;
+				};
+			}
+			return item;
+		});
+		console.log('zotero entries', newObj);
+
+		dispatch(getChpResources(newObj));
+	}).catch(console.log);
+
+
+};
+
 export const sortSelResources = (res,type,secondary) => dispatch => { // by tags, date, author, site... then nothing, alphabet, date
 
 
 };
 
-export const loadActiveResources = (res,id,type) => dispatch => { // by tags, date, author, site... then nothing, alphabet, date
-//here is here the alternate api interactions will go for the secondary call
+export const loadActiveResources = (res,id,type) => dispatch => { //from the selResources to internal documents - iframe reading - image reading for full page
 
 
 };

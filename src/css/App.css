@@ -73,6 +73,7 @@
 body {
   font-family: 'Texta';
   font-size: 1rem;
+  color: #505050;
 }
 
 h1, h2, h3, h4 {
@@ -109,6 +110,7 @@ ref {
 .navSearch {
   line-height: 1.1;
   margin-top: 15px;
+  background-color: #31708f;
 }
 
 .p10 {
@@ -120,12 +122,16 @@ ref {
 }
 
 .p10s {
-  padding: 0px 10px;
+  padding: 5px 5px;
 }
 
 #corePanels {
   height: 86vh;
-  background-color: #d3d3d3;
+  /*background-color: #d3d3d3;*/
+  /*background-image: linear-gradient(#fff, #31708f, #fff);*/
+  background-image: url(./background.jpg);
+  background-size: contain;
+  background-position: center;
   padding: 8px;
 }
 
@@ -187,12 +193,21 @@ ref {
   cursor: pointer;
 }
 
+.white {
+  color: #ffffff;
+}
+
 .grey {
-  color: lightgrey;
+  color: #bababa;
 }
 
 .grey2 {
   color: darkgrey;
+}
+
+.grbck {
+  background-color:#f4f4f4;
+  /*background-color:#fff;*/
 }
 
 .scrollPaneL {
@@ -216,7 +231,7 @@ ref {
 }
 
 .tabSets {
-  background-color: #bdbdbd;
+  background-color: #31708f;
   color: white;
   font-family: 'Eveleth';
   font-style: italic;
@@ -225,20 +240,24 @@ ref {
 
 }
 
+
 .tabButtons:hover {
-  background-color: #a2a2a2;
+  background-color: #224e65;
   color: white;
   font-family: 'Eveleth';
   font-style: italic;
   font-size: 12px;
   line-height: 36px;
-  border-bottom: solid black 2px;
+  /*border-bottom: solid #1d4356 4px;*/
+   -moz-box-shadow:    inset 0 0 4px #fff;
+   -webkit-box-shadow: inset 0 0 4px #fff;
+   box-shadow:         inset 0 0 4px #fff;
   cursor: pointer;
 }
 
 
 .underline {
-  border-bottom: solid black 4px ;
+  border-bottom: solid #ffffff 6px ;
 }
 
 .mapboxgl-marker {

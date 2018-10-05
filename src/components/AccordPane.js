@@ -53,7 +53,7 @@ class SideP extends Component {
 
   render() {
 
-  console.log(this.state.height);
+  //console.log(this.state.height);
 
     return (
               <div className="col pane" id="sidePane">
@@ -77,6 +77,9 @@ class SideP extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
+    nav: state.nav,
+    res: state.res,
+    site: state.site,
     }
 }
 

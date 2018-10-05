@@ -61,18 +61,18 @@ class SPGeo extends Component {
   }
 
   shouldComponentUpdate(nextProps){
-    console.log(this.props.nav.siteId, nextProps.nav.siteId);
-    return this.props.nav.siteId !== nextProps.nav.siteId ;
+    //console.log(this.props.site.siteId, nextProps.site.siteId);
+    return this.props.site.siteId !== nextProps.site.siteId ;
   }
 
   componentDidUpdate(){
-    var lng = this.props.nav.siteObj.g_longitude;
-    var lat = this.props.nav.siteObj.g_latitude;
+    var lng = this.props.site.siteObj.g_longitude;
+    var lat = this.props.site.siteObj.g_latitude;
 
     if (lng){
     this.setState({
-        lng: this.props.nav.siteObj.g_longitude,
-        lat: this.props.nav.siteObj.g_latitude,
+        lng: this.props.site.siteObj.g_longitude,
+        lat: this.props.site.siteObj.g_latitude,
       });
 
     this.map.setCenter([lng, lat]);
@@ -95,7 +95,7 @@ class SPGeo extends Component {
         </div>
         <div ref={el => this.mapContainer = el} style={{position:'absolute', top:'33px', height:'100%', width:'100%'}} />
         <div style={{position: 'absolute', top: this.props.hi, paddingLeft: '10px'}}>
-          {this.props.nav.siteName}<br/>
+          {this.props.site.siteName}<br/>
           caption here
           </div>
       </div>
@@ -107,6 +107,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
+    res: state.res,
+    site: state.site,
     }
 }
 

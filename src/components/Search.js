@@ -56,6 +56,7 @@ const style={
   marginRight: 5,
   marginTop:10,
   height: 10,
+  color: '#ffffff',
   tf: {
     height: 12,
     marginTop: 2,
@@ -100,10 +101,10 @@ class Search extends Component {
     return (
       <div className="navBar navSearch row">
       <div className="col-3">
-        <h4 className="p10s m">Landscape Design</h4>
+        <h4 className="p10s m white">Landscape Design</h4>
       </div>
-      <div>
-          <FontIcon className='fa fa-search' style={style}/>
+      <div className="white">
+          <FontIcon className='fa fa-search white' style={style}/>
           search:
       </div>
       {sections.map(item=>{
@@ -115,7 +116,7 @@ class Search extends Component {
               dataSource={themeTerms[item.text]}
               hintText={item.text}
               style={{height:32, marginTop:0}}
-              hintStyle={{top:0, color: '#000000', fontSize:12, transform:'', transition:''}}
+              hintStyle={{top:0, color: '#ffffff', fontSize:12, transform:'', transition:''}}
               textFieldStyle={{height:32, marginTop:0, position:'absolute'}}
               fullWidth={true}
               onNewRequest={e=>console.log(e)}
@@ -123,7 +124,7 @@ class Search extends Component {
       </div>
         )
       })}
-      <div>
+      <div className="white">
           <FontIcon className='fa fa-bookmark-o' style={style}/>
           browse:
       </div>
@@ -134,7 +135,7 @@ class Search extends Component {
           onClick={e=>this.handleTouchTap(e,items.text)}
           label={items.text}
           fullWidth={true}
-          labelStyle={{textTransform: 'lowercase', position:'relative', top:-4}}
+          labelStyle={{textTransform: 'lowercase', position:'relative', top:-4, color: '#fff'}}
           style={{height:32}}
         />
         <Popover

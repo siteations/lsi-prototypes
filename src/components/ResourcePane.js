@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Waypoint from 'react-waypoint';
+
+import {setChapterDrawer, setChpPara, setSiteData, setUpdate, setChpParaN} from '../action-creators/navActions.js';
+
+import {setPanesTabs} from '../action-creators/paneActions.js';
+
 //this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
 
 //that chapter object holds and array of paragraph objects and/or subheader objects which also note footnotes, original pages, site tags, people tags, images, captions, etc.
@@ -10,45 +16,76 @@ import { connect } from 'react-redux';
 class ResourcePane extends Component {
   constructor(props) {
    super(props);
-   this.state = {}// defer definitions
+   this.state = {
+    footnote: '',
+    site: '',
+    scroll: 0,
+    topOffset: 0,
+    inView:[]
+   }// defer definitions
  }
 
+ componentDidMount(){
+  this.setState({topOffset:document.getElementById('largePane').offsetParent.offsetTop})
+  this.scrollTo(this.props.nav.para+'-section');
+}
+
+ //-----------------------return from resources, notes------------------------
+
+ returnToText(){
+  this.props.setPanesTabs('main','text','a');
+  this.props.setUpdate(true);
+  console.log('return to text')
+}
+
+scrollTo(value){
+ this.refs[value].scrollIntoView({block: 'start', behavior: 'instant'});
+}
 
 
-  render() {
+
+render() {
   	//var chapter = this.props.nav.chp;
   	var name = this.props.nav.text[this.props.nav.chp].titles;
-  	console.log('resources', this.props);
+    var resources = this.props.nav.text[this.props.nav.chp].paragraphs.map(item=>item.resources);
+    console.log('resources', resources);
 
     return (
-              <div >
-          			<div className='row'>
-	                	<div className= 'col-3 small'>
-	                	</div>
-	                	<div className= 'col-9 small'>
-	                		<h3 className='p10'>resources: {name.title}</h3>
-	                		<h5>{name.subtitle}</h5>
-	                	</div>
-	                </div>
-              	{/*chapter &&
-              		chapter.map(items=>{
-              			return (
-			              	<div className='row' id={items + 'section'}>
-			                	<div className= 'col-3 small'>
-			                		<ul>
-			                			<li className="p10">this will be a table/list of resources</li>
-			                		</ul>
-			                	</div>
-			                	<div className="col-9">
-			                		<p className="p10s">Full endnote with commentary. Sed bibendum dapibus risus. Phasellus quis enim velit. Morbi sed nisl quam. Quisque quis arcu hendrerit, congue mauris sit amet, consequat felis. Donec fringilla tellus ipsum, et elementum massa facilisis et. Nullam quis mauris leo. Maecenas venenatis lacus massa, gravida consequat mauris ultrices quis. Morbi tincidunt risus diam, pharetra cursus nulla finibus suscipit. Donec finibus facilisis interdum. Ut tempus, lorem ut dapibus malesuada, sem velit ultricies turpis, nec ultricies ex sem commodo orci. Mauris finibus eros sit amet diam ornare, sed egestas libero dignissim. Nunc egestas facilisis velit, commodo vehicula justo ultricies vitae. Maecenas sit amet fringilla est. Donec et enim lectus. Integer est turpis, semper eu faucibus eget, auctor vitae elit. Aliquam erat volutpat.</p>
-			                	</div>
-			                </div>
-              			        )
-              		})
+            <div>
+            <div className='row' ref={'999-section'}>
+            <div className= 'col-3 small'>
+            </div>
+            <div className= 'col-9 small'>
+            <h3 className='p10'>resources: {name.title}</h3>
+            <h5>{name.subtitle}</h5>
+            </div>
+            </div>
+            {resources &&
+              resources.map((items, i)=>{
+               return (
+                       <div className='row' id={i + '-section'} ref={i + '-section'} >
+                       <div className= 'col-3 small' />
+                       <div className= 'col-9' >
+                       {/*i=== 0 || !items &&
+                        <span />
+                      */}
+                      {items && i!==0 &&
+                        items.map((element, j)=>{
+                          return (
+                                  <span className="p10s"><em><h5>{element.value}</h5></em>
+                                  secondary links here
+                                  </span>
+                                  )
+                        })
+                      }
+                      </div>
+                      </div>
+                      )
+             })
 
-              	*/}
-              </div>
-    );
+            }
+            </div>
+            );
   }
 }
 
@@ -57,7 +94,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
-    }
+    resources: state.refer,
+  }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

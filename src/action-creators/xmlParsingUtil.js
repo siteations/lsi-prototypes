@@ -3,6 +3,11 @@ import Promise from 'bluebird';
 
 import hexConv from './hexConversion.js';
 
+import res1 from '../data/07resources_postZotero.js';
+import res2 from '../data/09resources_postZotero.js';
+
+const resources = res1.concat(res2);
+
 
 //------------------basic regex functions---------------
 
@@ -145,7 +150,6 @@ export const sampleText = ()=>{
 				}),
 				notes: chp.match(/<note.+?<\/note>/g),
 				sites: paraSites(chp),
-				resources: paraResources(chp),
 			};
 
 		})
@@ -158,6 +162,7 @@ export const sampleText = ()=>{
 				var sitesAll = [];
 				var resAll=[];
 				var sitesNew ={};
+				var resNew={};
 				var headers = []
 
 				chapter.paragraphs.forEach((p,i)=>{
@@ -188,6 +193,22 @@ export const sampleText = ()=>{
 					}
 				})
 
+				resAll.sort((a,b)=>{a.value-b.value}).forEach(res=>{
+					if (resNew[res.id]){
+						resNew[res.id]['p'].push(res.p);
+					} else {
+						resNew[res.id]={p:[res.p], title:res.value};
+					}
+				})
+
+				//console.log(resources);
+				for (var id in resNew){
+					var match = resources.filter(item=>+item.id===+id);
+					if (match[0]){
+						resNew[id].zId = match[0].zoteroId;
+					}
+				}
+
 				if (chapter.sites){
 
 					chapter.sites.forEach(site=>{
@@ -197,6 +218,7 @@ export const sampleText = ()=>{
 				;
 
 				headers.pop();
+				chapter.resources = resNew;
 				chapter.headers = headers.splice(1);
 
 			})

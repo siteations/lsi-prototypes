@@ -10,8 +10,11 @@ import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 
 
 
-import {drawer, setChapterDrawer, setChpPara, setSiteData, setUpdate, setCoreText} from '../action-creators/navActions.js';
-import {loadResources, loadTags} from '../action-creators/searchActions.js';
+import {drawer, setChapterDrawer, setChpPara, setUpdate, setCoreText} from '../action-creators/navActions.js';
+import {setSiteData} from '../action-creators/siteActions.js';
+import {loadResources, loadTags, setSelResources} from '../action-creators/resActions.js';
+//import {setSelFig, setSelImg} from '../action-creators/imgActions.js';
+
 //drop-down toggles to hold nested info
 //when clicked should open drawer to allow futher subselection
 
@@ -26,7 +29,7 @@ class ChapterN extends Component {
      this.props.setCoreText();
      this.props.setUpdate(true);
      //this.props.loadTags();
-     this.props.loadResources(null, null);
+     //this.props.loadResources(null, null);
   }
 
 
@@ -40,57 +43,40 @@ class ChapterN extends Component {
  	}
 
 
- 	selectSite = (chp, para, id, name)=> {
+ 	selectSite (chp, para, id, name){
  		this.props.setChpPara(chp, para)
  		this.props.setSiteData(id, name)
+    //this.props.setSelResources(chp)
+    //this.props.setSelImg(chp)
  		this.props.setUpdate(true)
  		//this.scrollToWithContainer(para+'-section')
  		this.handleClose()
  	}
 
- 	selectChapter = (chp)=> {
+ 	selectChapter (chp) {
  		this.props.setChpPara(chp, 999)
- 		this.props.setUpdate(true)
+    //resource list, figure list tapping
+    if (chp !== this.props.nav.chp){
+      this.props.setSelResources(this.props.nav.text[chp].resources); //resourcelist
+      //this.props.setSelFig(chp)
+    }
+
+    this.props.setUpdate(true)
  		this.handleClose()
  	}
 
- 	selectSubChapter = (chp, para)=> {
+ 	selectSubChapter (chp, para) {
  		this.props.setChpPara(chp, para)
- 		this.props.setUpdate(true)
+    //resource list, figure list tapping
+    if (chp !== this.props.nav.chp){
+      this.props.setSelResources(this.props.nav.text[chp].resources); //resourcelist
+      //this.props.setSelFig(chp)
+    }
+
+    this.props.setUpdate(true)
  		this.handleClose()
  	}
 
-  //   scrollToWithContainer = (value) => {
-
-  //  console.log(this, value)
-  //  // const tesNode = document.getElementById(value).offsetTop
-  //  // console.dir(tesNode)
-  //   // let goToContainer = new Promise((resolve, reject) => {
-
-  //   //   Scroll.Events.scrollEvent.register('end', () => {
-  //   //     resolve();
-  //   //     Scroll.Events.scrollEvent.remove('end');
-  //   //   });
-
-  //   //   scroller.scrollTo('textContainer', {
-  //   //     duration: 800,
-  //   //     delay: 0,
-  //   //     smooth: 'easeInOutQuart'
-  //   //   });
-
-  //   // });
-
-  //   // goToContainer.then(() =>  {
-  //   	console.log('got to sroll then')
-  //       scroller.scrollTo(value, {
-  //           duration: 800,
-  //           delay: 0,
-  //           smooth: 'easeInOutQuart',
-  //           containerId: 'textContainer'
-  //       })
-  //   	// }
-  //    //    );
-  // }
 
   handleToggle = () => this.setState({open: !this.state.open});
   handleToggleTheme = (e) => {this.setState({open: !this.state.open}); console.dir(e.target.offsetParent.id); this.setState({theme:e.target.offsetParent.id})};
@@ -108,7 +94,7 @@ class ChapterN extends Component {
   	var tClass = (this.state.type === 'theme')?'font-sm': ''
 
     return (
-      <div className="row navBar">
+      <div className="row navBar grbck">
 	      <div className='col eveleth' style={{height: '40px'}}>
 	      	<div className={`p10 ${tClass}`}>
         <SelectField
@@ -148,7 +134,7 @@ class ChapterN extends Component {
 			          	if (drawer.sites===null){
 			          		var chpt = [<Divider />,<MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false} style={{fontFamily:'Eveleth'}}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
 			          		var items = drawer.headers.map(header=>{
-							      	return <MenuItem primaryText={header.value}  onClick={e=>this.selectSubChapter(drawer.id, header.p)} insetChildren={header.value.search(/I\.|II\.|III\.|IV\.|V\.|VI\.|VII\.|VIII\.|IX\./g)}/>
+							      	return <MenuItem primaryText={header.value}  onClick={e=>this.selectSubChapter(drawer.id, header.p)} insetChildren={header.value.search(/I\.|II\.|III\.|IV\.|V\.|VI\.|VII\.|VIII\.|IX\./g) === -1}/>
 							      })
 							      var arr = chpt.concat(items);
 							      return arr;
@@ -165,7 +151,7 @@ class ChapterN extends Component {
 							      var chpt2 = [<Divider />, <MenuItem onClick={e=>this.selectChapter(drawer.id)} insetChildren={false} style={{fontFamily:'Eveleth'}}>{`${drawer.id}: ${drawer.titles.title}`}</MenuItem>, <Divider />]
 							      var subsites = [ <MenuItem primaryText={'Chp '+drawer.id+' sites'} style={{fontStyle: 'italic'}} rightIcon={<ArrowDropRight />} insetChildren={true} menuItems={arrSites} /> , <Divider />]
 							      var items2 = drawer.headers.map(header=>{
-							      	return <MenuItem primaryText={header.value}  onClick={e=>this.selectSubChapter(drawer.id, header.p)} insetChildren={header.value.search(/I\.|II\.|III\.|IV\.|V\.|VI\.|VII\.|VIII\.|IX\./g)}/>
+							      	return <MenuItem primaryText={header.value}  onClick={e=>this.selectSubChapter(drawer.id, header.p)} insetChildren={header.value.search(/I\.|II\.|III\.|IV\.|V\.|VI\.|VII\.|VIII\.|IX\./g) === -1}/>
 							      })
 							      var arr2 = chpt2.concat(subsites, items2);
 
@@ -228,7 +214,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
-    refer: state.refer
+    res: state.res,
+    site: state.site,
     }
 }
 
@@ -252,6 +239,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     loadResources: (type, id)=>{
     	dispatch(loadResources(type, id));
     },
+    setSelResources: (resList)=>{
+      dispatch(setSelResources(resList));
+    },
+    // setSelFig: (chp)=>{
+    //   dispatch(setSelFig(chp));
+    // },
+    // setSelImages: (chp)=>{
+    //   dispatch(setSelImages(chp));
+    // },
     loadTags:()=>{
     	dispatch(loadTags());
     }

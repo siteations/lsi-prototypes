@@ -29,7 +29,7 @@ const muiTheme = getMuiTheme({
     accent1Color: grey800,
     accent2Color: grey100,
     accent3Color: grey500,
-    textColor: darkBlack,
+    textColor: '#505050',
     alternateTextColor: white,
     canvasColor: white,
     borderColor: grey300,
@@ -65,7 +65,6 @@ class App extends Component {
 
 
   render() {
-    console.log('address', this.props);
     return (
     <MuiThemeProvider muiTheme={muiTheme}>
       <div className="App">
@@ -90,7 +89,7 @@ class App extends Component {
             }
           </div>
         </div>
-        <div id="footer" className="font-sm" style={{height:24}}>
+        <div id="footer grbck" className="font-sm" style={{height:24}}>
           <div className="row align-items-center">
             basic mock-up with minimal styling for considering nav nesting, control flow of multi-pane structure
           </div>

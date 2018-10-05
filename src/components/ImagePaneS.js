@@ -19,7 +19,7 @@ class MPImages extends Component {
 
     render(){
 
-      console.log(this.props.hi)
+      //console.log(this.props.hi)
 
       const images = [
       {

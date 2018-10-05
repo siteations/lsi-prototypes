@@ -49,6 +49,9 @@ class SBNet extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
+    nav: state.nav,
+    res: state.res,
+    site: state.site,
     }
 }
 

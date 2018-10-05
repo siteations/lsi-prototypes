@@ -9,8 +9,6 @@ import sites2 from '../data/09sites_tng.js';
 const sites = sites1.concat(sites2);
 
 
-
-
 export const drawer = {0:[0,1,2], 1: [3,4,5], 2: [6,7,8], 3: [9,10,11], 4:[12,13,14], 5: [15,16,17]}
 
 //-------------------CONSTANTS
@@ -31,9 +29,7 @@ export const SET_UP = "SET_UP";
 export const SET_TEXT = 'LOAD_TEXT'
 export const SET_TITLE = 'LOAD_TITLE';
 
-export const SET_SITE_ID = 'SET_SITE_ID'
-export const SET_SITE_NAME = 'SET_SITE_NAME';
-export const SET_SITE_OBJ = 'SET_SITE_OBJ';
+
 
 
 //images & themes, networks & geographies
@@ -69,26 +65,6 @@ export const setParaN = (paraId) => {
 	};
 };
 
-export const setSiteId = (siteId) => {
-	return {
-		type: SET_SITE_ID,
-		siteId
-	};
-};
-
-export const setSiteName = (siteName) => {
-	return {
-		type: SET_SITE_NAME,
-		siteName
-	};
-};
-
-export const setSiteObj= (siteObj) => {
-	return {
-		type: SET_SITE_OBJ,
-		siteObj
-	};
-};
 
 export const setUp = (bool) => {
 	return {
@@ -115,10 +91,6 @@ const initMap = {
 	chp: 0,
 	para: 0,
 	paraN:0,
-
-	siteId: 7000,
-	siteName: 'Ermenonville',
-	siteObj: {},
 
 	setUp:false,
 
@@ -152,18 +124,6 @@ export const navReducer = (prevState = initMap, action) => {
 		newState.paraN = action.paraN;
 		break;
 
-	case SET_SITE_ID:
-		newState.siteId = action.siteId;
-		break;
-
-	case SET_SITE_NAME:
-		newState.siteName = action.siteName;
-		break;
-
-	case SET_SITE_OBJ:
-		newState.siteObj = action.siteObj;
-		break;
-
 	case SET_UP:
 		newState.setUp = action.setUp;
 		break;
@@ -193,10 +153,8 @@ export const setChapterDrawer = (buttonid, drw) => dispatch => {
 		})
 
 	  dispatch(setChpDrawer(drawerObj));
-  })
-  .catch(err => console.error('Problem fetching current user', err));
-
-	}
+	}).catch(console.log)
+}
 
 	if (buttonid === null && drw !== undefined){
 		console.log('from updates', drw);
@@ -236,16 +194,6 @@ export const setChpParaN = (paraId) => dispatch => {
   dispatch(setParaN(paraId));
 };
 
-export const setSiteData = (id, name) => dispatch => {
-  dispatch(setSiteId(id));
-  dispatch(setSiteName(name));
-
-  var siteHere =sites.filter(site=>{
-  	return(+site.id === +id)
-  });
-
-  dispatch(setSiteObj(siteHere[0]));
-};
 
 export const setUpdate = (bool) => dispatch =>{
 	console.log('setup in process', bool)

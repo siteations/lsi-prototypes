@@ -27,7 +27,7 @@ class Image extends Component {
     var relH = document.getElementById('load').naturalHeight, relW = document.getElementById('load').naturalWidth;
     var wH = this.state.height, wW = this.state.width;
 
-    console.log('checking sizes', relH, relW, wH, wW);
+    //console.log('checking sizes', relH, relW, wH, wW);
 
     if (relH/relW>wH/wW) { //in case too tall
       this.setState({widthImg: relW * wH/relH });
@@ -35,7 +35,7 @@ class Image extends Component {
       this.setState({widthImg: wW});
     }
 
-    console.log(relH * wW/wH, relW * wH/wW);
+    //console.log(relH * wW/wH, relW * wH/wW);
 
   }
 
@@ -50,7 +50,7 @@ class Image extends Component {
   render() {
 
   const images = this.props.items;
-  console.log(this.props.hi)
+  //console.log(this.props.hi)
 
   return (
     <div id="slider" >
