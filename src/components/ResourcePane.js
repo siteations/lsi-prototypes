@@ -83,6 +83,7 @@ render() {
                return (
                        <div className='row' id={i + '-section'} ref={i + '-section'} >
                        <div className= 'col-3 small' />
+                       {items.creators &&
                        <div className= 'col-9' >
                          <em><h5>{items.title}</h5></em>
                           <ul>
@@ -92,6 +93,7 @@ render() {
                             <li>Future adaptations: reader in full-screen view (see student prototyping ideas) </li>
                             </ul>
                       </div>
+                      }
                       </div>
                       )
              })
