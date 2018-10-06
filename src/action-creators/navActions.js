@@ -139,10 +139,9 @@ export const navReducer = (prevState = initMap, action) => {
 
 /* ------------       DISPATCHERS     ------------------ */
 
-export const setChapterDrawer = (buttonid, drw) => dispatch => {
-	if (buttonid !==null){
-	Promise.all(sampleText())
-  .then(res => {
+export const setChapterDrawer = (text,buttonid, drw) => dispatch => {
+	if (buttonid !==null && text != null){
+		var res = text;
 		var drawerObj = drawer[buttonid].map(chpId=>{
 			return {
 				id: chpId,
@@ -153,7 +152,7 @@ export const setChapterDrawer = (buttonid, drw) => dispatch => {
 		})
 
 	  dispatch(setChpDrawer(drawerObj));
-	}).catch(console.log)
+
 }
 
 	if (buttonid === null && drw !== undefined){

@@ -2,10 +2,10 @@
 import axios from 'axios';
 import Promise from 'bluebird';
 
-// import res1 from '../data/07resources_postZotero.js';
-// import res2 from '../data/09resources_postZotero.js';
+import res1 from '../data/07resources_postZotero.js';
+import res2 from '../data/09resources_postZotero.js';
 
-// const resources = res1.concat(res2);
+const resources = res1.concat(res2);
 
 
 
@@ -111,7 +111,7 @@ export const getTags = (tags) => {
 //-------------------reducers && initial info
 
 const initMap = {
-	resources: [],
+	resources: {},
 	resourcesSelect: {},
 
 	resourceId: null,
@@ -177,76 +177,73 @@ export const loadTags = () => dispatch => {
 	.catch(console.log);
 }
 
-export const loadResources = (type, id) => dispatch => { //all top level books
-	var limit = 100;
+// export const loadResources = (type, id) => dispatch => { //all top level books
+// 	var limit = 100;
 
-	if (type===null){
-		var calls=[];
-		var res = [];
+// 	if (type===null){
+// 		var calls=[];
+// 		var res = [];
 
-		axios.get('https://api.zotero.org/groups/2144277/items/top?itemType=book&limit='+limit)
-		.then(result=>{
-			res = result.data;
-			console.log('zotero, top-level first call', res);
-			var resFinal = (result.headers.link)? result.headers.link.split(',').filter(item=>item.includes('rel="last"'))[0].split(';')[0] : null ;
-			var last = (resFinal)? +resFinal.match(/start=\d*/g)[0].replace('start=',''): null ;
-			var start=limit;
+// 		axios.get('https://api.zotero.org/groups/2144277/items/top?itemType=book&limit='+limit)
+// 		.then(result=>{
+// 			res = result.data;
+// 			console.log('zotero, top-level first call', res);
+// 			var resFinal = (result.headers.link)? result.headers.link.split(',').filter(item=>item.includes('rel="last"'))[0].split(';')[0] : null ;
+// 			var last = (resFinal)? +resFinal.match(/start=\d*/g)[0].replace('start=',''): null ;
+// 			var start=limit;
 
-			while (start<=last){
-				resFinal=resFinal.replace(/start=\d*/g, 'start='+start).replace(/<|>/g, '');
-				start+=limit;
-				calls.push(axios.get(resFinal));
-			}
+// 			while (start<=last){
+// 				resFinal=resFinal.replace(/start=\d*/g, 'start='+start).replace(/<|>/g, '');
+// 				start+=limit;
+// 				calls.push(axios.get(resFinal));
+// 			}
 
-			Promise.all(calls)
-			.then(resAll=>{
-				resAll.forEach(item=>res=res.concat(item.data));
-				res = res.map(item=>{item.data.contrib = item.meta.createdByUser; return item.data });
-				console.log('zotero, top-level items', res);
-				dispatch(getResources(res));
-			})
-		})
-		.catch(console.log);
-	}
+// 			Promise.all(calls)
+// 			.then(resAll=>{
+// 				resAll.forEach(item=>res=res.concat(item.data));
+// 				res = res.map(item=>{item.data.contrib = item.meta.createdByUser; return item.data });
+// 				console.log('zotero, top-level items', res);
+// 				dispatch(getResources(res));
+// 			})
+// 		})
+// 		.catch(console.log);
+// 	}
 
-	if (type !== null && id > -1){ //set for chapter currently; chp and #
-
-
-	}
-};
+// 	if (type !== null && id > -1){ //set for chapter currently; chp and #
 
 
-export const setSelResources = (resObj) => dispatch => {
-	//id to internal list - filter - then zotero call - full resource materials from zotero (w/ local ids) - to resources select
-	var zList = [];
-	for (var key in resObj){
-		resObj[key].zId? zList.push(resObj[key].zId): null;
-	}
-	var zContents = zList.map(items=>{
-		//https://api.zotero.org/groups/2144277/items/K5NALFL3
-		return axios.get(`https://api.zotero.org/groups/2144277/items/${items}`);
-	})
+// 	}
+// };
 
-	Promise.all(zContents)
+export const loadResources = () => dispatch => { //shorter version -chapter 7,9 only
+	var contents = resources.filter(item=>item.zoteroId).map(item=>{
+		return axios.get(`https://api.zotero.org/groups/2144277/items/${item.zoteroId}`);
+	});
+
+	Promise.all(contents)
 	.then(res=>{
-		var zFound=[];
-		res.forEach(item=>zFound.push(item.data));
-
-		var newObj={};
-		zFound=zFound.map(item=>item.data).forEach(item=>{
-			for (var key in resObj){
-				if (resObj[key].zId===item.key){
-					item.p=resObj[key].p;
-					newObj[key]=item;
-				};
-			}
-			return item;
+		var obj={}
+		res=res.map(item=>item.data.data).map(item=>{
+			var match = resources.filter(resc=> resc.zoteroId===item.key);
+			item.id = match[0].id;
+			obj[match[0].id]=item;
 		});
-		console.log('zotero entries', newObj);
+		dispatch(getResources(obj));
 
-		dispatch(getChpResources(newObj));
-	}).catch(console.log);
+	})
+	.catch(console.log);
 
+}
+
+
+export const setSelResources = (resObj, resAll, text) => dispatch => {
+
+	var focus = {};
+	for (var key in resObj){
+		focus[key] = resAll[key];
+		focus[key].p=resObj[key].p;
+	};
+		dispatch(getChpResources(focus));
 
 };
 

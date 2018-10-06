@@ -43,19 +43,22 @@ class Text extends Component {
  	componentDidMount(){
  		this.setState({topOffset:document.getElementById('largePane').offsetParent.offsetTop})
     //resource list, figure list tapping
-    if (this.props.nav.chp && this.props.nav.text[this.props.nav.chp].resources && !this.props.res.resourcesSelect){
-      this.props.setSelResources(this.props.nav.text[this.props.nav.chp].resources);
-      //this.props.setSelFig(chp)
-    }
  	}
 
  	shouldComponentUpdate(nextProps, nextState){
     var test = (this.props.nav.text !== nextProps.nav.text || this.props.pane.mainTab !== nextProps.pane.mainTab || (this.props.site.siteName !== nextProps.site.siteName && this.props.nav.para !== nextProps.nav.para && this.props.nav.paraN !== nextProps.nav.paraN) || this.props.nav.chp !== nextProps.nav.chp)
-    console.log('update?', test, this.props.nav.setUp )
- 		return test || this.props.nav.setUp
+    //console.log('update?', test, this.props.nav.setUp )
+ 		return test || this.props.nav.setUp;
  	}
 
   componentDidUpdate(){
+    //move to navBar
+    if (this.props.nav.chp && this.props.nav.text[this.props.nav.chp].resources && !this.props.res.resourcesSelect){
+      console.log('got here');
+      this.props.setSelResources(this.props.nav.text[this.props.nav.chp].resources, this.props.res.resources);
+      //this.props.setSelFig(chp)
+    }
+
     if (this.props.nav.para!==0 && (this.props.pane.mainTab ==='a'||this.props.pane.mainTab ==='c')){
       this.props.setUpdate(false);
    	  this.scrollTo(this.props.nav.para+'-section')
@@ -266,8 +269,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     setPanesTabs: (a,b,c)=>{
       dispatch(setPanesTabs(a,b,c));
     },
-    setSelResources: (resObj)=>{
-      dispatch(setSelResources(resObj));
+    setSelResources: (resObj, resAll)=>{
+      dispatch(setSelResources(resObj, resAll));
     },
 
   }

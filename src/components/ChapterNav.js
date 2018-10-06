@@ -26,7 +26,7 @@ class ChapterN extends Component {
 
 
   componentDidMount() {
-     this.props.setCoreText();
+
      this.props.setUpdate(true);
      //this.props.loadTags();
      //this.props.loadResources(null, null);
@@ -37,7 +37,7 @@ class ChapterN extends Component {
 
  toggleLoad (item) {
  		this.setState({drawerTitle: 'Chapters: '+drawer[item].join(', ')});
- 		this.props.setChapterDrawer(item);
+ 		this.props.setChapterDrawer(this.props.nav.text, item);
  		this.props.setUpdate(true)
  		this.handleToggle()
  	}
@@ -46,8 +46,7 @@ class ChapterN extends Component {
  	selectSite (chp, para, id, name){
  		this.props.setChpPara(chp, para)
  		this.props.setSiteData(id, name)
-    //this.props.setSelResources(chp)
-    //this.props.setSelImg(chp)
+
  		this.props.setUpdate(true)
  		//this.scrollToWithContainer(para+'-section')
  		this.handleClose()
@@ -55,33 +54,25 @@ class ChapterN extends Component {
 
  	selectChapter (chp) {
  		this.props.setChpPara(chp, 999)
-    //resource list, figure list tapping
-    if (chp !== this.props.nav.chp){
-      this.props.setSelResources(this.props.nav.text[chp].resources); //resourcelist
-      //this.props.setSelFig(chp)
-    }
-
     this.props.setUpdate(true)
  		this.handleClose()
  	}
 
  	selectSubChapter (chp, para) {
  		this.props.setChpPara(chp, para)
-    //resource list, figure list tapping
-    if (chp !== this.props.nav.chp){
-      this.props.setSelResources(this.props.nav.text[chp].resources); //resourcelist
-      //this.props.setSelFig(chp)
-    }
-
     this.props.setUpdate(true)
  		this.handleClose()
  	}
 
 
-  handleToggle = () => this.setState({open: !this.state.open});
-  handleToggleTheme = (e) => {this.setState({open: !this.state.open}); console.dir(e.target.offsetParent.id); this.setState({theme:e.target.offsetParent.id})};
+  handleToggle(){this.setState({open: !this.state.open})};
 
-  handleClose = () => this.setState({open: false});
+  handleToggleTheme(e){
+    this.setState({open: !this.state.open});
+    this.setState({theme:e.target.offsetParent.id})
+  };
+
+  handleClose(){this.setState({open: false})};
 
   handleChapTheme = (event, index, value) => {
   	this.setState({value})
@@ -221,8 +212,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    setChapterDrawer: (button) => {
-        dispatch(setChapterDrawer(button));
+    setChapterDrawer: (text, button) => {
+        dispatch(setChapterDrawer(text, button));
     },
     setChpPara: (chp, para) => {
         dispatch(setChpPara(chp, para));
@@ -232,9 +223,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     setUpdate: (bool) =>{
     	dispatch(setUpdate(bool));
-    },
-    setCoreText: () =>{
-    	dispatch(setCoreText());
     },
     loadResources: (type, id)=>{
     	dispatch(loadResources(type, id));
