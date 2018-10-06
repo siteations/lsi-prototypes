@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Waypoint from 'react-waypoint';
 
-import {setChapterDrawer, setChpPara, setSiteData, setUpdate, setChpParaN} from '../action-creators/navActions.js';
+import {setUpdate} from '../action-creators/navActions.js';
 
 import {setPanesTabs} from '../action-creators/paneActions.js';
 
@@ -27,7 +27,9 @@ class ResourcePane extends Component {
 
  componentDidMount(){
   this.setState({topOffset:document.getElementById('largePane').offsetParent.offsetTop})
-  this.scrollTo(this.props.nav.para+'-section');
+  var section = '999'
+  if (this.props.nav.paraN){section = this.props.nav.paraN};
+  this.scrollTo(section +'-section');
 }
 
  //-----------------------return from resources, notes------------------------
@@ -45,10 +47,17 @@ scrollTo(value){
 
 
 render() {
+  var resources = null;
+  if (this.props.res.resourcesSelect){
+    resources = Object.keys(this.props.res.resourcesSelect).map(key=>{
+      var obj = this.props.res.resourcesSelect[key];
+      obj.id = key;
+      return obj;
+    })
+    console.log('resources', resources);
+  }
   	//var chapter = this.props.nav.chp;
   	var name = this.props.nav.text[this.props.nav.chp].titles;
-    var resources = this.props.nav.text[this.props.nav.chp].paragraphs.map(item=>item.resources);
-    console.log('resources', resources);
 
     return (
             <div>
@@ -60,24 +69,28 @@ render() {
             <h5>{name.subtitle}</h5>
             </div>
             </div>
-            {resources &&
+            {resources.length < 1 &&
+              <div className='row' >
+                          <div className= 'col-3 small ' />
+                          <div className="col-9 cursor" onClick={e=>this.returnToText()} >
+                          <p>Sorry, resources not yet extracted for this chapter's text. Click to return to main text.</p>
+                        </div>
+              </div>
+
+            }
+            {resources !== null &&
               resources.map((items, i)=>{
                return (
                        <div className='row' id={i + '-section'} ref={i + '-section'} >
                        <div className= 'col-3 small' />
                        <div className= 'col-9' >
-                       {/*i=== 0 || !items &&
-                        <span />
-                      */}
-                      {items && i!==0 &&
-                        items.map((element, j)=>{
-                          return (
-                                  <span className="p10s"><em><h5>{element.value}</h5></em>
-                                  secondary links here
-                                  </span>
-                                  )
-                        })
-                      }
+                         <em><h5>{items.title}</h5></em>
+                          <ul>
+                            <li>author: {(items.creators[0])? items.creators[0].lastName: null} ;
+                            publication: {(items.place && items.publisher && items.date)? items.publisher +': '+ items.place + ' ('+ items.date + ')' : null} ;</li>
+                            <li><a href={items.url} target='_blank'>Go to digital text</a></li>
+                            <li>Future adaptations: reader in full-screen view (see student prototyping ideas) </li>
+                            </ul>
                       </div>
                       </div>
                       )
@@ -94,30 +107,19 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
-    resources: state.refer,
+    res: state.res,
+    site: state.site,
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    // setChapterDrawer: (button) => {
-    //     dispatch(setChapterDrawer(button));
-    // },
-    // setChpPara: (chp, para) => {
-    //     dispatch(setChpPara(chp, para));
-    // },
-    // setChpParaL: (para) => {
-    //     dispatch(setChpParaL(para));
-    // },
-    // setSiteData: (id, name)=>{
-    // 	dispatch(setSiteData(id, name));
-    // },
-    // setUpdate: (bool) =>{
-    // 	dispatch(setUpdate(bool));
-    // },
-    // setPanesTabs: (a,b,c)=>{
-    //   dispatch(setPanesTabs(a,b,c));
-    // }
+    setUpdate: (bool) =>{
+    	dispatch(setUpdate(bool));
+    },
+    setPanesTabs: (a,b,c)=>{
+      dispatch(setPanesTabs(a,b,c));
+    }
 
   }
 }

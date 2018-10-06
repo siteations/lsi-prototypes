@@ -81,8 +81,7 @@ class Text extends Component {
 
   //update to handle the actual paragraph alignment
   handleRes(value, e){
-    console.log(value, e);
-    var noteP = value;
+    var noteP = Object.keys(this.props.res.resourcesSelect).indexOf(value);
     var regP = +e.target.attributes.value.value;
 
     this.props.setChpParaN(noteP);
@@ -227,7 +226,7 @@ class Text extends Component {
                 {chapter && this.props.output === 'note' && !chapter.notes &&
                   <div className='row' >
                           <div className= 'col-3 small ' />
-                          <div className="col-9 cursor" onClick={e=>this.returnToText()()} >
+                          <div className="col-9 cursor" onClick={e=>this.returnToText()} >
                           <p>Sorry, no notes in this chapter's text. Click to return to main text.</p>
                         </div>
                   </div>
