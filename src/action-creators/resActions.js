@@ -236,13 +236,17 @@ export const loadResources = () => dispatch => { //shorter version -chapter 7,9 
 }
 
 
-export const setSelResources = (resObj, resAll, text) => dispatch => {
+export const setSelResources = (resObj, resAll) => dispatch => {
+	console.log('selRes', resObj, resAll);
 
 	var focus = {};
 	for (var key in resObj){
+		var arr = resObj[key].p;
 		focus[key] = resAll[key];
-		focus[key].p=resObj[key].p;
+		(!focus[key])? focus[key]= resObj[key] : focus[key].p = arr ;
+		// focus[key].p = arr;
 	};
+	console.log('selRes2', focus);
 		dispatch(getChpResources(focus));
 
 };

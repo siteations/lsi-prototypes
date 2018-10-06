@@ -54,12 +54,14 @@ class ChapterN extends Component {
 
  	selectChapter (chp) {
  		this.props.setChpPara(chp, 999)
+ 		this.props.setSelResources(this.props.nav.text[chp].resources, this.props.res.resources);
     this.props.setUpdate(true)
  		this.handleClose()
  	}
 
  	selectSubChapter (chp, para) {
  		this.props.setChpPara(chp, para)
+ 		this.props.setSelResources(this.props.nav.text[chp].resources, this.props.res.resources);
     this.props.setUpdate(true)
  		this.handleClose()
  	}
@@ -227,8 +229,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     loadResources: (type, id)=>{
     	dispatch(loadResources(type, id));
     },
-    setSelResources: (resList)=>{
-      dispatch(setSelResources(resList));
+    setSelResources: (resList, resAll)=>{
+      dispatch(setSelResources(resList, resAll));
     },
     // setSelFig: (chp)=>{
     //   dispatch(setSelFig(chp));
