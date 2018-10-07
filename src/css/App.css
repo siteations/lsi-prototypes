@@ -191,6 +191,13 @@ ref {
 
 .cursor {
   cursor: pointer;
+  color: #31708f;
+
+}
+
+.cursor:hover {
+  font-style: bold;
+  text-decoration: underline;
 }
 
 .white {

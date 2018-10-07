@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import XMLToReact from '@condenast/xml-to-react';
 
 import SideLinks from './SideLinks.js';
 
@@ -70,9 +71,9 @@ class Text extends Component {
   }
 
   //-----------------------side actions to pass down------------------------
-  handleNote(value, e){
+  handleNote(value, i){
     var noteP = value-1;
-    var regP = +e.target.attributes.value.value;
+    var regP = i;
 
     this.props.setChpParaN(noteP);
     this.props.setPanesTabs('main','text','b');
@@ -81,9 +82,9 @@ class Text extends Component {
   }
 
   //update to handle the actual paragraph alignment
-  handleRes(value, e){
+  handleRes(value, i){
     var noteP = Object.keys(this.props.res.resourcesSelect).indexOf(value);
-    var regP = +e.target.attributes.value.value;
+    var regP = i;
 
     this.props.setChpParaN(noteP);
     this.props.setPanesTabs('main','text','c');
@@ -142,13 +143,39 @@ class Text extends Component {
 //-----------------------html insertions------------------------
 
   minusFigures(string){
-    var figures = string.match(/(<figure.+?<\/figure>)/gmi);
+    //var figures = string.match(/(<figure.+?<\/figure>)/gmi);
     var str2 = string.replace(/(<figure.+?<\/figure>)/gmi, '');
     return str2
   }
 
   insertHtml(a){
-    return {__html: this.minusFigures(this.props.nav.text[this.props.nav.chp].paragraphs[a].text)};
+    //return {__html: this.minusFigures(this.props.nav.text[this.props.nav.chp].paragraphs[a].text)};
+
+    //alternate for adding to props and using xml live
+    const xmlToReact = new XMLToReact({
+      p: (attrs) => ({ type: 'p'}),
+      name: (attrs) => {
+        (attrs.subtype='site') ?  attrs.onClick = e=>this.handleSite(a, attrs.target, null): null;
+        //(attrs.type='pname') ? null : null; //handle agents later
+        (attrs.subtype='site') ? attrs.className = 'cursor' : null;
+        return ({ type: 'name', props: attrs })
+      },
+      hi: (attrs) => { //reference location
+        (attrs.target) ? attrs.onClick = e=>this.handleRes(attrs.target , a): null;
+        (attrs.target) ? attrs.className = 'cursor' : null;
+        return ({ type: 'hi', props: attrs })
+      },
+      ref: (attrs) => { //example of new integrations, adding note and res functions
+          attrs.onClick = e=>this.handleNote(attrs.target.replace('#CH7-n',''), a);
+          attrs.className = 'cursor';
+          return ({ type: 'ref', props: attrs })
+      },
+      date: (attrs) => ({ type: 'date', props:{style:{fontStyle: 'italic'}}})
+    });
+
+    const reactTree = xmlToReact.convert(this.props.nav.text[this.props.nav.chp].paragraphs[a].text);
+    return reactTree;
+
   }
 
   insertHtmlNote(a) {
@@ -192,7 +219,8 @@ class Text extends Component {
     			                		topOffset={this.state.topOffset+40}
     			                		bottomOffset={100}
     			                		>
-                              <div dangerouslySetInnerHTML={this.insertHtml(i)} />
+                              {/*<div dangerouslySetInnerHTML={this.insertHtml(i)} />*/}
+                              {this.insertHtml(i)}
     			                		</Waypoint>
 			                	  </div>
                         }

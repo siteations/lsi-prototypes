@@ -51,8 +51,8 @@ const paraSites = (para, i)=>{
 	var fig = parag.match(/<figure/gmi);
 
 	var agObj={};
-	var ag = parag.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g) ? parag.match(/<name type="place" key="\d+" subtype="site".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
-	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key], p: i? i: [] } })
+	var ag = parag.match(/<name type="place" target="\d+" subtype="site".+?<\/name>/g) ? parag.match(/<name type="place" target="\d+" subtype="site".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
+	var arr = Object.keys(agObj).map(target=>{return {id: target, value: agObj[target], p: i? i: [] } })
 
 	return (arr.length>0 && (!fig || !i))? arr : null;
 }
@@ -61,8 +61,8 @@ const paraResources = (para, i)=>{
 	var parag = hexConv(para);
 
 	var agObj={};
-	var ag = parag.match(/<hi rend="italic" key=".*?<\/hi>/gmi) ? parag.match(/<hi rend="italic" key=".*?<\/hi>/gmi).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
-	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key], p: i? i: [] } });
+	var ag = parag.match(/<hi rend="italic" target=".*?<\/hi>/gmi) ? parag.match(/<hi rend="italic" target=".*?<\/hi>/gmi).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
+	var arr = Object.keys(agObj).map(target=>{return {id: target, value: agObj[target], p: i? i: [] } });
 
 	return (arr.length>0 )? arr : null;
 }
@@ -86,7 +86,7 @@ const paraAgents = (para)=>{
 
 	var agObj={};
 	var ag = parag.match(/<name type="pname".+?<\/name>/g) ? parag.match(/<name type="pname".+?<\/name>/g).forEach(ref=> {agObj[singleId(ref)]=singleName(ref)}) : null;
-	var arr = Object.keys(agObj).map(key=>{return {id: key, value: agObj[key]} })
+	var arr = Object.keys(agObj).map(target=>{return {id: target, value: agObj[target]} })
 
 	return (arr.length>0 && !fig)? arr : null;
 
@@ -172,7 +172,6 @@ export const sampleText = ()=>{
 
 					sitesAll=(p.sites!== null)? sitesAll.concat(p.sites) : sitesAll;
 					resAll=(p.resources!== null)? resAll.concat(p.resources) : resAll;
-
 
 
 

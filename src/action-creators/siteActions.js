@@ -65,6 +65,7 @@ export const siteReducer = (prevState = initMap, action) => {
 
 export const setSiteData = (id, name) => dispatch => {
   dispatch(setSiteId(id));
+  (!name)? name = sites.filter(site=> +site.id===+id)[0].name[0] : null;
   dispatch(setSiteName(name));
 
   var siteHere =sites.filter(site=>{
