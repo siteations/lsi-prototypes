@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 import SideLinks from './SideLinks.js';
@@ -42,6 +43,7 @@ class Text extends Component {
 
  	componentDidMount(){
  		this.setState({topOffset:document.getElementById('largePane').offsetParent.offsetTop})
+
     //resource list, figure list tapping
  	}
 
@@ -52,18 +54,14 @@ class Text extends Component {
  	}
 
   componentDidUpdate(){
-    //move to navBar
-    if (this.props.nav.chp && this.props.nav.text[this.props.nav.chp].resources && !this.props.res.resourcesSelect){
-      console.log('got here');
-      this.props.setSelResources(this.props.nav.text[this.props.nav.chp].resources, this.props.res.resources);
-      //this.props.setSelFig(chp)
-    }
 
-    if (this.props.nav.para!==0 && (this.props.pane.mainTab ==='a'||this.props.pane.mainTab ==='c')){
+    if (this.props.nav.para!==0 && (this.props.pane.mainTab ==='a')){
       this.props.setUpdate(false);
    	  this.scrollTo(this.props.nav.para+'-section')
     } else if (this.props.nav.paraN!==0 && this.props.pane.mainTab ==='b'){
       this.props.setUpdate(false);
+      var n = 999;
+      (this.props.nav.paraN)? n = this.props.nav.paraN : null;
       this.scrollTo(this.props.nav.paraN+'-section')
     } else { //so what are these conditions
       this.props.setUpdate(false);
@@ -145,9 +143,7 @@ class Text extends Component {
 
   minusFigures(string){
     var figures = string.match(/(<figure.+?<\/figure>)/gmi);
-    //console.log(figures);
     var str2 = string.replace(/(<figure.+?<\/figure>)/gmi, '');
-
     return str2
   }
 

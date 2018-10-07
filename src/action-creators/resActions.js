@@ -1,6 +1,7 @@
 //-------------IMPORT BASIC OBJECTS AS PLACEHOLDERS FOR DB STRUCTURE----------------------
 import axios from 'axios';
 import Promise from 'bluebird';
+import store from '../store';
 
 import res1 from '../data/07resources_postZotero.js';
 import res2 from '../data/09resources_postZotero.js';
@@ -215,7 +216,7 @@ export const loadTags = () => dispatch => {
 // 	}
 // };
 
-export const loadResources = () => dispatch => { //shorter version -chapter 7,9 only
+export const loadResources = (chp) => dispatch => { //shorter version -chapter 7,9 only
 	var contents = resources.filter(item=>item.zoteroId).map(item=>{
 		return axios.get(`https://api.zotero.org/groups/2144277/items/${item.zoteroId}`);
 	});
@@ -228,7 +229,13 @@ export const loadResources = () => dispatch => { //shorter version -chapter 7,9 
 			item.id = match[0].id;
 			obj[match[0].id]=item;
 		});
+
 		dispatch(getResources(obj));
+
+		if (chp){
+			var resChp = store.getState().nav.text[chp].resources;
+			(resChp)? dispatch(setSelResources(resChp,obj)): null;
+		}
 
 	})
 	.catch(console.log);

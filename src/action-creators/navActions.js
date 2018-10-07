@@ -88,7 +88,7 @@ export const setText = (text) => {
 const initMap = {
 	chpDrawer: [],
 
-	chp: 0,
+	chp: 7,
 	para: 0,
 	paraN:0,
 

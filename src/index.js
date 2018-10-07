@@ -10,13 +10,13 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import {setCoreText} from './action-creators/navActions.js';
-import {loadResources} from './action-creators/resActions.js';
+import {loadResources, setSelResources} from './action-creators/resActions.js';
 
 const history = createHistory();
 
 function setText (){
 	store.dispatch(setCoreText());
-	store.dispatch(loadResources());
+	store.dispatch(loadResources(7));
 }
 
 
