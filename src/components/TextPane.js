@@ -6,7 +6,6 @@ import axios from 'axios';
 
 import SideLinks from './SideLinks.js';
 
-
 import Waypoint from 'react-waypoint';
 
 import {setChapterDrawer, setChpPara, setUpdate, setChpParaN} from '../action-creators/navActions.js';

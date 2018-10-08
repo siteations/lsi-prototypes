@@ -79,18 +79,18 @@ console.log(full[0], full[1]);
 
 //-----------------------------------integrate google from images_bysites----------------------------------
 
+
+// http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/xlarge/1000020.jpg
+
+// or
+
+// http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1000020.jpg
+
+// or
+
+// http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/thumb/1000020.jpg
+
 /*
-http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/xlarge/1000020.jpg
-
-or
-
-http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1000020.jpg
-
-or
-
-http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/thumb/1000020.jpg
-*/
-
 var strg = 'http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/';
 
 const full = require('../Lists/imageList_FLS_geo.js');
@@ -130,5 +130,77 @@ fs.writeFileSync(`../Lists/imageList_chapterSorting.js`, 'var images='+JSON.stri
 
 //console.log(options);
 
+*/
 
 
+//-----------------------------------integrate google from images_bysites----------------------------------
+
+/*
+http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/xlarge/1000020.jpg
+
+or
+
+http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1000020.jpg
+
+or
+
+http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/thumb/1000020.jpg
+*/
+
+var strg = 'http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/';
+
+const full = require('../Lists/imageList_FLS_geo.js');
+
+const chpSites07 = require('../Lists/07sites_tng.js');
+const chpSites09 = require('../Lists/09sites_tng.js');
+
+const chpSite = chpSites07.concat(chpSites09);
+
+console.log(Array.isArray(full));
+
+// "image.ID": ["1900046"],
+//     "sheet name": ["Week 13-3"],
+//     "Title": ["Chatêau de Chantilly"],
+//     "Title.object": ["La Grange (Perspective)"],
+//     "Title.workType": ["Designed Landscapes"],
+//     "Title.imageView": ["drawing"],
+
+const options = chpSite.map(item=>{
+	//var subj = item["Title.object"]? item["Title"].concat(item["Title.object"]) : item["Title"];
+	if (item.type === 'site'){
+		var site = item.name[0];
+		var arr = full.map(image=>{
+				var content = (image['sheet name'])? image['sheet name'][0] : '';
+				var subject = (image['Title'])? image['Title'][0] : '';
+				if ((content+' '+subject).includes(site)) {return image};
+			}).filter(image=>image);
+
+		arr = arr.map(image=>{
+			var content = (image['sheet name'])? image['sheet name'][0] : '';
+			var subject = (image['Title'])? image['Title'][0] : '';
+			return {
+				altId: image['image.ID']? image['image.ID'][0] : null,
+				graphic: image['image.ID']? strg+image['image.ID'][0]+'.jpg' : null,
+				subject: content + ': ' + subject,
+				credit: image["Rights"]? image["Rights"][0] : null,
+			};
+		})
+
+		if (arr){item.options = arr};
+		if (item.id) {return item};
+
+		//
+
+	}
+}).filter(item=>item);
+
+var optObj = {};
+//options = new Set(options);
+options.forEach(item=>{ optObj[item.id]= item});
+
+//initial matches to check manually for priorities....
+
+console.log(optObj);
+fs.writeFileSync(`../Lists/imageObj_chpSites.js`, 'var images='+JSON.stringify(optObj)+'; module.exports = images');
+
+//console.log(options);
