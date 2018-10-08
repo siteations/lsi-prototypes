@@ -11,12 +11,14 @@ import registerServiceWorker from './registerServiceWorker';
 
 import {setCoreText} from './action-creators/navActions.js';
 import {loadResources, setSelResources} from './action-creators/resActions.js';
+import {loadFigures} from './action-creators/imgActions.js';
 
 const history = createHistory();
 
 function setText (){
 	store.dispatch(setCoreText());
 	store.dispatch(loadResources(7));
+	store.dispatch(loadFigures());
 }
 
 

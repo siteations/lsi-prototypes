@@ -7,6 +7,7 @@ import { paneReducer } from './paneActions';
 import {navReducer} from './navActions.js';
 import {siteReducer} from './siteActions.js';
 import {resReducer} from './resActions.js';
+import {imgReducer} from './imgActions.js';
 //just prepping for files, may or may not need immutable with db complexity
 
 
@@ -17,6 +18,7 @@ export default combineReducers({
   nav: navReducer,
   site: siteReducer,
   res: resReducer,
+  img: imgReducer,
 });
 
 

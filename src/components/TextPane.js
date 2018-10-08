@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import XMLToReact from '@condenast/xml-to-react';
+import axios from 'axios';
 
 import SideLinks from './SideLinks.js';
 
@@ -12,6 +13,7 @@ import {setChapterDrawer, setChpPara, setUpdate, setChpParaN} from '../action-cr
 import {setSiteData} from '../action-creators/siteActions.js';
 import {loadResources, loadTags, setSelResources} from '../action-creators/resActions.js';
 import {setPanesTabs} from '../action-creators/paneActions.js';
+import {activateGallery, loadGallery} from '../action-creators/imgActions.js';
 
 
 //this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
@@ -44,7 +46,6 @@ class Text extends Component {
 
  	componentDidMount(){
  		this.setState({topOffset:document.getElementById('largePane').offsetParent.offsetTop})
-
     //resource list, figure list tapping
  	}
 
@@ -98,6 +99,16 @@ class Text extends Component {
   	this.props.setUpdate(false);
   }
 
+  handleFig(value, id, ){ //load chosen as well as load options in image area
+
+  }
+
+
+  handleAgent(value, id, name){ //set up for mapping the network diagram
+    // this.props.setChpPara(this.props.nav.chp, value);
+    // this.props.setSiteData(id, name);
+    // this.props.setUpdate(false);
+  }
 //-----------------------return from resources, notes------------------------
 
   returnToText(){
@@ -142,12 +153,6 @@ class Text extends Component {
 
 //-----------------------html insertions------------------------
 
-  minusFigures(string){
-    //var figures = string.match(/(<figure.+?<\/figure>)/gmi);
-    var str2 = string.replace(/(<figure.+?<\/figure>)/gmi, '');
-    return str2
-  }
-
   insertHtml(a){
     //return {__html: this.minusFigures(this.props.nav.text[this.props.nav.chp].paragraphs[a].text)};
 
@@ -178,6 +183,50 @@ class Text extends Component {
 
   }
 
+  print(){
+    var printContent = document.querySelector('#containerElement');
+    var printMe = window.open('', '', 'width=900,height=650');
+    printMe.document.write(printContent.innerHTML);
+    printMe.document.close();
+    printMe.focus();
+    printMe.print();
+    printMe.close();
+  }
+
+  loadGalleryContents(figOptArr, type){ //only on current click
+    console.log('got array of images', figOptArr.length );
+    this.props.loadGallery(figOptArr, 'figure');
+  }
+
+  insertFig(fig, a){
+    var figure = this.props.img.allFig[fig.figId];
+    var image = {};
+    (figure.match)? image.url = figure.match.graphic : (figure.zoteroURL)? image.url = figure.zoteroURL : null;
+
+    //needs update for rotation css;
+
+    if (image.url && !figure.options ){
+      return (
+              <div className='fig'>
+                <img className={(figure.rotate)? 'rotate' : ''} src={image.url} alt={fig.figDesc} style={{width:'95%'}} />
+                <p className='grey2'>{fig.figDesc} .</p>
+              </div>
+              )
+    } else if (image.url && figure.options.length>0 ){
+
+      return (
+              <div className='fig cursor' onClick={e=>this.loadGalleryContents(figure.options, 'figure')} >
+                <img className={(figure.rotate)? 'rotate' : ''} src={image.url} alt={fig.figDesc} style={{width:'95%'}} />
+                <p><span className='grey2'>{fig.figDesc} .</span><br/>Click to load gallery of related views.</p>
+              </div>
+              )
+    } else if (fig.figDesc && figure.options.length>0){
+
+      return <p className='cursor' onClick={e=>this.loadGalleryContents(figure.options, 'figure')}>No Direct Public Source Match. Click to load gallery of related views<br/>. <span className='grey2' >{fig.figDesc} .</span></p>
+    }
+
+  }
+
   insertHtmlNote(a) {
     return {__html: this.props.nav.text[this.props.nav.chp].notes[a]};
   }
@@ -186,9 +235,10 @@ class Text extends Component {
   render() {
 
     var chapter = this.props.nav.text[this.props.nav.chp];
+    var full = {overflowY:'scroll', height:'700px'};
 
     return (
-              <div id='containerElement'>
+              <div id='containerElement' style={(this.props.pane.fullscreen)? full : {}}>
           			<div className='row' ref={'999-section'} >
 	                	<div className= 'col-3 small'>
 	                	</div>
@@ -197,12 +247,14 @@ class Text extends Component {
                       <div ref="title">
   	                		<h3 className='p10'>{chapter.titles.title}</h3>
   	                		<h5 className='p10'>{chapter.titles.subtitle}</h5>
+                        <p onClick={this.print} className='cursor'> print chapter </p>
                       </div>
                     }
                     {chapter && this.props.output === 'note' &&
                       <div ref="title">
                         <h3 className='p10'>Notes: {chapter.titles.title}</h3>
                         <h5 className='p10'>{chapter.titles.subtitle}</h5>
+                        <p onClick={this.print} className='cursor'> print notes </p>
                       </div>
                     }
 	                	</div>
@@ -215,13 +267,18 @@ class Text extends Component {
                         <SideLinks items={items} actions = {{ site: this.handleSite, figure: '', resource: this.handleRes, note: this.handleNote}}  iter= {i} />
                         {i!== 0 && !items.text.includes('Notes for Chapter') &&
 			                	  <div className="col-9">
-    			                	<Waypoint
+    			                	{/*<Waypoint
     			                		topOffset={this.state.topOffset+40}
     			                		bottomOffset={100}
     			                		>
                               {/*<div dangerouslySetInnerHTML={this.insertHtml(i)} />*/}
-                              {this.insertHtml(i)}
-    			                		</Waypoint>
+                              {!items.figures &&
+                                this.insertHtml(i)
+                              }
+                              {items.figures &&
+                                this.insertFig(items.figures, i)
+                              }
+    			                		{/*</Waypoint>*/}
 			                	  </div>
                         }
                         {i=== 0 &&
@@ -270,6 +327,7 @@ const mapStateToProps = (state, ownProps) => {
     nav: state.nav,
     res: state.res,
     site: state.site,
+    img: state.img,
     }
 }
 
@@ -295,6 +353,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     setSelResources: (resObj, resAll)=>{
       dispatch(setSelResources(resObj, resAll));
+    },
+    activateGallery: (type)=>{
+      dispatch(activateGallery(type));
+    },
+    loadGallery: (imgArr, type)=>{
+      dispatch(loadGallery(imgArr, type));
     },
 
   }

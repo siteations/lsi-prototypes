@@ -6,6 +6,7 @@ class Image extends Component {
         super(props);
         this.state = {
           active : 0,
+          length: 0,
           height: 0,
           width: 0,
           widthImg: 400,
@@ -20,6 +21,19 @@ class Image extends Component {
       this.setState({width:wW, height: wW*.725 - 32});
     }
     this.getSize();
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('gallery', this.props.items, nextProps.items)
+    return this.props.items !== nextProps.items || this.state.widthImg !== nextState.widthImg || this.state.active !== nextState.active ;
+  }
+
+  componentDidUpdate(){
+    var length =this.props.items.length-1;
+    this.setState({length:length});
+    if (this.state.active>length){
+      this.setState({active:0});
+    }
   }
 
 
@@ -39,43 +53,45 @@ class Image extends Component {
 
   }
 
-  switchImg(e){
-    e.preventDefault();
-    //let ind = +this.state.active;
-    let index = +e.target.id.split(' ')[1];
-
+  switchImg(){
+    let ind = +this.state.active;
+    let index = ind + 1;
+    if (index>this.state.length){
+      this.setState({active:0});
+    } else {
       this.setState({active: index});
+    }
   }
 
   render() {
 
   const images = this.props.items;
-  //console.log(this.props.hi)
+  console.log('from gallery', images);
 
   return (
     <div id="slider" >
       <div className="text-center">
-        <img id='load' src={images[this.state.active].original} alt="" style={{width:this.state.widthImg}} onLoad={e=>this.getSize(e)} onChange={e=>this.getSize(e)}/>
+      {images.length > 0 &&
+        <img id='load' src={(images[this.state.active])?images[this.state.active].graphic : images[0].graphic} alt="" style={{width:this.state.widthImg}} onLoad={e=>this.getSize(e)} onChange={e=>this.getSize(e)} onClick={e=>this.switchImg(true)}/>
+      }
+      {images.length === 0 &&
+        <img id='load' src="http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/7000025.jpg" alt="" style={{width:this.state.widthImg}} onLoad={e=>this.getSize(e)} onChange={e=>this.getSize(e)}/>
+      }
       </div>
-      <div className="row centerblock" style={{position: 'absolute', top: this.state.height-40}} >
-          {images.length > 1 &&
-            images.map((image, i)=>{
-              if(i===this.state.active){
-                return <span id={`sliders ${i}`} className="fa fa-circle p10" value="i" onTouchTap={e=>this.switchImg(e)} onClick={e=>this.switchImg(e)}></span>
-              } else {
-                return <span id={`sliders ${i}`} className="fa fa-circle-o p10" value="i" onTouchTap={e=>this.switchImg(e)} onClick={e=>this.switchImg(e)}></span>
-              }
-            })
-          }
+      {images.length > 0 &&
+      <div style={{position: 'absolute', top: this.state.height, paddingLeft: '10px', width:'100%', backgroundColor: '#ffffff', opacity: .75}}>
+         {this.props.img.figActive === true &&
+          <p>{(images[this.state.active])? images[this.state.active].subject[0] : images[0].subject[0] }, click to advance series</p>
+         }
+         {this.props.img.siteActive === true &&
+          this.props.nav.siteName
+         }
       </div>
-      <div style={{position: 'absolute', top: this.state.height-10, paddingLeft: '10px', width:'100%', backgroundColor: '#ffffff', opacity: .5}}>
-            {this.props.nav.siteName} <br/>
-      {images[this.state.active].caption}
-      </div>
-      <div style={{position: 'absolute', top: this.state.height-10, paddingLeft: '10px', width:'100%'}} >
-      {this.props.nav.siteName} <br/>
-      {images[this.state.active].caption}
-      </div>
+      }
+      {images.length === 0 &&
+        <div style={{position: 'absolute', top: this.state.height-10, paddingLeft: '10px', width:'100%', backgroundColor: '#ffffff', opacity: .75}}>
+        <p>{'Détail des nouveaux jardins a la mode' }</p></div>
+      }
     </div>
     );
   }
@@ -85,6 +101,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
+    img: state.img,
     }
 }
 

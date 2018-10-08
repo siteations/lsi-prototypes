@@ -251,7 +251,6 @@ export const setSelResources = (resObj, resAll) => dispatch => {
 		var arr = resObj[key].p;
 		focus[key] = resAll[key];
 		(!focus[key])? focus[key]= resObj[key] : focus[key].p = arr ;
-		// focus[key].p = arr;
 	};
 	console.log('selRes2', focus);
 		dispatch(getChpResources(focus));

@@ -24,7 +24,7 @@ class SideL extends Component {
         			{items.sites &&
                 items.sites.map(site=>{
                   return (
-                    <li onClick={e=>actions.site(e.target.attributes.id.value, site.id, site.value)} id={i}><em>site:</em><span className="cursor"> {site.value}</span></li>
+                    <li onClick={e=>actions.site(i, site.id, site.value)} id={i}><em>site:</em><span className="cursor"> {site.value}</span></li>
                           )
                 })
         			}

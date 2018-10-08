@@ -22,7 +22,7 @@ class Tab extends Component {
   render(){
 
   	return (
-      <div className='row tabSets' style={{height: '33px'}}>
+      <div className='row tabSets' style={{height: '33px', position: 'relative', top:'0px'}}>
         {(this.props.placement === 'main') && //offset when large
           <div className='col tabSets'>
             <EnlargeFull />

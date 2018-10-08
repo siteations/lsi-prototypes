@@ -66,7 +66,7 @@ class MPT extends Component {
 
     {/*TEXTUAL SERIES*/}
       {this.props.pane.mainTab==='a' && this.props.pane.main==='text' &&
-        <TextPane output="text"/>
+        <TextPane output="text" />
       }
       {this.props.pane.mainTab==='b' && this.props.pane.main==='text' &&
         <TextPane output="note"/>

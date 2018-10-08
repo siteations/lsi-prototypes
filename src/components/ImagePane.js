@@ -15,28 +15,7 @@ class MPImages extends Component {
 
       //console.log(this.props.hi)
 
-      const images = [
-      {
-        original: './img/Seine_1862_Hydro_carte_1L.jpg',
-        thumbnail: './img/Seine_1862_Hydro_carte_1S.jpg',
-        caption:'the caption goes here 1',
-      },
-      {
-        original: './img/Seine_1862_Hydro_carte_2L.jpg',
-        thumbnail: './img/Seine_1862_Hydro_carte_2S.jpg',
-        caption:'the caption goes here 2',
-      },
-      {
-        original: './img/Seine_1862_Hydro_carte_3L.jpg',
-        thumbnail: './img/Seine_1862_Hydro_carte_3S.jpg',
-        caption:'the caption goes here 3',
-      },
-      {
-        original: './img/Seine_1862_Hydro_carte_4L.jpg',
-        thumbnail: './img/Seine_1862_Hydro_carte_4S.jpg',
-        caption:'the caption goes here 4',
-      }
-    ]
+      const images = (this.props.img.figActive)? this.props.img.figGallery : this.props.img.siteGallery
 
 
     return (
@@ -53,6 +32,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
+    img: state.img,
     }
 }
 

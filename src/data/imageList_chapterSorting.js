@@ -14455,6 +14455,7 @@ var images = [{
     "short": "Humphry Repton, Water at Wentworth, Yorkshire",
     "match": null, //add 'before' later
     "options": [],
+    "rotate" : true,
     "text": "Observations on the Theory and Practice of Landscape Gardening",
     "zoteroID": "ATZTLCNK",
     "zoteroURL": "https://ia600504.us.archive.org/BookReader/BookReaderImages.php?id=observationsonth00rept&itemPath=%2F2%2Fitems%2Fobservationsonth00rept&server=ia600504.us.archive.org&page=n80_w373"
@@ -14477,6 +14478,7 @@ var images = [{
     "short": "Hare Street, Essex, Fragments on the Theory and Practice of Landscape Gardening",
     "match": null,
     "options": [],
+    "rotate" : true,
     "text": "Fragments on the Theory and Practice of Landscape Gardening",
     "zoteroID": "JIUWE39R",
     "zoteroURL": "https://ia800509.us.archive.org/BookReader/BookReaderImages.php?id=fragmentsontheor00rept&itemPath=%2F31%2Fitems%2Ffragmentsontheor00rept&server=ia800509.us.archive.org&page=n352_w377"
@@ -14508,7 +14510,11 @@ var images = [{
     "graphic": "CH7_030.jpg",
     "desc": "Below: 7.29. Orangery at Sezincote, Gloucestershire, designed by Samuel Pepys Cockerell for his brother Sir Charles Cockerell, c. 1800",
     "short": "Orangery at Sezincote, Gloucestershire",
-    "match": null,
+    "match": {
+        "altId": "1800328",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800328.jpg",
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },
     "options": [{
         "altId": "1800222",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800222.jpg",
@@ -14689,6 +14695,7 @@ var images = [{
     "short": "Meadow in the Park, Muskau",
     "match": null,
     "options": [],
+    "rotate" : true,
     "text": "An Introduction to Landscape Design",
     "zoteroID": "AE7F9MS4",
     "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=coo1.ark:/13960/t3320h356;seq=553;width=1190"
@@ -14700,6 +14707,7 @@ var images = [{
     "short": "Work-house, Theory and Practice of Landscape Gardening",
     "match": null,
     "options": [],
+    "rotate" : true,
     "text": "Fragments on the Theory and Practice of Landscape Gardening",
     "zoteroID": "JIUWE39R",
     "zoteroURL": "https://ia800509.us.archive.org/BookReader/BookReaderImages.php?id=fragmentsontheor00rept&itemPath=%2F31%2Fitems%2Ffragmentsontheor00rept&server=ia800509.us.archive.org&page=n343_w392"
@@ -14709,14 +14717,12 @@ var images = [{
     "graphic": "CH7_033.jpg",
     "desc": "7.32a and b. Two engraved views of Parc Monceau, Paris, designed by Carmontelle. 1773",
     "short": "Parc Monceau, Paris, Carmontelle", //see larger series to host
-    "match": null,
-    "options": [{
+    "match": {
         "altId": "1900001",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900001.jpg",
-        "subject": ["Parc Monceau"],
-        "sub": ["Columns (Perspective)"],
         "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
+    },
+    "options": [{
         "altId": "1900002",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900002.jpg",
         "subject": ["Parc Monceau"],
@@ -14884,6 +14890,7 @@ var images = [{
     "graphic": "CH7_038.jpg",
     "desc": "Right: 7.37. Ermenonville, Oise, France. Rousseau's Tomb designed by Louis-Ren&#x00E9;, Vicomte d'Ermenonville, Marquis de Girardin. After 1766. The philosopher's body was reconsecrated in Paris at the Panth&#x00E9;on in 1794, but the tomb at Ermenonville remained an important memorial, continuing to draw visitors. From A. de Laborde, Nouveaux jardins de la France, 1808",
     "short": "Ermenonville, Oise, France",
+     "rotate": true,
     "match": {
         "altId": "1900030",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900030.jpg",
@@ -15061,6 +15068,7 @@ var images = [{
     "graphic": "CH7_039.jpg",
     "desc": "7.38. Ermenonville, from A. de Laborde, Nouveaux jardins de la France, 1808",
     "short": "Ermenonville, Nouveaux jardins de la France",
+    "rotate": true,
     "match": {
         "altId": "1900820",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900820.jpg",
@@ -15123,6 +15131,7 @@ var images = [{
     "graphic": "CH7_042.jpg",
     "desc": "7.41. Broken Column, D&#x00E9;sert de Retz, Chambourcy, Yvelines, from A. de Laborde, Nouveaux jardins de la France, 1808",
     "short": "Broken Column, Désert de Retz",
+    rotate: true,
     "match": {
         "altId": "1900819",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900819.jpg",
