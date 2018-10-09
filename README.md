@@ -3,15 +3,15 @@
 ### Warning: this is a front-end demo of limited text features. It uses updated, local data but needs updates to connect with IATH servers for fieldwork and the cleaned results of xml processing.
 
 ### Inspiration / Precedents - paneled DH projects
-+ [Enchanting the Desert]() *with layered/annotated imagery and maps to come as production of pilot courses*
-+ [American Panorama]() *with radically different data given the survey structure*
++ [Enchanting the Desert](http://www.enchantingthedesert.com/home/) *with layered/annotated imagery and maps to come as production of pilot courses*
++ [American Panorama](http://dsl.richmond.edu/panorama/) *with radically different data given the survey structure*
 
 # Prototype Structure
 ### node.js / npm packaging with react front-end framework
-+ [node]()
-+ [react]()
-+ [redux]()
-+ [react-routing]()
++ [node](https://nodejs.org/)
++ [react](https://reactjs.org/)
++ [redux](https://redux.js.org/)
++ [react-routing](https://reacttraining.com/react-router/)
 
 
 *Latest build* - demo here at [Github siteations](https://siteations.github.io/uva-lsi/)
@@ -27,7 +27,7 @@
 *also holds miscellaneous data cleaning scripts for xml* - this respository has also hosted: 
 + my informal scripts for updating the xml chapters - see textPrep > utilityScripts
 + linking to svn and hosting the original chapters from Elizabeth Barlow Rogers - see textPrep > svn Landscape Design
-+ copies of the chapter xml - as tweaked for reading with 'targets' instead of 'keys' - are in public > chapters as well as the build folders - docs > chapters. These are the working version read by the react code; do not delete if you want the demo to run
++ copies of the chapter xml - as tweaked for reading with 'targets' instead of 'keys' - are in public > chapters as well as the build folders - docs > chapters. These are the working version read by the react code; do not delete if you want the demo to run. *the DSI students are working on the xml for all chapters outside 7 and 9 pilots and are using the files on box.net*
 
 
 # Core Elements and next steps 
@@ -41,7 +41,7 @@
 + store holds the major redux connection that links to the action-creators' verbose and explicit handing of data. Currently this is built around the local data files and reading the xml in via action-creators > xmlParsingUtil.js . All the build out happens and this is connected to function databases/back-end many of the redux action-creators will need to be ammended to do database calls (via axios, etc.)
 
 ### data - any extracted data from the xml or new files
-+ all files starting with '07' or '09' are based on the updated xml tagging for pilot chapters
++ all files starting with '07' or '09' are based on the updated xml tagging for pilot chapters *the DSI students are working on the xml for all chapters outside 7 and 9 pilots and will produce parallel data seeding files for those chapters*
 + all files starting with 'imageList' are based on Elizabeth Barlow Rogers' images from the Foundation for Landscape Studies and incorporate geotagging by site for later geographic use. For the full csv file, use to generate these lists see textPrep > Lists > images_FLS_LocationsInventoryUTF8_tab.csv 
 + the main image file - currently in place of db entries - is 'imageList_chapterSorting.js' *Chapters 0-7,9 have been checked. File needs updates for 8, 10 on and rotation notes have only been done for chapter 7 - the initial pilot* 
 + all files starting with 'imageObj' are simply the results of filtering the extensive image list by sites in chapter 7 and 9. This is automated and, because all tags *still need normalization*, is not a full-proof set of images by site.
@@ -81,7 +81,14 @@
 + *GeoPanes are using an older library (mapbox-gl) and should be updated to both incorporate geotagged imagery and gis on-line materials using the leaflet-react library. See students prototyping tests from the summer*
 ---
 
-
+#### within components - main elements (which beg to be refactored)
++ TextPane.js holds the body of Rogers' text as well as the notes for each chapter. It reads in a layered text object from this.props.nav.text that holds a pre-sorted version of the xml - working from the paragraph level - thanks for action-creators > xmlParsingUtil.js . *This uses much too much regEx and the interface could be simplifed to use a straight forward text read-out without the left-hand side links. More broadly, there are a number of internal fuctions - to follow links, etc. that are nested here and should be simplified*
+  + the main panel of text also load SideLinks.js for the left column
++ GeoPane / GeoPaneS.js - geographies in general. *as noted above, needs overhaul for alternate library use and connection with LSI library esri-online files*
++ ImagePane / ImagePaneS.js - images, whether loaded by site or by figures in the text *see comment below on ImageGallery*
+  + this pulls in the ImageGallery.js *together need to udate/troubleshoot css and js for rotating images, as well as updating date to reflect orientation. all image data itself needs updates for the fieldwork drupal site and iiif server location of hosted data*
++ NetworkPane / NetworkPaneS.js - currently this just passes data to TestNetwork.js which can be updated *has only been tested in the site position thanks to css position of EnlargeFull needing debugged when working with svg*
+  + TestNetwork.js *needs the d3 tweaked for legibility and currently only link to 1-degree of data through action-creators > agentActions.js . That said the DSI students are set to rethink how to navigation and visualization of network can be functional*
 
 ## Back End Design Overview
 + see IATH notes on project drives, circa January 2018... needs another round of re-design and atomization in feedback with Muskau course activity / field materials 
