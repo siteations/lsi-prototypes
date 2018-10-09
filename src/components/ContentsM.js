@@ -97,7 +97,7 @@ class MPT extends Component {
         <GeoPane hi={this.state.height} scale='generic'/>
       }
       {this.props.pane.mainTab==='b' && this.props.pane.main==='networks' &&
-        <NetworkPane focus='discourse' />
+        <NetworkPane hi={this.state.height} wide={this.state.width}focus='discourse' />
       }
       {this.props.pane.mainTab==='c' && this.props.pane.main==='networks' &&
         <NetworkPane focus='matter' />

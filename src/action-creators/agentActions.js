@@ -193,12 +193,19 @@ const listConversion = (list) => {
 
 }
 
-const listQuery = (list, id, type) => {
+const listQuery = (list, id, type, degree) => {
+	degree = degree || 1;
+	//intial id and type,
+	//id and type of a and b from resultant list - so for each entry, run twice.... concat all arr and get set
 
-	var revList = list.filter(assoc =>{
+
+	var incList = list.filter(assoc =>{
 		return (+assoc.aId === +id && assoc.aType === type) || (+assoc.bId === +id && assoc.bType === type)
 	});
+	// var excList = list.filter(assoc =>{
+	// 	return (+assoc.aId !== +id && assoc.aType !== type) || (+assoc.bId !== +id && assoc.bType !== type)
+	// });
 
-	return revList;
+	return incList;
 
 }

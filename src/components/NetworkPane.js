@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 import {setSideTop} from '../action-creators/paneActions.js';
 
+import * as d3 from "d3";
+
+import TestNetwork from './TestNetwork.js';
+
 var buttons = [
   {label: 'images', value: 'a'},
   {label: 'sites', value: 'b'},
@@ -20,9 +24,11 @@ class MPNetwork extends Component {
  }
 
  render(){
+      var data = (this.props.agent.agentAssoc.nodes)? this.props.agent.agentAssoc : this.props.agent.allAssoc ;
+
     return (
     <div style={{height:this.props.hi}}>
-      networks here: {this.props.nav.siteName} to be reformatted
+      <TestNetwork height={this.props.hi} width={this.props.wide} data={data}/>
     </div>
     )
   }
@@ -32,6 +38,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
+    agent: state.agent,
     }
 }
 

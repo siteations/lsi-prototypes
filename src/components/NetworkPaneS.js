@@ -20,7 +20,6 @@ class SPNetwork extends Component {
 
     return (
     <div style={{height:this.props.hi}}>
-      {this.props.focus} network here: {this.props.nav.siteName}
       <TestNetwork height={this.props.hi} width={this.props.hi*1.5} data={data}/>
       <EnlargeSide loc='bottom' />
     </div>

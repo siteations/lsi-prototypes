@@ -108,6 +108,7 @@ class Text extends Component {
     var agent = this.props.agent.allAgents[id];
     this.props.setChpPara(this.props.nav.chp, value); //just to update page
     this.props.setAgentData(id, agent.name[0]);
+    this.props.setPanesTabs('bottom','networks','b');
     this.props.setUpdate(false);
   }
 //-----------------------return from resources, notes------------------------

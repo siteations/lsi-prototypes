@@ -2,15 +2,62 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as d3 from "d3";
 
+import {setUpdate, setChpParaN} from '../action-creators/navActions.js';
+import {setSiteData} from '../action-creators/siteActions.js';
+import {setPanesTabs} from '../action-creators/paneActions.js';
+import {activateGallery, loadGallery} from '../action-creators/imgActions.js';
+import {setAgentData} from '../action-creators/agentActions.js';
+
 //generator on parent component... click area to update data
 
 class TestPane extends Component {
 	constructor(props) {
     super(props);
     this.state = {};
+    this.clickInt=this.clickInt.bind(this);
   }
 
   //----------------------------all the d3 functions nesting here--------------------------------
+  clickInt(id,type){
+
+    if (type === 'agent'){ //reload network
+      this.handleAgent(id);
+    } else if (type === 'site'){
+      this.handleSite(id);
+    } else if (type === 'resource'){
+      this.handleRes(id);
+    }
+
+  }
+
+
+  handleRes(id){
+    var noteP = Object.keys(this.props.res.resourcesSelect).indexOf(id.toString()); //paragraph on tab
+    console.log('tracking resources ', noteP, id, this.props.res.resourcesSelect[id]);
+
+    if (noteP !== -1){
+      this.props.setChpParaN(noteP);
+      this.props.setPanesTabs('main','text','c');
+      this.props.setUpdate(true);
+
+    }
+  }
+
+  handleSite(id){ //works fine
+    var site = this.props.site.allSites[id];
+    this.props.setSiteData(id, site.name[0]);
+    var figs = this.props.site.allSitesImg[id].options;
+    if (figs.length>0){
+      this.props.loadGallery(figs, 'site');
+    }
+    this.props.setUpdate(false);
+  }
+
+
+  handleAgent(id){ //set up for mapping the network diagram
+    this.props.setAgentData(id);
+    this.props.setUpdate(false);
+  }
 
   //data instead of this.props to use this.props and nextProps
   sim(data){
@@ -106,6 +153,12 @@ class TestPane extends Component {
             .enter()
             .append("circle")
             .attr("r", function(d){  return 5 })
+            .attr('fill', function(d){
+              if (d.type==='agent'){return 'black'}
+              else if (d.type==='resource'){return '#31708f'}
+              else {return '#224e65'}
+
+            })
             .call(d3.drag()
                 .on("start", d=>this.dragstarted(d))
                 .on("drag", d=>this.dragged(d))
@@ -119,8 +172,14 @@ class TestPane extends Component {
             .attr("class", "labels")
             .attr("dx", function(d){  return 5 })
             .attr("dy", ".35em")
+            .attr('fill', function(d){
+              if (d.type==='agent'){return 'black'}
+              else if (d.type==='resource'){return '#31708f'}
+              else {return '#224e65'}
+
+            })
             .text(function(d) { return d.name })
-            .on('click', function(d) { console.log('node ', d.name, d.id, d.type) });
+            .on('click', d=> this.clickInt(d.id, d.type) );
   }
 
 
@@ -166,8 +225,50 @@ class TestPane extends Component {
 
 //typically I'd do a componentDidMount function to query about parent width/height, but this is quick
 TestPane.defaultProps = {
-  forceStrength: -100
+  forceStrength: 100//-100
 };
 
 
-export default TestPane;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    pane: state.pane,
+    nav: state.nav,
+    res: state.res,
+    site: state.site,
+    agent: state.site,
+    }
+}
+
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    setChpParaN: (noteP) => {
+       dispatch(setChpParaN(noteP));
+    },
+    setUpdate: (bool) =>{
+      dispatch(setUpdate(bool));
+    },
+    setPanesTabs: (a,b,c)=>{
+      dispatch(setPanesTabs(a,b,c));
+    },
+    setSiteData: (id, name)=>{
+      dispatch(setSiteData(id, name));
+    },
+    setAgentData: (id, name)=>{
+      dispatch(setAgentData(id, name));
+    },
+    activateGallery: (type)=>{
+      dispatch(activateGallery(type));
+    },
+    loadGallery: (imgArr, type)=>{
+      dispatch(loadGallery(imgArr, type));
+    },
+
+  }
+}
+
+
+const TPane = connect(mapStateToProps, mapDispatchToProps)(TestPane);
+
+
+export default TPane;
