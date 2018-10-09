@@ -2,33 +2,34 @@
 <?xml-stylesheet type="text/xslt" href="../../frameworks/tei/xml/tei/stylesheet/html/tei.xsl"?>
 <?oxygen RNGSchema="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_lite.rng" type="xml"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
-<teiHeader>
-<fileDesc>
-<titleStmt>
-<title>LANDSCAPE DESIGN A CULTURAL AND ARCHITECTURAL HISTORY</title>
-<author>ELIZABETH BARLOW ROGERS</author>
-<respStmt>
-<resp>TEI P5 XML markup in conformance with the TEI DTD</resp>
-<name>AEL Data</name>
-</respStmt>
-</titleStmt>
-<publicationStmt>
-<publisher>HARRY N. ABRAMS, INC.,</publisher>
-<pubPlace></pubPlace>
-<date></date>
-</publicationStmt>
-<sourceDesc>
-<bibl>LANDSCAPE DESIGN A CULTURAL AND ARCHITECTURAL HISTORY by ELIZABETH BARLOW ROGERS</bibl>
-</sourceDesc>
-</fileDesc>
-<profileDesc>
-<langUsage>
-<language ident="en"></language>
-</langUsage>
-</profileDesc>
-</teiHeader>
-<text>
-<front>
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>LANDSCAPE DESIGN A CULTURAL AND ARCHITECTURAL HISTORY</title>
+                <author>ELIZABETH BARLOW ROGERS</author>
+                <respStmt>
+                    <resp>TEI P5 XML markup in conformance with the TEI DTD</resp>
+                    <name>AEL Data</name>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>HARRY N. ABRAMS, INC.,</publisher>
+                <pubPlace/>
+                <date/>
+            </publicationStmt>
+            <sourceDesc>
+                <bibl>LANDSCAPE DESIGN A CULTURAL AND ARCHITECTURAL HISTORY by ELIZABETH BARLOW
+                    ROGERS</bibl>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <langUsage>
+                <language ident="en"/>
+            </langUsage>
+        </profileDesc>
+    </teiHeader>
+    <text>
+        <body>
 <div type="frontma">
 <pb n="1"/>
 <head><hi rend="bold">LANDSCAPE DESIGN</hi></head>
@@ -482,3 +483,6 @@ tion; the <name type="pname">Eugene V.</name> and <name type="pname">Clare E. Th
 scapes discussed in the text. Elaine Banks Stainton, senior editor, has overseen the difficult process of readying the book for production. Ana Rogers is the book's designer, and her fine work speaks for itself. Our team leader has been <name type="pname">Julia Moore</name>, executive editor and director of textbook publishing, the most astute and considerate of editors. She has assured the integrity of our project at every turn, always advocating what is in the best interest of the book's intent and content rather than what is merely expedient or least costly.</p>
 <p>I would like to add a final additional word of gratitude to Ted, my husband, for encouraging me to undertake this broad-scale survey in the first place and to persist in bringing it to publication. I thank him especially for sharing with me a wonderful educational adventure as we have walked together in the cities, parks, and gardens described in the following chapters and talked about the civilizations, including our own, that are responsible for the impressions we have gathered and the knowledge of place-making we have gained together.</p>
 </div>
+        </body>
+    </text>
+</TEI>
