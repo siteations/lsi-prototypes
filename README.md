@@ -2,10 +2,17 @@
 
 ### Warning: this is a front-end demo of limited text features. It uses updated, local data but needs updates to connect with IATH servers for fieldwork and the cleaned results of xml processing.
 
-[**PROJECT DEMO**] Coming Soon, see [here](https://vimeo.com/216934957) for prototype 1 (50% front-end interactions).  
+### Inspiration / Precedents - paneled DH projects
++ [Enchanting the Desert]() *with layered/annotated imagery and maps to come as production of pilot courses*
++ [American Panorama]() *with radically different data given the survey structure*
 
 # Prototype Structure
 ### node.js / npm packaging with react front-end framework
++ [node]()
++ [react]()
++ [redux]()
++ [react-routing]()
+
 
 *Latest build* - demo here at [Github siteations](https://siteations.github.io/uva-lsi/)
 *Post-Transfer Location* - demo anticipated at [Github UVA-IATH](https://UVA-IATH.github.io/uva-lsi/) if hosted on github
@@ -67,7 +74,7 @@
 ---
 
 #### within components - overall structure of panels holding materials, like text, images, etc.
-+ those to be shown in the main, left pane are noted without a end 'S'. For example TextPane.js will show in the main left panel.
++ those components to be shown in the main, left pane are noted without a end 'S'. For example TextPane.js will show in the main left panel.
 + those to be shown on right, in top or bottom accordian pane end with an 'S' just like TextPaneS.js . These files are typically less complicated versions due to less anticipated interaction
 + This rule follows for GeoPane, ImagePane, NetworkPane, ResourcePane, TextPane, ThemePane 
 + *ThemePanes are currently empty - anticipated use with results of fieldwork and its tagging*
