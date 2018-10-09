@@ -12,6 +12,8 @@ import registerServiceWorker from './registerServiceWorker';
 import {setCoreText} from './action-creators/navActions.js';
 import {loadResources, setSelResources} from './action-creators/resActions.js';
 import {loadFigures} from './action-creators/imgActions.js';
+import {loadSites} from './action-creators/siteActions.js';
+import {loadAgents} from './action-creators/agentActions.js';
 
 const history = createHistory();
 
@@ -19,6 +21,8 @@ function setText (){
 	store.dispatch(setCoreText());
 	store.dispatch(loadResources(7));
 	store.dispatch(loadFigures());
+	store.dispatch(loadSites());
+	store.dispatch(loadAgents());
 }
 
 

@@ -24,7 +24,7 @@ class Image extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    console.log('gallery', this.props.items, nextProps.items)
+    //console.log('gallery', this.props.items, nextProps.items)
     return this.props.items !== nextProps.items || this.state.widthImg !== nextState.widthImg || this.state.active !== nextState.active ;
   }
 
@@ -66,7 +66,7 @@ class Image extends Component {
   render() {
 
   const images = this.props.items;
-  console.log('from gallery', images);
+  //console.log('from gallery', images);
 
   return (
     <div id="slider" >

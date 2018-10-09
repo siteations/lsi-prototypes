@@ -179,6 +179,6 @@ export const loadGallery = (imgArr, type) => dispatch => {
 			dispatch(activateGallery('figure'));
 		} else {
 			dispatch(getSiteGallery(imgArr));
-			dispatch(activateGallery());
+			dispatch(activateGallery('site'));
 		}
 }

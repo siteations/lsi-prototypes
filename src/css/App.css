@@ -268,7 +268,7 @@ ref {
 }
 
 .mapboxgl-marker {
-  opacity:.25 ;
+  opacity:.75 ;
 }
 
 .nb {
@@ -296,4 +296,13 @@ ref {
   border-radius: 5px;
 }
 
+
+.leaflet-container {
+  width: 439px;
+  height: 284px;
+  margin: 0 auto;
+  border: solid white 2px;
+  position:relative;
+  top:354px,
+}
 

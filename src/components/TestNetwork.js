@@ -19,15 +19,14 @@ class TestPane extends Component {
         d3.forceManyBody()
           .strength(data.forceStrength)
       )
-      .force("link", d3.forceLink().id(function(d) { return d.index }))
-      .force("collide",d3.forceCollide( function(d){return 18 }).iterations(16) )
+      .force("link", d3.forceLink(data.data.links).id(function(d) { return d.name }))
+      .force("collide",d3.forceCollide( function(d){ return 18 }).iterations(16) )
       .force("center", d3.forceCenter(data.width / 2, data.height / 2))
       .force("y", d3.forceY(0))
       .force("x", d3.forceX(0));
   }
 
   runSim(data) {
-
      this.simulation
             .nodes(data.data.nodes)
             .on("tick", this.ticked);
@@ -98,7 +97,7 @@ class TestPane extends Component {
             .append("text")
             .attr("class", "linkLabels")
             .attr('fill', 'red')
-            .text(function(d) { return d.label });
+            .text(function(d) { return d.rel });
 
    var node = svg.append("g")
             .attr("class", "nodes")
@@ -106,7 +105,7 @@ class TestPane extends Component {
             .data(data.data.nodes)
             .enter()
             .append("circle")
-            .attr("r", function(d){  return d.r })
+            .attr("r", function(d){  return 5 })
             .call(d3.drag()
                 .on("start", d=>this.dragstarted(d))
                 .on("drag", d=>this.dragged(d))
@@ -118,9 +117,10 @@ class TestPane extends Component {
             .data(data.data.nodes)
             .enter().append("text")
             .attr("class", "labels")
-            .attr("dx", function(d){  return d.r })
+            .attr("dx", function(d){  return 5 })
             .attr("dy", ".35em")
-            .text(function(d) { return d.label });
+            .text(function(d) { return d.name })
+            .on('click', function(d) { console.log('node ', d.name, d.id, d.type) });
   }
 
 
@@ -129,6 +129,7 @@ class TestPane extends Component {
 //----------------------------react update cycles to trigger reloading of props--------------------------------
 
   componentDidMount() {
+    console.log(this.props);
     this.sim(this.props)
     this.setup(this.props)
     this.runSim(this.props)
@@ -165,8 +166,6 @@ class TestPane extends Component {
 
 //typically I'd do a componentDidMount function to query about parent width/height, but this is quick
 TestPane.defaultProps = {
-  width: 1500,
-  height: 700,
   forceStrength: -100
 };
 

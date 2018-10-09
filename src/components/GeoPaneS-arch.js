@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import 'leaflet';
+import { basemapLayer, featureLayer } from 'esri-leaflet';
 import mapboxgl from 'mapbox-gl'
 
 import EnlargeSide from './EnlargeSide.js';
 
 import {setSideTop} from '../action-creators/paneActions.js';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibHNpc3R1ZGVyIiwiYSI6ImNqY3NkeGhmYjBjOHkzMHQ2azQ2eng5N2kifQ.X9MtZX_O0rUT1bMB31nXTQ';
+const L = window.L;
+console.log(L);
+
+var accessToken = 'pk.eyJ1IjoibHNpc3R1ZGVyIiwiYSI6ImNqY3NkeGhmYjBjOHkzMHQ2azQ2eng5N2kifQ.X9MtZX_O0rUT1bMB31nXTQ';
 
 class SGeo extends Component {
 //const STImages = function (props) {
   constructor(props) {
    super(props);
    this.state = {
-      lng: this.props.site.siteObj.g_longitude,
-      lat: this.props.site.siteObj.g_latitude,
-      zoom: 11
+      lng: -0.3027728,
+      lat: 51.4772129,
+      zoom: 10
     };
  }
 
@@ -89,19 +94,19 @@ class SGeo extends Component {
 
     return (
       <div style={{height:this.props.hi}} >
-      <EnlargeSide loc='bottom' />
-        <div className="inline-block absolute top left mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
-          <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
-        </div>
-        <div ref={el => this.mapContainer = el} style={{position:'absolute', top:'33px', height:'100%', width:'100%'}} />
-        <div style={{position: 'absolute', top: this.props.hi, paddingLeft: '10px'}}>
+        <div ref={el => this.mapContainer = el} style={{position:'absolute', top:'70px'+this.props.hi, height:{.66*this.props.hi}, width:'100%'}} />
+        <EnlargeSide loc='bottom' />
+        {this.props.site.siteObj.g_longitude &&
+        <div style={{position: 'absolute', top: this.props.hi*2, paddingLeft: '10px'}}>
           {this.props.site.siteName}<br/>
-          caption here
-          </div>
+          place holder
+        </div>
+        }
       </div>
     )
   }
 }
+
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -121,6 +126,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const SGeoMain = connect(mapStateToProps, mapDispatchToProps)(SGeo);
+const SGeoSide = connect(mapStateToProps, mapDispatchToProps)(SGeo);
 
-export default SGeoMain;
+export default SGeoSide;

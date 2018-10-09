@@ -8,14 +8,16 @@ import {setSideTop} from '../action-creators/paneActions.js';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibHNpc3R1ZGVyIiwiYSI6ImNqY3NkeGhmYjBjOHkzMHQ2azQ2eng5N2kifQ.X9MtZX_O0rUT1bMB31nXTQ';
 
-class SPNetwork extends Component {
+mapboxgl.accessToken = 'pk.eyJ1IjoibHNpc3R1ZGVyIiwiYSI6ImNqY3NkeGhmYjBjOHkzMHQ2azQ2eng5N2kifQ.X9MtZX_O0rUT1bMB31nXTQ';
+
+class SGeo extends Component {
 //const STImages = function (props) {
   constructor(props) {
    super(props);
    this.state = {
-      lng: -0.3027728,
-      lat: 51.4772129,
-      zoom: 12
+      lng: this.props.site.siteObj.g_longitude,
+      lat: this.props.site.siteObj.g_latitude,
+      zoom: 11
     };
  }
 
@@ -39,7 +41,7 @@ class SPNetwork extends Component {
             "id": "hillshading",
             "source": "dem",
             "type": "hillshade",
-            "hillshade-exaggeration": 1
+            "hillshade-exaggeration": 2
         // insert below waterway-river-canal-shadow;
         // where hillshading sits in the Mapbox Outdoors style
         });
@@ -48,6 +50,8 @@ class SPNetwork extends Component {
     this.marker = new mapboxgl.Marker()
       .setLngLat([lng,lat])
       .addTo(this.map);
+
+    //this.markers = this.props.site
 
     this.map.on('move', () => {
       const { lng, lat } = this.map.getCenter();
@@ -61,7 +65,7 @@ class SPNetwork extends Component {
   }
 
   shouldComponentUpdate(nextProps){
-    console.log(this.props.site.siteId, nextProps.site.siteId);
+    //console.log(this.props.site.siteId, nextProps.site.siteId);
     return this.props.site.siteId !== nextProps.site.siteId ;
   }
 
@@ -83,18 +87,18 @@ class SPNetwork extends Component {
   }
 
 
+
     render(){
-      //const { lng, lat, zoom } = this.state;
-      //console.log(this.props.hi*2);
+      const { lng, lat, zoom } = this.state;
 
     return (
       <div style={{height:this.props.hi}} >
         <div ref={el => this.mapContainer = el} style={{position:'absolute', top:'70px'+this.props.hi, height:'44%', width:'100%'}} />
         <EnlargeSide loc='bottom' />
         {this.props.site.siteObj.g_longitude &&
-        <div style={{position: 'absolute', top: this.props.hi*2, paddingLeft: '10px'}}>
+        <div style={{position: 'absolute', top: (this.props.hi === 0 )?'550px' :this.props.hi*2 , paddingLeft: '10px'}}>
           {this.props.site.siteName}<br/>
-          place holder
+          placeholder, see prototyping sketches
         </div>
         }
       </div>
@@ -102,12 +106,14 @@ class SPNetwork extends Component {
   }
 }
 
+
 const mapStateToProps = (state, ownProps) => {
   return {
     pane: state.pane,
     nav: state.nav,
     res: state.res,
     site: state.site,
+    img: state.img
     }
 }
 
@@ -119,6 +125,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const SGeoSide = connect(mapStateToProps, mapDispatchToProps)(SPNetwork);
+const SGeoSide = connect(mapStateToProps, mapDispatchToProps)(SGeo);
 
 export default SGeoSide;

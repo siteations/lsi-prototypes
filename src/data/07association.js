@@ -4167,15 +4167,5 @@ var assoc = [{
     "bName": ["Wordsworth", "William Wordsworth"],
     "bId": 7011,
     "bType": "agent",
-}, {
-    "aName": ["Coleorton Hall"],
-    "aId": 7171,
-    "aType": "site",
-    "relName": "created by - role",
-    "relId": 2325,
-    "rel" : "designer",
-    "bName": ["Wordsworth", "William Wordsworth"],
-    "bId": 7011,
-    "bType": "agent",
 }];
 module.exports = assoc

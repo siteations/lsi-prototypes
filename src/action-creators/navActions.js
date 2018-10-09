@@ -156,14 +156,14 @@ export const setChapterDrawer = (text,buttonid, drw) => dispatch => {
 }
 
 	if (buttonid === null && drw !== undefined){
-		console.log('from updates', drw);
+		//console.log('from updates', drw);
 		var elm;
 		for (var key in drawer){
 			if (drawer[key].indexOf(drw)>-1){
 				elm = key
 			}
 		}
-		console.log(elm);
+		//console.log(elm);
 		var drawerObj = drawer[elm].map(chpId=>{
 		return {
 			id: chpId,
@@ -195,6 +195,6 @@ export const setChpParaN = (paraId) => dispatch => {
 
 
 export const setUpdate = (bool) => dispatch =>{
-	console.log('setup in process', bool)
+	//console.log('setup in process', bool)
 	dispatch(setUp(bool));
 }

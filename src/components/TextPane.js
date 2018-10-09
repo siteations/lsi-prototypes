@@ -13,6 +13,7 @@ import {setSiteData} from '../action-creators/siteActions.js';
 import {loadResources, loadTags, setSelResources} from '../action-creators/resActions.js';
 import {setPanesTabs} from '../action-creators/paneActions.js';
 import {activateGallery, loadGallery} from '../action-creators/imgActions.js';
+import {setAgentData} from '../action-creators/agentActions.js';
 
 
 //this should work such that the nav bar 'onClick', pulls in the text for a specific chapter and the scroll-to-id for subsections and/or case studies (dispatch to overall store)
@@ -95,18 +96,19 @@ class Text extends Component {
   handleSite(value, id, name){
   	this.props.setChpPara(this.props.nav.chp, value);
   	this.props.setSiteData(id, name);
+    var figs = this.props.site.allSitesImg[id].options;
+    if (figs.length>0){
+      this.props.loadGallery(figs, 'site');
+    }
   	this.props.setUpdate(false);
-  }
-
-  handleFig(value, id, ){ //load chosen as well as load options in image area
-
   }
 
 
   handleAgent(value, id, name){ //set up for mapping the network diagram
-    // this.props.setChpPara(this.props.nav.chp, value);
-    // this.props.setSiteData(id, name);
-    // this.props.setUpdate(false);
+    var agent = this.props.agent.allAgents[id];
+    this.props.setChpPara(this.props.nav.chp, value); //just to update page
+    this.props.setAgentData(id, agent.name[0]);
+    this.props.setUpdate(false);
   }
 //-----------------------return from resources, notes------------------------
 
@@ -159,9 +161,10 @@ class Text extends Component {
     const xmlToReact = new XMLToReact({
       p: (attrs) => ({ type: 'p'}),
       name: (attrs) => {
-        (attrs.subtype='site') ?  attrs.onClick = e=>this.handleSite(a, attrs.target, null): null;
+        (attrs.type==='pname' || attrs.subtype==='site') ? attrs.className = 'cursor' : null;
+        (attrs.subtype==='site') ?  attrs.onClick = e=>this.handleSite(a, attrs.target, null): null;
         //(attrs.type='pname') ? null : null; //handle agents later
-        (attrs.subtype='site') ? attrs.className = 'cursor' : null;
+        (attrs.type==='pname') ? attrs.onClick = e=>this.handleAgent(a, attrs.target, null) : null;
         return ({ type: 'name', props: attrs })
       },
       hi: (attrs) => { //reference location
@@ -194,7 +197,7 @@ class Text extends Component {
 
   loadGalleryContents(figOptArr, type){ //only on current click
     console.log('got array of images', figOptArr.length );
-    this.props.loadGallery(figOptArr, 'figure');
+    this.props.loadGallery(figOptArr, type);
   }
 
   insertFig(fig, a){
@@ -327,6 +330,7 @@ const mapStateToProps = (state, ownProps) => {
     res: state.res,
     site: state.site,
     img: state.img,
+    agent: state.agent,
     }
 }
 
@@ -343,6 +347,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     setSiteData: (id, name)=>{
     	dispatch(setSiteData(id, name));
+    },
+    setAgentData: (id, name)=>{
+      dispatch(setAgentData(id, name));
     },
     setUpdate: (bool) =>{
     	dispatch(setUpdate(bool));
