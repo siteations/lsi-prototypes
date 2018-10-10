@@ -33,9 +33,15 @@ class EnlargeS extends Component {
 }
 
  render(){
+  if (this.props.loc==='bottom'){
+    var style = Object.assign({},styles.iconPlus);
+    style.top = this.props.top;
+  } else {
+    var style = Object.assign({},styles.iconPlus);
+  }
 
 	return (
-          <IconButton tooltip="View Large" onClick={(this.props.loc==='top')? this.togglePaneT : this.togglePaneB } style={styles.iconPlus} >
+          <IconButton tooltip="View Large" onClick={(this.props.loc==='top')? this.togglePaneT : this.togglePaneB } style={style} >
             <FontIcon className="fa fa-plus" />
           </IconButton>
 		)

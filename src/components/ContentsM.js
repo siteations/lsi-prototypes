@@ -10,7 +10,7 @@ import ImagePane  from './ImagePane.js';
 import ThemePane  from './ThemePane.js';
 
 import GeoPane  from './GeoPane.js';
-import NetworkPane  from './TextPane.js'; //rework the fake network component
+import NetworkPane  from './NetworkPane.js'; //rework the fake network component
 
 import {setSideTop} from '../action-creators/paneActions.js';
 
@@ -48,7 +48,7 @@ class MPT extends Component {
   componentDidMount(){
    //console.dir(document.getElementById('sidePane').clientWidth)
    var wide = document.getElementById('largePane').clientWidth
-   var height = wide*.69 - 37
+   var height = wide*.66 //wide*.69 - 37
 
    this.setState({width: wide, height})
  }
@@ -97,7 +97,7 @@ class MPT extends Component {
         <GeoPane hi={this.state.height} scale='generic'/>
       }
       {this.props.pane.mainTab==='b' && this.props.pane.main==='networks' &&
-        <NetworkPane hi={this.state.height} wide={this.state.width}focus='discourse' />
+        <NetworkPane hi={this.state.height} wide={this.state.width} />
       }
       {this.props.pane.mainTab==='c' && this.props.pane.main==='networks' &&
         <NetworkPane focus='matter' />

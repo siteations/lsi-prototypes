@@ -132,9 +132,9 @@ export const setAgentData = (id, name) => dispatch => {
   var obj = agents.filter(site=> +site.id===+id)[0]
   dispatch(setAgentObj(obj));
 
-  var list =listQuery(network, id, 'agent');
+  var lists =listQuery(network, id, 'agent', 3);
   //console.log(list);
-  dispatch(setAgentAssoc(listConversion(list)));
+  dispatch(setAgentAssoc(listConversion(lists)));
 
   //add network here - look at data structure - more generally
 
@@ -194,18 +194,31 @@ const listConversion = (list) => {
 }
 
 const listQuery = (list, id, type, degree) => {
-	degree = degree || 1;
-	//intial id and type,
+	degree = degree || 2;
+	var lastDegList = [{ aId: id, bId: null, aType: type, bType:null }];
+	var array = [];
+	var degInt = 0;
+	var check = [];
+
 	//id and type of a and b from resultant list - so for each entry, run twice.... concat all arr and get set
+	while (degInt<degree){
 
+		lastDegList.forEach((item)=>{
+			var idA = item.aId, idB =item.bId;
+			var typeA = item.aType, typeB = item.bType;
+			//first each item
+			var incList = list.filter(assoc =>{
+				return (+assoc.aId === +idA && assoc.aType === typeA) || (+assoc.bId === +idA && assoc.bType === typeA) || (+assoc.aId === +idB && assoc.aType === typeB) || (+assoc.bId === +idB && assoc.bType === typeB)
+				});
+			check.push(...incList);
+			array.push(...incList); //add to overall array
+			})
 
-	var incList = list.filter(assoc =>{
-		return (+assoc.aId === +id && assoc.aType === type) || (+assoc.bId === +id && assoc.bType === type)
-	});
-	// var excList = list.filter(assoc =>{
-	// 	return (+assoc.aId !== +id && assoc.aType !== type) || (+assoc.bId !== +id && assoc.bType !== type)
-	// });
+			lastDegList = check.slice(); //update the matches
+			check =[];
+			degInt++;
+			console.log('network ', check, lastDegList, array, degInt);
+	}
 
-	return incList;
-
+	return lastDegList;
 }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Tabs from './Tabs.js';
 
 import TextPaneS from './TextPaneS.js';
-import ResourcePaneS from './TextPaneS.js';
+import ResourcePaneS from './ResourcePaneS.js';
 
 
 var buttons = [

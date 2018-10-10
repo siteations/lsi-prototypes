@@ -37,7 +37,11 @@ class TestPane extends Component {
 
     if (noteP !== -1){
       this.props.setChpParaN(noteP);
-      this.props.setPanesTabs('main','text','c');
+      if (this.props.pane.bottom==='networks'){
+        this.props.setPanesTabs('main','text','c');
+      } else if (this.props.pane.bottom==='text'){
+        this.props.setPanesTabs('bottom','text','c');
+      }
       this.props.setUpdate(true);
 
     }
@@ -62,13 +66,10 @@ class TestPane extends Component {
   //data instead of this.props to use this.props and nextProps
   sim(data){
     this.simulation = d3.forceSimulation(data.data.nodes)
-      .force("charge",
-        d3.forceManyBody()
-          .strength(data.forceStrength)
-      )
+      .force("charge", d3.forceManyBody().strength(-600))//.distanceMin(200))
       .force("link", d3.forceLink(data.data.links).id(function(d) { return d.name }))
-      .force("collide",d3.forceCollide( function(d){ return 18 }).iterations(16) )
-      .force("center", d3.forceCenter(data.width / 2, data.height / 2))
+      .force("collide",d3.forceCollide(function(d){ return 18 }).iterations(16) )
+      .force("center", d3.forceCenter(data.width / 2, data.height / 2) )
       .force("y", d3.forceY(0))
       .force("x", d3.forceX(0));
   }
@@ -143,7 +144,7 @@ class TestPane extends Component {
             .enter()
             .append("text")
             .attr("class", "linkLabels")
-            .attr('fill', 'red')
+            .attr('fill', 'lightgrey')
             .text(function(d) { return d.rel });
 
    var node = svg.append("g")

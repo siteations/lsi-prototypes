@@ -94,7 +94,7 @@ class SGeo extends Component {
     return (
       <div style={{height:this.props.hi}} >
         <div ref={el => this.mapContainer = el} style={{position:'absolute', top:'70px'+this.props.hi, height:'44%', width:'100%'}} />
-        <EnlargeSide loc='bottom' />
+        <EnlargeSide loc='bottom' top='370px'/>
         {this.props.site.siteObj.g_longitude &&
         <div style={{position: 'absolute', top: (this.props.hi === 0 )?'550px' :this.props.hi*2 , paddingLeft: '10px'}}>
           {this.props.site.siteName}<br/>

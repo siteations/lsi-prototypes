@@ -21,7 +21,7 @@ class SPNetwork extends Component {
     return (
     <div style={{height:this.props.hi}}>
       <TestNetwork height={this.props.hi} width={this.props.hi*1.5} data={data}/>
-      <EnlargeSide loc='bottom' />
+      <EnlargeSide loc='bottom' top='370px' />
     </div>
     )
   }
