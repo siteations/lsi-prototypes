@@ -54,7 +54,7 @@ render() {
       obj.id = key;
       return obj;
     })
-    console.log('resources', resources);
+    //console.log('resources', resources);
   }
   	//var chapter = this.props.nav.chp;
   	var name = this.props.nav.text[this.props.nav.chp].titles;

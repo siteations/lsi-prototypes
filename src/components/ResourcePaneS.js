@@ -38,7 +38,7 @@ class ResourcePane extends Component {
  returnToText(){
   this.props.setPanesTabs('main','text','a');
   this.props.setUpdate(true);
-  console.log('return to text')
+  //console.log('return to text')
 }
 
 scrollTo(value){
@@ -55,7 +55,7 @@ render() {
       obj.id = key;
       return obj;
     })
-    console.log('resources', resources);
+    //console.log('resources', resources);
   }
   	//var chapter = this.props.nav.chp;
   	var name = this.props.nav.text[this.props.nav.chp].titles;

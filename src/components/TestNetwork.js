@@ -33,7 +33,7 @@ class TestPane extends Component {
 
   handleRes(id){
     var noteP = Object.keys(this.props.res.resourcesSelect).indexOf(id.toString()); //paragraph on tab
-    console.log('tracking resources ', noteP, id, this.props.res.resourcesSelect[id]);
+    //console.log('tracking resources ', noteP, id, this.props.res.resourcesSelect[id]);
 
     if (noteP !== -1){
       this.props.setChpParaN(noteP);
@@ -189,7 +189,7 @@ class TestPane extends Component {
 //----------------------------react update cycles to trigger reloading of props--------------------------------
 
   componentDidMount() {
-    console.log(this.props);
+    //console.log(this.props);
     this.sim(this.props)
     this.setup(this.props)
     this.runSim(this.props)

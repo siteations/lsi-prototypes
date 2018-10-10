@@ -132,7 +132,7 @@ export const setAgentData = (id, name) => dispatch => {
   var obj = agents.filter(site=> +site.id===+id)[0]
   dispatch(setAgentObj(obj));
 
-  var lists =listQuery(network, id, 'agent', 3);
+  var lists =listQuery(network, id, 'agent', 2);
   //console.log(list);
   dispatch(setAgentAssoc(listConversion(lists)));
 
@@ -217,7 +217,7 @@ const listQuery = (list, id, type, degree) => {
 			lastDegList = check.slice(); //update the matches
 			check =[];
 			degInt++;
-			console.log('network ', check, lastDegList, array, degInt);
+			//console.log('network ', check, lastDegList, array, degInt);
 	}
 
 	return lastDegList;
