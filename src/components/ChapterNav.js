@@ -13,7 +13,7 @@ import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import {drawer, setChapterDrawer, setChpPara, setUpdate, setCoreText} from '../action-creators/navActions.js';
 import {setSiteData} from '../action-creators/siteActions.js';
 import {loadResources, loadTags, setSelResources} from '../action-creators/resActions.js';
-//import {setSelFig, setSelImg} from '../action-creators/imgActions.js';
+import {loadFigures} from '../action-creators/imgActions.js';
 
 //drop-down toggles to hold nested info
 //when clicked should open drawer to allow futher subselection
@@ -55,6 +55,7 @@ class ChapterN extends Component {
  	selectChapter (chp) {
  		this.props.setChpPara(chp, 999)
  		this.props.setSelResources(this.props.nav.text[chp].resources, this.props.res.resources);
+ 		this.props.loadFigures(chp);
     this.props.setUpdate(true)
  		this.handleClose()
  	}
@@ -62,6 +63,7 @@ class ChapterN extends Component {
  	selectSubChapter (chp, para) {
  		this.props.setChpPara(chp, para)
  		this.props.setSelResources(this.props.nav.text[chp].resources, this.props.res.resources);
+ 		this.props.loadFigures(chp);
     this.props.setUpdate(true)
  		this.handleClose()
  	}
@@ -232,9 +234,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     setSelResources: (resList, resAll)=>{
       dispatch(setSelResources(resList, resAll));
     },
-    // setSelFig: (chp)=>{
-    //   dispatch(setSelFig(chp));
-    // },
+    loadFigures: (chp)=>{
+      dispatch(loadFigures(chp));
+    },
     // setSelImages: (chp)=>{
     //   dispatch(setSelImages(chp));
     // },
