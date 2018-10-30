@@ -5552,7 +5552,7 @@ var images = [{
         "altId": "2300375",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300375.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
-    }, ,
+    },
     "options": [],
     "text": null,
     "zoteroID": null,
@@ -6259,7 +6259,7 @@ var images = [{
     "short": "Nishat Bagh",
     "match": {
         "altId": "6900000",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/6900000.jpg"
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/6900000.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
     },
     "options": [],
@@ -6445,7 +6445,7 @@ var images = [{
         "altId": "dir_3_023",
         "graphic": "https://upload.wikimedia.org/wikipedia/commons/6/6a/De_Merian_Mainz_Trier_K%C3%B6ln_005.jpg",
         "credit": ["public domain"]
-    }, ,
+    },
     "options": [],
     "text": null,
     "zoteroID": null,
@@ -8962,7 +8962,7 @@ var images = [{
     "short": "Chenonceaux, Le Second Volume des plus excellents Bastiments de France",
     "match": null,
     "options": [],
-    "text": "text": "Le Premiar [-Second] Volume des plus excellents Bastiments de France",
+    "text": "Le Premiar [-Second] Volume des plus excellents Bastiments de France",
     "zoteroID": "X58AK67X",
     "zoteroURL": "https://gallica.bnf.fr/ark:/12148/bpt6k3137097/f325.highres" //plan shown not found for Chenonceaux
 }, {
@@ -9528,7 +9528,7 @@ var images = [{
     "short": "Grotto, Vaux-le-Vicomte",
     "match": {
         "altId": "1900517",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900517.jpg"
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900517.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
     },
     "options": [], //see initial series
@@ -9985,7 +9985,7 @@ var images = [{
         "altId": "1900545",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900545.jpg",
         "credit": ["© Elizabeth Barlow Rogers"] //close substitute
-    },,
+    },
     "options": [],
     "text": "Recueil des Veues des Plus Beaux Lieux de France",
     "zoteroID": null,
@@ -10011,7 +10011,7 @@ var images = [{
         "altId": "1900584",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900584.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
-    }, ,
+    },
     "options": [{
         "altId": "1900585",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900585.jpg",
@@ -10117,7 +10117,7 @@ var images = [{
     "short": "Chantilly",
     "match": {
         "altId": "1900810",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900810.jpg"
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900810.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
     },
     "options": [],
@@ -10320,7 +10320,7 @@ var images = [{
     "short": "Villa Aldobrandini",
     "match": {
         "altId": "2300216",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300216.jpg"
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300216.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
     },
     "options": [],
@@ -10741,7 +10741,7 @@ var images = [{
     "short": "Villa Garzoni",
     "match": {
         "altId": "2300251",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300251.jpg"
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300251.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
     },
     "options": [], //see above for options
@@ -11102,7 +11102,7 @@ var images = [{
         "altId": "2300990",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2300990.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
-    },,
+    },
     "options": [],
     "text": null,
     "zoteroID": null,
@@ -12141,7 +12141,7 @@ var images = [{
     "short": "Hofgarten, Veitshöchheim, near Munich",
     "match": {
         "altId": "2000187",
-        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2000187.jpg"
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2000187.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
     }, //decent figure
     "options": [{
@@ -13703,7 +13703,7 @@ var images = [{
         "altId": "1800280",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800280.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
-    }, ,
+    },
     "options": [{
         "altId": "1800125",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800125.jpg",
@@ -14455,6 +14455,7 @@ var images = [{
     "short": "Humphry Repton, Water at Wentworth, Yorkshire",
     "match": null, //add 'before' later
     "options": [],
+    "rotate" : true,
     "text": "Observations on the Theory and Practice of Landscape Gardening",
     "zoteroID": "ATZTLCNK",
     "zoteroURL": "https://ia600504.us.archive.org/BookReader/BookReaderImages.php?id=observationsonth00rept&itemPath=%2F2%2Fitems%2Fobservationsonth00rept&server=ia600504.us.archive.org&page=n80_w373"
@@ -14477,6 +14478,7 @@ var images = [{
     "short": "Hare Street, Essex, Fragments on the Theory and Practice of Landscape Gardening",
     "match": null,
     "options": [],
+    "rotate" : true,
     "text": "Fragments on the Theory and Practice of Landscape Gardening",
     "zoteroID": "JIUWE39R",
     "zoteroURL": "https://ia800509.us.archive.org/BookReader/BookReaderImages.php?id=fragmentsontheor00rept&itemPath=%2F31%2Fitems%2Ffragmentsontheor00rept&server=ia800509.us.archive.org&page=n352_w377"
@@ -14508,7 +14510,11 @@ var images = [{
     "graphic": "CH7_030.jpg",
     "desc": "Below: 7.29. Orangery at Sezincote, Gloucestershire, designed by Samuel Pepys Cockerell for his brother Sir Charles Cockerell, c. 1800",
     "short": "Orangery at Sezincote, Gloucestershire",
-    "match": null,
+    "match": {
+        "altId": "1800328",
+        "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800328.jpg",
+        "credit": ["© Elizabeth Barlow Rogers"]
+    },
     "options": [{
         "altId": "1800222",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1800222.jpg",
@@ -14689,6 +14695,7 @@ var images = [{
     "short": "Meadow in the Park, Muskau",
     "match": null,
     "options": [],
+    "rotate" : true,
     "text": "An Introduction to Landscape Design",
     "zoteroID": "AE7F9MS4",
     "zoteroURL": "https://babel.hathitrust.org/cgi/imgsrv/image?id=coo1.ark:/13960/t3320h356;seq=553;width=1190"
@@ -14700,6 +14707,7 @@ var images = [{
     "short": "Work-house, Theory and Practice of Landscape Gardening",
     "match": null,
     "options": [],
+    "rotate" : true,
     "text": "Fragments on the Theory and Practice of Landscape Gardening",
     "zoteroID": "JIUWE39R",
     "zoteroURL": "https://ia800509.us.archive.org/BookReader/BookReaderImages.php?id=fragmentsontheor00rept&itemPath=%2F31%2Fitems%2Ffragmentsontheor00rept&server=ia800509.us.archive.org&page=n343_w392"
@@ -14709,14 +14717,12 @@ var images = [{
     "graphic": "CH7_033.jpg",
     "desc": "7.32a and b. Two engraved views of Parc Monceau, Paris, designed by Carmontelle. 1773",
     "short": "Parc Monceau, Paris, Carmontelle", //see larger series to host
-    "match": null,
-    "options": [{
+    "match": {
         "altId": "1900001",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900001.jpg",
-        "subject": ["Parc Monceau"],
-        "sub": ["Columns (Perspective)"],
         "credit": ["© Elizabeth Barlow Rogers"]
-    }, {
+    },
+    "options": [{
         "altId": "1900002",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900002.jpg",
         "subject": ["Parc Monceau"],
@@ -14884,6 +14890,7 @@ var images = [{
     "graphic": "CH7_038.jpg",
     "desc": "Right: 7.37. Ermenonville, Oise, France. Rousseau's Tomb designed by Louis-Ren&#x00E9;, Vicomte d'Ermenonville, Marquis de Girardin. After 1766. The philosopher's body was reconsecrated in Paris at the Panth&#x00E9;on in 1794, but the tomb at Ermenonville remained an important memorial, continuing to draw visitors. From A. de Laborde, Nouveaux jardins de la France, 1808",
     "short": "Ermenonville, Oise, France",
+     "rotate": true,
     "match": {
         "altId": "1900030",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900030.jpg",
@@ -15061,6 +15068,7 @@ var images = [{
     "graphic": "CH7_039.jpg",
     "desc": "7.38. Ermenonville, from A. de Laborde, Nouveaux jardins de la France, 1808",
     "short": "Ermenonville, Nouveaux jardins de la France",
+    "rotate": true,
     "match": {
         "altId": "1900820",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900820.jpg",
@@ -15123,6 +15131,7 @@ var images = [{
     "graphic": "CH7_042.jpg",
     "desc": "7.41. Broken Column, D&#x00E9;sert de Retz, Chambourcy, Yvelines, from A. de Laborde, Nouveaux jardins de la France, 1808",
     "short": "Broken Column, Désert de Retz",
+    rotate: true,
     "match": {
         "altId": "1900819",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900819.jpg",
@@ -15165,7 +15174,7 @@ var images = [{
         "altId": "5800001",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5800001.jpg",
         "credit": ["© Elizabeth Barlow Rogers"] //decent substitution
-    }, ,
+    },
     "options": [{
         "altId": "5800002",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/5800002.jpg",
@@ -15295,7 +15304,7 @@ var images = [{
     "graphic": "CH7_051.jpg",
     "desc": "7.49. Tiergarten, Berlin, designed by Peter Joseph Lenn&#x00E9;. 1818. Lenn&#x00E9; applied Hirschfeld's ideas to his plan to transform Berlin's Tiergarten into a Volksgarten.",
     "short": "Tiergarten, Berlin",
-    "match": , {
+    "match": {
         "altId": "2000287",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/2000287.jpg",
         "credit": ["© Elizabeth Barlow Rogers"]
@@ -16299,7 +16308,7 @@ var images = [{
     "graphic": "CH9_019.jpg",
     "desc": "9.19. Napoleonic Victory Column, Place V&#x00EA;ndome, Paris, constructed by Denon, Gonduin, and Lep&#x00E8;re. 1806&#x2013;10",
     "short": "Napoleonic Victory Column, Place Vêndome, Paris",
-    "match": //not in database?????
+    "match": null, //not in database?????
     "options": [{
         "altId": "1900856",
         "graphic": "http://community.village.virginia.edu/cultural_landscapes/media/images/FLS_Slide_Collection/medium/1900856.jpg",
@@ -28188,3 +28197,4 @@ var images = [{
     "zoteroURL": null
 }];
 module.exports = images
+
