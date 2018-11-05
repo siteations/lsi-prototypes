@@ -2,7 +2,7 @@
   "name": "uva-lsi",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://siteations.github.io/uva-lsi/",
+  "homepage": "https://siteations.github.io/lsi-prototypes/",
   "dependencies": {
     "@condenast/xml-to-react": "^1.0.0",
     "axios": "^0.16.2",
